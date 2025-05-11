@@ -1,6 +1,7 @@
-import { Stack } from "expo-router";
 import "~/global.css";
+import { View } from "react-native";
+import Index from "~/app/index";
 
 export default function RootLayout() {
-  return <Stack />;
+  return <Index />;
 }
