@@ -16,6 +16,12 @@ import {
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
 import { useFonts } from "expo-font";
+import { Suspense } from "react";
+import { api } from "~/trpc/react";
+
+export function Hello() {
+  const [hello] = api.post.hello.useSuspenseQuery({ text: "Murtaza" });
+}
 
 export default function Index() {
   const scheme = useColorScheme();

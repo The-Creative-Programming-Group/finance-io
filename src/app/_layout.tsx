@@ -1,8 +1,11 @@
-import "~/global.css";
-import { View } from "react-native";
-import Index from "~/app/index";
 import { Stack } from "expo-router";
+import "~/global.css";
+import { TRPCReactProvider } from "~/trpc/react";
 
 export default function RootLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <TRPCReactProvider>
+      <Stack screenOptions={{ headerShown: false }} />
+    </TRPCReactProvider>
+  );
 }
