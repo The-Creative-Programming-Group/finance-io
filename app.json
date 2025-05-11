@@ -8,9 +8,10 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "fonts": {
-      "Raleway-SemiBold": "../assets/fonts/Raleway-SemiBold.ttf",
-      "Raleway-Medium": "../assets/fonts/Raleway-Medium.ttf",
-      "Raleway-Regular": "../assets/fonts/Raleway-Regular.ttf"
+      "Raleway-SemiBold": "./assets/fonts/Raleway-SemiBold.ttf",
+      "Raleway-Medium": "./assets/fonts/Raleway-Medium.ttf",
+      "Raleway-Regular": "../assets/fonts/Raleway-Regular.ttf",
+      "Raleway-Bold": "../assets/fonts/Raleway-Bold.ttf"
     },
     "newArchEnabled": true,
     "ios": {
