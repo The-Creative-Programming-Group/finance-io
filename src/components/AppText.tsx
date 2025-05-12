@@ -21,10 +21,10 @@ export default function AppText({
   ...rest
 }: AppTextProps & Omit<React.ComponentProps<typeof Text>, keyof AppTextProps>) {
   const [fontsLoaded] = useFonts({
-    Raleway: require("../../assets/fonts/Raleway-Regular.ttf"),
-    RalewayMedium: require("../../assets/fonts/Raleway-Medium.ttf"),
-    RalewaySemiBold: require("../../assets/fonts/Raleway-SemiBold.ttf"),
-    RalewayBold: require("../../assets/fonts/Raleway-Bold.ttf"),
+    Raleway: require("~/assets/fonts/Raleway-Regular.ttf"),
+    RalewayMedium: require("~/assets/fonts/Raleway-Medium.ttf"),
+    RalewaySemiBold: require("~/assets/fonts/Raleway-SemiBold.ttf"),
+    RalewayBold: require("~/assets/fonts/Raleway-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
