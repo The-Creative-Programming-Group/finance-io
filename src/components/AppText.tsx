@@ -11,10 +11,15 @@ type AppTextProps = {
   style?: object;
 };
 
-export default function AppText(
-  { children, semibold, bold, medium, className, style }: AppTextProps,
-  ...rest: any
-) {
+export default function AppText({
+  children,
+  semibold,
+  bold,
+  medium,
+  className,
+  style,
+  ...rest
+}: AppTextProps & Omit<React.ComponentProps<typeof Text>, keyof AppTextProps>) {
   const [fontsLoaded] = useFonts({
     Raleway: require("../../assets/fonts/Raleway-Regular.ttf"),
     RalewayMedium: require("../../assets/fonts/Raleway-Medium.ttf"),
