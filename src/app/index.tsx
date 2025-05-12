@@ -1,12 +1,6 @@
-import {
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Pressable,
-  useColorScheme,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Image, ScrollView, useColorScheme } from "react-native";
+import React from "react";
+import { Link } from "expo-router";
 import {
   CircleCheck,
   Github,
@@ -15,8 +9,6 @@ import {
   Database,
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
-import { useFonts } from "expo-font";
-import { Suspense } from "react";
 import { api } from "~/trpc/react";
 
 export function Hello() {
@@ -97,16 +89,18 @@ export default function Index() {
             </View>
           </View>
         </View>
-        <View className="mt-12 flex-row justify-center">
-          <Pressable
-            className={
-              "h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent"
-            }
-          >
-            <AppText style={{ color: "white" }} className="text-xl">
-              Sign Up
-            </AppText>
-          </Pressable>
+        <View className="w-full flex-row items-center justify-center">
+          <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
+            <Link href={"/"}>
+              <AppText
+                medium={true}
+                className={"text-xl"}
+                style={{ color: "white" }}
+              >
+                Sign Up
+              </AppText>
+            </Link>
+          </View>
         </View>
         <View className="mt-14 flex-col items-center">
           <AppText

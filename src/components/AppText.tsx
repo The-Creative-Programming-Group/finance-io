@@ -28,7 +28,7 @@ export default function AppText({
   });
 
   if (!fontsLoaded) {
-    return null; // Or show a loading screen
+    return null;
   }
 
   const fontFamily = semibold
