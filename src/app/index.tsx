@@ -18,7 +18,7 @@ export function Hello() {
 export default function Index() {
   const scheme = useColorScheme();
 
-  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
+  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
   const iconBackground = scheme === "dark" ? "black" : "white";
 
   return (

@@ -20,6 +20,7 @@ export default function AppText({
   style,
   ...rest
 }: AppTextProps & Omit<React.ComponentProps<typeof Text>, keyof AppTextProps>) {
+  // This is a Component that we use to render text with custom fonts
   const [fontsLoaded] = useFonts({
     Raleway: require("~/assets/fonts/Raleway-Regular.ttf"),
     RalewayMedium: require("~/assets/fonts/Raleway-Medium.ttf"),
