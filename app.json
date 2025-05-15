@@ -7,10 +7,19 @@
     "icon": "./src/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "fonts": {
+      "Raleway-SemiBold": "./assets/Raleway-SemiBold.ttf",
+      "Raleway-Medium": "./assets/Raleway-Medium.ttf",
+      "Raleway-Regular": "./assets/Raleway-Regular.ttf",
+      "Raleway-Bold": "./assets/Raleway-Bold.ttf"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.creativeprogrammers.financeio"
+      "bundleIdentifier": "com.creativeprogrammers.financeio",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {

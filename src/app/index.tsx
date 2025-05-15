@@ -1,22 +1,185 @@
-import { Suspense } from "react";
-import { Text, View } from "react-native";
+import { View, Image, ScrollView, useColorScheme } from "react-native";
+import React from "react";
+import { Link } from "expo-router";
+import {
+  CircleCheck,
+  Github,
+  Tv,
+  CircleArrowDown,
+  Database,
+} from "lucide-react-native";
+import AppText from "~/components/AppText";
 import { api } from "~/trpc/react";
 
 export function Hello() {
   const [hello] = api.post.hello.useSuspenseQuery({ text: "Murtaza" });
-
-  return <Text className="text-red-500">{hello.greeting}</Text>;
 }
 
 export default function Index() {
+  const scheme = useColorScheme();
+
+  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
+  const iconBackground = scheme === "dark" ? "black" : "white";
+
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-lg font-bold">
-        Edit app/index.tsx to edit this screen. hello fanius
-      </Text>
-      <Suspense fallback={<Text>Loading...</Text>}>
-        <Hello />
-      </Suspense>
-    </View>
+    <ScrollView>
+      <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
+        <View className="mt-12 flex-row justify-center">
+          <Image
+            source={require("../assets/images/icon.png")}
+            className={"h-12 w-12 rounded-lg"}
+          />
+          <AppText
+            semibold={true}
+            className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
+          >
+            Finance.io
+          </AppText>
+        </View>
+        <View className="ml-8 mt-12 flex-row justify-center">
+          <Image
+            source={require("../assets/images/financeio-mockup.png")}
+            className={"h-64 w-32 rounded-lg"}
+          />
+          <View className="w-6/12">
+            <AppText className="text-md ml-6 text-text dark:text-dark-text">
+              <AppText bold={true}>Introducing Finance.io,</AppText> the future
+              of personal the makers of the trusted Weather.io, Chat.io.
+            </AppText>
+            <AppText className="text-md ml-6 mt-12 text-text dark:text-dark-text">
+              Finance.io empowers you to take control of your money—securely,
+              transparently, and without compromise.
+            </AppText>
+          </View>
+        </View>
+        <View className={"mt-12 flex-col items-center"}>
+          <AppText className="text-2xl text-text dark:text-dark-text">
+            Pros
+          </AppText>
+          <View>
+            <View className="mt-8 flex-row">
+              <CircleCheck color={iconBackground} fill={iconColor} />
+              <AppText className="ml-2 text-lg text-text dark:text-dark-text">
+                Free
+              </AppText>
+            </View>
+            <View className="flex-row">
+              <CircleCheck color={iconBackground} fill={iconColor} />
+              <AppText className="ml-2 text-lg text-text dark:text-dark-text">
+                High Security
+              </AppText>
+            </View>
+            <View className="flex-row">
+              <CircleCheck color={iconBackground} fill={iconColor} />
+              <AppText className="ml-2 text-lg text-text dark:text-dark-text">
+                No Ads
+              </AppText>
+            </View>
+            <View className="flex-row">
+              <CircleCheck color={iconBackground} fill={iconColor} />
+              <AppText className="ml-2 text-lg text-text dark:text-dark-text">
+                Open Source
+              </AppText>
+            </View>
+            <View className="flex-row">
+              <CircleCheck color={iconBackground} fill={iconColor} />
+              <AppText className="ml-2 text-lg text-text dark:text-dark-text">
+                No data selling
+              </AppText>
+            </View>
+          </View>
+        </View>
+        <View className="w-full flex-row items-center justify-center">
+          <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
+            <Link href={"/"}>
+              <AppText
+                medium={true}
+                className={"text-xl"}
+                style={{ color: "white" }}
+              >
+                Sign Up
+              </AppText>
+            </Link>
+          </View>
+        </View>
+        <View className="mt-14 flex-col items-center">
+          <AppText
+            bold={true}
+            className="mb-5 text-lg text-text dark:text-dark-text"
+          >
+            Why us ?
+          </AppText>
+          <CircleArrowDown size={30} color={iconBackground} fill={iconColor} />
+        </View>
+        <View className="mt-12 flex-col items-center">
+          <View className="flex-row">
+            <Image
+              className="h-6 w-6"
+              source={require("../assets/images/iconGooglePlay.png")}
+            />
+            <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
+              Google Play
+            </AppText>
+          </View>
+          <Image
+            className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
+            source={require("../assets/images/googlePlayInstall.png")}
+          />
+        </View>
+        <View className="mt-12 flex-col items-center">
+          <View className="flex-row">
+            <Image
+              className="h-6 w-6"
+              source={require("../assets/images/iconAppStore.png")}
+            />
+            <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
+              App Store
+            </AppText>
+          </View>
+          <Image
+            className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
+            source={require("../assets/images/InstallAppStore.png")}
+          />
+        </View>
+        <View className="mt-12 flex-col items-center">
+          <View className="flex-row justify-center">
+            <Github color={iconColor} />
+            <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
+              Open Source
+            </AppText>
+          </View>
+          <AppText className="w-7/12 text-text dark:text-dark-text">
+            By embracing open-source principles, Weather.io invites
+            collaboration and innovation from a global community of developers,
+            ensuring a robust and customizable weather solution tailored to your
+            needs.
+          </AppText>
+        </View>
+        <View className="mt-12 flex-col items-center">
+          <View className="flex-row justify-center">
+            <Tv color={iconColor} />
+            <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
+              No Ads
+            </AppText>
+          </View>
+          <AppText className="w-7/12 text-text dark:text-dark-text">
+            No ads. No distractions. Just a clean, focused experience built
+            around your financial well-being.
+          </AppText>
+        </View>
+        <View className="mt-12 flex-col items-center">
+          <View className="flex-row justify-center">
+            <Database color={iconColor} />
+            <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
+              No data selling
+            </AppText>
+          </View>
+          <AppText className="w-7/12 text-text dark:text-dark-text">
+            Many apps make money by selling user data, we don’t. Your trust
+            matters more.
+          </AppText>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
