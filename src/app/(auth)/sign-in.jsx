@@ -7,7 +7,6 @@ import {
   View, 
   TouchableOpacity, 
   Image, 
-  StyleSheet, 
   KeyboardAvoidingView, 
   Platform,
   ScrollView
@@ -40,7 +39,8 @@ export default function Page() {
         console.error(JSON.stringify(signInAttempt, null, 2))
       }
     } catch (err) {
-      if (err.errors) {
+      console.log('Sign in error:', err)
+      if (err && err.errors && Array.isArray(err.errors)) {
         const identifierError = err.errors.find(error => error.code === 'form_identifier_invalid');
         const passwordError = err.errors.find(error => error.code === 'form_password_incorrect');
         setError(null);
@@ -51,7 +51,7 @@ export default function Page() {
           setError('Your password is incorrect')
         }
         else {
-          setError('Sign in failed')
+          setError(err.errors[0]?.message || 'Sign in failed')
         }
       }
       else {
@@ -65,24 +65,24 @@ export default function Page() {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
+      className="flex-1"
     >
       <ScrollView 
-        style={styles.container}
+        className="flex-1 p-2.5 bg-black"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.header}>
+        <View className="flex-row items-center justify-center mb-5">
           <Image
             source={require("../../assets/images/icon.png")}
-            style={styles.logo}
+            className="w-[50px] h-[50px] mr-2.5 mb-[18px]"
           />
-          <Text style={styles.title}>Finance.io</Text>
+          <Text className="text-[30px] text-white text-center mb-5">Finance.io</Text>
         </View>
-        <Text style={styles.label}>Email</Text>
+        <Text className="text-white text-base mb-[5px]">Email</Text>
         <TextInput
-          style={styles.input}
+          className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Enter email"
@@ -90,9 +90,9 @@ export default function Page() {
           onChangeText={setEmailAddress}
           keyboardType='email-address'
         />
-        <Text style={styles.label}>Password</Text>
+        <Text className="text-white text-base mb-[5px]">Password</Text>
         <TextInput
-          style={styles.input}
+          className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
           value={password}
           placeholder="Enter password"
           placeholderTextColor="gray"
@@ -100,27 +100,24 @@ export default function Page() {
           onChangeText={setPassword}
         />
         {error && (
-          <Text style={styles.errorText}>{error}</Text>
+          <Text className="text-red-500 text-xs mt-[5px]">{error}</Text>
         )}
         <TouchableOpacity
           onPress={onSignInPress}
           disabled={isSubmitting}
-          style={[
-            styles.button,
-            isSubmitting && styles.disabledButton,
-          ]}
+          className={`bg-[#007AFF] mt-5 py-2.5 px-5 rounded-md self-center ${isSubmitting ? 'opacity-50' : ''}`}
         >
-          <Text style={styles.buttonText}>
+          <Text className="text-white font-bold">
             {isSubmitting ? "Signing In..." : "Sign In"}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push('/sign-up')}>
-          <Text style={styles.text}>
-            Don&apos;t have an account? <Text style={{ color: "#007AFF", fontWeight: "bold" }}>Sign up 🚀</Text>
+          <Text className="text-white text-center pt-2.5">
+            Don&apos;t have an account? <Text className="text-[#007AFF] font-bold">Sign up 🚀</Text>
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push('/')}>
-          <Text style={styles.text}>
+          <Text className="text-white text-center pt-2.5">
             Go to Home
           </Text>
         </TouchableOpacity>
@@ -128,68 +125,3 @@ export default function Page() {
     </KeyboardAvoidingView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: "black",
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 20,
-  },
-  logo: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-    marginBottom: 18,
-  },
-  title: {
-    fontSize: 30,
-    color: "white",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  label: {
-    color: "white",
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  input: {
-    height: 70,
-    backgroundColor: "#121111",
-    borderRadius: 15,
-    padding: 10,
-    paddingLeft: 20,
-    marginVertical: 6,
-    color: "white",
-  },
-  errorText: {
-    color: "red",
-    fontSize: 12,
-    marginTop: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  text: {
-    color: "white",
-    textAlign: "center",
-    paddingTop: 10,
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    marginTop: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    alignSelf: "center",
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-})

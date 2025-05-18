@@ -5,7 +5,6 @@ import {
   TouchableOpacity, 
   Text, 
   Image, 
-  StyleSheet, 
   KeyboardAvoidingView, 
   Platform,
   ScrollView
@@ -41,24 +40,40 @@ export default function SignUpScreen() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSignup = async () => {
+  const handleSignup = async (retryCount = 0) => {
     if (!isLoaded) return
     setError(null)
     if (!validate()) return
     setIsSubmitting(true)
+
     try {
       await signUp.create({
         emailAddress: email,
         password,
         firstName: firstname,
         lastName: lastname,
-        // Removed phoneNumber from Clerk call
       })
+
+      // Add a longer delay before preparing verification
+      await new Promise(resolve => setTimeout(resolve, 2000))
+
       await signUp.prepareEmailAddressVerification({ strategy: 'email_code' })
       setPendingVerification(true)
       setError(null)
     } catch (err) {
       console.log('Sign up error:', err)
+
+      if (err.message && err.message.includes('signed out')) {
+        if (retryCount < 2) {
+          console.log(`Retrying sign-up (attempt ${retryCount + 1})...`)
+          await new Promise(resolve => setTimeout(resolve, 1000))
+          setIsSubmitting(false)
+          return handleSignup(retryCount + 1)
+        }
+        setError('Session error. Please restart the app and try again.')
+        return
+      }
+
       if (err.errors) {
         const passwordError = err.errors.find(error => error.code === 'form_password_pwned')
         const lengthError = err.errors.find(error => error.code === 'form_password_length_too_short')
@@ -89,7 +104,6 @@ export default function SignUpScreen() {
       if (err.errors && err.errors.length > 0) {
         const verificationError = err.errors[0]
         if (verificationError.code === 'verification_already_verified') {
-          // Try to sign in the user automatically
           try {
             const { signIn } = require('@clerk/clerk-expo')
             const signInObj = signIn()
@@ -121,51 +135,51 @@ export default function SignUpScreen() {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
+      className="flex-1"
     >
       <ScrollView 
-        style={styles.container}
+        className="flex-1 p-2.5 bg-black"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.header}>
+        <View className="flex-row items-center justify-center mb-5">
           <Image
             source={require("../../assets/images/icon.png")}
-            style={styles.logo}
+            className="w-[50px] h-[50px] mr-2.5 mb-[18px]"
           />
-          <Text style={styles.title}>Finance.io</Text>
+          <Text className="text-[30px] text-white text-center mb-5">Finance.io</Text>
         </View>
 
         {!pendingVerification ? (
           <>
-            <Text style={styles.label}>First Name</Text>
+            <Text className="text-white text-base mb-[5px]">First Name</Text>
             <TextInput
-              style={styles.input}
+              className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
               placeholder="Enter first name"
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
             />
             {errors.firstname && (
-              <Text style={styles.errorText}>{errors.firstname}</Text>
+              <Text className="text-red-500 text-xs mt-[5px]">{errors.firstname}</Text>
             )}
 
-            <Text style={styles.label}>Last Name</Text>
+            <Text className="text-white text-base mb-[5px]">Last Name</Text>
             <TextInput
-              style={styles.input}
+              className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
               placeholder="Enter last name"
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
             />
             {errors.lastname && (
-              <Text style={styles.errorText}>{errors.lastname}</Text>
+              <Text className="text-red-500 text-xs mt-[5px]">{errors.lastname}</Text>
             )}
 
-            <Text style={styles.label}>Email</Text>
+            <Text className="text-white text-base mb-[5px]">Email</Text>
             <TextInput
-              style={styles.input}
+              className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
               placeholder="Enter email"
               placeholderTextColor="gray"
               value={email}
@@ -173,13 +187,11 @@ export default function SignUpScreen() {
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+            {errors.email && <Text className="text-red-500 text-xs mt-[5px]">{errors.email}</Text>}
 
-            {/* Removed Phone Number Field */}
-
-            <Text style={styles.label}>Password</Text>
+            <Text className="text-white text-base mb-[5px]">Password</Text>
             <TextInput
-              style={styles.input}
+              className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
               placeholder="Enter password"
               placeholderTextColor="gray"
               value={password}
@@ -187,35 +199,32 @@ export default function SignUpScreen() {
               secureTextEntry
             />
             {errors.password && (
-              <Text style={styles.errorText}>{errors.password}</Text>
+              <Text className="text-red-500 text-xs mt-[5px]">{errors.password}</Text>
             )}
 
             {error && (
-              <Text style={styles.errorText}>{error}</Text>
+              <Text className="text-red-500 text-xs mt-[5px]">{error}</Text>
             )}
 
             <TouchableOpacity
               onPress={handleSignup}
               disabled={isSubmitting}
-              style={[
-                styles.button,
-                isSubmitting && styles.disabledButton,
-              ]}
+              className={`bg-[#007AFF] mt-5 py-2.5 px-5 rounded-md self-center ${isSubmitting ? 'opacity-50' : ''}`}
             >
-              <Text style={styles.buttonText}>
+              <Text className="text-white font-bold">
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Text>
             </TouchableOpacity>
 
-            <Link href="/sign-in" style={styles.text}>
+            <Link href="/sign-in" className="text-white text-center pt-2.5">
               Already have an account? Sign in 🥳
             </Link>
           </>
         ) : (
           <>
-            <Text style={styles.label}>Verification Code</Text>
+            <Text className="text-white text-base mb-[5px]">Verification Code</Text>
             <TextInput
-              style={styles.input}
+              className="h-[70px] bg-[#121111] rounded-[15px] p-2.5 pl-5 my-[6px] text-white"
               placeholder="Enter code"
               placeholderTextColor="gray"
               value={code}
@@ -223,17 +232,14 @@ export default function SignUpScreen() {
               keyboardType="numeric"
             />
             {error && (
-              <Text style={styles.errorText}>{error}</Text>
+              <Text className="text-red-500 text-xs mt-[5px]">{error}</Text>
             )}
             <TouchableOpacity
               onPress={handleVerify}
               disabled={isSubmitting}
-              style={[
-                styles.button,
-                isSubmitting && styles.disabledButton,
-              ]}
+              className={`bg-[#007AFF] mt-5 py-2.5 px-5 rounded-md self-center ${isSubmitting ? 'opacity-50' : ''}`}
             >
-              <Text style={styles.buttonText}>
+              <Text className="text-white font-bold">
                 {isSubmitting ? "Verifying..." : "Verify"}
               </Text>
             </TouchableOpacity>
@@ -243,68 +249,3 @@ export default function SignUpScreen() {
     </KeyboardAvoidingView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: "black",
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 20,
-  },
-  logo: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-    marginBottom: 18,
-  },
-  title: {
-    fontSize: 30,
-    color: "white",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  label: {
-    color: "white",
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  input: {
-    height: 70,
-    backgroundColor: "#121111",
-    borderRadius: 15,
-    padding: 10,
-    paddingLeft: 20,
-    marginVertical: 6,
-    color: "white",
-  },
-  errorText: {
-    color: "red",
-    fontSize: 12,
-    marginTop: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  text: {
-    color: "white",
-    textAlign: "center",
-    paddingTop: 10,
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    marginTop: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    alignSelf: "center",
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-})

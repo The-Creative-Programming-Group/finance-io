@@ -16,7 +16,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@clerk/clerk-expo": "^2.11.4",
+    "@clerk/clerk-expo": "^2.11.6",
     "@expo/server": "^0.5.3",
     "@expo/vector-icons": "^14.0.2",
     "@react-native-community/datetimepicker": "8.3.0",
