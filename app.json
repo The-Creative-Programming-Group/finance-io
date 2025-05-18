@@ -41,6 +41,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
+        "default": null,
+        "env": "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+      }
     }
   }
 }
