@@ -1,5 +1,6 @@
-import { View, Image, ScrollView, useColorScheme } from "react-native";
+import { View, ScrollView, useColorScheme } from "react-native";
 import React from "react";
+import { Image } from "expo-image";
 import { Link } from "expo-router";
 import {
   CircleCheck,
@@ -91,7 +92,7 @@ export default function Index() {
         </View>
         <View className="w-full flex-row items-center justify-center">
           <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
-            <Link href={"/"}>
+            <Link href={"./"}>
               <AppText
                 medium={true}
                 className={"text-xl"}
