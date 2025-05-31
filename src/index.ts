@@ -1,8 +1,5 @@
-import "dotenv/config";
-import { drizzle } from "drizzle-orm/neon-http";
+import { db } from "./db/index";
 import { usersTable } from "./db/schema";
-
-const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {
   const user: typeof usersTable.$inferInsert = {

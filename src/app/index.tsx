@@ -5,10 +5,9 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image,
   SafeAreaView,
 } from "react-native";
-
+import { Image } from 'expo-image';
 export default function Page() {
   const router = useRouter();
   const { user } = useUser();

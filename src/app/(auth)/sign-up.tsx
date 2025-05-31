@@ -4,13 +4,13 @@ import {
   View,
   TouchableOpacity,
   Text,
-  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
+import { Image } from 'expo-image';
 
 type newErrorType = {
   firstname?: string;
@@ -61,9 +61,6 @@ export default function SignUpScreen() {
         firstName: firstname,
         lastName: lastname,
       });
-
-      // Add a longer delay before preparing verification
-      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
       setPendingVerification(true);
@@ -229,6 +226,9 @@ export default function SignUpScreen() {
             <TouchableOpacity
               onPress={handleSignup}
               disabled={isSubmitting}
+              accessibilityLabel="Sign Up"
+              accessibilityHint="Create a new account"
+              accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
               <Text className="font-bold text-white">
@@ -237,7 +237,7 @@ export default function SignUpScreen() {
             </TouchableOpacity>
 
             <Link
-              href="./sign-in.tsx"
+              href="./sign-in"
               className="pt-2.5 text-center text-white"
             >
               Already have an account? Sign in 🥳
@@ -262,6 +262,8 @@ export default function SignUpScreen() {
             <TouchableOpacity
               onPress={handleVerify}
               disabled={isSubmitting}
+              accessibilityLabel={isSubmitting ? "Verifying code" : "Verify code"}
+              accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
               <Text className="font-bold text-white">
