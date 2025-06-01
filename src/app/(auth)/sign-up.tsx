@@ -8,9 +8,10 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { useSignUp } from "@clerk/clerk-expo";
+import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from 'expo-image';
+
 
 type newErrorType = {
   firstname?: string;
@@ -21,6 +22,7 @@ type newErrorType = {
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
+  const { signIn } = useSignIn();
   const router = useRouter();
 
   // New fields for design
@@ -110,9 +112,7 @@ export default function SignUpScreen() {
         const verificationError = err.errors[0];
         if (verificationError.code === "verification_already_verified") {
           try {
-            const { signIn } = require("@clerk/clerk-expo");
-            const signInObj = signIn();
-            const signInAttempt = await signInObj.create({
+            const signInAttempt = await signIn.create({
               identifier: email,
               password,
             });

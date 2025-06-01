@@ -1,6 +1,7 @@
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
+import { env } from "../env";
 import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
@@ -36,19 +37,13 @@ const tokenCache = {
 
 // Environment variable check with detailed error
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
-if (!publishableKey) {
-  throw new Error(
-    "Missing EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY environment variable. " +
-      "Please add it to your .env file and restart the app.",
-  );
-}
 
 function RootLayoutNav() {
   return (
     <ClerkProvider
       tokenCache={tokenCache}
       publishableKey={publishableKey}
-      networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
+      networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL} 
       connectNetworkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
       retryAttemptsCount={3}
       retryInitialDelayMs={500}

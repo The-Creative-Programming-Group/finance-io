@@ -107,6 +107,10 @@ export default function Page() {
     setIsSubmitting(false)
   }, [isLoaded, emailAddress, password])
   return (
+
+    // Use "padding" on iOS so the view shifts up smoothly when the keyboard appears.
+    // Use "height" on Android and other platforms to resize the view height when the keyboard is shown.
+    // This provides the best keyboard handling experience for each platform.
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
