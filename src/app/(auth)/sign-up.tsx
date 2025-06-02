@@ -3,15 +3,14 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  Text,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
-import { Image } from 'expo-image';
-
+import { Image } from "expo-image";
+import AppText from "~/components/AppText";
 
 type newErrorType = {
   firstname?: string;
@@ -112,11 +111,11 @@ export default function SignUpScreen() {
         const verificationError = err.errors[0];
         if (verificationError.code === "verification_already_verified") {
           try {
-            const signInAttempt = await signIn.create({
+            const signInAttempt = await signIn?.create({
               identifier: email,
               password,
             });
-            if (signInAttempt.status === "complete") {
+            if (signInAttempt?.status === "complete") {
               await setActive({ session: signInAttempt.createdSessionId });
               router.replace("./");
             } else {
@@ -143,7 +142,7 @@ export default function SignUpScreen() {
       className="flex-1"
     >
       <ScrollView
-        className="flex-1 bg-black p-2.5"
+        className="flex-1 bg-background p-2.5 dark:bg-dark-background"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
@@ -153,44 +152,50 @@ export default function SignUpScreen() {
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
           />
-          <Text className="mb-5 text-center text-[30px] text-white">
+          <AppText className="mb-5 text-center text-[30px] text-text dark:text-dark-text">
             Finance.io
-          </Text>
+          </AppText>
         </View>
 
         {!pendingVerification ? (
           <>
-            <Text className="mb-[5px] text-base text-white">First Name</Text>
+            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
+              First Name
+            </AppText>
             <TextInput
-              className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+              className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder="Enter first name"
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
             />
             {errors.firstname && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="ml-6 mt-[1px] text-sm text-danger">
                 {errors.firstname}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Last Name</Text>
+            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
+              Last Name
+            </AppText>
             <TextInput
-              className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+              className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder="Enter last name"
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
             />
             {errors.lastname && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="ml-6 mt-[1px] text-sm text-danger">
                 {errors.lastname}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Email</Text>
+            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
+              Email
+            </AppText>
             <TextInput
-              className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+              className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder="Enter email"
               placeholderTextColor="gray"
               value={email}
@@ -199,14 +204,16 @@ export default function SignUpScreen() {
               autoCapitalize="none"
             />
             {errors.email && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="ml-6 mt-[1px] text-sm text-danger">
                 {errors.email}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Password</Text>
+            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
+              Password
+            </AppText>
             <TextInput
-              className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+              className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder="Enter password"
               placeholderTextColor="gray"
               value={password}
@@ -214,13 +221,15 @@ export default function SignUpScreen() {
               secureTextEntry
             />
             {errors.password && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="ml-6 mt-[1px] text-sm text-danger">
                 {errors.password}
-              </Text>
+              </AppText>
             )}
 
             {error && (
-              <Text className="mt-[5px] text-xs text-red-500">{error}</Text>
+              <AppText className="mt-[5px] text-xs text-danger">
+                {error}
+              </AppText>
             )}
 
             <TouchableOpacity
@@ -231,25 +240,25 @@ export default function SignUpScreen() {
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
-              <Text className="font-bold text-white">
+              <AppText semibold={true} className="text-dark-text">
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
-              </Text>
+              </AppText>
             </TouchableOpacity>
 
             <Link
               href="./sign-in"
-              className="pt-2.5 text-center text-white"
+              className="pt-2.5 text-center text-text dark:text-dark-text"
             >
               Already have an account? Sign in 🥳
             </Link>
           </>
         ) : (
           <>
-            <Text className="mb-[5px] text-base text-white">
+            <AppText className="mb-[5px] text-base text-text dark:text-dark-text">
               Verification Code
-            </Text>
+            </AppText>
             <TextInput
-              className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+              className="text-white my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5"
               placeholder="Enter code"
               placeholderTextColor="gray"
               value={code}
@@ -257,18 +266,22 @@ export default function SignUpScreen() {
               keyboardType="numeric"
             />
             {error && (
-              <Text className="mt-[5px] text-xs text-red-500">{error}</Text>
+              <AppText className="text-red-500 mt-[5px] text-xs">
+                {error}
+              </AppText>
             )}
             <TouchableOpacity
               onPress={handleVerify}
               disabled={isSubmitting}
-              accessibilityLabel={isSubmitting ? "Verifying code" : "Verify code"}
+              accessibilityLabel={
+                isSubmitting ? "Verifying code" : "Verify code"
+              }
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
-              <Text className="font-bold text-white">
+              <AppText className="font-bold text-text dark:text-dark-text">
                 {isSubmitting ? "Verifying..." : "Verify"}
-              </Text>
+              </AppText>
             </TouchableOpacity>
           </>
         )}

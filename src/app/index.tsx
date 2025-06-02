@@ -10,11 +10,7 @@ import {
   Database,
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
-import { api } from "~/trpc/react";
-
-export function Hello() {
-  const [hello] = api.post.hello.useSuspenseQuery({ text: "Murtaza" });
-}
+import SignIn from "./(auth)/sign-in";
 
 export default function Index() {
   const scheme = useColorScheme();
@@ -24,9 +20,9 @@ export default function Index() {
   return (
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
-        <View className="mt-12 flex-row justify-center">
+        <View className="mt-20 flex-row justify-center">
           <Image
-            source={require("../assets/images/icon.png")}
+            source="../assets/images/financeio-mockup.png"
             className={"h-12 w-12 rounded-lg"}
           />
           <AppText
@@ -91,7 +87,7 @@ export default function Index() {
         </View>
         <View className="w-full flex-row items-center justify-center">
           <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
-            <Link href={"./"}>
+            <Link href={"./(auth)/sign-in"}>
               <AppText
                 medium={true}
                 className={"text-xl"}
@@ -115,7 +111,7 @@ export default function Index() {
           <View className="flex-row">
             <Image
               className="h-6 w-6"
-              source={require("../assets/images/iconGooglePlay.png")}
+              source={"../assets/images/iconGooglePlay.png"}
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               Google Play

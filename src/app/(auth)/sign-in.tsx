@@ -2,7 +2,6 @@ import { useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
 import {
-  Text,
   TextInput,
   View,
   TouchableOpacity,
@@ -10,7 +9,8 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { Image } from 'expo-image';
+import { Image } from "expo-image";
+import AppText from "~/components/AppText";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -65,49 +65,51 @@ export default function Page() {
   //   setIsSubmitting(false);
   // }, [isLoaded, emailAddress, password]);
 
-
   const onSignInPress = useCallback(async () => {
-    if (!isLoaded) return
-    setError(null)
-    setIsSubmitting(true)
+    if (!isLoaded) return;
+    setError(null);
+    setIsSubmitting(true);
     try {
       const signInAttempt = await signIn.create({
         identifier: emailAddress,
         password,
-      })
-      if (signInAttempt.status === 'complete') {
-        await setActive({ session: signInAttempt.createdSessionId })
-        router.replace('/')
+      });
+      if (signInAttempt.status === "complete") {
+        await setActive({ session: signInAttempt.createdSessionId });
+        router.replace("/");
       } else {
-        setError('Sign in failed. Please check your credentials')
-        console.error(JSON.stringify(signInAttempt, null, 2))
+        setError("Sign in failed. Please check your credentials");
+        console.error(JSON.stringify(signInAttempt, null, 2));
       }
     } catch (err) {
       // Type guard to check if err is an object and has 'errors' property
       if (
-        typeof err === 'object' &&
+        typeof err === "object" &&
         err !== null &&
-        'errors' in err &&
+        "errors" in err &&
         Array.isArray((err as any).errors)
       ) {
-        const errors = (err as { errors: Array<{ code: string }> }).errors;
-        const identifierError = errors.find(error => error.code === 'form_identifier_invalid');
-        const passwordError = errors.find(error => error.code === 'form_password_incorrect');
-        setError('Sign in failed');
+        const errors = (err as { errors: { code: string }[] }).errors;
+        const identifierError = errors.find(
+          (error) => error.code === "form_identifier_invalid",
+        );
+        const passwordError = errors.find(
+          (error) => error.code === "form_password_incorrect",
+        );
+        setError("Sign in failed");
         if (identifierError) {
-          setError('User does not exist');
+          setError("User does not exist");
         } else if (passwordError) {
-          setError('Your password is incorrect');
+          setError("Your password is incorrect");
         }
       } else {
-        setError('Unknown Error occurred');
+        setError("Unknown Error occurred");
         console.error(JSON.stringify(err, null, 2));
       }
     }
-    setIsSubmitting(false)
-  }, [isLoaded, emailAddress, password])
+    setIsSubmitting(false);
+  }, [isLoaded, emailAddress, password]);
   return (
-
     // Use "padding" on iOS so the view shifts up smoothly when the keyboard appears.
     // Use "height" on Android and other platforms to resize the view height when the keyboard is shown.
     // This provides the best keyboard handling experience for each platform.
@@ -116,7 +118,7 @@ export default function Page() {
       className="flex-1"
     >
       <ScrollView
-        className="flex-1 bg-black p-2.5"
+        className="flex-1 bg-background p-2.5 dark:bg-dark-background"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
@@ -126,13 +128,18 @@ export default function Page() {
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
           />
-          <Text className="mb-5 text-center text-[30px] text-white">
+          <AppText
+            semibold={true}
+            className="mb-5 text-center text-[30px] text-text dark:text-dark-text"
+          >
             Finance.io
-          </Text>
+          </AppText>
         </View>
-        <Text className="mb-[5px] text-base text-white">Email</Text>
+        <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
+          Email
+        </AppText>
         <TextInput
-          className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+          className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Enter email"
@@ -142,9 +149,11 @@ export default function Page() {
           accessibilityLabel="Email input"
           accessibilityHint="Enter your email address"
         />
-        <Text className="mb-[5px] text-base text-white">Password</Text>
+        <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
+          Password
+        </AppText>
         <TextInput
-          className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
+          className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           value={password}
           placeholder="Enter password"
           placeholderTextColor="gray"
@@ -154,7 +163,12 @@ export default function Page() {
           accessibilityHint="Enter your password"
         />
         {error && (
-          <Text className="mt-[5px] text-xs text-red-500">{error}</Text>
+          <AppText
+            semibold={true}
+            className="ml-6 mt-[5px] text-sm text-danger"
+          >
+            {error}
+          </AppText>
         )}
         <TouchableOpacity
           onPress={onSignInPress}
@@ -163,25 +177,28 @@ export default function Page() {
           accessibilityRole="button"
           className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
         >
-          <Text className="font-bold text-white">
+          <AppText bold={true} className="text-text dark:text-dark-text">
             {isSubmitting ? "Signing In..." : "Sign In"}
-          </Text>
+          </AppText>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("./sign-up")}
+        <TouchableOpacity
+          onPress={() => router.push("./sign-up")}
           accessibilityLabel="Create a new account"
           accessibilityRole="link"
         >
-
-          <Text className="pt-2.5 text-center text-white">
+          <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
             Don&apos;t have an account?{" "}
-            <Text className="font-bold text-[#007AFF]">Sign up 🚀</Text>
-          </Text>
+            <AppText className="font-bold text-[#007AFF]">Sign up 🚀</AppText>
+          </AppText>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("./")}
+        <TouchableOpacity
+          onPress={() => router.push("./")}
           accessibilityLabel="Go to home"
           accessibilityRole="link"
         >
-          <Text className="pt-2.5 text-center text-white">Go to Home</Text>
+          <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
+            Go to Home
+          </AppText>
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
