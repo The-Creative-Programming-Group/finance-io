@@ -42,39 +42,7 @@ export default function Index() {
             source={require("../assets/images/icon.png")}
             className={"h-12 w-12 rounded-lg"}
           />
-          <AppText
-            semibold={true}
-            className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
-          >
-            Finance.io
-          </AppText>
         </View>
-
-        <SignedIn>
-          <TouchableOpacity
-            className="mx-8 mt-4 items-center rounded-lg bg-[#007AFF] py-4"
-            onPress={handleLogout}
-          >
-            <AppText className="text-base font-semibold text-white">Logout</AppText>
-          </TouchableOpacity>
-        </SignedIn>
-
-        <SignedOut>
-          <View className="mx-8 mt-4">
-            <TouchableOpacity
-              className="w-full items-center rounded-lg bg-[#007AFF] py-4"
-              onPress={() => router.push("./sign-in")}
-            >
-              <AppText className="text-base font-semibold text-white">Login</AppText>
-            </TouchableOpacity>
-            <TouchableOpacity
-              className="mt-4 w-full items-center rounded-lg bg-[#007AFF] py-4"
-              onPress={() => router.push("./sign-up")}
-            >
-              <AppText className="text-base font-semibold text-white">Sign Up</AppText>
-            </TouchableOpacity>
-          </View>
-        </SignedOut>
 
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
