@@ -57,7 +57,6 @@ function RootLayoutNav() {
           <Slot />
         </View>
       </TRPCReactProvider>
-
     </ClerkProvider>
   );
 }
