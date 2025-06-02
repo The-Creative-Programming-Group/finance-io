@@ -1,7 +1,7 @@
 import { View, ScrollView, useColorScheme } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import {
   CircleCheck,
   Github,
@@ -11,9 +11,14 @@ import {
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
 import SignIn from "./(auth)/sign-in";
-
+import { useAuth } from "@clerk/clerk-expo";
 export default function Index() {
   const scheme = useColorScheme();
+  const { isSignedIn, isLoaded } = useAuth();
+
+  if (isSignedIn) {
+    return <Redirect href={"../home"} />;
+  }
 
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
   const iconBackground = scheme === "dark" ? "black" : "white";
