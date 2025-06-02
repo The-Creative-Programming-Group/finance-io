@@ -11,7 +11,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 // import { db } from "~/server/db";
-const db = {};
+import { db } from "~/db";
 
 /**
  * 1. CONTEXT

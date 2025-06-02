@@ -99,7 +99,7 @@ export default function Index() {
         </View>
         <View className="w-full flex-row items-center justify-center">
           <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
-            <Link href={"./"}>
+            <Link href={"/sign-up"}>
               <AppText
                 medium={true}
                 className={"text-xl"}
