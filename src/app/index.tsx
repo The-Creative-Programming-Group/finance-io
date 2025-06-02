@@ -1,8 +1,7 @@
 import { View, ScrollView, useColorScheme, TouchableOpacity, SafeAreaView } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
-import { Link, useRouter } from "expo-router";
-import { useUser, useClerk, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { Link, Redirect } from "expo-router";
 import {
   CircleCheck,
   Github,
@@ -12,20 +11,15 @@ import {
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
 import SignIn from "./(auth)/sign-in";
+import { useAuth } from "@clerk/clerk-expo";
 
 export default function Index() {
   const scheme = useColorScheme();
-  const router = useRouter();
-  const { user } = useUser();
-  const { signOut } = useClerk();
+  const { isSignedIn, isLoaded } = useAuth();
 
-  const handleLogout = async () => {
-    try {
-      await signOut();
-    } catch (err) {
-      console.error("Error signing out:", err);
-    }
-  };
+  if (isSignedIn) {
+    return <Redirect href={"../home"} />;
+  }
 
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";

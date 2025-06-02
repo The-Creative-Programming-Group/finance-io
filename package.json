@@ -45,6 +45,8 @@
     "expo-symbols": "~0.4.4",
     "expo-system-ui": "~5.0.7",
     "expo-web-browser": "~14.1.6",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.511.0",
     "lucide-react-native": "^0.509.0",
     "nativewind": "^4.1.23",
     "react": "^19.0.0",

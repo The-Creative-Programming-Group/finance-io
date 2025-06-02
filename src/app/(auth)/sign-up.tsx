@@ -102,7 +102,7 @@ export default function SignUpScreen() {
       });
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        router.replace("./");
+        router.replace("../home");
       } else {
         setError("Verification failed. Please try again.");
       }
@@ -117,7 +117,7 @@ export default function SignUpScreen() {
             });
             if (signInAttempt?.status === "complete") {
               await setActive({ session: signInAttempt.createdSessionId });
-              router.replace("./");
+              router.replace("../home");
             } else {
               setError("Email already verified. Please sign in.");
             }
@@ -254,7 +254,7 @@ export default function SignUpScreen() {
           </>
         ) : (
           <>
-            <AppText className="mb-[5px] text-base text-text dark:text-dark-text">
+            <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
               Verification Code
             </AppText>
             <TextInput
