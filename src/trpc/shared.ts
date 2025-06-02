@@ -3,7 +3,11 @@ import superjson from "superjson";
 export const transformer = superjson;
 
 function getBaseUrl() {
-  return process.env.EXPO_PUBLIC_API_URL as string;
+  const baseUrl = process.env.EXPO_PUBLIC_API_URL;
+  if (!baseUrl) {
+    throw new Error("EXPO_PUBLIC_API_URL environment variable is required");
+  }
+  return baseUrl;
 }
 
 export function getUrl() {

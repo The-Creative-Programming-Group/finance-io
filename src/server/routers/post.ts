@@ -7,7 +7,7 @@ export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(async ({ input }) => {
-      await sleep(2000);
+      // Remove artificial delay for production
       return {
         greeting: `Hi ${input.text}`,
       };

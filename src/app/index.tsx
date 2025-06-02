@@ -183,7 +183,7 @@ export default function Index() {
             </AppText>
           </View>
           <AppText className="w-7/12 text-text dark:text-dark-text">
-            Many apps make money by selling user data, we don't. Your trust
+            Many apps make money by selling user data, we don&apos;t. Your trust
             matters more.
           </AppText>
         </View>
