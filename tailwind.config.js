@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // NOTE: Update this to include the paths to all of your component files.
-  content: [
-    "./src/app/**/*.{js,jsx,ts,tsx}",
-    "./src/components/**/*.{js,jsx,ts,tsx}",
-  ],
+  // Enables Tailwind utility classes in React Native via NativeWind
   presets: [require("nativewind/preset")],
+
+  // Specify files to scan for Tailwind class names
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
+
   darkMode: "class",
+
   theme: {
     colors: {
       background: "hsl(240, 60%, 99.02%)",
@@ -33,7 +34,15 @@ module.exports = {
         good: "hsl(140.25, 34.48%, 54.51%)",
       },
     },
-    extend: {},
+    extend: {
+      // Adds a custom spacing value (10px) usable as p-2.5, m-2.5, etc.
+      spacing: {
+        2.5: "10px",
+      },
+    },
   },
+
+  // Add Tailwind plugins here if needed in the future
   plugins: [],
 };
+

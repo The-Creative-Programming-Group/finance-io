@@ -21,7 +21,6 @@ export default function Index() {
 
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
   const iconBackground = scheme === "dark" ? "black" : "white";
-
   return (
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
