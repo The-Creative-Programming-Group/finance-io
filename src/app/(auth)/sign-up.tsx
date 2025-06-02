@@ -11,7 +11,6 @@ import AppText from "~/components/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from "expo-image";
-import AppText from "~/components/AppText";
 
 type newErrorType = {
   firstname?: string;
@@ -191,6 +190,7 @@ export default function SignUpScreen() {
                 {errors.lastname}
               </AppText>
             )}
+
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
               Email
             </AppText>
@@ -208,6 +208,7 @@ export default function SignUpScreen() {
                 {errors.email}
               </AppText>
             )}
+
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
               Password
             </AppText>
@@ -253,7 +254,6 @@ export default function SignUpScreen() {
           </>
         ) : (
           <>
-
             <AppText className="mb-[5px] text-base text-text dark:text-dark-text">
               Verification Code
             </AppText>

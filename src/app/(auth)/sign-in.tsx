@@ -9,10 +9,8 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-
 import { Image } from "expo-image";
 import AppText from "~/components/AppText";
-
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
