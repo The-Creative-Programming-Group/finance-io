@@ -40,24 +40,27 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={publishableKey}
-      networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL} 
-      connectNetworkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
-      retryAttemptsCount={3}
-      retryInitialDelayMs={500}
-      sessionOptions={{
-        lifetime: 7200, // 2 hours
-        idleTimeout: 1800, // 30 minutes
-      }}
-    >
-      <ClerkLoaded>
-        <View className="flex-1 bg-black p-2.5">
-          <Slot />
-        </View>
-      </ClerkLoaded>
-    </ClerkProvider>
+<ClerkProvider
+  tokenCache={tokenCache}
+  publishableKey={publishableKey}
+  networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL} 
+  connectNetworkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
+  retryAttemptsCount={3}
+  retryInitialDelayMs={500}
+  sessionOptions={{
+    lifetime: 7200, // 2 hours
+    idleTimeout: 1800, // 30 minutes
+  }}
+>
+  <ClerkLoaded>
+    <TRPCReactProvider>
+      <View className="flex-1 bg-black p-2.5">
+        <Slot />
+      </View>
+    </TRPCReactProvider>
+  </ClerkLoaded>
+</ClerkProvider>
+
   );
 }
 
