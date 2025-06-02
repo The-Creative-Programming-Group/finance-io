@@ -3,11 +3,11 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  Text,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
+import AppText from "~/components/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from 'expo-image';
@@ -153,14 +153,14 @@ export default function SignUpScreen() {
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
           />
-          <Text className="mb-5 text-center text-[30px] text-white">
+          <AppText className="mb-5 text-center text-[30px] text-white">
             Finance.io
-          </Text>
+          </AppText>
         </View>
 
         {!pendingVerification ? (
           <>
-            <Text className="mb-[5px] text-base text-white">First Name</Text>
+            <AppText className="mb-[5px] text-base text-white">First Name</AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
               placeholder="Enter first name"
@@ -169,12 +169,12 @@ export default function SignUpScreen() {
               onChangeText={setFirstname}
             />
             {errors.firstname && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="mt-[5px] text-xs text-red-500">
                 {errors.firstname}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Last Name</Text>
+            <AppText className="mb-[5px] text-base text-white">Last Name</AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
               placeholder="Enter last name"
@@ -183,12 +183,12 @@ export default function SignUpScreen() {
               onChangeText={setLastname}
             />
             {errors.lastname && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="mt-[5px] text-xs text-red-500">
                 {errors.lastname}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Email</Text>
+            <AppText className="mb-[5px] text-base text-white">Email</AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
               placeholder="Enter email"
@@ -199,12 +199,12 @@ export default function SignUpScreen() {
               autoCapitalize="none"
             />
             {errors.email && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="mt-[5px] text-xs text-red-500">
                 {errors.email}
-              </Text>
+              </AppText>
             )}
 
-            <Text className="mb-[5px] text-base text-white">Password</Text>
+            <AppText className="mb-[5px] text-base text-white">Password</AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
               placeholder="Enter password"
@@ -214,13 +214,13 @@ export default function SignUpScreen() {
               secureTextEntry
             />
             {errors.password && (
-              <Text className="mt-[5px] text-xs text-red-500">
+              <AppText className="mt-[5px] text-xs text-red-500">
                 {errors.password}
-              </Text>
+              </AppText>
             )}
 
             {error && (
-              <Text className="mt-[5px] text-xs text-red-500">{error}</Text>
+              <AppText className="mt-[5px] text-xs text-red-500">{error}</AppText>
             )}
 
             <TouchableOpacity
@@ -231,9 +231,9 @@ export default function SignUpScreen() {
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
-              <Text className="font-bold text-white">
+              <AppText className="font-bold text-white">
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
-              </Text>
+              </AppText>
             </TouchableOpacity>
 
             <Link
@@ -245,9 +245,9 @@ export default function SignUpScreen() {
           </>
         ) : (
           <>
-            <Text className="mb-[5px] text-base text-white">
+            <AppText className="mb-[5px] text-base text-white">
               Verification Code
-            </Text>
+            </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5 text-white"
               placeholder="Enter code"
@@ -257,7 +257,7 @@ export default function SignUpScreen() {
               keyboardType="numeric"
             />
             {error && (
-              <Text className="mt-[5px] text-xs text-red-500">{error}</Text>
+              <AppText className="mt-[5px] text-xs text-red-500">{error}</AppText>
             )}
             <TouchableOpacity
               onPress={handleVerify}
@@ -266,9 +266,9 @@ export default function SignUpScreen() {
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
-              <Text className="font-bold text-white">
+              <AppText className="font-bold text-white">
                 {isSubmitting ? "Verifying..." : "Verify"}
-              </Text>
+              </AppText>
             </TouchableOpacity>
           </>
         )}

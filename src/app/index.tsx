@@ -1,7 +1,8 @@
-import { View, ScrollView, useColorScheme } from "react-native";
+import { View, ScrollView, useColorScheme, TouchableOpacity, SafeAreaView } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { useUser, useClerk, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import {
   CircleCheck,
   Github,
@@ -18,9 +19,21 @@ export function Hello() {
 
 export default function Index() {
   const scheme = useColorScheme();
+  const router = useRouter();
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
-  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
+  const handleLogout = async () => {
+    try {
+      await signOut();
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
+
+  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";
+
   return (
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
@@ -36,6 +49,33 @@ export default function Index() {
             Finance.io
           </AppText>
         </View>
+
+        <SignedIn>
+          <TouchableOpacity
+            className="mx-8 mt-4 items-center rounded-lg bg-[#007AFF] py-4"
+            onPress={handleLogout}
+          >
+            <AppText className="text-base font-semibold text-white">Logout</AppText>
+          </TouchableOpacity>
+        </SignedIn>
+
+        <SignedOut>
+          <View className="mx-8 mt-4">
+            <TouchableOpacity
+              className="w-full items-center rounded-lg bg-[#007AFF] py-4"
+              onPress={() => router.push("./sign-in")}
+            >
+              <AppText className="text-base font-semibold text-white">Login</AppText>
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="mt-4 w-full items-center rounded-lg bg-[#007AFF] py-4"
+              onPress={() => router.push("./sign-up")}
+            >
+              <AppText className="text-base font-semibold text-white">Sign Up</AppText>
+            </TouchableOpacity>
+          </View>
+        </SignedOut>
+
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
             source={require("../assets/images/financeio-mockup.png")}
@@ -175,7 +215,7 @@ export default function Index() {
             </AppText>
           </View>
           <AppText className="w-7/12 text-text dark:text-dark-text">
-            Many apps make money by selling user data, we don’t. Your trust
+            Many apps make money by selling user data, we don't. Your trust
             matters more.
           </AppText>
         </View>
