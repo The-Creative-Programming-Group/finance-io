@@ -1,5 +1,5 @@
 import { View, ScrollView, useColorScheme } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "expo-image";
 import { Link, Redirect } from "expo-router";
 import {
@@ -10,11 +10,38 @@ import {
   Database,
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
-import SignIn from "./(auth)/sign-in";
+import LottieView from "lottie-react-native";
 import { useAuth } from "@clerk/clerk-expo";
 export default function Index() {
+  const [isLoading, setIsLoading] = useState(true);
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
+
+  useEffect(() => {
+    // Simulate loading (replace with your real loading logic)
+    const timer = setTimeout(() => setIsLoading(false), 7300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: scheme === "dark" ? "#000" : "#fff",
+        }}
+      >
+        <LottieView
+          source={require("../assets/splash-screen/loading.json")}
+          autoPlay
+          loop
+          style={{ width: 300, height: 300 }}
+        />
+      </View>
+    );
+  }
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;
@@ -24,7 +51,7 @@ export default function Index() {
   const iconBackground = scheme === "dark" ? "black" : "white";
   return (
     <ScrollView>
-      <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
+      <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <View className="mt-20 flex-row justify-center">
           <Image
             source="../assets/images/financeio-mockup.png"
@@ -110,7 +137,7 @@ export default function Index() {
           >
             Why us ?
           </AppText>
-          <CircleArrowDown size={30} color={iconBackground} fill={iconColor} />
+          <CircleArrowDown size={30} color={iconColor} />
         </View>
         <View className="mt-12 flex-col items-center">
           <View className="flex-row">
