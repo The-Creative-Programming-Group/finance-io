@@ -9,10 +9,9 @@ const Navbar = () => {
   const scheme = useColorScheme();
   const route = useRoute();
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
-  console.log(route.name);
 
   return (
-    <View className="absolute bottom-0 h-24 w-full flex-row items-center justify-around border-t-2 border-stroke bg-secondary dark:border-dark-stroke dark:bg-dark-secondary">
+    <View className="absolute bottom-0 h-24 w-full flex-row items-center justify-around border-t-[1px] border-stroke bg-secondary dark:border-dark-stroke dark:bg-dark-secondary">
       <TouchableOpacity
         onPress={() => {
           router.replace("/home");
