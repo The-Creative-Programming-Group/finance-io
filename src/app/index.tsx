@@ -1,4 +1,4 @@
-import { View, ScrollView, useColorScheme } from "react-native";
+import { View, ScrollView, useColorScheme, TouchableOpacity, SafeAreaView } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 import { Link, Redirect } from "expo-router";
@@ -12,6 +12,7 @@ import {
 import AppText from "~/components/AppText";
 import SignIn from "./(auth)/sign-in";
 import { useAuth } from "@clerk/clerk-expo";
+
 export default function Index() {
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
@@ -20,8 +21,9 @@ export default function Index() {
     return <Redirect href={"../home"} />;
   }
 
-  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
+  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";
+
   return (
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
@@ -30,13 +32,8 @@ export default function Index() {
             source="../assets/images/financeio-mockup.png"
             className={"h-12 w-12 rounded-lg"}
           />
-          <AppText
-            semibold={true}
-            className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
-          >
-            Finance.io
-          </AppText>
         </View>
+
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
             source={require("../assets/images/financeio-mockup.png")}
@@ -92,7 +89,7 @@ export default function Index() {
         </View>
         <View className="w-full flex-row items-center justify-center">
           <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
-            <Link href={"./(auth)/sign-in"}>
+            <Link href={"/sign-up"}>
               <AppText
                 medium={true}
                 className={"text-xl"}
@@ -176,7 +173,7 @@ export default function Index() {
             </AppText>
           </View>
           <AppText className="w-7/12 text-text dark:text-dark-text">
-            Many apps make money by selling user data, we don’t. Your trust
+            Many apps make money by selling user data, we don&apos;t. Your trust
             matters more.
           </AppText>
         </View>

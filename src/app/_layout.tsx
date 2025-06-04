@@ -5,7 +5,7 @@ import { env } from "../env";
 import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
-
+import { TRPCReactProvider } from "~/trpc/react";
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -52,11 +52,11 @@ function RootLayoutNav() {
         idleTimeout: 1800, // 30 minutes
       }}
     >
-      <ClerkLoaded>
-        <View className="bg-black flex-1">
+      <TRPCReactProvider>
+        <View className="flex-1 bg-black p-2.5">
           <Slot />
         </View>
-      </ClerkLoaded>
+      </TRPCReactProvider>
     </ClerkProvider>
   );
 }
