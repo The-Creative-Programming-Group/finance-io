@@ -1,6 +1,6 @@
-import { View, ScrollView, useColorScheme } from "react-native";
+import { View, ScrollView, useColorScheme, Image } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Image } from "expo-image";
+// import { Image } from "expo-image";
 import { Link, Redirect } from "expo-router";
 import {
   CircleCheck,
@@ -54,9 +54,9 @@ export default function Index() {
       <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <View className="mt-20 flex-row justify-center">
           <Image
-            source="../assets/images/financeio-mockup.png"
-            className={"h-12 w-12 rounded-lg"}
-          />
+  source={require("../assets/images/icon.png")}
+  style={{ width: 48, height: 48 }}
+/>
           <AppText
             semibold={true}
             className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
@@ -143,7 +143,7 @@ export default function Index() {
           <View className="flex-row">
             <Image
               className="h-6 w-6"
-              source={"../assets/images/iconGooglePlay.png"}
+              source={require("../assets/images/iconGooglePlay.png")}
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               Google Play
