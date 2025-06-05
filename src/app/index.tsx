@@ -54,9 +54,9 @@ export default function Index() {
       <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <View className="mt-20 flex-row justify-center">
           <Image
-  source={require("../assets/images/icon.png")}
-  style={{ width: 48, height: 48 }}
-/>
+            source={require("../assets/images/icon.png")}
+            style={{ width: 48, height: 48 }}
+          />
           <AppText
             semibold={true}
             className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
