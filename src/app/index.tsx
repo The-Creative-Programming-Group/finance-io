@@ -1,6 +1,5 @@
 import { View, ScrollView, useColorScheme, Image } from "react-native";
-import React, { useEffect, useState } from "react";
-// import { Image } from "expo-image";
+// import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "expo-router";
 import {
   CircleCheck,
@@ -13,35 +12,35 @@ import AppText from "~/components/AppText";
 import LottieView from "lottie-react-native";
 import { useAuth } from "@clerk/clerk-expo";
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
 
-  useEffect(() => {
-    // Simulate loading (replace with your real loading logic)
-    const timer = setTimeout(() => setIsLoading(false), 7300);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   // Simulate loading (replace with your real loading logic)
+  //   const timer = setTimeout(() => setIsLoading(false), 200);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (isLoading) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: scheme === "dark" ? "#000" : "#fff",
-        }}
-      >
-        <LottieView
-          source={require("../assets/splash-screen/loading.json")}
-          autoPlay
-          loop
-          style={{ width: 300, height: 300 }}
-        />
-      </View>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <View
+  //       style={{
+  //         flex: 1,
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         backgroundColor: scheme === "dark" ? "#000" : "#fff",
+  //       }}
+  //     >
+  //       <LottieView
+  //         source={require("../assets/splash-screen/loading.json")}
+  //         autoPlay
+  //         loop
+  //         style={{ width: 300, height: 300 }}
+  //       />
+  //     </View>
+  //   );
+  // }
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;
