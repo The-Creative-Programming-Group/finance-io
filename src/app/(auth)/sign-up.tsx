@@ -7,6 +7,7 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import AppText from "~/components/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from "expo-image";
