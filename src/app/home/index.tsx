@@ -2,6 +2,7 @@ import AppText from "~/components/AppText";
 import { TouchableOpacity, View } from "react-native";
 import { useAuth, useClerk, useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
+import Navbar from "~/components/navbar";
 
 const Home = () => {
   const { signOut } = useClerk();
@@ -27,6 +28,7 @@ const Home = () => {
       >
         <AppText>Logout</AppText>
       </TouchableOpacity>
+      <Navbar />
     </View>
   );
 };
