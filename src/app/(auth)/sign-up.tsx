@@ -11,6 +11,8 @@ import AppText from "~/components/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from "expo-image";
+import AppText from "~/components/AppText";
+import InputOtp from "~/components/ui/input-otp";
 
 type newErrorType = {
   firstname?: string;
@@ -32,10 +34,10 @@ export default function SignUpScreen() {
   const [password, setPassword] = useState<string>("");
   const [pendingVerification, setPendingVerification] =
     useState<boolean>(false);
-  const [code, setCode] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [errors, setErrors] = useState<newErrorType>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [otpCode, setOtpCode] = useState<string>("");
 
   // Validation helper
   const validate = () => {
@@ -98,7 +100,7 @@ export default function SignUpScreen() {
     setIsSubmitting(true);
     try {
       const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code,
+        code: otpCode,
       });
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
@@ -147,7 +149,7 @@ export default function SignUpScreen() {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-5 flex-row items-center justify-center">
+        <View className="mb-5 flex items-center justify-center">
           <Image
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
@@ -155,6 +157,12 @@ export default function SignUpScreen() {
           <AppText className="mb-5 text-center text-[30px] text-text dark:text-dark-text">
             Finance.io
           </AppText>
+          {pendingVerification ? (
+            <AppText className="mx-5 mb-20 flex text-text dark:text-dark-text">
+              We have sent a verification code to your email address ({email}).
+              Enter it here to continue.
+            </AppText>
+          ) : null}
         </View>
 
         {!pendingVerification ? (
@@ -254,19 +262,9 @@ export default function SignUpScreen() {
           </>
         ) : (
           <>
-            <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
-              Verification Code
-            </AppText>
-            <TextInput
-              className="text-white my-[6px] h-[70px] rounded-[15px] bg-[#121111] p-2.5 pl-5"
-              placeholder="Enter code"
-              placeholderTextColor="gray"
-              value={code}
-              onChangeText={setCode}
-              keyboardType="numeric"
-            />
+            <InputOtp onCodeChange={setOtpCode} />
             {error && (
-              <AppText className="text-red-500 mt-[5px] text-xs">
+              <AppText className="ml-6 mt-[5px] text-sm text-danger">
                 {error}
               </AppText>
             )}
@@ -277,7 +275,7 @@ export default function SignUpScreen() {
                 isSubmitting ? "Verifying code" : "Verify code"
               }
               accessibilityRole="button"
-              className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
+              className={`mt-10 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
               <AppText className="font-bold text-text dark:text-dark-text">
                 {isSubmitting ? "Verifying..." : "Verify"}
