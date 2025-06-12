@@ -5,6 +5,7 @@ import { env } from "../env";
 import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
+import { TRPCProvider } from '../components/TRPCProvider';
 
 const tokenCache = {
   async getToken(key: string) {
@@ -27,10 +28,9 @@ const tokenCache = {
       // Store as a string
       const stringValue =
         typeof value === "string" ? value : JSON.stringify(value);
-      return await SecureStore.setItemAsync(key, stringValue);
+      await SecureStore.setItemAsync(key, stringValue);
     } catch (err) {
       console.error("Error saving token:", err);
-      return null;
     }
   },
 };
@@ -40,24 +40,18 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={publishableKey}
-      networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
-      connectNetworkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
-      retryAttemptsCount={3}
-      retryInitialDelayMs={500}
-      sessionOptions={{
-        lifetime: 7200, // 2 hours
-        idleTimeout: 1800, // 30 minutes
-      }}
-    >
-      <ClerkLoaded>
-        <View className="bg-black flex-1">
-          <Slot />
-        </View>
-      </ClerkLoaded>
-    </ClerkProvider>
+    <TRPCProvider>
+      <ClerkProvider
+        tokenCache={tokenCache}
+        publishableKey={publishableKey}
+      >
+        <ClerkLoaded>
+          <View className="bg-black flex-1">
+            <Slot />
+          </View>
+        </ClerkLoaded>
+      </ClerkProvider>
+    </TRPCProvider>
   );
 }
 

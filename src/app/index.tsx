@@ -16,31 +16,6 @@ export default function Index() {
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
 
-  // useEffect(() => {
-  //   // Simulate loading (replace with your real loading logic)
-  //   const timer = setTimeout(() => setIsLoading(false), 200);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // if (isLoading) {
-  //   return (
-  //     <View
-  //       style={{
-  //         flex: 1,
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         backgroundColor: scheme === "dark" ? "#000" : "#fff",
-  //       }}
-  //     >
-  //       <LottieView
-  //         source={require("../assets/splash-screen/loading.json")}
-  //         autoPlay
-  //         loop
-  //         style={{ width: 300, height: 300 }}
-  //       />
-  //     </View>
-  //   );
-  // }
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;

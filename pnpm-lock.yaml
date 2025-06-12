@@ -75,8 +75,8 @@ importers:
         specifier: ~7.1.4
         version: 7.1.4(expo@53.0.7(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       expo-router:
-        specifier: ~5.0.6
-        version: 5.0.7(1ec4dfeac4660ddc50b146643fb5e242)
+        specifier: ~5.1.0
+        version: 5.1.0(1ec4dfeac4660ddc50b146643fb5e242)
       expo-secure-store:
         specifier: ^14.2.3
         version: 14.2.3(expo@53.0.7(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))
@@ -3155,8 +3155,8 @@ packages:
   expo-modules-core@2.3.12:
     resolution: {integrity: sha512-bOm83mskw1S7xuDX50DlLdx68u0doQ6BZHSU2qTv8P1/5QYeAae3pCgFLq2hoptUNeMF7W+68ShJFTOHAe68BQ==}
 
-  expo-router@5.0.7:
-    resolution: {integrity: sha512-NlEgRXCKtseDuIHBp87UfkvqsuVrc0MYG+zg33dopaN6wik4RkrWWxUYdNPHub0s/7qMye6zZBY4ZCrXwd/xpA==}
+  expo-router@5.1.0:
+    resolution: {integrity: sha512-mnKpw35W6kKPpZm+ZxQei6HGUx2JO3znzqJZInzqrTZMgfAcHGgvP9AQFjg/Qi/Qy1CxunB9aQnqE9JPbSwbpw==}
     peerDependencies:
       '@react-navigation/drawer': ^7.3.9
       '@testing-library/jest-native': '*'
@@ -9463,7 +9463,7 @@ snapshots:
     dependencies:
       invariant: 2.2.4
 
-  expo-router@5.0.7(1ec4dfeac4660ddc50b146643fb5e242):
+  expo-router@5.1.0(1ec4dfeac4660ddc50b146643fb5e242):
     dependencies:
       '@expo/metro-runtime': 5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))
       '@expo/server': 0.6.2

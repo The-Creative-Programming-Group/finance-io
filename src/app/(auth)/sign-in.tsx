@@ -21,50 +21,6 @@ export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  // const onSignInPress = useCallback(async () => {
-  //   if (!isLoaded) return;
-  //   setError(null);
-  //   setIsSubmitting(true);
-  //   try {
-  //     const signInAttempt = await signIn.create({
-  //       identifier: emailAddress,
-  //       password,
-  //     });
-
-  //     if (signInAttempt.status === "complete") {
-  //       await setActive({ session: signInAttempt.createdSessionId });
-  //       router.replace("./");
-  //     } else {
-  //       setError("Sign in failed. Please check your credentials");
-  //       console.error(JSON.stringify(signInAttempt, null, 2));
-  //     }
-  //   } catch (err: any) {
-  //     console.log("Sign in error:", err);
-
-  //     if (err && err.errors && Array.isArray(err.errors)) {
-  //       const identifierError = err.errors.find(
-  //         (error: { code: string }) => error.code === "form_identifier_invalid",
-  //       );
-  //       const passwordError = err.errors.find(
-  //         (error: { code: string }) => error.code === "form_password_incorrect",
-  //       );
-  //        // default error message
-  //      setError('Sign in failed');
-  //       if (identifierError) {
-  //         setError("User does not exist");
-  //       } else if (passwordError) {
-  //         setError("Your password is incorrect");
-  //       } else {
-  //         setError(err.errors[0]?.message);
-  //       }
-  //     } else {
-  //       setError("Unknown Error occurred");
-  //       console.error(JSON.stringify(err, null, 2));
-  //     }
-  //   }
-  //   setIsSubmitting(false);
-  // }, [isLoaded, emailAddress, password]);
-
   const onSignInPress = useCallback(async () => {
     if (!isLoaded) return;
     setError(null);
