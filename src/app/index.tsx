@@ -11,6 +11,7 @@ import {
 import AppText from "~/components/AppText";
 import LottieView from "lottie-react-native";
 import { useAuth } from "@clerk/clerk-expo";
+
 export default function Index() {
   // const [isLoading, setIsLoading] = useState(true);
   const scheme = useColorScheme();
@@ -21,8 +22,9 @@ export default function Index() {
     return <Redirect href={"../home"} />;
   }
 
-  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827"; // This is the color for our icons
+  const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";
+
   return (
     <ScrollView>
       <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
@@ -31,13 +33,8 @@ export default function Index() {
             source={require("../assets/images/icon.png")}
             style={{ width: 48, height: 48 }}
           />
-          <AppText
-            semibold={true}
-            className="ml-4 mt-1.5 text-3xl text-text dark:text-dark-text"
-          >
-            Finance.io
-          </AppText>
         </View>
+
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
             source={require("../assets/images/financeio-mockup.png")}
@@ -93,7 +90,7 @@ export default function Index() {
         </View>
         <View className="w-full flex-row items-center justify-center">
           <View className="mt-12 h-12 w-32 flex-row items-center justify-center rounded-lg bg-accent">
-            <Link href={"./(auth)/sign-in"}>
+            <Link href={"/sign-up"}>
               <AppText
                 medium={true}
                 className={"text-xl"}
@@ -177,7 +174,7 @@ export default function Index() {
             </AppText>
           </View>
           <AppText className="w-7/12 text-text dark:text-dark-text">
-            Many apps make money by selling user data, we don’t. Your trust
+            Many apps make money by selling user data, we don&apos;t. Your trust
             matters more.
           </AppText>
         </View>
