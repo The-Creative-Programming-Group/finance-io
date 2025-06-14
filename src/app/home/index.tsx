@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  useColorScheme,
 } from 'react-native';
 import AppText from '~/components/AppText';
 import { useClerk, useUser } from '@clerk/clerk-expo';
@@ -22,6 +23,7 @@ const Home = () => {
   const { signOut } = useClerk();
   const { user, isLoaded } = useUser();
   const router = useRouter();
+  const colorScheme = useColorScheme();
 
   const createAccount = trpc.account.create.useMutation({
     onSuccess: () => {
@@ -95,7 +97,11 @@ const Home = () => {
         </View>
         {/*Link Icon*/}
         <View className="flex-row items-center justify-center mt-10">
-          <Link className="text-text dark:text-dark-text" size={18} style={{ marginRight: 8 }} />
+          <Link
+            color={colorScheme === 'dark' ? '#E0E0E0' : '#111827'}
+            size={18}
+            style={{ marginRight: 8 }}
+          />
           <AppText className="text-text dark:text-dark-text font-bold text-center text-lg">
             Connect your first Account
           </AppText>
@@ -109,7 +115,7 @@ const Home = () => {
           name="bankName"
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="flex-row items-center bg-secondary dark:bg-dark-secondary rounded-[15px] h-[65px] my-[6px] pl-2.5 mx-4">
-              <View className="w-[35px] h-[35px] bg-primary rounded-full items-center justify-center mr-2.5">
+              <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/bank.png')}
                   className="w-[17px] h-[17px]"
@@ -133,7 +139,7 @@ const Home = () => {
           )}
         />
         {errors.bankName && (
-          <AppText className="ml-6 mt-[1px] text-sm text-danger">
+          <AppText className="ml-6 mt-[1px] text-sm text-error">
             {errors.bankName.message}
           </AppText>
         )}
@@ -146,7 +152,7 @@ const Home = () => {
           name="currentAmount"
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="flex-row items-center bg-secondary dark:bg-dark-secondary rounded-[15px] h-[65px] my-[6px] pl-2.5 mx-4">
-              <View className="w-[35px] h-[35px] bg-primary rounded-full items-center justify-center mr-2.5">
+              <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/money.png')}
                   className="w-[17px] h-[17px]"
@@ -173,7 +179,7 @@ const Home = () => {
           )}
         />
         {errors.currentAmount && (
-          <AppText className="ml-6 mt-[1px] text-sm text-danger">
+          <AppText className="ml-6 mt-[1px] text-sm text-error">
             {errors.currentAmount.message}
           </AppText>
         )}
@@ -186,7 +192,7 @@ const Home = () => {
           name="reference"
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="flex-row items-center bg-secondary dark:bg-dark-secondary rounded-[15px] h-[65px] my-[6px] pl-2.5 mx-4">
-              <View className="w-[35px] h-[35px] bg-primary rounded-full items-center justify-center mr-2.5">
+              <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/reference.png')}
                   className="w-[20px] h-[20px]"
@@ -209,7 +215,7 @@ const Home = () => {
           )}
         />
         {errors.reference && (
-          <AppText className="ml-6 mt-[1px] text-sm text-danger">
+          <AppText className="ml-6 mt-[1px] text-sm text-error">
             {errors.reference.message}
           </AppText>
         )}
@@ -222,7 +228,7 @@ const Home = () => {
           name="usage"
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="flex-row items-center bg-secondary dark:bg-dark-secondary rounded-[15px] h-[65px] my-[6px] pl-2.5 mx-4">
-              <View className="w-[35px] h-[35px] bg-primary rounded-full items-center justify-center mr-2.5">
+              <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/usage.png')}
                   className="w-[17px] h-[17px]"
@@ -245,7 +251,7 @@ const Home = () => {
           )}
         />
         {errors.usage && (
-          <AppText className="ml-6 mt-[1px] text-sm text-danger">
+          <AppText className="ml-6 mt-[1px] text-sm text-error">
             {errors.usage.message}
           </AppText>
         )}
