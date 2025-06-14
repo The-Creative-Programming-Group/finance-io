@@ -1,21 +1,24 @@
-import { View, ScrollView, useColorScheme, TouchableOpacity, SafeAreaView } from "react-native";
-import React from "react";
+import { useAuth } from "@clerk/clerk-expo";
 import { Image } from "expo-image";
 import { Link, Redirect } from "expo-router";
 import {
+  CircleArrowDown,
   CircleCheck,
+  Database,
+  // https://github.com/lucide-icons/lucide/issues/670
+  // We should replace this icon with an icon from one of the other recommended libraries
   Github,
   Tv,
-  CircleArrowDown,
-  Database,
 } from "lucide-react-native";
+import React from "react";
+import { ScrollView, useColorScheme, View } from "react-native";
 import AppText from "~/components/AppText";
-import SignIn from "./(auth)/sign-in";
-import { useAuth } from "@clerk/clerk-expo";
+
+const FinanceIOIcon = require("~/assets/images/icon.png");
 
 export default function Index() {
   const scheme = useColorScheme();
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isSignedIn } = useAuth();
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;
@@ -27,16 +30,14 @@ export default function Index() {
   return (
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
-        <View className="mt-20 flex-row justify-center">
-          <Image
-            source="../assets/images/financeio-mockup.png"
-            className={"h-12 w-12 rounded-lg"}
-          />
+        <View className="mt-20 flex-row justify-center items-center gap-8">
+          <Image source={FinanceIOIcon} className={"h-12 w-12 rounded-lg"} />
+          <AppText className="text-4xl">Finance.io</AppText>
         </View>
 
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
-            source={require("../assets/images/financeio-mockup.png")}
+            source={require("~/assets/images/financeio-mockup.png")}
             className={"h-64 w-32 rounded-lg"}
           />
           <View className="w-6/12">
@@ -113,7 +114,7 @@ export default function Index() {
           <View className="flex-row">
             <Image
               className="h-6 w-6"
-              source={"../assets/images/iconGooglePlay.png"}
+              source={require("~/assets/images/iconGooglePlay.png")}
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               Google Play
@@ -121,14 +122,14 @@ export default function Index() {
           </View>
           <Image
             className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
-            source={require("../assets/images/googlePlayInstall.png")}
+            source={require("~/assets/images/googlePlayInstall.png")}
           />
         </View>
         <View className="mt-12 flex-col items-center">
           <View className="flex-row">
             <Image
               className="h-6 w-6"
-              source={require("../assets/images/iconAppStore.png")}
+              source={require("~/assets/images/iconAppStore.png")}
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               App Store
@@ -136,7 +137,7 @@ export default function Index() {
           </View>
           <Image
             className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
-            source={require("../assets/images/InstallAppStore.png")}
+            source={require("~/assets/images/InstallAppStore.png")}
           />
         </View>
         <View className="mt-12 flex-col items-center">

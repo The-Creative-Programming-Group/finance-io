@@ -1,7 +1,6 @@
-import { Redirect, Stack } from "expo-router";
 import { useAuth } from "@clerk/clerk-expo";
-import { View, ActivityIndicator } from "react-native";
-import Home from "~/app/home";
+import { Redirect, Stack } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
 
 export default function AuthRoutesLayout(): React.ReactElement {
   const { isSignedIn, isLoaded } = useAuth();

@@ -45,4 +45,3 @@ module.exports = {
   // Add Tailwind plugins here if needed in the future
   plugins: [],
 };
-
