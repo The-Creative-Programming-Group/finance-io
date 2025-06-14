@@ -1,6 +1,7 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+// eslint-disable-next-line no-restricted-imports
+import { Text } from "react-native";
 
 type AppTextProps = {
   semibold?: boolean;
@@ -41,6 +42,7 @@ export default function AppText({
         : "Raleway";
 
   return (
+    // eslint-disable-next-line no-restricted-syntax
     <Text className={className} style={{ fontFamily, ...style }} {...rest}>
       {children}
     </Text>

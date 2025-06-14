@@ -1,15 +1,15 @@
 import { useSignIn } from "@clerk/clerk-expo";
+import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
 import {
-  TextInput,
-  View,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Image } from "expo-image";
 import AppText from "~/components/AppText";
 
 export default function Page() {
@@ -64,7 +64,7 @@ export default function Page() {
       }
     }
     setIsSubmitting(false);
-  }, [isLoaded, emailAddress, password]);
+  }, [isLoaded, signIn, emailAddress, password, setActive, router]);
   return (
     // Use "padding" on iOS so the view shifts up smoothly when the keyboard appears.
     // Use "height" on Android and other platforms to resize the view height when the keyboard is shown.

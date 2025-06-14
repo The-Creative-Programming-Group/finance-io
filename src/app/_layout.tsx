@@ -1,11 +1,10 @@
-import Constants from "expo-constants";
-import * as SecureStore from "expo-secure-store";
-import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
-import { env } from "../env";
+import { ClerkProvider } from "@clerk/clerk-expo";
 import { Slot } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 import { View } from "react-native";
-import "../global.css"; // Import global CSS for NativeWind
 import { TRPCReactProvider } from "~/trpc/react";
+import "../global.css"; // Import global CSS for NativeWind
+
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -53,7 +52,7 @@ function RootLayoutNav() {
       }}
     >
       <TRPCReactProvider>
-        <View className="flex-1 bg-black p-2.5">
+        <View className="bg-black flex-1 p-2.5">
           <Slot />
         </View>
       </TRPCReactProvider>
