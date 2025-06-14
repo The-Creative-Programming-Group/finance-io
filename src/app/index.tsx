@@ -1,6 +1,5 @@
-import { View, ScrollView, useColorScheme, TouchableOpacity, SafeAreaView } from "react-native";
-import React from "react";
-import { Image } from "expo-image";
+import { View, ScrollView, useColorScheme, Image } from "react-native";
+// import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "expo-router";
 import {
   CircleCheck,
@@ -10,12 +9,14 @@ import {
   Database,
 } from "lucide-react-native";
 import AppText from "~/components/AppText";
-import SignIn from "./(auth)/sign-in";
+import LottieView from "lottie-react-native";
 import { useAuth } from "@clerk/clerk-expo";
 
 export default function Index() {
+  // const [isLoading, setIsLoading] = useState(true);
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
+
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;
@@ -26,11 +27,11 @@ export default function Index() {
 
   return (
     <ScrollView>
-      <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
+      <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <View className="mt-20 flex-row justify-center">
           <Image
-            source="../assets/images/financeio-mockup.png"
-            className={"h-12 w-12 rounded-lg"}
+            source={require("../assets/images/icon.png")}
+            style={{ width: 48, height: 48 }}
           />
         </View>
 
@@ -107,13 +108,13 @@ export default function Index() {
           >
             Why us ?
           </AppText>
-          <CircleArrowDown size={30} color={iconBackground} fill={iconColor} />
+          <CircleArrowDown size={30} color={iconColor} />
         </View>
         <View className="mt-12 flex-col items-center">
           <View className="flex-row">
             <Image
               className="h-6 w-6"
-              source={"../assets/images/iconGooglePlay.png"}
+              source={require("../assets/images/iconGooglePlay.png")}
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               Google Play
