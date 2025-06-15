@@ -39,7 +39,7 @@ export default function Index() {
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
             source={require("../assets/images/financeio-mockup.png")}
-            style={{ width: 92, height: 256, borderRadius: 16 }}
+            style={{ width: 92, height: 183, borderRadius: 16 }}
             contentFit="contain"
           />
           <View className="w-6/12">
