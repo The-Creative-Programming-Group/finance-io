@@ -20,6 +20,7 @@ module.exports = {
       danger: "hsl(0, 54.46%, 39.61%)",
       warn: "hsl(43.64, 54.46%, 39.61%)",
       good: "hsl(140.25, 34.48%, 54.51%)",
+      error: "hsl(360 100% 50%)",
 
       dark: {
         background: "hsl(0, 0%, 4.31%)",
@@ -32,6 +33,7 @@ module.exports = {
         danger: "hsl(0, 54.46%, 39.61%)",
         warn: "hsl(43.64, 54.46%, 39.61%)",
         good: "hsl(140.25, 34.48%, 54.51%)",
+        error: "hsl(360 100% 50%)",
       },
     },
     extend: {
