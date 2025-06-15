@@ -116,7 +116,7 @@ export default function Index() {
           <View className="flex-row">
             <Image
               source={require("../assets/images/iconGooglePlay.png")}
-              style={{ width: 20, height: 20 }}
+              style={{ width: 20, height: 20 , marginTop: 2}}
               contentFit="contain"
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
@@ -134,7 +134,8 @@ export default function Index() {
           <View className="flex-row">
             <Image
               source={require("../assets/images/iconAppStore.png")}
-              style={{width: 20, height: 20, aspectRatio: 1}}
+              style={{width: 19, height: 19, marginTop: 4}}
+              contentFit="contain"
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               App Store
