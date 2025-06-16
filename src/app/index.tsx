@@ -31,14 +31,17 @@ export default function Index() {
     <ScrollView>
       <View className="h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <View className="mt-20 flex-row justify-center items-center gap-8">
-          <Image source={FinanceIOIcon} className={"h-12 w-12 rounded-lg"} />
+          <Image source={FinanceIOIcon} className={"h-12 w-12 rounded-lg"}
+             style={{ width: 48, height: 48, borderRadius: 12 }}
+            />
           <AppText className="text-4xl">Finance.io</AppText>
         </View>
 
         <View className="ml-8 mt-12 flex-row justify-center">
           <Image
             source={require("~/assets/images/financeio-mockup.png")}
-            className={"h-64 w-32 rounded-lg"}
+             style={{ width: 92, height: 183, borderRadius: 16 }}
+            contentFit="contain"
           />
           <View className="w-6/12">
             <AppText className="text-md ml-6 text-text dark:text-dark-text">
@@ -113,8 +116,9 @@ export default function Index() {
         <View className="mt-12 flex-col items-center">
           <View className="flex-row">
             <Image
-              className="h-6 w-6"
               source={require("~/assets/images/iconGooglePlay.png")}
+              style={{ width: 20, height: 20 , marginTop: 2}}
+              contentFit="contain"
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               Google Play
@@ -123,13 +127,16 @@ export default function Index() {
           <Image
             className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
             source={require("~/assets/images/googlePlayInstall.png")}
+            style={{ width: 250, aspectRatio: 1, borderRadius: 16 }}
+            contentFit="contain"
           />
         </View>
         <View className="mt-12 flex-col items-center">
           <View className="flex-row">
             <Image
-              className="h-6 w-6"
               source={require("~/assets/images/iconAppStore.png")}
+              style={{width: 19, height: 19, marginTop: 4}}
+              contentFit="contain"
             />
             <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
               App Store
@@ -138,6 +145,7 @@ export default function Index() {
           <Image
             className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
             source={require("~/assets/images/InstallAppStore.png")}
+            style={{width: 250, height: 250, aspectRatio: 1, borderRadius: 16}}
           />
         </View>
         <View className="mt-12 flex-col items-center">
