@@ -29,7 +29,6 @@ const tokenCache = {
       return await SecureStore.setItemAsync(key, stringValue);
     } catch (err) {
       console.error("Error saving token:", err);
-      return null;
     }
   },
 };
@@ -39,18 +38,7 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={publishableKey}
-      networkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
-      connectNetworkUrlOverride={process.env.EXPO_PUBLIC_CLERK_API_URL}
-      retryAttemptsCount={3}
-      retryInitialDelayMs={500}
-      sessionOptions={{
-        lifetime: 7200, // 2 hours
-        idleTimeout: 1800, // 30 minutes
-      }}
-    >
+    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <TRPCReactProvider>
         <View className="bg-black flex-1 p-2.5">
           <Slot />
