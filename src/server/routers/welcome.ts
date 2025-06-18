@@ -17,11 +17,11 @@ export const welcomeRouter = router({
     )
     .mutation(async ({ input }) => {
       try {
-        const formattedAmount = parseFloat(input.currentAmount).toFixed(2);
+        const numericAmount = parseFloat(input.currentAmount);
 
         const result = await db.insert(welcomeTable).values({
           bankName: input.bankName,
-          currentAmount: formattedAmount,
+          currentAmount: numericAmount,
           reference: input.reference,
           usage: input.usage,
           userId: input.userId,
@@ -36,7 +36,7 @@ export const welcomeRouter = router({
       }
     }),
 
-    getByUserId: publicProcedure
+  getByUserId: publicProcedure
     .input(z.object({ userId: z.string() }))
     .query(async ({ input }) => {
       const welcomes = await db.select().from(welcomeTable).where(eq(welcomeTable.userId, input.userId));
