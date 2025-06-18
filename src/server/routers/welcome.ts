@@ -19,9 +19,14 @@ export const welcomeRouter = router({
     )
     .mutation(async ({ input }) => {
       try {
+        const amount = Number(input.currentAmount);
+        if (Number.isNaN(amount)) {
+          throw new Error('Provided amount is not a valid number');
+        }
+
         const result = await db.insert(welcomeTable).values({
           bankName: input.bankName,
-          currentAmount: input.currentAmount,
+          currentAmount: amount,
           reference: input.reference,
           usage: input.usage,
           userId: input.userId,
