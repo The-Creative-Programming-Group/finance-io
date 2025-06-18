@@ -96,7 +96,7 @@ const Home = () => {
           </AppText>
         </View>
         <AppText className="mt-10 text-text dark:text-dark-text font-bold text-center text-lg">
-          {isLoaded && user ? `Hello ${user.firstName}! 👋` : 'undefined'}
+        {isLoaded && user ? `Hello ${user.firstName}! 👋` : 'Loading...'}
         </AppText>
         {/* Setting up account information */}
         <View className="flex-1 justify-center items-center mt-5 mx-5">
