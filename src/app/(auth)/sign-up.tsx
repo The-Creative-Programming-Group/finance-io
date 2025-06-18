@@ -1,16 +1,15 @@
+import { useSignIn, useSignUp } from "@clerk/clerk-expo";
+import { Image } from "expo-image";
+import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  TextInput,
-  View,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import AppText from "~/components/AppText";
-import { useSignUp, useSignIn } from "@clerk/clerk-expo";
-import { useRouter, Link } from "expo-router";
-import { Image } from "expo-image";
 import AppText from "~/components/AppText";
 import InputOtp from "~/components/ui/input-otp";
 

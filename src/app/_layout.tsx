@@ -1,11 +1,10 @@
-import Constants from "expo-constants";
-import * as SecureStore from "expo-secure-store";
-import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
-import { env } from "../env";
+import { ClerkProvider } from "@clerk/clerk-expo";
 import { Slot } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 import { View } from "react-native";
-import "../global.css"; // Import global CSS for NativeWind
 import { TRPCReactProvider } from "~/trpc/react";
+import "../global.css"; // Import global CSS for NativeWind
+
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -36,7 +35,13 @@ const tokenCache = {
 };
 
 // Environment variable check with detailed error
+// This key should probably be moved to the /src/env.ts (T3 Env [https://env.t3.gg/])
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+if (!publishableKey) {
+  throw new Error(
+    "Missing EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY – check your .env / Expo config",
+  );
+}
 
 function RootLayoutNav() {
   return (
@@ -53,7 +58,7 @@ function RootLayoutNav() {
       }}
     >
       <TRPCReactProvider>
-        <View className="flex-1 bg-black p-2.5">
+        <View className="bg-black flex-1 p-2.5">
           <Slot />
         </View>
       </TRPCReactProvider>

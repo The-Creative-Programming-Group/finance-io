@@ -1,7 +1,7 @@
-import AppText from "~/components/AppText";
-import { TouchableOpacity, View } from "react-native";
-import { useAuth, useClerk, useUser } from "@clerk/clerk-expo";
+import { useClerk, useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
+import { TouchableOpacity, View } from "react-native";
+import AppText from "~/components/AppText";
 
 const Home = () => {
   const { signOut } = useClerk();
