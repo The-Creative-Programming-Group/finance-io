@@ -35,8 +35,8 @@ export const welcomeRouter = router({
         throw new Error('Failed to create account');
       }
     }),
-    
-  getByUserId: publicProcedure
+
+    getByUserId: publicProcedure
     .input(z.object({ userId: z.string() }))
     .query(async ({ input }) => {
       const welcomes = await db.select().from(welcomeTable).where(eq(welcomeTable.userId, input.userId));
