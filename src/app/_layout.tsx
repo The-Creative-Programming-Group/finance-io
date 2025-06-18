@@ -35,7 +35,13 @@ const tokenCache = {
 };
 
 // Environment variable check with detailed error
+// This key should probably be moved to the /src/env.ts (T3 Env [https://env.t3.gg/])
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+if (!publishableKey) {
+  throw new Error(
+    "Missing EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY – check your .env / Expo config",
+  );
+}
 
 function RootLayoutNav() {
   return (
