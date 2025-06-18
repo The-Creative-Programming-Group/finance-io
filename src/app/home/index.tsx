@@ -182,7 +182,12 @@ const Home = () => {
                 onBlur={onBlur}
                 onChangeText={(text) => {
                   // Only allow numbers and one decimal point
-                  const formattedText = text.replace(/[^0-9.]/g, '');
+                  const sanitized = text.replace(/[^0-9.]/g, '');
+                  // Ensure only one decimal point is allowed
+                  const parts = sanitized.split('.');
+                  const formattedText = parts.length > 2
+                    ? parts[0] + '.' + parts.slice(1).join('')
+                    : sanitized;
                   onChange(formattedText);
                 }}
               />
