@@ -9,7 +9,9 @@ export const welcomeRouter = router({
     .input(
       z.object({
         bankName: z.string().min(1, 'Bank name is required'),
-        currentAmount: z.string().min(1, 'Amount is required'),
+        currentAmount: z.coerce
+          .number({ invalid_type_error: 'Amount must be numeric' })
+          .positive('Amount must be positive'),
         reference: z.string().min(1, 'Reference is required'),
         usage: z.string().min(1, 'Usage is required'),
         userId: z.string().min(1, 'User ID is required'),
@@ -17,11 +19,9 @@ export const welcomeRouter = router({
     )
     .mutation(async ({ input }) => {
       try {
-        const numericAmount = parseFloat(input.currentAmount);
-
         const result = await db.insert(welcomeTable).values({
           bankName: input.bankName,
-          currentAmount: numericAmount,
+          currentAmount: input.currentAmount,
           reference: input.reference,
           usage: input.usage,
           userId: input.userId,
