@@ -64,13 +64,11 @@ const Home = () => {
       Alert.alert('Error', 'User not authenticated');
       return;
     }
-    try {
-      await createAccount.mutateAsync({ ...data, userId: user.id });
-      Alert.alert('Success', 'Account created successfully!');
-      reset();
-    } catch (error) {
-      Alert.alert('Error', error instanceof Error ? error.message : 'Failed to create account');
-    }
+    await createAccount.mutateAsync({
+      ...data,
+      userId: user.id,
+      currentAmount: Number(data.currentAmount),
+    });
   };
 
   const handleLogout = async () => {
