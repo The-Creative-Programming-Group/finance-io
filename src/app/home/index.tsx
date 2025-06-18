@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ScrollView,
   TouchableOpacity,
@@ -41,10 +41,23 @@ const Home = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
+    setValue,
   } = useForm<WelcomeSchema>({
     resolver: zodResolver(welcomeSchema),
+    defaultValues: {
+      bankName: "",
+      currentAmount: "",
+      reference: "",
+      usage: "",
+    },
     mode: 'onChange', // Validate on change
   });
+
+  useEffect(() => {
+    if (user?.id) {
+      setValue('userId', user.id);
+    }
+  }, [user, setValue]);
 
   const handleCreateAccount = async (data: WelcomeSchema) => {
     if (!user?.id) {

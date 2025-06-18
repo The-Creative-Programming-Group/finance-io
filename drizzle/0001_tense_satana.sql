@@ -5,7 +5,7 @@ CREATE TABLE "welcomes" (
 	"reference" varchar(255) NOT NULL,
 	"usage" varchar(255) NOT NULL,
 	"userId" varchar(255) NOT NULL,
-	"createdAt" varchar(255) DEFAULT 'now()' NOT NULL
+	"createdAt" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 DROP TABLE "users" CASCADE;--> statement-breakpoint
