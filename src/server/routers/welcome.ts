@@ -30,7 +30,7 @@ export const welcomeRouter = router({
           reference: input.reference,
           usage: input.usage,
           userId: input.userId,
-          createdAt: new Date().toISOString(),
+          createdAt: new Date(),
         }).returning();
 
         return { success: true, account: result[0] };

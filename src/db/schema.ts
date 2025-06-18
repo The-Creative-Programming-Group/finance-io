@@ -1,4 +1,4 @@
-import { pgTable, integer, varchar, decimal } from "drizzle-orm/pg-core";
+import { pgTable, integer, varchar, decimal, timestamp } from "drizzle-orm/pg-core";
 
 export const welcomeTable = pgTable("welcomes", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -7,5 +7,5 @@ export const welcomeTable = pgTable("welcomes", {
   reference: varchar({ length: 255 }).notNull(),
   usage: varchar({ length: 255 }).notNull(),
   userId: varchar({ length: 255 }).notNull(), // Clerk user ID
-  createdAt: varchar({ length: 255 }).notNull(),
+  createdAt: timestamp({ withTimezone: true }).notNull(),
 });
