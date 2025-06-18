@@ -67,7 +67,7 @@ const Home = () => {
     await createAccount.mutateAsync({
       ...data,
       userId: user.id,
-      currentAmount: Number(data.currentAmount),
+      currentAmount: parseFloat(data.currentAmount) || 0,
     });
   };
 
