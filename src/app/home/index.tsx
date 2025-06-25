@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ScrollView,
   TouchableOpacity,
@@ -17,18 +17,43 @@ import { Link } from 'lucide-react-native';
 import { trpc } from '../../utils/trpc';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { welcomeSchema, WelcomeSchema } from '~/components/zodSchema';
+import { z } from 'zod';
+
+// Form validation schema
+const welcomeSchema = z.object({
+  bankName: z.string()
+    .min(1, { message: "Bank name is required" })
+    .min(2, { message: "Bank name must be at least 2 characters" })
+    .max(50, { message: "Bank name must be less than 50 characters" })
+    .regex(/^[a-zA-Z0-9\s-]+$/, { message: "Bank name can only contain letters, numbers, spaces, and hyphens" }),
+  currentAmount: z.coerce
+    .number({ invalid_type_error: 'Amount must be numeric' })
+    .positive('Amount must be positive')
+    .min(0.01, 'Amount must be at least 0.01'),
+  reference: z.string()
+    .min(1, { message: "Reference is required" })
+    .min(2, { message: "Reference must be at least 2 characters" })
+    .max(50, { message: "Reference must be less than 50 characters" }),
+  usage: z.string()
+    .min(1, { message: "Usage is required" })
+    .min(2, { message: "Usage must be at least 2 characters" })
+    .max(50, { message: "Usage must be less than 50 characters" }),
+});
+
+type WelcomeSchema = z.infer<typeof welcomeSchema>;
 
 const Home = () => {
   const { signOut } = useClerk();
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const colorScheme = useColorScheme();
+  const [amountDisplay, setAmountDisplay] = useState('');
 
   const createAccount = trpc.account.create.useMutation({
     onSuccess: () => {
       Alert.alert('Success', 'Account created successfully!');
       reset();
+      setAmountDisplay('');
     },
     onError: (error) => {
       Alert.alert('Error', error.message || 'Failed to create account');
@@ -46,7 +71,7 @@ const Home = () => {
     resolver: zodResolver(welcomeSchema),
     defaultValues: {
       bankName: "",
-      currentAmount: "",
+      currentAmount: 0,
       reference: "",
       usage: "",
     },
@@ -56,7 +81,7 @@ const Home = () => {
   const handleCreateAccount = async (data: WelcomeSchema) => {
     await createAccount.mutateAsync({
       ...data,
-      currentAmount: parseFloat(data.currentAmount) || 0,
+      currentAmount: data.currentAmount,
     });
   };
 
@@ -167,7 +192,7 @@ const Home = () => {
                 keyboardType="decimal-pad"
                 accessibilityLabel="Current amount"
                 accessibilityHint="Enter the current amount in your account"
-                value={value}
+                value={amountDisplay}
                 onBlur={onBlur}
                 onChangeText={(text) => {
                   // Only allow numbers and one decimal point
@@ -177,7 +202,21 @@ const Home = () => {
                   const formattedText = parts.length > 2
                     ? parts[0] + '.' + parts.slice(1).join('')
                     : sanitized;
-                  onChange(formattedText);
+
+                  // Limit decimal places to 2
+                  let finalText = formattedText;
+                  if (parts.length === 2 && parts[1].length > 2) {
+                    finalText = parts[0] + '.' + parts[1].slice(0, 2);
+                  }
+
+                  setAmountDisplay(finalText);
+
+                  // Update form value
+                  if (finalText === '' || finalText === '.') {
+                    onChange(0);
+                  } else {
+                    onChange(parseFloat(finalText) || 0);
+                  }
                 }}
               />
             </View>
