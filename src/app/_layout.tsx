@@ -40,18 +40,18 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
   return (
-    <TRPCProvider>
-      <ClerkProvider
-        tokenCache={tokenCache}
-        publishableKey={publishableKey}
-      >
-        <ClerkLoaded>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey={publishableKey}
+    >
+      <ClerkLoaded>
+        <TRPCProvider>
           <View className="bg-black flex-1">
             <Slot />
           </View>
-        </ClerkLoaded>
-      </ClerkProvider>
-    </TRPCProvider>
+        </TRPCProvider>
+      </ClerkLoaded>
+    </ClerkProvider>
   );
 }
 

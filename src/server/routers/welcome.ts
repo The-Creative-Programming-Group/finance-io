@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { router, publicProcedure } from '../trpc';
+import { createTRPCRouter, protectedProcedure } from '../api/trpc';
 import { db } from '../../db';
 import { welcomeTable } from '../../db/schema';
 import { eq } from 'drizzle-orm';
 
-export const welcomeRouter = router({
-  create: publicProcedure
+export const welcomeRouter = createTRPCRouter({
+  create: protectedProcedure
     .input(
       z.object({
         bankName: z.string().min(1, 'Bank name is required'),
@@ -14,37 +14,33 @@ export const welcomeRouter = router({
           .positive('Amount must be positive'),
         reference: z.string().min(1, 'Reference is required'),
         usage: z.string().min(1, 'Usage is required'),
-        userId: z.string().min(1, 'User ID is required'),
       })
     )
-    .mutation(async ({ input }) => {
-      try {
-        const amount = Number(input.currentAmount);
-        if (Number.isNaN(amount)) {
-          throw new Error('Provided amount is not a valid number');
-        }
+    .mutation(async ({ input, ctx }) => {
+      const { userId } = ctx;
 
-        const result = await db.insert(welcomeTable).values({
-          bankName: input.bankName,
-          currentAmount: amount,
-          reference: input.reference,
-          usage: input.usage,
-          userId: input.userId,
-          createdAt: new Date(),
-        }).returning();
-
-        return { success: true, account: result[0] };
-      } catch (error) {
-        // Keep this for debugging if something goes wrong
-        console.error('Database error:', error);
-        throw new Error('Failed to create account');
+      const amount = Number(input.currentAmount);
+      if (Number.isNaN(amount)) {
+        throw new Error('Provided amount is not a valid number');
       }
+
+      const result = await db.insert(welcomeTable).values({
+        bankName: input.bankName,
+        currentAmount: amount,
+        reference: input.reference,
+        usage: input.usage,
+        userId,
+        createdAt: new Date(),
+      }).returning();
+
+      return { success: true, account: result[0] };
     }),
 
-  getByUserId: publicProcedure
-    .input(z.object({ userId: z.string() }))
-    .query(async ({ input }) => {
-      const welcomes = await db.select().from(welcomeTable).where(eq(welcomeTable.userId, input.userId));
+  getByUserId: protectedProcedure
+    .query(async ({ ctx }) => {
+      const { userId } = ctx;
+
+      const welcomes = await db.select().from(welcomeTable).where(eq(welcomeTable.userId, userId));
       return welcomes;
     }),
 });

@@ -4,12 +4,14 @@ import { httpBatchLink } from '@trpc/client';
 import { trpc } from '../utils/trpc';
 import superjson from 'superjson';
 import { Platform } from 'react-native';
+import { useAuth } from '@clerk/clerk-expo';
 
 interface TRPCProviderProps {
   children: React.ReactNode;
 }
 
 export function TRPCProvider({ children }: TRPCProviderProps) {
+  const { getToken } = useAuth();
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => {
     // Hey team, just a quick note on this baseUrl logic:
@@ -29,14 +31,15 @@ export function TRPCProvider({ children }: TRPCProviderProps) {
     // Localhost won't work from a real device, so this is just for our local workflow.
     // If you have questions about this, ping me!
 
-    console.log('Platform:', Platform.OS);
-    console.log('Base URL:', baseUrl);
-
     return trpc.createClient({
       links: [
         httpBatchLink({
           url: `${baseUrl}/api/trpc`,
           transformer: superjson,
+          async headers() {
+            const token = await getToken();
+            return token ? { Authorization: `Bearer ${token}` } : {};
+          },
         }),
       ],
     });

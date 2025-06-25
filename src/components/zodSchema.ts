@@ -18,7 +18,6 @@ export const welcomeSchema = z.object({
         .min(1, { message: "Usage is required" })
         .min(2, { message: "Usage must be at least 2 characters" })
         .max(50, { message: "Usage must be less than 50 characters" }),
-    userId: z.string().min(1, { message: "User ID is required" }),
 });
 
 export type WelcomeSchema = z.infer<typeof welcomeSchema>;

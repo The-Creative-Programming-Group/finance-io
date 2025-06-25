@@ -53,20 +53,9 @@ const Home = () => {
     mode: 'onChange', // Validate on change
   });
 
-  useEffect(() => {
-    if (user?.id) {
-      setValue('userId', user.id);
-    }
-  }, [user, setValue]);
-
   const handleCreateAccount = async (data: WelcomeSchema) => {
-    if (!user?.id) {
-      Alert.alert('Error', 'User not authenticated');
-      return;
-    }
     await createAccount.mutateAsync({
       ...data,
-      userId: user.id,
       currentAmount: parseFloat(data.currentAmount) || 0,
     });
   };
@@ -96,7 +85,7 @@ const Home = () => {
           </AppText>
         </View>
         <AppText className="mt-10 text-text dark:text-dark-text font-bold text-center text-lg">
-        {isLoaded && user ? `Hello ${user.firstName}! 👋` : 'Loading...'}
+          {isLoaded && user ? `Hello ${user.firstName}! 👋` : 'Loading...'}
         </AppText>
         {/* Setting up account information */}
         <View className="flex-1 justify-center items-center mt-5 mx-5">

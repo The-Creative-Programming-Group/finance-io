@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@clerk/clerk-expo": "^2.13.0",
+    "@clerk/clerk-sdk-node": "^5.1.6",
     "@expo/server": "^0.5.3",
     "@expo/vector-icons": "^14.0.2",
     "@hookform/resolvers": "^5.1.1",
@@ -34,6 +35,7 @@
     "expo-auth-session": "~6.1.5",
     "expo-blur": "~14.1.4",
     "expo-constants": "~17.1.5",
+    "expo-crypto": "~14.1.5",
     "expo-dev-client": "~5.1.8",
     "expo-font": "~13.3.1",
     "expo-haptics": "~14.1.4",

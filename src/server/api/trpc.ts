@@ -9,9 +9,12 @@
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import { verifyToken } from '@clerk/clerk-sdk-node';
 
 // import { db } from "~/server/db";
 import { db } from "~/db";
+
+const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY!;
 
 /**
  * 1. CONTEXT
@@ -25,9 +28,41 @@ import { db } from "~/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+export const createTRPCContext = async (opts: { headers: any }) => {
+  let userId: string | null = null;
+  try {
+    let authHeader: string | undefined;
+    if (opts.headers instanceof Headers) {
+      authHeader = opts.headers.get('authorization') || opts.headers.get('Authorization') || undefined;
+    } else if (typeof opts.headers === 'object') {
+      authHeader = opts.headers['authorization'] || opts.headers['Authorization'] || undefined;
+    }
+
+    if (!authHeader) {
+      return { db, userId: null, ...opts };
+    }
+
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.replace('Bearer ', '');
+
+      if (!CLERK_SECRET_KEY) {
+        console.error('CLERK_SECRET_KEY is not set');
+        return { db, userId: null, ...opts };
+      }
+
+      // Use Clerk's verifyToken with the secret key for server-side verification
+      const verifiedToken = await verifyToken(token, {
+        secretKey: CLERK_SECRET_KEY,
+      });
+      userId = verifiedToken.sub || null;
+    }
+  } catch (err) {
+    console.error('Error verifying Clerk token:', err);
+    userId = null;
+  }
   return {
     db,
+    userId,
     ...opts,
   };
 };
@@ -75,3 +110,21 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+/**
+ * Protected (authenticated) procedure
+ *
+ * This is the base piece you use to build new queries and mutations on your tRPC API. It guarantees
+ * that a user querying is authorized and can access their own data.
+ */
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+  if (!ctx.userId) {
+    throw new Error('Not authenticated');
+  }
+  return next({
+    ctx: {
+      ...ctx,
+      userId: ctx.userId,
+    },
+  });
+});
