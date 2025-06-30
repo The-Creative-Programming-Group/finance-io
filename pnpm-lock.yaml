@@ -10,12 +10,12 @@ importers:
     dependencies:
       '@clerk/clerk-expo':
         specifier: ^2.11.6
-        version: 2.11.6(1d035f583c96ae19a074bbb6223bffcb)
+        version: 2.11.6(an4he544yl3urvyz2xq7pk4dba)
       '@expo/server':
         specifier: ^0.5.3
         version: 0.5.3
       '@expo/vector-icons':
-        specifier: ^14.0.2
+        specifier: ^14.1.0
         version: 14.1.0(expo-font@13.3.1(expo@53.0.7(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       '@neondatabase/serverless':
         specifier: ^1.0.0
@@ -76,7 +76,7 @@ importers:
         version: 7.1.4(expo@53.0.7(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       expo-router:
         specifier: ~5.0.6
-        version: 5.0.7(1ec4dfeac4660ddc50b146643fb5e242)
+        version: 5.0.7(lpuomwg4ve6jbkleg3cbygc2ma)
       expo-secure-store:
         specifier: ^14.2.3
         version: 14.2.3(expo@53.0.7(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))
@@ -6497,7 +6497,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@clerk/clerk-expo@2.11.6(1d035f583c96ae19a074bbb6223bffcb)':
+  '@clerk/clerk-expo@2.11.6(an4he544yl3urvyz2xq7pk4dba)':
     dependencies:
       '@clerk/clerk-js': 5.67.1(@types/react@19.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@clerk/clerk-react': 5.31.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -9447,7 +9447,7 @@ snapshots:
     dependencies:
       invariant: 2.2.4
 
-  expo-router@5.0.7(1ec4dfeac4660ddc50b146643fb5e242):
+  expo-router@5.0.7(lpuomwg4ve6jbkleg3cbygc2ma):
     dependencies:
       '@expo/metro-runtime': 5.0.4(react-native@0.79.2(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))
       '@expo/server': 0.6.2

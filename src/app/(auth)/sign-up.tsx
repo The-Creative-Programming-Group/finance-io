@@ -11,7 +11,6 @@ import AppText from "~/components/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from "expo-image";
-import AppText from "~/components/AppText";
 import InputOtp from "~/components/ui/input-otp";
 
 type newErrorType = {
@@ -26,26 +25,21 @@ export default function SignUpScreen() {
   const { signIn } = useSignIn();
   const router = useRouter();
 
-  // New fields for design
-  const [firstname, setFirstname] = useState<string>("");
-  const [lastname, setLastname] = useState<string>("");
-  // Removed phoneNumber state
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [pendingVerification, setPendingVerification] =
-    useState<boolean>(false);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [pendingVerification, setPendingVerification] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [errors, setErrors] = useState<newErrorType>({});
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [otpCode, setOtpCode] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [otpCode, setOtpCode] = useState("");
 
-  // Validation helper
   const validate = () => {
     const newErrors: newErrorType = {};
     if (!firstname) newErrors.firstname = "First name is required";
     if (!lastname) newErrors.lastname = "Last name is required";
     if (!email) newErrors.email = "Email is required";
-    // Removed phone number validation
     if (!password) newErrors.password = "Password is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -55,43 +49,42 @@ export default function SignUpScreen() {
     if (!isLoaded) return;
     setError(null);
     if (!validate()) return;
-    setIsSubmitting(true);
 
+    setIsSubmitting(true);
     try {
       await signUp.create({
         emailAddress: email,
         password,
-        firstName: firstname,
-        lastName: lastname,
+        unsafeMetadata: {
+          firstName: firstname,
+          lastName: lastname,
+        },
       });
 
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
       setPendingVerification(true);
-      setError(null);
     } catch (err: any) {
       console.log("Sign up error:", err);
-
-      if (err.errors) {
-        const passwordError = err.errors.find(
-          (error: { code: string }) => error.code === "form_password_pwned",
-        );
-        const lengthError = err.errors.find(
-          (error: { code: string }) =>
-            error.code === "form_password_length_too_short",
-        );
-        setError(null);
-        if (passwordError)
-          setError(
-            "Your password has been found in a data breach, Please use a different password",
-          );
-        else if (lengthError)
-          setError("Your password must be at least 8 characters long");
-        else setError(err.errors[0]?.message || "Sign up failed");
+      if (err?.errors?.length) {
+        const clerkErr = err.errors[0];
+        switch (clerkErr.code) {
+          case "form_password_pwned":
+            setError(
+              "Your password has been found in a data breach. Please use a different one."
+            );
+            break;
+          case "form_password_length_too_short":
+            setError("Password must be at least 8 characters.");
+            break;
+          default:
+            setError(clerkErr.message || "Sign‑up failed.");
+        }
       } else {
-        setError("Unknown Error occurred");
+        setError("Unknown error occurred.");
       }
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const handleVerify = async () => {
@@ -149,7 +142,7 @@ export default function SignUpScreen() {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-5 flex items-center justify-center">
+        <View className="flex items-center justify-center mb-5">
           <Image
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
@@ -157,12 +150,12 @@ export default function SignUpScreen() {
           <AppText className="mb-5 text-center text-[30px] text-text dark:text-dark-text">
             Finance.io
           </AppText>
-          {pendingVerification ? (
-            <AppText className="mx-5 mb-20 flex text-text dark:text-dark-text">
+          {pendingVerification && (
+            <AppText className="flex mx-5 mb-20 text-text dark:text-dark-text">
               We have sent a verification code to your email address ({email}).
               Enter it here to continue.
             </AppText>
-          ) : null}
+          )}
         </View>
 
         {!pendingVerification ? (
