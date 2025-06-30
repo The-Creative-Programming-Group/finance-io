@@ -16,59 +16,52 @@ export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
   const router = useRouter();
 
-  const [emailAddress, setEmailAddress] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSignInPress = useCallback(async () => {
     if (!isLoaded) return;
     setError(null);
     setIsSubmitting(true);
+
     try {
       const signInAttempt = await signIn.create({
-        identifier: emailAddress,
-        password,
+        identifier: emailAddress.trim(),
+        password: password,
       });
+
       if (signInAttempt.status === "complete") {
         await setActive({ session: signInAttempt.createdSessionId });
         router.replace("../home");
       } else {
-        setError("Sign in failed. Please check your credentials");
-        console.error(JSON.stringify(signInAttempt, null, 2));
+        setError("Sign in failed. Please check your credentials.");
+        console.error("Sign in not complete:", JSON.stringify(signInAttempt, null, 2));
       }
-    } catch (err) {
-      // Type guard to check if err is an object and has 'errors' property
-      if (
-        typeof err === "object" &&
-        err !== null &&
-        "errors" in err &&
-        Array.isArray((err as any).errors)
-      ) {
-        const errors = (err as { errors: { code: string }[] }).errors;
-        const identifierError = errors.find(
-          (error) => error.code === "form_identifier_invalid",
-        );
-        const passwordError = errors.find(
-          (error) => error.code === "form_password_incorrect",
-        );
-        setError("Sign in failed");
-        if (identifierError) {
-          setError("User does not exist");
-        } else if (passwordError) {
-          setError("Your password is incorrect");
+    } catch (err: any) {
+      console.error("Sign in error:", JSON.stringify(err, null, 2));
+      if (err?.errors?.length > 0) {
+        const clerkError = err.errors[0];
+        switch (clerkError.code) {
+          case "form_identifier_not_found":
+            setError("No account found with this email.");
+            break;
+          case "form_password_incorrect":
+            setError("Incorrect password.");
+            break;
+          default:
+            setError(clerkError.message || "Sign in failed.");
         }
       } else {
-        setError("Unknown Error occurred");
-        console.error(JSON.stringify(err, null, 2));
+        setError("An unknown error occurred.");
       }
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   }, [isLoaded, emailAddress, password]);
+
   return (
-    // Use "padding" on iOS so the view shifts up smoothly when the keyboard appears.
-    // Use "height" on Android and other platforms to resize the view height when the keyboard is shown.
-    // This provides the best keyboard handling experience for each platform.
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
@@ -79,7 +72,7 @@ export default function Page() {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-5 flex-row items-center justify-center">
+        <View className="flex-row items-center justify-center mb-5">
           <Image
             source={require("../../assets/images/icon.png")}
             className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
@@ -91,6 +84,7 @@ export default function Page() {
             Finance.io
           </AppText>
         </View>
+
         <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
           Email
         </AppText>
@@ -103,8 +97,8 @@ export default function Page() {
           onChangeText={setEmailAddress}
           keyboardType="email-address"
           accessibilityLabel="Email input"
-          accessibilityHint="Enter your email address"
         />
+
         <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
           Password
         </AppText>
@@ -116,39 +110,51 @@ export default function Page() {
           secureTextEntry={true}
           onChangeText={setPassword}
           accessibilityLabel="Password input"
-          accessibilityHint="Enter your password"
         />
+
         {error && (
-          <AppText
-            semibold={true}
-            className="ml-6 mt-[5px] text-sm text-danger"
-          >
+          <AppText semibold className="ml-6 mt-[5px] text-sm text-danger">
             {error}
           </AppText>
         )}
+
+        <TouchableOpacity
+          onPress={() => router.push("/forget-password")}
+          accessibilityLabel="Forgot Password?"
+          accessibilityRole="link"
+        >
+          <AppText className="pt-3 font-medium text-left text-blue-500">
+            Forgot Password?
+          </AppText>
+        </TouchableOpacity>
+
         <TouchableOpacity
           onPress={onSignInPress}
           disabled={isSubmitting}
           accessibilityLabel={isSubmitting ? "Signing in" : "Sign in"}
           accessibilityRole="button"
-          className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
+          className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${
+            isSubmitting ? "opacity-50" : ""
+          }`}
         >
-          <AppText bold={true} className="text-text dark:text-dark-text">
+          <AppText bold className="text-text dark:text-dark-text">
             {isSubmitting ? "Signing In..." : "Sign In"}
           </AppText>
         </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={() => router.push("./sign-up")}
+          onPress={() => router.push("/sign-up")}
           accessibilityLabel="Create a new account"
           accessibilityRole="link"
         >
           <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            Don&apos;t have an account?{" "}
+            Don’t have an account?{" "}
             <AppText className="font-bold text-[#007AFF]">Sign up 🚀</AppText>
           </AppText>
         </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={() => router.push("./")}
+          onPress={() => router.push("/")}
           accessibilityLabel="Go to home"
           accessibilityRole="link"
         >

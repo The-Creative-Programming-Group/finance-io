@@ -18,7 +18,7 @@
   "dependencies": {
     "@clerk/clerk-expo": "^2.11.6",
     "@expo/server": "^0.5.3",
-    "@expo/vector-icons": "^14.0.2",
+    "@expo/vector-icons": "^14.1.0",
     "@neondatabase/serverless": "^1.0.0",
     "@react-native-community/datetimepicker": "8.3.0",
     "@react-navigation/bottom-tabs": "^7.2.0",
