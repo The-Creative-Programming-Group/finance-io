@@ -12,12 +12,12 @@ const DashboardContent: React.FC = () => {
 
   const handleAccountPress = (accountName: string, accountId: string) => {
     console.log(`Pressed ${accountName} with ID: ${accountId}`)
-    // Add navigation or modal logic here
+    // modal logic here
   }
 
   const handleCardPress = (cardName: string, cardId: string) => {
     console.log(`Pressed ${cardName} card with ID: ${cardId}`)
-    // Add navigation or modal logic here
+    // modal logic here
   }
 
   return (

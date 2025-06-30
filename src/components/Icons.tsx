@@ -39,7 +39,6 @@ export const PayPalIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
 )
 
 // DKB Icon with card-like background
-
 export const DKBIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <View style={{ width: cardWidth, height: cardHeight, marginTop: 4, marginRight: 4 }}>
     {/* Background card */}
@@ -106,7 +105,6 @@ export const DKBIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
     />
   </View>
 )
-
 // Revolut Icon with card-like background
 export const RevolutIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <View style={{ width: cardWidth, height: cardHeight, marginTop: 4, marginRight: 4 }}>
@@ -174,7 +172,6 @@ export const RevolutIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
     />
   </View>
 )
-
 // Depot Icon using actual bank image
 export const DepotIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <View
@@ -196,7 +193,6 @@ export const DepotIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
     />
   </View>
 )
-
 // Mastercard Logo using actual image
 export const MastercardLogo: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <Image
