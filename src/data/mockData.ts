@@ -43,7 +43,7 @@ export const mockDashboardData: DashboardData = {
       {
         id: "3",
         name: "Revolut",
-        amount: "12.232.93€",
+        amount: "12,232.93€",
         icon: React.createElement(RevolutIcon),
         type: "revolut",
       },
