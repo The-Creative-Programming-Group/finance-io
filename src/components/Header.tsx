@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ name }) => {
       style={[
         {
           width: "100%",
-          backgroundColor: "#121111",
+          backgroundColor: colors.background,
           paddingVertical: 16,
           paddingHorizontal: 16,
           borderBottomWidth: 1,
