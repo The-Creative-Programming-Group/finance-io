@@ -16,10 +16,10 @@
       "**/*"
     ],
     "fonts": {
-      "Raleway-SemiBold": "./assets/Raleway-SemiBold.ttf",
-      "Raleway-Medium": "./assets/Raleway-Medium.ttf",
-      "Raleway-Regular": "./assets/Raleway-Regular.ttf",
-      "Raleway-Bold": "./assets/Raleway-Bold.ttf"
+      "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
+      "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
+      "Raleway-Regular": "./src/assets/Raleway-Regular.ttf",
+      "Raleway-Bold": "./src/assets/Raleway-Bold.ttf"
     },
     "newArchEnabled": true,
     "ios": {
