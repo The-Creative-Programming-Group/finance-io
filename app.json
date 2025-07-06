@@ -4,11 +4,11 @@
     "slug": "finance-io",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "scheme": "finance-io",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,10 +16,10 @@
       "**/*"
     ],
     "fonts": {
-      "Raleway-SemiBold": "./assets/Raleway-SemiBold.ttf",
-      "Raleway-Medium": "./assets/Raleway-Medium.ttf",
-      "Raleway-Regular": "./assets/Raleway-Regular.ttf",
-      "Raleway-Bold": "./assets/Raleway-Bold.ttf"
+      "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
+      "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
+      "Raleway-Regular": "./src/assets/Raleway-Regular.ttf",
+      "Raleway-Bold": "./src/assets/Raleway-Bold.ttf"
     },
     "newArchEnabled": true,
     "ios": {
@@ -31,7 +31,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -40,7 +40,7 @@
     "web": {
       "bundler": "metro",
       "output": "server",
-      "favicon": "./assets/images/icon.png"
+      "favicon": "./src/assets/images/icon.png"
     },
     "plugins": [
       "expo-router"
