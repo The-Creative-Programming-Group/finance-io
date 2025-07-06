@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line no-restricted-imports
 import { Text, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 
@@ -41,6 +42,7 @@ export default function AppText({
         : "Raleway";
 
   return (
+    // eslint-disable-next-line no-restricted-syntax
     <Text className={className} style={{ fontFamily, ...style }} {...rest}>
       {children}
     </Text>

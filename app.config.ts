@@ -1,0 +1,49 @@
+import { ExpoConfig, ConfigContext } from "expo/config";
+
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "finance-io",
+  slug: "finance-io",
+  version: "1.0.0",
+  orientation: "portrait",
+  icon: "./src/assets/images/icon.png",
+  scheme: "finance-io",
+  userInterfaceStyle: "automatic",
+  splash: {
+    image: "./src/assets/images/splash.png",
+    resizeMode: "contain",
+    backgroundColor: "#ffffff",
+  },
+  assetBundlePatterns: ["**/*"],
+  newArchEnabled: true,
+  ios: {
+    supportsTablet: true,
+    bundleIdentifier: "com.creativeprogrammers.financeio",
+    infoPlist: {
+      ITSAppUsesNonExemptEncryption: false,
+    },
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: "./src/assets/images/adaptive-icon.png",
+      backgroundColor: "#ffffff",
+    },
+    edgeToEdgeEnabled: true,
+    package: "com.creativeprogrammers.financeio",
+  },
+  web: {
+    bundler: "metro",
+    output: "server",
+    favicon: "./src/assets/images/icon.png",
+  },
+  plugins: ["expo-router", "expo-font", "expo-web-browser"],
+  experiments: {
+    typedRoutes: true,
+  },
+  extra: {
+    EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY: {
+      default: null,
+      env: "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY",
+    },
+  },
+});
