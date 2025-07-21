@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextInput,
   View,
@@ -12,6 +12,9 @@ import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter, Link } from "expo-router";
 import { Image } from "expo-image";
 import InputOtp from "~/components/ui/input-otp";
+import { useTranslation } from "react-i18next";
+import "~/i18n";
+import { languageService } from "~/services/languageService";
 
 type newErrorType = {
   firstname?: string;
@@ -24,6 +27,22 @@ export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const { signIn } = useSignIn();
   const router = useRouter();
+  const { t } = useTranslation();
+
+  // Initialize language when component mounts with better error handling
+  useEffect(() => {
+    const initLanguage = async () => {
+      try {
+        console.log("Sign-up page: Initializing language...");
+        await languageService.initializeLanguage();
+        console.log("Sign-up page: Language initialized successfully");
+      } catch (error) {
+        console.error("Sign-up page: Error initializing language:", error);
+      }
+    };
+
+    initLanguage();
+  }, []);
 
   // New fields for design
   const [firstname, setFirstname] = useState<string>("");
@@ -41,11 +60,11 @@ export default function SignUpScreen() {
   // Validation helper
   const validate = () => {
     const newErrors: newErrorType = {};
-    if (!firstname) newErrors.firstname = "First name is required";
-    if (!lastname) newErrors.lastname = "Last name is required";
-    if (!email) newErrors.email = "Email is required";
+    if (!firstname) newErrors.firstname = t('firstNameRequired');
+    if (!lastname) newErrors.lastname = t('lastNameRequired');
+    if (!email) newErrors.email = t('emailRequired');
     // Removed phone number validation
-    if (!password) newErrors.password = "Password is required";
+    if (!password) newErrors.password = t('passwordRequired');
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -158,8 +177,7 @@ export default function SignUpScreen() {
           </AppText>
           {pendingVerification ? (
             <AppText className="mx-5 mb-20 flex text-text dark:text-dark-text">
-              We have sent a verification code to your email address ({email}).
-              Enter it here to continue.
+              {t('verificationCodeSent', { email })}
             </AppText>
           ) : null}
         </View>
@@ -167,11 +185,11 @@ export default function SignUpScreen() {
         {!pendingVerification ? (
           <>
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              First Name
+              {t('firstName')}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder="Enter first name"
+              placeholder={t('enterFirstName')}
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
@@ -183,11 +201,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              Last Name
+              {t('lastName')}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder="Enter last name"
+              placeholder={t('enterLastName')}
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
@@ -199,11 +217,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              Email
+              {t('email')}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder="Enter email"
+              placeholder={t('enterEmail')}
               placeholderTextColor="gray"
               value={email}
               onChangeText={setEmail}
@@ -217,11 +235,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              Password
+              {t('password')}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder="Enter password"
+              placeholder={t('enterPassword')}
               placeholderTextColor="gray"
               value={password}
               onChangeText={setPassword}
@@ -242,45 +260,35 @@ export default function SignUpScreen() {
             <TouchableOpacity
               onPress={handleSignup}
               disabled={isSubmitting}
-              accessibilityLabel="Sign Up"
+              accessibilityLabel={t('createAccount')}
               accessibilityHint="Create a new account"
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
               <AppText semibold={true} className="text-dark-text">
-                {isSubmitting ? "Signing Up..." : "Sign Up"}
+                {isSubmitting ? t('creatingAccount') : t('createAccount')}
               </AppText>
             </TouchableOpacity>
 
-            <Link
-              href="./sign-in"
-              className="pt-2.5 text-center text-text dark:text-dark-text"
-            >
-              Already have an account? Sign in 🥳
-            </Link>
-          </>
-        ) : (
-          <>
-            <InputOtp onCodeChange={setOtpCode} />
-            {error && (
-              <AppText className="ml-6 mt-[5px] text-sm text-danger">
-                {error}
-              </AppText>
-            )}
             <TouchableOpacity
-              onPress={handleVerify}
-              disabled={isSubmitting}
-              accessibilityLabel={
-                isSubmitting ? "Verifying code" : "Verify code"
-              }
-              accessibilityRole="button"
-              className={`mt-10 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
+              onPress={() => router.push("./sign-in")}
+              accessibilityLabel={t('alreadyHaveAccount')}
+              accessibilityHint="Sign in to your account"
+              accessibilityRole="link"
             >
-              <AppText className="font-bold text-text dark:text-dark-text">
-                {isSubmitting ? "Verifying..." : "Verify"}
+              <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
+                {t('alreadyHaveAccount')}{" "}
+                <AppText className="font-bold text-[#007AFF]">{t('signIn')}</AppText>
               </AppText>
             </TouchableOpacity>
           </>
+        ) : (
+          <InputOtp
+            value={otpCode}
+            onChange={setOtpCode}
+            onSubmit={handleVerify}
+            isSubmitting={isSubmitting}
+          />
         )}
       </ScrollView>
     </KeyboardAvoidingView>
