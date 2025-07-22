@@ -50,8 +50,8 @@ type LanguageKey = keyof typeof resources;
 // Get the device's locale for initial language
 const getDeviceLanguage = (): LanguageKey => {
     try {
-        const locale = Localization.getLocales()[0].languageCode as LanguageKey; // Get the language code without region
-        return resources[locale] ? locale : 'en'; // Default to English if locale not supported
+        const locale = Localization.getLocales()?.[0]?.languageCode as string | undefined;
+        if (!locale) return 'en';
     } catch (error) {
         console.error('Error detecting device language:', error);
         return 'en'; // Default to English on error

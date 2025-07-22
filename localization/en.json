@@ -15,7 +15,7 @@
   "createAccount": "Create Account",
   "creatingAccount": "Creating Account...",
   "alreadyHaveAccount": "Already have an account?",
-  "verificationCodeSent": "We have sent a verification code to your email address ({email}). Enter it here to continue.",
+  "verificationCodeSent": "We have sent a verification code to your email address {{email}}. Enter it here to continue.",
   "firstNameRequired": "First name is required",
   "lastNameRequired": "Last name is required",
   "emailRequired": "Email is required",

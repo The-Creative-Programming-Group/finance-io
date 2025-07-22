@@ -68,7 +68,7 @@ export default function Page() {
     if (!emailAddress.trim()) {
       newErrors.email = t('emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(emailAddress)) {
-      newErrors.email = t('invalidEmail', 'Please enter a valid email address');
+      newErrors.email = t('invalidEmail');
     }
 
     if (!password) {

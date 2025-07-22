@@ -15,7 +15,7 @@
   "createAccount": "ایجاد حساب کاربری",
   "creatingAccount": "در حال ایجاد حساب کاربری...",
   "alreadyHaveAccount": "آیا از قبل حساب دارید؟",
-  "verificationCodeSent": "ما یک کد تایید به آدرس ایمیل شما ({email}) ارسال کردیم. آن را اینجا وارد کنید.",
+  "verificationCodeSent": "ما یک کد تایید به آدرس ایمیل شما {{email}} ارسال کردیم. آن را اینجا وارد کنید.",
   "firstNameRequired": "نام لازمی است",
   "lastNameRequired": "نام خانوادگی لازمی است",
   "emailRequired": "ایمیل لازمی است",
