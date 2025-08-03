@@ -6,6 +6,7 @@ import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
 import { TRPCProvider } from '../components/TRPCProvider';
+import { ThemeProvider } from "~/contexts/ThemeContext";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -40,18 +41,20 @@ const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={publishableKey}
-    >
-      <ClerkLoaded>
-        <TRPCProvider>
-          <View className="bg-black flex-1">
-            <Slot />
-          </View>
-        </TRPCProvider>
-      </ClerkLoaded>
-    </ClerkProvider>
+    <ThemeProvider>
+      <ClerkProvider
+        tokenCache={tokenCache}
+        publishableKey={publishableKey}
+      >
+        <ClerkLoaded>
+          <TRPCProvider>
+            <View className="bg-black flex-1">
+              <Slot />
+            </View>
+          </TRPCProvider>
+        </ClerkLoaded>
+      </ClerkProvider>
+    </ThemeProvider>
   );
 }
 

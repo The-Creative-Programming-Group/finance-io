@@ -29,6 +29,7 @@
     "@trpc/client": "^11.1.2",
     "@trpc/react-query": "^11.1.2",
     "@trpc/server": "^11.1.2",
+    "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
     "expo": "~53.0.7",
@@ -66,6 +67,7 @@
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "superjson": "^2.2.2",
+    "tailwind-variants": "^1.0.0",
     "tailwindcss": "^3.4.17",
     "zod": "^3.25.46"
   },
