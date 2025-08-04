@@ -8,18 +8,18 @@
   "goToHome": "返回首页",
   "firstName": "名字",
   "lastName": "姓氏",
-  "enterFirstName": "输入名字",
-  "enterLastName": "输入姓氏",
-  "enterEmail": "输入电子邮箱",
-  "enterPassword": "输入密码",
+
+
+
+
   "createAccount": "创建账户",
   "creatingAccount": "正在创建账户...",
   "alreadyHaveAccount": "已有账户？",
   "verificationCodeSent": "我们已向您的电子邮箱 {{email}} 发送了验证码。请在此处输入以继续。",
-  "firstNameRequired": "名字为必填项",
-  "lastNameRequired": "姓氏为必填项",
-  "emailRequired": "电子邮箱为必填项",
-  "passwordRequired": "密码为必填项",
+
+
+
+
   "verificationFailed": "验证失败。请重试。",
   "invalidCode": "验证码无效。请重试。",
   "codeExpired": "验证码已过期。请请求新的验证码",
@@ -46,7 +46,7 @@
   "accountSetupIntro": "只需几个快速回答\n我们将为您设置\n完美的个人账户。",
   "connectFirstAccount": "连接您的第一个账户",
   "bankName": "银行名称",
-  "enterBankName": "输入您的银行名称",
+
   "currentAmount": "当前金额",
   "currentAmountPlaceholder": "2000.00",
   "enterCurrentAmount": "输入您账户中的当前金额",
@@ -64,24 +64,34 @@
   "accountCreated": "账户创建成功！",
   "accountCreationFailed": "账户创建失败",
   "resetLanguage": "恢复设备语言",
-  "bankNameRequired": "银行名称为必填项",
-  "bankNameTooShort": "银行名称必须至少包含2个字符",
-  "bankNameTooLong": "银行名称必须少于50个字符",
-  "bankNameFormat": "银行名称只能包含字母、数字、空格和连字符",
-  "amountNumeric": "金额必须是数字",
-  "amountPositive": "金额必须为正数",
-  "amountMin": "金额必须至少为0.01",
-  "referenceRequired": "参考为必填项",
-  "referenceTooShort": "参考必须至少包含2个字符",
-  "referenceTooLong": "参考必须少于50个字符",
-  "usageRequired": "用途为必填项",
-  "usageTooShort": "用途必须至少包含2个字符",
-  "usageTooLong": "用途必须少于50个字符",
+
+
+
+
+
+
+
+
+
+
+
+
+
   "invalidEmail": "请输入有效的电子邮箱地址",
   "signInFailed": "登录失败。请检查您的凭据",
   "userDoesNotExist": "用户不存在",
   "incorrectPassword": "您的密码不正确",
   "unknownError": "发生未知错误",
   "appName": "Finance.io",
-  "bankNamePlaceholder": "Revolut"
+  "bankNamePlaceholder": "Revolut",
+
+  "enterField": "请输入{{field}}",
+  "fieldRequired": "{{field}}为必填项",
+  "fieldTooShort": "{{field}}至少应为{{min}}个字符",
+  "fieldTooLong": "{{field}}必须少于{{max}}个字符",
+  "fieldFormat": "{{field}}只能包含{{format}}",
+
+  "itemNumeric": "{{item}}必须是数字",
+  "itemPositive": "{{item}}必须为正数",
+  "itemMin": "{{item}}必须至少为{{min}}"
 }

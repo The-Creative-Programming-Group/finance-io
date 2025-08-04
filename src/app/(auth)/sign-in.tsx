@@ -225,7 +225,7 @@ export default function Page() {
           </AppText>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => router.push("./")}
+          onPress={() => router.push("/") }
           accessibilityLabel="Go to home"
           accessibilityRole="link"
         >

@@ -8,18 +8,12 @@
   "goToHome": "کور پاڼې ته لاړ شئ",
   "firstName": "لومړی نوم",
   "lastName": "وروستی نوم",
-  "enterFirstName": "لومړی نوم دننه کړئ",
-  "enterLastName": "وروستی نوم دننه کړئ",
-  "enterEmail": "بریښنالیک دننه کړئ",
-  "enterPassword": "پټ نوم دننه کړئ",
+
   "createAccount": "حساب جوړول",
   "creatingAccount": "حساب جوړېږي...",
   "alreadyHaveAccount": "له مخکې حساب لرئ؟",
   "verificationCodeSent": "موږ ستاسو بریښنالیک ته {{email}} یو تصدیق کوډ لېږلی دی. د دوام لپاره یې دلته دننه کړئ.",
-  "firstNameRequired": "لومړی نوم اړین دی",
-  "lastNameRequired": "وروستی نوم اړین دی",
-  "emailRequired": "بریښنالیک اړین دی",
-  "passwordRequired": "پټ نوم اړین دی",
+
   "verificationFailed": "تصدیق ناکام شو. مهرباني وکړئ بیا هڅه وکړئ.",
   "invalidCode": "ناسم تصدیق کوډ. مهرباني وکړئ بیا هڅه وکړئ.",
   "codeExpired": "د تصدیق کوډ منقضي شوی. مهرباني وکړئ نوی کوډ وغواړئ",
@@ -46,16 +40,19 @@
   "accountSetupIntro": "یوازې څو چټک ځوابونه او\nموږ به ستاسو لپاره مثالي\nشخصي حساب تنظیم کړو.",
   "connectFirstAccount": "خپل لومړنی حساب وصل کړئ",
   "bankName": "د بانک نوم",
-  "enterBankName": "د خپل بانک نوم دننه کړئ",
+  "bankNamePlaceholder": "Revolut",
+
   "currentAmount": "اوسنۍ مقدار",
   "currentAmountPlaceholder": "۲۰۰۰.۰۰",
-  "enterCurrentAmount": "په خپل حساب کې اوسنۍ مقدار دننه کړئ",
+
   "reference": "مرجع",
   "referencePlaceholder": "سوداګري، شخصي، نور",
   "referenceHint": "د حساب لپاره مرجع",
+
   "usage": "کارول",
   "usagePlaceholder": "ورځنی، سپما حساب، امانت",
   "usageHint": "د حساب کارول، د بېلګې په توګه ورځنی، سپما حساب، امانت",
+
   "create": "جوړول",
   "creating": "جوړیږي...",
   "logout": "وتل",
@@ -64,24 +61,21 @@
   "accountCreated": "حساب په بریالیتوب سره جوړ شو!",
   "accountCreationFailed": "د حساب جوړول ناکام شول",
   "resetLanguage": "د وسیلې ژبې ته بیرته وګرځئ",
-  "bankNameRequired": "د بانک نوم اړین دی",
-  "bankNameTooShort": "د بانک نوم باید لږ تر لږه ۲ توري ولري",
-  "bankNameTooLong": "د بانک نوم باید له ۵۰ تورو څخه کم وي",
-  "bankNameFormat": "د بانک نوم کې یوازې توري، شمېرې، تشې او هایفن شامل کېدی شي",
-  "amountNumeric": "مقدار باید عددي وي",
-  "amountPositive": "مقدار باید مثبت وي",
-  "amountMin": "مقدار باید لږ تر لږه ۰.۰۱ وي",
-  "referenceRequired": "مرجع اړین ده",
-  "referenceTooShort": "مرجع باید لږ تر لږه ۲ توري ولري",
-  "referenceTooLong": "مرجع باید له ۵۰ تورو څخه کمه وي",
-  "usageRequired": "کارول اړین دي",
-  "usageTooShort": "کارول باید لږ تر لږه ۲ توري ولري",
-  "usageTooLong": "کارول باید له ۵۰ تورو څخه کم وي",
+
   "invalidEmail": "مهرباني وکړئ یو معتبر بریښنالیک آدرس دننه کړئ",
   "signInFailed": "ننوتل ناکام شول. مهرباني وکړئ خپل اعتبارلیکونه وګورئ",
   "userDoesNotExist": "کاروونکی شتون نلري",
   "incorrectPassword": "ستاسو پټ نوم ناسم دی",
   "unknownError": "ناپېژندل شوې تېروتنه رامنځته شوه",
   "appName": "Finance.io",
-  "bankNamePlaceholder": "Revolut"
+
+  "enterField": "{{field}} دننه کړئ",
+  "fieldRequired": "{{field}} اړین دی",
+  "fieldTooShort": "{{field}} باید لږ تر لږه {{min}} توري ولري",
+  "fieldTooLong": "{{field}} باید له {{max}} تورو څخه کم وي",
+  "fieldFormat": "{{field}} یوازې {{format}} لرلی شي",
+
+  "itemNumeric": "{{item}} باید عددي وي",
+  "itemPositive": "{{item}} باید مثبت وي",
+  "itemMin": "{{item}} باید لږ تر لږه {{min}} وي"
 }

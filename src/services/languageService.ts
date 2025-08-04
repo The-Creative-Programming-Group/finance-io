@@ -9,7 +9,9 @@ const DEVICE_LANG_KEY = 'finance_io_device_lang';
 // Get the device's locale 
 const getDeviceLanguage = (): string => {
     try {
-        return Localization.getLocales()[0].languageCode;
+        const locale = Localization.getLocales()?.[0]?.languageCode;
+        if (!locale) return 'en';
+        return locale;
     } catch (error) {
         console.error('Error detecting device language:', error);
         return 'en'; // Default to English on error
@@ -38,7 +40,9 @@ export const languageService = {
             const hasChanged = storedDeviceLang !== null && storedDeviceLang !== currentDeviceLang;
 
             // Update the stored device language
-            await SecureStore.setItemAsync(DEVICE_LANG_KEY, currentDeviceLang);
+            // Ensure currentDeviceLang is a string before storing
+            const deviceLangString = typeof currentDeviceLang === 'string' ? currentDeviceLang : 'en';
+            await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLangString);
 
             return hasChanged;
         } catch (error) {
@@ -50,8 +54,10 @@ export const languageService = {
     // Set a new language and store it in SecureStore
     setLanguage: async (language: string): Promise<void> => {
         try {
-            await SecureStore.setItemAsync(LANGUAGE_KEY, language);
-            await i18n.changeLanguage(language);
+            // Ensure language is a string before storing
+            const languageString = typeof language === 'string' ? language : 'en';
+            await SecureStore.setItemAsync(LANGUAGE_KEY, languageString);
+            await i18n.changeLanguage(languageString);
         } catch (error) {
             console.error('Error storing language:', error);
         }
@@ -62,9 +68,10 @@ export const languageService = {
         try {
             const deviceLang = getDeviceLanguage();
             // Store current device language
-            await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLang);
+            const deviceLangString = typeof deviceLang === 'string' ? deviceLang : 'en';
+            await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLangString);
             // Set as current language
-            await languageService.setLanguage(deviceLang);
+            await languageService.setLanguage(deviceLangString);
         } catch (error) {
             console.error('Error resetting to device language:', error);
         }
@@ -102,15 +109,17 @@ export const languageService = {
                 await SecureStore.setItemAsync(HAS_LAUNCHED_KEY, 'true');
 
                 // Store the current device language
-                await SecureStore.setItemAsync(DEVICE_LANG_KEY, currentDeviceLang);
+                const deviceLangString = typeof currentDeviceLang === 'string' ? currentDeviceLang : 'en';
+                await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLangString);
 
                 // Use device language
-                await i18n.changeLanguage(currentDeviceLang);
+                await i18n.changeLanguage(deviceLangString);
             }
             else if (deviceLangChanged && !storedLanguage) {
                 // If device language changed AND user hasn't explicitly set a language preference,
                 // update to new device language
-                await i18n.changeLanguage(currentDeviceLang);
+                const deviceLangString = typeof currentDeviceLang === 'string' ? currentDeviceLang : 'en';
+                await i18n.changeLanguage(deviceLangString);
             }
             else if (storedLanguage) {
                 // User has explicitly set a language preference, use that
@@ -118,7 +127,8 @@ export const languageService = {
             }
             else {
                 // No stored preference, use device language
-                await i18n.changeLanguage(currentDeviceLang);
+                const deviceLangString = typeof currentDeviceLang === 'string' ? currentDeviceLang : 'en';
+                await i18n.changeLanguage(deviceLangString);
             }
         } catch (error) {
             console.error('Error initializing language:', error);

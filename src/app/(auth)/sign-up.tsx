@@ -189,7 +189,7 @@ export default function SignUpScreen() {
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('enterFirstName')}
+              placeholder={t('John')}
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
@@ -205,7 +205,7 @@ export default function SignUpScreen() {
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('enterLastName')}
+              placeholder={t('Doe')}
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
@@ -221,7 +221,7 @@ export default function SignUpScreen() {
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('enterEmail')}
+              placeholder={t('jamesdoe@gmail.com')}
               placeholderTextColor="gray"
               value={email}
               onChangeText={setEmail}
@@ -239,7 +239,7 @@ export default function SignUpScreen() {
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('enterPassword')}
+              placeholder={t('**********')}
               placeholderTextColor="gray"
               value={password}
               onChangeText={setPassword}

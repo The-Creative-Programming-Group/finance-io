@@ -6,29 +6,27 @@
   "dontHaveAccount": "Noch kein Konto?",
   "signUp": "Registrieren",
   "goToHome": "Zur Startseite",
+
   "firstName": "Vorname",
   "lastName": "Nachname",
-  "enterFirstName": "Vorname eingeben",
-  "enterLastName": "Nachname eingeben",
-  "enterEmail": "E-Mail eingeben",
-  "enterPassword": "Passwort eingeben",
+
   "createAccount": "Konto erstellen",
   "creatingAccount": "Konto wird erstellt...",
   "alreadyHaveAccount": "Bereits ein Konto?",
-  "verificationCodeSent": "Wir haben einen Bestätigungscode an Ihre E-Mail-Adresse {{email}} gesendet. Geben Sie diesen hier ein, um fortzufahren.",
-  "firstNameRequired": "Vorname ist erforderlich",
-  "lastNameRequired": "Nachname ist erforderlich",
-  "emailRequired": "E-Mail ist erforderlich",
-  "passwordRequired": "Passwort ist erforderlich",
+
+  "verificationCodeSent": "Wir haben einen Bestätigungscode an Ihre E-Mail-Adresse {{email}} gesendet. Geben Sie ihn hier ein, um fortzufahren.",
   "verificationFailed": "Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
   "invalidCode": "Ungültiger Bestätigungscode. Bitte versuchen Sie es erneut.",
   "codeExpired": "Bestätigungscode ist abgelaufen. Bitte fordern Sie einen neuen Code an",
   "emailVerified": "E-Mail bereits verifiziert. Bitte melden Sie sich an.",
+
   "passwordBreached": "Ihr Passwort wurde in einem Datenleck gefunden. Bitte verwenden Sie ein anderes Passwort",
   "passwordTooShort": "Ihr Passwort muss mindestens 8 Zeichen lang sein",
+
   "introducing": "Wir stellen vor: Finance.io,",
   "introText": "die Zukunft der persönlichen Finanzen von den Machern der vertrauenswürdigen Weather.io und Chat.io.",
   "empowerText": "Finance.io ermöglicht Ihnen, die Kontrolle über Ihr Geld sicher, transparent und ohne Kompromisse zu übernehmen.",
+
   "pros": "Vorteile",
   "free": "Kostenlos",
   "highSecurity": "Hohe Sicherheit",
@@ -36,52 +34,59 @@
   "openSource": "Open Source",
   "noDataSelling": "Kein Datenverkauf",
   "whyUs": "Warum wir?",
+
   "googlePlay": "Google Play",
   "appStore": "App Store",
-  "openSourceDesc": "Durch die Übernahme von Open-Source-Prinzipien lädt Weather.io zur Zusammenarbeit und Innovation aus einer globalen Gemeinschaft von Entwicklern ein und stellt eine robuste und anpassbare Wetterlösung sicher, die auf Ihre Bedürfnisse zugeschnitten ist.",
-  "noAdsDesc": "Keine Werbung. Keine Ablenkungen. Nur eine saubere, fokussierte Erfahrung, die auf Ihr finanzielles Wohlbefinden ausgerichtet ist.",
-  "noDataSellingDesc": "Viele Apps verdienen Geld durch den Verkauf von Benutzerdaten, wir nicht. Ihr Vertrauen ist wichtiger.",
+
+  "openSourceDesc": "Durch die Übernahme von Open-Source-Prinzipien lädt Weather.io zur Zusammenarbeit und Innovation aus einer globalen Entwicklergemeinschaft ein und stellt eine robuste, anpassbare Wetterlösung bereit.",
+  "noAdsDesc": "Keine Werbung. Keine Ablenkungen. Nur ein sauberes, fokussiertes Erlebnis, das auf Ihr finanzielles Wohlbefinden ausgerichtet ist.",
+  "noDataSellingDesc": "Viele Apps verdienen Geld durch den Verkauf von Benutzerdaten – wir nicht. Ihr Vertrauen ist uns wichtiger.",
+
   "hello": "Hallo",
   "loading": "Wird geladen...",
+
   "accountSetupIntro": "Nur ein paar schnelle Antworten und\nwir richten das perfekte persönliche\nKonto für Sie ein.",
   "connectFirstAccount": "Verbinden Sie Ihr erstes Konto",
+
   "bankName": "Bankname",
-  "enterBankName": "Geben Sie Ihren Banknamen ein",
   "currentAmount": "Aktueller Betrag",
   "currentAmountPlaceholder": "2000.00",
-  "enterCurrentAmount": "Geben Sie den aktuellen Betrag in Ihrem Konto ein",
+
   "reference": "Referenz",
   "referencePlaceholder": "Geschäftlich, Privat, Sonstiges",
   "referenceHint": "Referenz für das Konto",
+
   "usage": "Verwendung",
   "usagePlaceholder": "Täglich, Sparkonto, Depot",
-  "usageHint": "Verwendung des Kontos, z.B. Täglich, Sparkonto, Depot",
+  "usageHint": "Verwendung des Kontos, z. B. täglich, Sparkonto, Depot",
+
   "create": "Erstellen",
   "creating": "Wird erstellt...",
   "logout": "Abmelden",
+
   "success": "Erfolg",
   "error": "Fehler",
   "accountCreated": "Konto erfolgreich erstellt!",
   "accountCreationFailed": "Kontoerstellung fehlgeschlagen",
+
   "resetLanguage": "Auf Gerätesprache zurücksetzen",
-  "bankNameRequired": "Bankname ist erforderlich",
-  "bankNameTooShort": "Bankname muss mindestens 2 Zeichen lang sein",
-  "bankNameTooLong": "Bankname muss weniger als 50 Zeichen lang sein",
-  "bankNameFormat": "Bankname darf nur Buchstaben, Zahlen, Leerzeichen und Bindestriche enthalten",
-  "amountNumeric": "Betrag muss numerisch sein",
-  "amountPositive": "Betrag muss positiv sein",
-  "amountMin": "Betrag muss mindestens 0,01 sein",
-  "referenceRequired": "Referenz ist erforderlich",
-  "referenceTooShort": "Referenz muss mindestens 2 Zeichen lang sein",
-  "referenceTooLong": "Referenz muss weniger als 50 Zeichen lang sein",
-  "usageRequired": "Verwendung ist erforderlich",
-  "usageTooShort": "Verwendung muss mindestens 2 Zeichen lang sein",
-  "usageTooLong": "Verwendung muss weniger als 50 Zeichen lang sein",
+
   "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
   "signInFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten",
   "userDoesNotExist": "Benutzer existiert nicht",
   "incorrectPassword": "Ihr Passwort ist falsch",
   "unknownError": "Ein unbekannter Fehler ist aufgetreten",
+
   "appName": "Finance.io",
-  "bankNamePlaceholder": "Revolut"
+  "bankNamePlaceholder": "Revolut",
+
+  "enterField": "{{field}} eingeben",
+  "fieldRequired": "{{field}} ist erforderlich",
+  "fieldTooShort": "{{field}} muss mindestens {{min}} Zeichen lang sein",
+  "fieldTooLong": "{{field}} muss weniger als {{max}} Zeichen lang sein",
+  "fieldFormat": "{{field}} darf nur {{format}} enthalten",
+
+  "itemNumeric": "{{item}} muss numerisch sein",
+  "itemPositive": "{{item}} muss positiv sein",
+  "itemMin": "{{item}} muss mindestens {{min}} sein"
 }

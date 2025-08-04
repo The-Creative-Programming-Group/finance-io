@@ -48,10 +48,11 @@ const resources = {
 type LanguageKey = keyof typeof resources;
 
 // Get the device's locale for initial language
-const getDeviceLanguage = (): LanguageKey => {
+const getDeviceLanguage = (): string => {
     try {
         const locale = Localization.getLocales()?.[0]?.languageCode as string | undefined;
         if (!locale) return 'en';
+        return locale;
     } catch (error) {
         console.error('Error detecting device language:', error);
         return 'en'; // Default to English on error
@@ -80,7 +81,9 @@ i18n
 (async () => {
     try {
         // Store current device language for future comparison
-        await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLanguage);
+        // Ensure deviceLanguage is a string before storing
+        const deviceLangString = typeof deviceLanguage === 'string' ? deviceLanguage : 'en';
+        await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLangString);
     } catch (error) {
         console.error('Error storing device language:', error);
     }
