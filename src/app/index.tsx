@@ -104,7 +104,6 @@ const LanguageDropdown = () => {
           <View className="absolute right-4 top-32 w-48 rounded-lg bg-secondary p-2 shadow-lg dark:bg-dark-secondary">
             {/* Scrollable language options */}
             <ScrollView
-              className="max-h-[240px]"
               showsVerticalScrollIndicator={true}
               scrollIndicatorInsets={{ right: 1 }}
               style={{ maxHeight: 150 }} // Show exactly 5 items (36px per item)
