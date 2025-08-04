@@ -59,18 +59,20 @@ function RootLayoutNav() {
   }, []);
 
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={publishableKey}
-    >
-      <ClerkLoaded>
-        <TRPCProvider>
-          <View className="bg-black flex-1">
-            <Slot />
-          </View>
-        </TRPCProvider>
-      </ClerkLoaded>
-    </ClerkProvider>
+    <ThemeProvider>
+      <ClerkProvider
+        tokenCache={tokenCache}
+        publishableKey={publishableKey}
+      >
+        <ClerkLoaded>
+          <TRPCProvider>
+            <View className="bg-black flex-1">
+              <Slot />
+            </View>
+          </TRPCProvider>
+        </ClerkLoaded>
+      </ClerkProvider>
+    </ThemeProvider>
   );
 }
 export default RootLayoutNav;
