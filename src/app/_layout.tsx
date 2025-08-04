@@ -6,6 +6,7 @@ import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
 import { TRPCProvider } from '../components/TRPCProvider';
+import { ThemeProvider } from "../contexts/ThemeContext";
 import { useTranslation } from "react-i18next";
 import "../i18n"; // Initialize i18n
 import { useEffect } from "react";
