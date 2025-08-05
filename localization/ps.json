@@ -62,7 +62,11 @@
   "accountCreationFailed": "د حساب جوړول ناکام شول",
   "resetLanguage": "د وسیلې ژبې ته بیرته وګرځئ",
 
+  "emailRequired": "بریښنالیک اړین دی",
   "invalidEmail": "مهرباني وکړئ یو معتبر بریښنالیک آدرس دننه کړئ",
+  "firstNameRequired": "لومړی نوم اړین دی",
+  "lastNameRequired": "تخلص اړین دی",
+  "passwordRequired": "پټ نوم اړین دی",
   "signInFailed": "ننوتل ناکام شول. مهرباني وکړئ خپل اعتبارلیکونه وګورئ",
   "userDoesNotExist": "کاروونکی شتون نلري",
   "incorrectPassword": "ستاسو پټ نوم ناسم دی",
@@ -77,5 +81,19 @@
 
   "itemNumeric": "{{item}} باید عددي وي",
   "itemPositive": "{{item}} باید مثبت وي",
-  "itemMin": "{{item}} باید لږ تر لږه {{min}} وي"
+  "itemMin": "{{item}} باید لږ تر لږه {{min}} وي",
+
+  "bankNameRequired": "د بانک نوم اړین دی",
+  "bankNameTooShort": "د بانک نوم باید لږترلږه 2 توري ولري",
+  "bankNameTooLong": "د بانک نوم باید له 50 تورو څخه کم وي",
+  "bankNameFormat": "د بانک نوم یوازې لیکونه، شمیرې، ځایونه او هایفنونه شاملولی شي",
+  "amountNumeric": "مقدار باید عددي وي",
+  "amountPositive": "مقدار باید مثبت وي",
+  "amountMin": "مقدار باید لږترلږه 0.01 وي",
+  "referenceRequired": "حواله اړینه ده",
+  "referenceTooShort": "حواله باید لږترلږه 2 توري ولري",
+  "referenceTooLong": "حواله باید له 50 تورو څخه کم وي",
+  "usageRequired": "کارول اړین دي",
+  "usageTooShort": "کارول باید لږترلږه 2 توري ولري",
+  "usageTooLong": "کارول باید له 50 تورو څخه کم وي"
 }

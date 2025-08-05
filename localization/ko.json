@@ -59,7 +59,11 @@
   "accountCreationFailed": "계좌 생성 실패",
   "resetLanguage": "기기 언어로 재설정",
 
-  "invalidEmail": "유효한 이메일 주소를 입력해주세요",
+  "emailRequired": "이메일은 필수 항목입니다",
+  "invalidEmail": "유효한 이메일 주소를 입력하세요",
+  "firstNameRequired": "이름은 필수입니다",
+  "lastNameRequired": "성은 필수입니다",
+  "passwordRequired": "비밀번호가 필요합니다",
   "signInFailed": "로그인 실패. 자격 증명을 확인하세요",
   "userDoesNotExist": "사용자가 존재하지 않습니다",
   "incorrectPassword": "비밀번호가 올바르지 않습니다",
@@ -75,5 +79,19 @@
 
   "itemNumeric": "{{item}}은 숫자여야 합니다",
   "itemPositive": "{{item}}은 양수여야 합니다",
-  "itemMin": "{{item}}은 최소 {{min}}이어야 합니다"
+  "itemMin": "{{item}}은 최소 {{min}}이어야 합니다",
+
+  "bankNameRequired": "은행 이름은 필수입니다",
+  "bankNameTooShort": "은행 이름은 최소 2자 이상이어야 합니다",
+  "bankNameTooLong": "은행 이름은 50자 미만이어야 합니다",
+  "bankNameFormat": "은행 이름에는 문자, 숫자, 공백 및 하이픈만 포함될 수 있습니다",
+  "amountNumeric": "금액은 숫자여야 합니다",
+  "amountPositive": "금액은 양수여야 합니다",
+  "amountMin": "금액은 최소 0.01 이상이어야 합니다",
+  "referenceRequired": "참조는 필수입니다",
+  "referenceTooShort": "참조는 최소 2자 이상이어야 합니다",
+  "referenceTooLong": "참조는 50자 미만이어야 합니다",
+  "usageRequired": "사용은 필수입니다",
+  "usageTooShort": "사용은 최소 2자 이상이어야 합니다",
+  "usageTooLong": "사용은 50자 미만이어야 합니다"
 }

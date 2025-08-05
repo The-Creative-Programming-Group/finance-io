@@ -47,6 +47,15 @@
   "reference": "Referencia",
   "referencePlaceholder": "Negocios, Privado, otros",
   "referenceHint": "Referencia para la cuenta",
+  "emailRequired": "El correo electrónico es obligatorio",
+  "invalidEmail": "Por favor, ingrese una dirección de correo electrónico válida",
+  "firstNameRequired": "El nombre es obligatorio",
+  "lastNameRequired": "El apellido es obligatorio",
+  "passwordRequired": "La contraseña es obligatoria",
+  "signInFailed": "Error al iniciar sesión. Por favor, verifique sus credenciales",
+  "userDoesNotExist": "El usuario no existe",
+  "incorrectPassword": "Su contraseña es incorrecta",
+  "unknownError": "Ocurrió un error desconocido",
   "usage": "Uso",
   "usagePlaceholder": "Diario, Cuenta de ahorro, Depósito",
   "usageHint": "Uso de la cuenta, por ejemplo Diario, Cuenta de ahorro, Depósito",
@@ -75,5 +84,19 @@
 
   "itemNumeric": "{{item}} debe ser numérico",
   "itemPositive": "{{item}} debe ser positivo",
-  "itemMin": "{{item}} debe ser al menos {{min}}"
+  "itemMin": "{{item}} debe ser al menos {{min}}",
+
+  "bankNameRequired": "El nombre del banco es obligatorio",
+  "bankNameTooShort": "El nombre del banco debe tener al menos 2 caracteres",
+  "bankNameTooLong": "El nombre del banco debe tener menos de 50 caracteres",
+  "bankNameFormat": "El nombre del banco solo puede contener letras, números, espacios y guiones",
+  "amountNumeric": "El monto debe ser numérico",
+  "amountPositive": "El monto debe ser positivo",
+  "amountMin": "El monto debe ser al menos 0,01",
+  "referenceRequired": "La referencia es obligatoria",
+  "referenceTooShort": "La referencia debe tener al menos 2 caracteres",
+  "referenceTooLong": "La referencia debe tener menos de 50 caracteres",
+  "usageRequired": "El uso es obligatorio",
+  "usageTooShort": "El uso debe tener al menos 2 caracteres",
+  "usageTooLong": "El uso debe tener menos de 50 caracteres"
 }

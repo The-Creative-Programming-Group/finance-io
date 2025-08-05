@@ -54,6 +54,15 @@
 
   "reference": "Referenz",
   "referencePlaceholder": "Geschäftlich, Privat, Sonstiges",
+  "emailRequired": "E-Mail ist erforderlich",
+  "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+  "firstNameRequired": "Vorname ist erforderlich",
+  "lastNameRequired": "Nachname ist erforderlich",
+  "passwordRequired": "Passwort ist erforderlich",
+  "signInFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten",
+  "userDoesNotExist": "Benutzer existiert nicht",
+  "incorrectPassword": "Ihr Passwort ist falsch",
+  "unknownError": "Unbekannter Fehler ist aufgetreten",
   "referenceHint": "Referenz für das Konto",
 
   "usage": "Verwendung",
@@ -72,6 +81,7 @@
   "resetLanguage": "Auf Gerätesprache zurücksetzen",
 
   "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+  "passwordRequired": "Passwort ist erforderlich",
   "signInFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten",
   "userDoesNotExist": "Benutzer existiert nicht",
   "incorrectPassword": "Ihr Passwort ist falsch",
@@ -88,5 +98,19 @@
 
   "itemNumeric": "{{item}} muss numerisch sein",
   "itemPositive": "{{item}} muss positiv sein",
-  "itemMin": "{{item}} muss mindestens {{min}} sein"
+  "itemMin": "{{item}} muss mindestens {{min}} sein",
+
+  "bankNameRequired": "Der Bankname ist erforderlich",
+  "bankNameTooShort": "Der Bankname muss mindestens 2 Zeichen lang sein",
+  "bankNameTooLong": "Der Bankname darf nicht länger als 50 Zeichen sein",
+  "bankNameFormat": "Der Bankname darf nur Buchstaben, Zahlen, Leerzeichen und Bindestriche enthalten",
+  "amountNumeric": "Der Betrag muss numerisch sein",
+  "amountPositive": "Der Betrag muss positiv sein",
+  "amountMin": "Der Betrag muss mindestens 0,01 betragen",
+  "referenceRequired": "Die Referenz ist erforderlich",
+  "referenceTooShort": "Die Referenz muss mindestens 2 Zeichen lang sein",
+  "referenceTooLong": "Die Referenz darf nicht länger als 50 Zeichen sein",
+  "usageRequired": "Die Nutzung ist erforderlich",
+  "usageTooShort": "Die Nutzung muss mindestens 2 Zeichen lang sein",
+  "usageTooLong": "Die Nutzung darf nicht länger als 50 Zeichen sein"
 }

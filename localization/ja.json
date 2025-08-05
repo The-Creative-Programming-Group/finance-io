@@ -59,7 +59,11 @@
   "accountCreationFailed": "アカウントの作成に失敗しました",
   "resetLanguage": "デバイス言語にリセット",
 
+  "emailRequired": "メールアドレスは必須です",
   "invalidEmail": "有効なメールアドレスを入力してください",
+  "firstNameRequired": "名は必須です",
+  "lastNameRequired": "姓は必須です",
+  "passwordRequired": "パスワードは必須です",
   "signInFailed": "ログインに失敗しました。資格情報を確認してください",
   "userDoesNotExist": "ユーザーが存在しません",
   "incorrectPassword": "パスワードが正しくありません",
@@ -75,5 +79,19 @@
 
   "itemNumeric": "{{item}}は数値である必要があります",
   "itemPositive": "{{item}}は正の数である必要があります",
-  "itemMin": "{{item}}は最低{{min}}である必要があります"
+  "itemMin": "{{item}}は最低{{min}}である必要があります",
+
+  "bankNameRequired": "銀行名は必須です",
+  "bankNameTooShort": "銀行名は2文字以上である必要があります",
+  "bankNameTooLong": "銀行名は50文字未満である必要があります",
+  "bankNameFormat": "銀行名には文字、数字、スペース、ハイフンのみを含めることができます",
+  "amountNumeric": "金額は数値である必要があります",
+  "amountPositive": "金額は正の値である必要があります",
+  "amountMin": "金額は最低0.01である必要があります",
+  "referenceRequired": "参照は必須です",
+  "referenceTooShort": "参照は2文字以上である必要があります",
+  "referenceTooLong": "参照は50文字未満である必要があります",
+  "usageRequired": "使用は必須です",
+  "usageTooShort": "使用は2文字以上である必要があります",
+  "usageTooLong": "使用は50文字未満である必要があります"
 }

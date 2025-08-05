@@ -59,7 +59,11 @@
   "accountCreationFailed": "खाता बनाने में विफल",
   "resetLanguage": "डिवाइस भाषा पर वापस जाएं",
 
-  "invalidEmail": "कृपया एक वैध ईमेल पता दर्ज करें",
+  "emailRequired": "ईमेल आवश्यक है",
+  "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें",
+  "firstNameRequired": "पहला नाम आवश्यक है",
+  "lastNameRequired": "अंतिम नाम आवश्यक है",
+  "passwordRequired": "पासवर्ड आवश्यक है",
   "signInFailed": "साइन इन विफल। कृपया अपने प्रमाण-पत्र जांचें",
   "userDoesNotExist": "उपयोगकर्ता मौजूद नहीं है",
   "incorrectPassword": "आपका पासवर्ड गलत है",
@@ -75,5 +79,19 @@
 
   "itemNumeric": "{{item}} संख्यात्मक होना चाहिए",
   "itemPositive": "{{item}} सकारात्मक होना चाहिए",
-  "itemMin": "{{item}} कम से कम {{min}} होना चाहिए"
+  "itemMin": "{{item}} कम से कम {{min}} होना चाहिए",
+
+  "bankNameRequired": "बैंक का नाम आवश्यक है",
+  "bankNameTooShort": "बैंक का नाम कम से कम 2 अक्षरों का होना चाहिए",
+  "bankNameTooLong": "बैंक का नाम 50 अक्षरों से कम होना चाहिए",
+  "bankNameFormat": "बैंक का नाम केवल अक्षर, संख्या, स्थान और हाइफ़न शामिल कर सकता है",
+  "amountNumeric": "राशि संख्यात्मक होनी चाहिए",
+  "amountPositive": "राशि सकारात्मक होनी चाहिए",
+  "amountMin": "राशि कम से कम 0.01 होनी चाहिए",
+  "referenceRequired": "संदर्भ आवश्यक है",
+  "referenceTooShort": "संदर्भ कम से कम 2 अक्षरों का होना चाहिए",
+  "referenceTooLong": "संदर्भ 50 अक्षरों से कम होना चाहिए",
+  "usageRequired": "उपयोग आवश्यक है",
+  "usageTooShort": "उपयोग कम से कम 2 अक्षरों का होना चाहिए",
+  "usageTooLong": "उपयोग 50 अक्षरों से कम होना चाहिए"
 }

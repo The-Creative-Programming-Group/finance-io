@@ -59,7 +59,11 @@
   "accountCreationFailed": "اکاؤنٹ بنانے میں ناکام",
   "resetLanguage": "ڈیوائس کی زبان پر واپس جائیں",
 
-  "invalidEmail": "براہ کرم ایک درست ای میل ایڈریس درج کریں",
+  "emailRequired": "ای میل ضروری ہے",
+  "invalidEmail": "براہ کرم درست ای میل پتہ درج کریں",
+  "firstNameRequired": "پہلا نام درکار ہے",
+  "lastNameRequired": "آخری نام درکار ہے",
+  "passwordRequired": "پاس ورڈ درکار ہے",
   "signInFailed": "سائن ان ناکام۔ براہ کرم اپنے اسناد چیک کریں",
   "userDoesNotExist": "صارف موجود نہیں ہے",
   "incorrectPassword": "آپ کا پاس ورڈ غلط ہے",
@@ -75,5 +79,19 @@
 
   "itemNumeric": "{{item}} عددی ہونا چاہیے",
   "itemPositive": "{{item}} مثبت ہونا چاہیے",
-  "itemMin": "{{item}} کم از کم {{min}} ہونا چاہیے"
+  "itemMin": "{{item}} کم از کم {{min}} ہونا چاہیے",
+
+  "bankNameRequired": "بینک کا نام ضروری ہے",
+  "bankNameTooShort": "بینک کا نام کم از کم 2 حروف کا ہونا چاہیے",
+  "bankNameTooLong": "بینک کا نام 50 حروف سے کم ہونا چاہیے",
+  "bankNameFormat": "بینک کا نام صرف حروف، نمبر، جگہیں اور ہائفن شامل کر سکتا ہے",
+  "amountNumeric": "رقم عددی ہونی چاہیے",
+  "amountPositive": "رقم مثبت ہونی چاہیے",
+  "amountMin": "رقم کم از کم 0.01 ہونی چاہیے",
+  "referenceRequired": "حوالہ ضروری ہے",
+  "referenceTooShort": "حوالہ کم از کم 2 حروف کا ہونا چاہیے",
+  "referenceTooLong": "حوالہ 50 حروف سے کم ہونا چاہیے",
+  "usageRequired": "استعمال ضروری ہے",
+  "usageTooShort": "استعمال کم از کم 2 حروف کا ہونا چاہیے",
+  "usageTooLong": "استعمال 50 حروف سے کم ہونا چاہیے"
 }

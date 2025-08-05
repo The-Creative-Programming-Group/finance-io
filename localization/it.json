@@ -46,6 +46,15 @@
   "enterCurrentAmount": "Inserisci l'importo attuale",
   "reference": "Riferimento",
   "referencePlaceholder": "Business, Privato, altro",
+  "emailRequired": "L'email è obbligatoria",
+  "invalidEmail": "Per favore inserisci un indirizzo email valido",
+  "firstNameRequired": "Il nome è obbligatorio",
+  "lastNameRequired": "Il cognome è obbligatorio",
+  "passwordRequired": "La password è obbligatoria",
+  "signInFailed": "Accesso fallito. Si prega di controllare le credenziali",
+  "userDoesNotExist": "L'utente non esiste",
+  "incorrectPassword": "La tua password è errata",
+  "unknownError": "Si è verificato un errore sconosciuto",
   "referenceHint": "Riferimento per il conto",
   "usage": "Utilizzo",
   "usagePlaceholder": "Quotidiano, Conto di risparmio, Deposito",
@@ -75,5 +84,19 @@
 
   "itemNumeric": "{{item}} deve essere numerico",
   "itemPositive": "{{item}} deve essere positivo",
-  "itemMin": "{{item}} deve essere almeno {{min}}"
+  "itemMin": "{{item}} deve essere almeno {{min}}",
+
+  "bankNameRequired": "Il nome della banca è obbligatorio",
+  "bankNameTooShort": "Il nome della banca deve contenere almeno 2 caratteri",
+  "bankNameTooLong": "Il nome della banca deve contenere meno di 50 caratteri",
+  "bankNameFormat": "Il nome della banca può contenere solo lettere, numeri, spazi e trattini",
+  "amountNumeric": "L'importo deve essere numerico",
+  "amountPositive": "L'importo deve essere positivo",
+  "amountMin": "L'importo deve essere almeno 0,01",
+  "referenceRequired": "Il riferimento è obbligatorio",
+  "referenceTooShort": "Il riferimento deve contenere almeno 2 caratteri",
+  "referenceTooLong": "Il riferimento deve contenere meno di 50 caratteri",
+  "usageRequired": "L'utilizzo è obbligatorio",
+  "usageTooShort": "L'utilizzo deve contenere almeno 2 caratteri",
+  "usageTooLong": "L'utilizzo deve contenere meno di 50 caratteri"
 }
