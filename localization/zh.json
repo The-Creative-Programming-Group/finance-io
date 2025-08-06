@@ -1,0 +1,114 @@
+{
+  "email": "电子邮箱",
+  "password": "密码",
+  "signIn": "登录",
+  "signingIn": "正在登录...",
+  "dontHaveAccount": "没有账户？",
+  "signUp": "注册",
+  "goToHome": "返回首页",
+  "firstName": "名字",
+  "lastName": "姓氏",
+
+
+
+
+  "createAccount": "创建账户",
+  "creatingAccount": "正在创建账户...",
+  "alreadyHaveAccount": "已有账户？",
+  "verificationCodeSent": "我们已向您的电子邮箱 {{email}} 发送了验证码。请在此处输入以继续。",
+
+
+
+
+  "verificationFailed": "验证失败。请重试。",
+  "invalidCode": "验证码无效。请重试。",
+  "codeExpired": "验证码已过期。请请求新的验证码",
+  "emailVerified": "电子邮箱已验证。请登录。",
+  "passwordBreached": "您的密码在数据泄露中被发现。请使用不同的密码",
+  "passwordTooShort": "您的密码必须至少包含8个字符",
+  "introducing": "介绍 Finance.io，",
+  "introText": "来自可靠的 Weather.io、Chat.io 创建者的个人财务未来。",
+  "empowerText": "Finance.io 使您能够安全、透明且不妥协地控制您的资金。",
+  "pros": "优势",
+  "free": "免费",
+  "highSecurity": "高安全性",
+  "noAds": "无广告",
+  "openSource": "开源",
+  "noDataSelling": "不出售数据",
+  "whyUs": "为什么选择我们？",
+  "googlePlay": "Google Play",
+  "appStore": "App Store",
+  "openSourceDesc": "通过采用开源原则，Weather.io 邀请全球开发者社区进行协作和创新，确保提供适合您需求的强大且可定制的天气解决方案。",
+  "noAdsDesc": "无广告。无干扰。仅是围绕您的财务福祉打造的干净、专注的体验。",
+  "noDataSellingDesc": "许多应用通过出售用户数据来赚钱，我们不会。您的信任更重要。",
+  "hello": "您好",
+  "loading": "加载中...",
+  "accountSetupIntro": "只需几个快速回答\n我们将为您设置\n完美的个人账户。",
+  "connectFirstAccount": "连接您的第一个账户",
+  "bankName": "银行名称",
+
+  "currentAmount": "当前金额",
+  "currentAmountPlaceholder": "2000.00",
+  "enterCurrentAmount": "输入您账户中的当前金额",
+  "reference": "参考",
+  "referencePlaceholder": "商业、个人、其他",
+  "referenceHint": "账户的参考",
+  "usage": "用途",
+  "usagePlaceholder": "日常、储蓄账户、存款",
+  "usageHint": "账户用途，例如日常、储蓄账户、存款",
+  "create": "创建",
+  "creating": "正在创建...",
+  "logout": "登出",
+  "success": "成功",
+  "error": "错误",
+  "accountCreated": "账户创建成功！",
+  "accountCreationFailed": "账户创建失败",
+  "resetLanguage": "恢复设备语言",
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "emailRequired": "电子邮箱是必填项",
+  "invalidEmail": "请输入有效的电子邮箱地址",
+  "firstNameRequired": "名字是必需的",
+  "lastNameRequired": "姓氏是必需的",
+  "passwordRequired": "密码是必需的",
+  "signInFailed": "登录失败。请检查您的凭据",
+  "userDoesNotExist": "用户不存在",
+  "incorrectPassword": "您的密码不正确",
+  "unknownError": "发生未知错误",
+  "appName": "Finance.io",
+  "bankNamePlaceholder": "Revolut",
+
+  "enterField": "请输入{{field}}",
+  "fieldRequired": "{{field}}为必填项",
+  "fieldTooShort": "{{field}}至少应为{{min}}个字符",
+  "fieldTooLong": "{{field}}必须少于{{max}}个字符",
+  "fieldFormat": "{{field}}只能包含{{format}}",
+
+  "itemNumeric": "{{item}}必须是数字",
+  "itemPositive": "{{item}}必须为正数",
+  "itemMin": "{{item}}必须至少为{{min}}",
+  "bankNameRequired": "银行名称是必需的",
+  "bankNameTooShort": "银行名称必须至少包含2个字符",
+  "bankNameTooLong": "银行名称必须少于50个字符",
+  "bankNameFormat": "银行名称只能包含字母、数字、空格和连字符",
+  "amountNumeric": "金额必须是数字",
+  "amountPositive": "金额必须为正数",
+  "amountMin": "金额必须至少为0.01",
+  "referenceRequired": "参考是必需的",
+  "referenceTooShort": "参考必须至少包含2个字符",
+  "referenceTooLong": "参考必须少于50个字符",
+  "usageRequired": "用途是必需的",
+  "usageTooShort": "用途必须至少包含2个字符",
+  "usageTooLong": "用途必须少于50个字符"
+}

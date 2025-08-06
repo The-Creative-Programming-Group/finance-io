@@ -1,6 +1,6 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   TextInput,
   View,
@@ -11,19 +11,85 @@ import {
 } from "react-native";
 import { Image } from "expo-image";
 import AppText from "~/components/AppText";
+import { useTranslation } from "react-i18next";
+import "~/i18n";
+import { languageService } from "~/services/languageService";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
   const router = useRouter();
+  const { t } = useTranslation();
+
+  // Initialize language when component mounts with better error handling
+  useEffect(() => {
+    const initLanguage = async () => {
+      try {
+        console.log("Sign-in page: Initializing language...");
+        await languageService.initializeLanguage();
+        console.log("Sign-in page: Language initialized successfully");
+      } catch (error) {
+        console.error("Sign-in page: Error initializing language:", error);
+      }
+    };
+
+    initLanguage();
+  }, []);
 
   const [emailAddress, setEmailAddress] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  // Clear field errors when user types
+  const handleEmailChange = (text: string) => {
+    setEmailAddress(text);
+    if (fieldErrors.email) {
+      setFieldErrors(prev => ({ ...prev, email: undefined }));
+    }
+  };
+
+  const handlePasswordChange = (text: string) => {
+    setPassword(text);
+    if (fieldErrors.password) {
+      setFieldErrors(prev => ({ ...prev, password: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: {
+      email?: string;
+      password?: string;
+    } = {};
+
+    if (!emailAddress.trim()) {
+      newErrors.email = t('emailRequired');
+    } else if (!/\S+@\S+\.\S+/.test(emailAddress)) {
+      newErrors.email = t('invalidEmail');
+    }
+
+    if (!password) {
+      newErrors.password = t('passwordRequired');
+    }
+
+    setFieldErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const onSignInPress = useCallback(async () => {
     if (!isLoaded) return;
+
+    // Reset previous errors
     setError(null);
+
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const signInAttempt = await signIn.create({
@@ -34,7 +100,7 @@ export default function Page() {
         await setActive({ session: signInAttempt.createdSessionId });
         router.replace("../home");
       } else {
-        setError("Sign in failed. Please check your credentials");
+        setError(t('signInFailed', 'Sign in failed. Please check your credentials'));
         console.error(JSON.stringify(signInAttempt, null, 2));
       }
     } catch (err) {
@@ -52,19 +118,20 @@ export default function Page() {
         const passwordError = errors.find(
           (error) => error.code === "form_password_incorrect",
         );
-        setError("Sign in failed");
+        setError(t('signInFailed', 'Sign in failed'));
         if (identifierError) {
-          setError("User does not exist");
+          setError(t('userDoesNotExist', 'User does not exist'));
         } else if (passwordError) {
-          setError("Your password is incorrect");
+          setError(t('incorrectPassword', 'Your password is incorrect'));
         }
       } else {
-        setError("Unknown Error occurred");
+        setError(t('unknownError', 'Unknown Error occurred'));
         console.error(JSON.stringify(err, null, 2));
       }
     }
     setIsSubmitting(false);
-  }, [isLoaded, emailAddress, password]);
+  }, [isLoaded, emailAddress, password, t]);
+
   return (
     // Use "padding" on iOS so the view shifts up smoothly when the keyboard appears.
     // Use "height" on Android and other platforms to resize the view height when the keyboard is shown.
@@ -92,32 +159,42 @@ export default function Page() {
           </AppText>
         </View>
         <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
-          Email
+          {t('email')}
         </AppText>
         <TextInput
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           autoCapitalize="none"
           value={emailAddress}
-          placeholder="Enter email"
+          placeholder={t('email')}
           placeholderTextColor="gray"
-          onChangeText={setEmailAddress}
+          onChangeText={handleEmailChange}
           keyboardType="email-address"
           accessibilityLabel="Email input"
           accessibilityHint="Enter your email address"
         />
+        {fieldErrors.email && (
+          <AppText className="ml-6 text-sm text-danger">
+            {fieldErrors.email}
+          </AppText>
+        )}
         <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-          Password
+          {t('password')}
         </AppText>
         <TextInput
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           value={password}
-          placeholder="Enter password"
+          placeholder={t('password')}
           placeholderTextColor="gray"
           secureTextEntry={true}
-          onChangeText={setPassword}
+          onChangeText={handlePasswordChange}
           accessibilityLabel="Password input"
           accessibilityHint="Enter your password"
         />
+        {fieldErrors.password && (
+          <AppText className="ml-6 text-sm text-danger">
+            {fieldErrors.password}
+          </AppText>
+        )}
         {error && (
           <AppText
             semibold={true}
@@ -134,7 +211,7 @@ export default function Page() {
           className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
         >
           <AppText bold={true} className="text-text dark:text-dark-text">
-            {isSubmitting ? "Signing In..." : "Sign In"}
+            {isSubmitting ? t('signingIn') : t('signIn')}
           </AppText>
         </TouchableOpacity>
         <TouchableOpacity
@@ -143,17 +220,17 @@ export default function Page() {
           accessibilityRole="link"
         >
           <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            Don&apos;t have an account?{" "}
-            <AppText className="font-bold text-[#007AFF]">Sign up 🚀</AppText>
+            {t('dontHaveAccount')}{" "}
+            <AppText className="font-bold text-[#007AFF]">{t('signUp')}</AppText>
           </AppText>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => router.push("./")}
+          onPress={() => router.push("/") }
           accessibilityLabel="Go to home"
           accessibilityRole="link"
         >
           <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            Go to Home
+            {t('goToHome')}
           </AppText>
         </TouchableOpacity>
       </ScrollView>

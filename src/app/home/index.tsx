@@ -3,7 +3,6 @@ import {
   ScrollView,
   TouchableOpacity,
   View,
-  Image,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -11,6 +10,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import AppText from '~/components/AppText';
+import { Image } from 'expo-image';
 import { useClerk, useUser } from '@clerk/clerk-expo';
 import { useRouter } from 'expo-router';
 import { Link } from 'lucide-react-native';
@@ -18,26 +18,29 @@ import { trpc } from '../../utils/trpc';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
+import "~/i18n";
+import { languageService } from '~/services/languageService';
 
 // Form validation schema
-const welcomeSchema = z.object({
+const welcomeSchema = (t: any) => z.object({
   bankName: z.string()
-    .min(1, { message: "Bank name is required" })
-    .min(2, { message: "Bank name must be at least 2 characters" })
-    .max(50, { message: "Bank name must be less than 50 characters" })
-    .regex(/^[a-zA-Z0-9\s-]+$/, { message: "Bank name can only contain letters, numbers, spaces, and hyphens" }),
+    .min(1, { message: t('bankNameRequired', 'Bank name is required') })
+    .min(2, { message: t('bankNameTooShort', 'Bank name must be at least 2 characters') })
+    .max(50, { message: t('bankNameTooLong', 'Bank name must be less than 50 characters') })
+    .regex(/^[a-zA-Z0-9\s-]+$/, { message: t('bankNameFormat', 'Bank name can only contain letters, numbers, spaces, and hyphens') }),
   currentAmount: z.coerce
-    .number({ invalid_type_error: 'Amount must be numeric' })
-    .positive('Amount must be positive')
-    .min(0.01, 'Amount must be at least 0.01'),
+    .number({ invalid_type_error: t('amountNumeric', 'Amount must be numeric') })
+    .positive(t('amountPositive', 'Amount must be positive'))
+    .min(0.01, t('amountMin', 'Amount must be at least 0.01')),
   reference: z.string()
-    .min(1, { message: "Reference is required" })
-    .min(2, { message: "Reference must be at least 2 characters" })
-    .max(50, { message: "Reference must be less than 50 characters" }),
+    .min(1, { message: t('referenceRequired', 'Reference is required') })
+    .min(2, { message: t('referenceTooShort', 'Reference must be at least 2 characters') })
+    .max(50, { message: t('referenceTooLong', 'Reference must be less than 50 characters') }),
   usage: z.string()
-    .min(1, { message: "Usage is required" })
-    .min(2, { message: "Usage must be at least 2 characters" })
-    .max(50, { message: "Usage must be less than 50 characters" }),
+    .min(1, { message: t('usageRequired', 'Usage is required') })
+    .min(2, { message: t('usageTooShort', 'Usage must be at least 2 characters') })
+    .max(50, { message: t('usageTooLong', 'Usage must be less than 50 characters') }),
 });
 
 type WelcomeSchema = z.infer<typeof welcomeSchema>;
@@ -48,15 +51,31 @@ const Home = () => {
   const router = useRouter();
   const colorScheme = useColorScheme();
   const [amountDisplay, setAmountDisplay] = useState('');
+  const { t } = useTranslation();
+
+  // Initialize language when component mounts with better error handling
+  useEffect(() => {
+    const initLanguage = async () => {
+      try {
+        console.log("Home page: Initializing language...");
+        await languageService.initializeLanguage();
+        console.log("Home page: Language initialized successfully");
+      } catch (error) {
+        console.error("Home page: Error initializing language:", error);
+      }
+    };
+
+    initLanguage();
+  }, []);
 
   const createAccount = trpc.account.create.useMutation({
     onSuccess: () => {
-      Alert.alert('Success', 'Account created successfully!');
+      Alert.alert(t('success'), t('accountCreated'));
       reset();
       setAmountDisplay('');
     },
     onError: (error) => {
-      Alert.alert('Error', error.message || 'Failed to create account');
+      Alert.alert(t('error'), error.message || t('accountCreationFailed'));
     },
   });
 
@@ -68,7 +87,7 @@ const Home = () => {
     formState: { errors, isSubmitting },
     setValue,
   } = useForm<WelcomeSchema>({
-    resolver: zodResolver(welcomeSchema),
+    resolver: zodResolver(welcomeSchema(t)),
     defaultValues: {
       bankName: "",
       currentAmount: 0,
@@ -110,13 +129,13 @@ const Home = () => {
           </AppText>
         </View>
         <AppText className="mt-10 text-text dark:text-dark-text font-bold text-center text-lg">
-          {isLoaded && user ? `Hello ${user.firstName}! 👋` : 'Loading...'}
+          {isLoaded && user ? `${t('hello')} ${user.firstName}! 👋` : t('loading')}
         </AppText>
         {/* Setting up account information */}
         <View className="flex-1 justify-center items-center mt-5 mx-5">
           <View className="items-start w-full">
             <AppText className="text-text dark:text-dark-text text-1xl font-semibold text-center w-full">
-              Just a few quick answers and{`\n`}we&apos;ll set up the perfect personal {`\n`}account for you.
+              {t('accountSetupIntro')}
             </AppText>
           </View>
         </View>
@@ -128,12 +147,12 @@ const Home = () => {
             style={{ marginRight: 8 }}
           />
           <AppText className="text-text dark:text-dark-text font-bold text-center text-lg">
-            Connect your first Account
+            {t('connectFirstAccount')}
           </AppText>
         </View>
         {/*Input Fields*/}
         <AppText className="mt-5 ml-6 text-base font-bold text-text dark:text-dark-text">
-          Bank Name
+          {t('bankName')}
         </AppText>
         <Controller
           control={control}
@@ -143,8 +162,10 @@ const Home = () => {
               <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/bank.png')}
-                  className="w-[17px] h-[17px]"
-                  style={{ resizeMode: 'contain' }}
+                  style={{ width: 17, height: 17 }}
+                  contentFit="contain"
+                  transition={300}
+                  priority="high"
                 />
               </View>
               <TextInput
@@ -153,8 +174,8 @@ const Home = () => {
                 placeholderTextColor="gray"
                 autoCapitalize="none"
                 keyboardType="default"
-                accessibilityLabel="Bank name"
-                accessibilityHint="Enter your bank name"
+                accessibilityLabel={t('bankName')}
+                accessibilityHint={t('enterBankName')}
                 value={value}
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -170,7 +191,7 @@ const Home = () => {
         )}
 
         <AppText className="mt-2 ml-6 text-base font-bold text-text dark:text-dark-text">
-          Current Amount
+          {t('currentAmount')}
         </AppText>
         <Controller
           control={control}
@@ -180,18 +201,20 @@ const Home = () => {
               <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/money.png')}
-                  className="w-[17px] h-[17px]"
-                  style={{ resizeMode: 'contain' }}
+                  style={{ width: 17, height: 17 }}
+                  contentFit="contain"
+                  transition={300}
+                  priority="high"
                 />
               </View>
               <TextInput
                 className="flex-1 text-text dark:text-dark-text"
-                placeholder="2000.00"
+                placeholder={t('currentAmountPlaceholder', '2000.00')}
                 placeholderTextColor="gray"
                 autoCapitalize="none"
                 keyboardType="decimal-pad"
-                accessibilityLabel="Current amount"
-                accessibilityHint="Enter the current amount in your account"
+                accessibilityLabel={t('currentAmount')}
+                accessibilityHint={t('enterCurrentAmount')}
                 value={amountDisplay}
                 onBlur={onBlur}
                 onChangeText={(text) => {
@@ -229,7 +252,7 @@ const Home = () => {
         )}
 
         <AppText className="mt-2 ml-6 text-base font-bold text-text dark:text-dark-text">
-          Reference
+          {t('reference')}
         </AppText>
         <Controller
           control={control}
@@ -239,18 +262,20 @@ const Home = () => {
               <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/reference.png')}
-                  className="w-[20px] h-[20px]"
-                  style={{ resizeMode: 'contain' }}
+                  style={{ width: 20, height: 20 }}
+                  contentFit="contain"
+                  transition={300}
+                  priority="high"
                 />
               </View>
               <TextInput
                 className="flex-1 text-text dark:text-dark-text"
-                placeholder="Business, Private, others"
+                placeholder={t('referencePlaceholder')}
                 placeholderTextColor="gray"
                 autoCapitalize="none"
                 keyboardType="default"
-                accessibilityLabel="Reference"
-                accessibilityHint="Reference for the account"
+                accessibilityLabel={t('reference')}
+                accessibilityHint={t('referenceHint')}
                 value={value}
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -265,7 +290,7 @@ const Home = () => {
         )}
 
         <AppText className="mt-2 ml-6 text-base font-bold text-text dark:text-dark-text">
-          Usage
+          {t('usage')}
         </AppText>
         <Controller
           control={control}
@@ -275,18 +300,20 @@ const Home = () => {
               <View className="w-[35px] h-[35px] bg-primary dark:bg-dark-primary rounded-full items-center justify-center mr-2.5">
                 <Image
                   source={require('../../assets/Icons/usage.png')}
-                  className="w-[17px] h-[17px]"
-                  style={{ resizeMode: 'contain' }}
+                  style={{ width: 17, height: 17 }}
+                  contentFit="contain"
+                  transition={300}
+                  priority="high"
                 />
               </View>
               <TextInput
                 className="flex-1 text-text dark:text-dark-text"
-                placeholder="Daily, Safe Account, Depot"
+                placeholder={t('usagePlaceholder')}
                 placeholderTextColor="gray"
                 autoCapitalize="none"
                 keyboardType="default"
-                accessibilityLabel="Usage"
-                accessibilityHint="Usage of the account, e.g. Daily, Safe Account, Depot"
+                accessibilityLabel={t('usage')}
+                accessibilityHint={t('usageHint')}
                 value={value}
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -307,14 +334,14 @@ const Home = () => {
           disabled={isSubmitting}
         >
           <AppText className="text-primary text-base font-semibold">
-            {isSubmitting ? 'Creating...' : 'Create'}
+            {isSubmitting ? t('creating') : t('create')}
           </AppText>
         </TouchableOpacity>
         <TouchableOpacity
           className="mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5"
           onPress={handleLogout}
         >
-          <AppText>Logout</AppText>
+          <AppText>{t('logout')}</AppText>
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
