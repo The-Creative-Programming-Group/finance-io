@@ -2,9 +2,9 @@ name: Expo EAS Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -44,6 +44,15 @@ jobs:
 
       - name: Install EAS CLI
         run: npm install -g eas-cli
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+      - name: ESLint check
+        run: npx eslint . --max-warnings=0
+
+      - name: Prettier formatting check
+        run: npx prettier --check .
 
       # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
 
