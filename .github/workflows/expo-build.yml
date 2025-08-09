@@ -62,11 +62,12 @@ jobs:
 
       - name: Download Android APK
         if: env.EXPO_TOKEN != ''
-        run: eas build:download --platform android --latest --path ./app.apk
+        run: eas build:download --platform android --profile preview --latest --path ./app.aab
 
-      - name: Upload APK Artifact
+      # ...existing code...
+      - name: Upload Android artifact
         if: env.EXPO_TOKEN != ''
         uses: actions/upload-artifact@v4
         with:
-          name: android-apk
-          path: ./app.apk
+          name: android-aab
+          path: ./app.aab
