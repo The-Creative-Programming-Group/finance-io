@@ -29,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Cache npm modules
         uses: actions/cache@v3
@@ -43,7 +43,7 @@ jobs:
         run: npm ci
 
       - name: Install EAS CLI
-        run: npm install -g eas-cli
+        run: npm install -g eas-cli@16.17.4
 
       - name: TypeScript type check
         run: npx tsc --noEmit
