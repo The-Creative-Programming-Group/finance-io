@@ -2,13 +2,25 @@ name: Expo EAS Build
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: expo-eas-build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -19,19 +31,32 @@ jobs:
         with:
           node-version: 18
 
+      - name: Cache npm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: Authenticate with Expo
-        run: eas whoami || eas login --token ${{ secrets.EXPO_TOKEN }}
+      # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
 
       - name: Build Android APK
-        run: eas build --platform android --non-interactive --profile preview --output=./app.apk
+        if: env.EXPO_TOKEN != ''
+        run: eas build --platform android --non-interactive --profile preview --wait
+
+      - name: Download Android APK
+        if: env.EXPO_TOKEN != ''
+        run: eas build:download --platform android --latest --path ./app.apk
 
       - name: Upload APK Artifact
+        if: env.EXPO_TOKEN != ''
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
