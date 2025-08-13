@@ -38,6 +38,14 @@ Create `.env.local` with these REQUIRED variables:
 - Fix formatting: `pnpm format:write` -- takes 2-3 seconds
 - ALWAYS run `pnpm format:write` before committing changes
 
+### PR Documentation Standards
+
+**MANDATORY for all PRs:**
+
+- Include walkthrough video OR multiple screenshots showing changes
+- Visual proof of functionality working as expected
+- Before/after comparisons when fixing bugs or updating UI
+
 ### Database Operations
 
 - Generate migrations: `pnpm drizzle-kit generate` -- takes <1 second
@@ -144,6 +152,33 @@ src/
 - API calls should use tRPC procedures defined in `src/server/routers/`
 - Database operations should use Drizzle ORM queries
 
+### PR Documentation Requirements
+
+**REQUIRED for every PR:**
+
+For every pull request, you MUST provide visual documentation:
+
+- **Either**: A walkthrough video showing what was changed and how it works
+- **Or**: Screenshots/images demonstrating the changes made
+
+This visual documentation should:
+
+- Show the before/after state when applicable
+- Demonstrate the functionality being added/fixed
+- Include relevant UI changes or error states
+- Be included in PR comments or description
+
+### Self-Reflection and Learning
+
+After completing each task or receiving feedback, you must:
+
+- Reflect on what was learned from the experience
+- Identify patterns, mistakes, or improvements for future work
+- Update these instructions automatically when new learnings emerge
+- Document any new best practices or gotchas discovered
+
+This ensures continuous improvement and better assistance over time.
+
 ### Validation Checklist
 
 Before completing any changes:
@@ -154,3 +189,5 @@ Before completing any changes:
 - [ ] Check browser console for new errors or warnings
 - [ ] Verify internationalization works if touching language-related code
 - [ ] Test authentication flow if modifying auth-related features
+- [ ] **Provide visual documentation (video walkthrough OR screenshots)**
+- [ ] **Complete self-reflection and update instructions if needed**

@@ -9,16 +9,10 @@
   "firstName": "名字",
   "lastName": "姓氏",
 
-
-
-
   "createAccount": "创建账户",
   "creatingAccount": "正在创建账户...",
   "alreadyHaveAccount": "已有账户？",
   "verificationCodeSent": "我们已向您的电子邮箱 {{email}} 发送了验证码。请在此处输入以继续。",
-
-
-
 
   "verificationFailed": "验证失败。请重试。",
   "invalidCode": "验证码无效。请重试。",
@@ -64,18 +58,6 @@
   "accountCreated": "账户创建成功！",
   "accountCreationFailed": "账户创建失败",
   "resetLanguage": "恢复设备语言",
-
-
-
-
-
-
-
-
-
-
-
-
 
   "emailRequired": "电子邮箱是必填项",
   "invalidEmail": "请输入有效的电子邮箱地址",
