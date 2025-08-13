@@ -125,6 +125,7 @@ src/
 ### Common Issues
 
 - **Missing Clerk key**: Will show authentication errors - this is expected without valid keys
+- **Clerk subdomain blocking**: Clerk uses subdomains like `right-hare-8.clerk.accounts.dev`. Allowlists need `*.clerk.accounts.dev` or the specific subdomain, not just `clerk.accounts.dev`
 - **Database connection**: Drizzle commands require valid DATABASE_URL
 - **Environment variables**: Must be in `.env.local` file, not just `.env`
 - **Build errors**: Usually resolved by running `pnpm format:write` first
