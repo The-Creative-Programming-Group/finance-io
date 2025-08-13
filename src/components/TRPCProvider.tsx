@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { httpBatchLink } from "@trpc/client";
-import { trpc } from "../utils/trpc";
-import superjson from "superjson";
-import { Platform } from "react-native";
-import { useAuth } from "@clerk/clerk-expo";
+import React, { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { httpBatchLink } from '@trpc/client';
+import { trpc } from '../utils/trpc';
+import superjson from 'superjson';
+import { Platform } from 'react-native';
+import { useAuth } from '@clerk/clerk-expo';
 
 interface TRPCProviderProps {
   children: React.ReactNode;
@@ -21,11 +21,11 @@ export function TRPCProvider({ children }: TRPCProviderProps) {
     // If you're ever wondering why it's not just a static URL, it's so we don't have to keep changing code for local vs prod/dev builds.
     const baseUrl =
       process.env.EXPO_PUBLIC_API_URL ||
-      (Platform.OS === "android"
-        ? "http://10.0.2.2:8081" // Android emulator
-        : Platform.OS === "ios"
-          ? "http://localhost:8081" // iOS simulator
-          : "https://api.example.com"); // fallback just in case
+      (Platform.OS === 'android'
+        ? 'http://10.0.2.2:8081' // Android emulator
+        : Platform.OS === 'ios'
+          ? 'http://localhost:8081' // iOS simulator
+          : 'https://api.example.com'); // fallback just in case
 
     // Reminder: Always set EXPO_PUBLIC_API_URL for production or device testing.
     // Localhost won't work from a real device, so this is just for our local workflow.

@@ -1,21 +1,21 @@
-import type React from "react";
-import { createContext, useContext, type ReactNode } from "react";
-import { useColorScheme } from "react-native";
+import type React from "react"
+import { createContext, useContext, type ReactNode } from "react"
+import { useColorScheme } from "react-native"
 
 interface ThemeColors {
-  background: string;
-  cardBackground: string;
-  text: string;
-  textSecondary: string;
-  accent: string;
-  border: string;
-  success: string;
-  primary: string;
+  background: string
+  cardBackground: string
+  text: string
+  textSecondary: string
+  accent: string
+  border: string
+  success: string
+  primary: string
 }
 
 interface ThemeContextType {
-  colors: ThemeColors;
-  isDark: boolean;
+  colors: ThemeColors
+  isDark: boolean
 }
 
 const lightColors: ThemeColors = {
@@ -27,7 +27,7 @@ const lightColors: ThemeColors = {
   border: "#e0e0e0",
   success: "#00ff88",
   primary: "#007AFF",
-};
+}
 
 const darkColors: ThemeColors = {
   background: "#000000",
@@ -38,28 +38,22 @@ const darkColors: ThemeColors = {
   border: "#333333",
   success: "#00ff88",
   primary: "#0A84FF",
-};
+}
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const colors = isDark ? darkColors : lightColors;
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const colorScheme = useColorScheme()
+  const isDark = colorScheme === "dark"
+  const colors = isDark ? darkColors : lightColors
 
-  return (
-    <ThemeContext.Provider value={{ colors, isDark }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+  return <ThemeContext.Provider value={{ colors, isDark }}>{children}</ThemeContext.Provider>
+}
 
 export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
+  const context = useContext(ThemeContext)
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error("useTheme must be used within a ThemeProvider")
   }
-  return context;
-};
+  return context
+}

@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/neon-serverless";
-import { neon, neonConfig } from "@neondatabase/serverless";
+import { neon, neonConfig } from '@neondatabase/serverless';
 import { env } from "../env";
 
 neonConfig.useSecureWebSocket = true;

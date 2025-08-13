@@ -1,15 +1,15 @@
-import type React from "react";
-import { View, TouchableOpacity } from "react-native";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
-import AppText from "./AppText";
+import type React from "react"
+import { View, TouchableOpacity } from "react-native"
+import Animated, { FadeInDown } from "react-native-reanimated"
+import { useTheme } from "../contexts/ThemeContext"
+import AppText from "./AppText"
 
 interface AccountItemProps {
-  icon: React.ReactNode;
-  name: string;
-  amount: string;
-  delay?: number;
-  onPress?: () => void;
+  icon: React.ReactNode
+  name: string
+  amount: string
+  delay?: number
+  onPress?: () => void
 }
 
 export const AccountItem: React.FC<AccountItemProps> = ({
@@ -19,9 +19,9 @@ export const AccountItem: React.FC<AccountItemProps> = ({
   delay = 0,
   onPress,
 }) => {
-  const { colors } = useTheme();
+  const { colors } = useTheme()
 
-  const Component = onPress ? TouchableOpacity : View;
+  const Component = onPress ? TouchableOpacity : View
 
   return (
     <Animated.View
@@ -31,13 +31,13 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       <Component
         onPress={onPress}
         activeOpacity={onPress ? 0.7 : 1}
-        className="flex-row items-center rounded-xl border px-5 py-4"
+        className="flex-row items-center py-4 px-5 rounded-xl border"
         style={{
           backgroundColor: colors.cardBackground,
           borderColor: colors.border,
         }}
       >
-        <View className="mr-4 h-10 w-10">{icon}</View>
+        <View className="w-10 h-10 mr-4">{icon}</View>
 
         <AppText
           medium
@@ -56,5 +56,5 @@ export const AccountItem: React.FC<AccountItemProps> = ({
         </AppText>
       </Component>
     </Animated.View>
-  );
-};
+  )
+}

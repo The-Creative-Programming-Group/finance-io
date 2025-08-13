@@ -5,7 +5,7 @@ import { env } from "../env";
 import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
-import { TRPCProvider } from "../components/TRPCProvider";
+import { TRPCProvider } from '../components/TRPCProvider';
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { useTranslation } from "react-i18next";
 import "../i18n"; // Initialize i18n
@@ -61,7 +61,10 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider>
-      <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+      <ClerkProvider
+        tokenCache={tokenCache}
+        publishableKey={publishableKey}
+      >
         <ClerkLoaded>
           <TRPCProvider>
             <View className="bg-black flex-1">
@@ -74,3 +77,4 @@ function RootLayoutNav() {
   );
 }
 export default RootLayoutNav;
+

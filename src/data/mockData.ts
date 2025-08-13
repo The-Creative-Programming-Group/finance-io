@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  PayPalIcon,
-  DKBIcon,
-  RevolutIcon,
-  DepotIcon,
-} from "../components/Icons";
-import type { DashboardData } from "../types";
+import React from "react"
+import { PayPalIcon, DKBIcon, RevolutIcon, DepotIcon } from "../components/Icons"
+import type { DashboardData } from "../types"
 
 export const mockDashboardData: DashboardData = {
   user: {
@@ -63,4 +58,4 @@ export const mockDashboardData: DashboardData = {
       },
     ],
   },
-};
+}

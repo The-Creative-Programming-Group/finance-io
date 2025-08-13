@@ -1,10 +1,4 @@
-import {
-  View,
-  ScrollView,
-  useColorScheme,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { View, ScrollView, useColorScheme, TouchableOpacity, Modal } from "react-native";
 // import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "expo-router";
 import React, { useState, useEffect } from "react";
@@ -21,11 +15,11 @@ import { useAuth } from "@clerk/clerk-expo";
 import { Image } from "expo-image";
 import { useTranslation } from "react-i18next";
 import { languageService } from "~/services/languageService";
-import * as Localization from "expo-localization";
+import * as Localization from 'expo-localization';
 
 const LanguageDropdown = () => {
   const [visible, setVisible] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState<string>("en");
+  const [currentLanguage, setCurrentLanguage] = useState<string>('en');
   const { i18n } = useTranslation();
 
   const languages = [
@@ -44,7 +38,7 @@ const LanguageDropdown = () => {
     { code: "ko", label: "한국어" },
     { code: "zh", label: "中文" },
     { code: "tr", label: "Türkçe" },
-    { code: "ru", label: "Русский" },
+    { code: "ru", label: "Русский" }
   ];
 
   // Load the stored language when component mounts
@@ -67,11 +61,11 @@ const LanguageDropdown = () => {
       setCurrentLanguage(lng);
     };
 
-    i18n.on("languageChanged", changeLanguageHandler);
+    i18n.on('languageChanged', changeLanguageHandler);
 
     return () => {
       // Clean up listener when component unmounts
-      i18n.off("languageChanged", changeLanguageHandler);
+      i18n.off('languageChanged', changeLanguageHandler);
     };
   }, []);
 
@@ -93,9 +87,7 @@ const LanguageDropdown = () => {
         accessibilityLabel="Change language"
         accessibilityRole="button"
       >
-        <AppText className="text-base text-text dark:text-dark-text">
-          🌐
-        </AppText>
+        <AppText className="text-base text-text dark:text-dark-text">🌐</AppText>
       </TouchableOpacity>
 
       <Modal
@@ -120,7 +112,7 @@ const LanguageDropdown = () => {
                 <TouchableOpacity
                   key={lang.code}
                   onPress={() => handleLanguageChange(lang.code)}
-                  className={`active:bg-gray-200 dark:active:bg-gray-700 rounded-md p-2 ${currentLanguage === lang.code ? "bg-gray-200 dark:bg-gray-700" : ""}`}
+                  className={`rounded-md p-2 active:bg-gray-200 dark:active:bg-gray-700 ${currentLanguage === lang.code ? 'bg-gray-200 dark:bg-gray-700' : ''}`}
                   accessibilityLabel={`Switch to ${lang.label}`}
                   accessibilityRole="button"
                 >
@@ -142,6 +134,7 @@ export default function Index() {
   const scheme = useColorScheme();
   const { isSignedIn, isLoaded } = useAuth();
   const { t } = useTranslation();
+
 
   if (isSignedIn) {
     return <Redirect href={"../home"} />;
@@ -170,60 +163,59 @@ export default function Index() {
             />
             <View className="w-6/12">
               <AppText className="text-md ml-6 text-text dark:text-dark-text">
-                <AppText bold={true}>{t("introducing")}</AppText>{" "}
-                {t("introText")}
+                <AppText bold={true}>{t('introducing')}</AppText> {t('introText')}
               </AppText>
               <AppText className="text-md ml-6 mt-12 text-text dark:text-dark-text">
-                {t("empowerText")}
+                {t('empowerText')}
               </AppText>
             </View>
           </View>
           <View className={"mt-12 flex-col items-center"}>
             <AppText className="text-2xl text-text dark:text-dark-text">
-              {t("pros")}
+              {t('pros')}
             </AppText>
             <View>
               <View className="mt-8 flex-row">
                 <CircleCheck color={iconBackground} fill={iconColor} />
                 <AppText className="ml-2 text-lg text-text dark:text-dark-text">
-                  {t("free")}
+                  {t('free')}
                 </AppText>
               </View>
               <View className="flex-row">
                 <CircleCheck color={iconBackground} fill={iconColor} />
                 <AppText className="ml-2 text-lg text-text dark:text-dark-text">
-                  {t("highSecurity")}
+                  {t('highSecurity')}
                 </AppText>
               </View>
               <View className="flex-row">
                 <CircleCheck color={iconBackground} fill={iconColor} />
                 <AppText className="ml-2 text-lg text-text dark:text-dark-text">
-                  {t("noAds")}
+                  {t('noAds')}
                 </AppText>
               </View>
               <View className="flex-row">
                 <CircleCheck color={iconBackground} fill={iconColor} />
                 <AppText className="ml-2 text-lg text-text dark:text-dark-text">
-                  {t("openSource")}
+                  {t('openSource')}
                 </AppText>
               </View>
               <View className="flex-row">
                 <CircleCheck color={iconBackground} fill={iconColor} />
                 <AppText className="ml-2 text-lg text-text dark:text-dark-text">
-                  {t("noDataSelling")}
+                  {t('noDataSelling')}
                 </AppText>
               </View>
             </View>
           </View>
           <View className="w-full flex-row items-center justify-center">
-            <View className="mt-12 h-12 flex-row items-center justify-center rounded-lg bg-accent px-6">
+            <View className="mt-12 h-12 px-6 flex-row items-center justify-center rounded-lg bg-accent">
               <Link href={"/sign-up"}>
                 <AppText
                   medium={true}
                   className={"text-xl"}
                   style={{ color: "white" }}
                 >
-                  {t("signUp")}
+                  {t('signUp')}
                 </AppText>
               </Link>
             </View>
@@ -233,7 +225,7 @@ export default function Index() {
               bold={true}
               className="mb-5 text-lg text-text dark:text-dark-text"
             >
-              {t("whyUs")}
+              {t('whyUs')}
             </AppText>
             <CircleArrowDown size={30} color={iconColor} />
           </View>
@@ -245,7 +237,7 @@ export default function Index() {
                 contentFit="contain"
               />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
-                {t("googlePlay")}
+                {t('googlePlay')}
               </AppText>
             </View>
             <Image
@@ -263,51 +255,46 @@ export default function Index() {
                 contentFit="contain"
               />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
-                {t("appStore")}
+                {t('appStore')}
               </AppText>
             </View>
             <Image
               className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
               source={require("../assets/images/InstallAppStore.png")}
-              style={{
-                width: 250,
-                height: 250,
-                aspectRatio: 1,
-                borderRadius: 16,
-              }}
+              style={{ width: 250, height: 250, aspectRatio: 1, borderRadius: 16 }}
             />
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row justify-center">
               <Github color={iconColor} />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
-                {t("openSource")}
+                {t('openSource')}
               </AppText>
             </View>
             <AppText className="w-7/12 text-text dark:text-dark-text">
-              {t("openSourceDesc")}
+              {t('openSourceDesc')}
             </AppText>
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row justify-center">
               <Tv color={iconColor} />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
-                {t("noAds")}
+                {t('noAds')}
               </AppText>
             </View>
             <AppText className="w-7/12 text-text dark:text-dark-text">
-              {t("noAdsDesc")}
+              {t('noAdsDesc')}
             </AppText>
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row justify-center">
               <Database color={iconColor} />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
-                {t("noDataSelling")}
+                {t('noDataSelling')}
               </AppText>
             </View>
             <AppText className="w-7/12 text-text dark:text-dark-text">
-              {t("noDataSellingDesc")}
+              {t('noDataSellingDesc')}
             </AppText>
           </View>
         </View>
