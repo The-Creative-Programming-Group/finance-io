@@ -126,6 +126,8 @@ src/
 
 - **Missing Clerk key**: Will show authentication errors - this is expected without valid keys
 - **Clerk subdomain blocking**: Clerk uses subdomains like `right-hare-8.clerk.accounts.dev`. Allowlists need `*.clerk.accounts.dev` or the specific subdomain, not just `clerk.accounts.dev`
+- **ERR_BLOCKED_BY_CLIENT errors**: When testing with Clerk authentication, this typically indicates subdomain blocking rather than browser configuration issues
+- **ExpoSecureStore errors in web**: Expected behavior - ExpoSecureStore is mobile-only and will fail in web environment
 - **Database connection**: Drizzle commands require valid DATABASE_URL
 - **Environment variables**: Must be in `.env.local` file, not just `.env`
 - **Build errors**: Usually resolved by running `pnpm format:write` first
