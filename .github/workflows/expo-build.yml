@@ -28,7 +28,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 10.12.1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: ESLint check
@@ -46,7 +46,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 10.12.1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Prettier formatting check
@@ -64,7 +64,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 10.12.1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: TypeScript type check
@@ -85,7 +85,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 10.12.1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Install EAS CLI
