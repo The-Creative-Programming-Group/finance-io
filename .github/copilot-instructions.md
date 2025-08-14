@@ -125,8 +125,13 @@ src/
 ### Common Issues
 
 - **Missing Clerk key**: Will show authentication errors - this is expected without valid keys
-- **Clerk subdomain blocking**: Clerk uses subdomains like `right-hare-8.clerk.accounts.dev`. Allowlists need `*.clerk.accounts.dev` or the specific subdomain, not just `clerk.accounts.dev`
-- **ERR_BLOCKED_BY_CLIENT errors**: When testing with Clerk authentication, this typically indicates subdomain blocking rather than browser configuration issues
+- **Clerk subdomain blocking**: Clerk authentication requires multiple domains to be allowlisted:
+  - Main subdomain: `right-hare-8.clerk.accounts.dev` (varies by app)
+  - API endpoints: `/v1/client`, `/v1/environment`, and other `/v1/*` paths
+  - Allowlists need `*.clerk.accounts.dev` wildcard or specific subdomain + API paths
+  - Just `clerk.accounts.dev` is insufficient for full functionality
+- **ERR_BLOCKED_BY_CLIENT errors**: Usually indicates authentication service blocking rather than browser issues
+- **Authentication service dependencies**: Auth providers often require multiple related domains/endpoints
 - **ExpoSecureStore errors in web**: Expected behavior - ExpoSecureStore is mobile-only and will fail in web environment
 - **Database connection**: Drizzle commands require valid DATABASE_URL
 - **Environment variables**: Must be in `.env.local` file, not just `.env`
@@ -169,6 +174,8 @@ This visual documentation should:
 - Show the before/after state when applicable
 - Demonstrate the functionality being added/fixed
 - Include relevant UI changes or error states
+- **Must be actual application screenshots**, not placeholder or demo images
+- Show real functionality working in the actual application environment
 - Be included in PR comments or description
 
 ### Self-Reflection and Learning
