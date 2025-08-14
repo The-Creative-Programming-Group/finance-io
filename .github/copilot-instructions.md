@@ -127,9 +127,10 @@ src/
 - **Missing Clerk key**: Will show authentication errors - this is expected without valid keys
 - **Clerk subdomain blocking**: Clerk authentication requires multiple domains to be allowlisted:
   - Main subdomain: `right-hare-8.clerk.accounts.dev` (varies by app)
+  - JavaScript resources: `/npm/@clerk/clerk-js@5/dist/clerk.browser.js` and other `/npm/*` paths
   - API endpoints: `/v1/client`, `/v1/environment`, and other `/v1/*` paths
-  - Allowlists need `*.clerk.accounts.dev` wildcard or specific subdomain + API paths
-  - Just `clerk.accounts.dev` is insufficient for full functionality
+  - Allowlists need `*.clerk.accounts.dev` wildcard or specific subdomain + resource paths
+  - Just `clerk.accounts.dev` is insufficient - requires full path allowlisting
 - **ERR_BLOCKED_BY_CLIENT errors**: Usually indicates authentication service blocking rather than browser issues
 - **Authentication service dependencies**: Auth providers often require multiple related domains/endpoints
 - **ExpoSecureStore errors in web**: Expected behavior - ExpoSecureStore is mobile-only and will fail in web environment
