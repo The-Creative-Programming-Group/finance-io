@@ -133,6 +133,11 @@ src/
   - Just `clerk.accounts.dev` is insufficient - requires full path allowlisting
 - **ERR_BLOCKED_BY_CLIENT errors**: Usually indicates authentication service blocking rather than browser issues
 - **Authentication service dependencies**: Auth providers often require multiple related domains/endpoints
+- **Authentication service complexity**: External auth services require comprehensive allowlisting:
+  - Base domains are insufficient - need specific resource paths
+  - Blocking occurs at specific resource URLs, not just domain level  
+  - Multiple retries and specific error patterns help identify exact blocked resources
+  - Testing reveals exact allowlist requirements for production environments
 - **ExpoSecureStore errors in web**: Expected behavior - ExpoSecureStore is mobile-only and will fail in web environment
 - **Database connection**: Drizzle commands require valid DATABASE_URL
 - **Environment variables**: Must be in `.env.local` file, not just `.env`
