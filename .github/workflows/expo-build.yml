@@ -25,15 +25,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Cache npm modules
-        uses: actions/cache@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 8
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: ESLint check
         run: npx eslint . --max-warnings=0
 
@@ -46,15 +43,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Cache npm modules
-        uses: actions/cache@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 8
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Prettier formatting check
         run: npx prettier --check .
 
@@ -67,15 +61,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Cache npm modules
-        uses: actions/cache@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 8
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: TypeScript type check
         run: npx tsc --noEmit
 
@@ -91,17 +82,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Cache npm modules
-        uses: actions/cache@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 8
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Install EAS CLI
-        run: npm install -g eas-cli@16.17.4
+        run: pnpm add -g eas-cli@16.17.4
       # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
       - name: Build Android APK
         if: env.EXPO_TOKEN != ''
