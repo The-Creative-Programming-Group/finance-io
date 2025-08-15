@@ -60,11 +60,11 @@ export default function SignUpScreen() {
   // Validation helper
   const validate = () => {
     const newErrors: newErrorType = {};
-    if (!firstname) newErrors.firstname = t('firstNameRequired');
-    if (!lastname) newErrors.lastname = t('lastNameRequired');
-    if (!email) newErrors.email = t('emailRequired');
+    if (!firstname) newErrors.firstname = t("firstNameRequired");
+    if (!lastname) newErrors.lastname = t("lastNameRequired");
+    if (!email) newErrors.email = t("emailRequired");
     // Removed phone number validation
-    if (!password) newErrors.password = t('passwordRequired');
+    if (!password) newErrors.password = t("passwordRequired");
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -177,7 +177,7 @@ export default function SignUpScreen() {
           </AppText>
           {pendingVerification ? (
             <AppText className="mx-5 mb-20 flex text-text dark:text-dark-text">
-              {t('verificationCodeSent', { email })}
+              {t("verificationCodeSent", { email })}
             </AppText>
           ) : null}
         </View>
@@ -185,11 +185,11 @@ export default function SignUpScreen() {
         {!pendingVerification ? (
           <>
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('firstName')}
+              {t("firstName")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('John')}
+              placeholder={t("John")}
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
@@ -201,11 +201,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('lastName')}
+              {t("lastName")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('Doe')}
+              placeholder={t("Doe")}
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
@@ -217,11 +217,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('email')}
+              {t("email")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('jamesdoe@gmail.com')}
+              placeholder={t("jamesdoe@gmail.com")}
               placeholderTextColor="gray"
               value={email}
               onChangeText={setEmail}
@@ -235,11 +235,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('password')}
+              {t("password")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('**********')}
+              placeholder={t("**********")}
               placeholderTextColor="gray"
               value={password}
               onChangeText={setPassword}
@@ -260,25 +260,27 @@ export default function SignUpScreen() {
             <TouchableOpacity
               onPress={handleSignup}
               disabled={isSubmitting}
-              accessibilityLabel={t('createAccount')}
+              accessibilityLabel={t("createAccount")}
               accessibilityHint="Create a new account"
               accessibilityRole="button"
               className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
               <AppText semibold={true} className="text-dark-text">
-                {isSubmitting ? t('creatingAccount') : t('createAccount')}
+                {isSubmitting ? t("creatingAccount") : t("createAccount")}
               </AppText>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => router.push("./sign-in")}
-              accessibilityLabel={t('alreadyHaveAccount')}
+              accessibilityLabel={t("alreadyHaveAccount")}
               accessibilityHint="Sign in to your account"
               accessibilityRole="link"
             >
               <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-                {t('alreadyHaveAccount')}{" "}
-                <AppText className="font-bold text-[#007AFF]">{t('signIn')}</AppText>
+                {t("alreadyHaveAccount")}{" "}
+                <AppText className="font-bold text-[#007AFF]">
+                  {t("signIn")}
+                </AppText>
               </AppText>
             </TouchableOpacity>
           </>
