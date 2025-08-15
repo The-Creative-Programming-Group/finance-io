@@ -78,7 +78,12 @@ const welcomeSchema = (t: any) =>
       }),
   });
 
-type WelcomeSchema = z.infer<typeof welcomeSchema>;
+type WelcomeFormValues = {
+  bankName: string;
+  currentAmount: number;
+  reference: string;
+  usage: string;
+};
 
 const Home = () => {
   const { signOut } = useClerk();
@@ -121,7 +126,7 @@ const Home = () => {
     reset,
     formState: { errors, isSubmitting },
     setValue,
-  } = useForm<WelcomeSchema>({
+  } = useForm<WelcomeFormValues>({
     resolver: zodResolver(welcomeSchema(t)),
     defaultValues: {
       bankName: "",
@@ -132,7 +137,7 @@ const Home = () => {
     mode: "onChange", // Validate on change
   });
 
-  const handleCreateAccount = async (data: WelcomeSchema) => {
+  const handleCreateAccount = async (data: WelcomeFormValues) => {
     await createAccount.mutateAsync({
       ...data,
       currentAmount: data.currentAmount,

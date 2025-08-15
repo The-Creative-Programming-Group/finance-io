@@ -285,12 +285,20 @@ export default function SignUpScreen() {
             </TouchableOpacity>
           </>
         ) : (
-          <InputOtp
-            value={otpCode}
-            onChange={setOtpCode}
-            onSubmit={handleVerify}
-            isSubmitting={isSubmitting}
-          />
+          <>
+            <InputOtp onCodeChange={setOtpCode} />
+            <TouchableOpacity
+              onPress={handleVerify}
+              disabled={isSubmitting}
+              accessibilityLabel={t("verify")}
+              accessibilityRole="button"
+              className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
+            >
+              <AppText semibold={true} className="text-dark-text">
+                {isSubmitting ? "Verifying..." : "Verify"}
+              </AppText>
+            </TouchableOpacity>
+          </>
         )}
       </ScrollView>
     </KeyboardAvoidingView>
