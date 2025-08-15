@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: ESLint check
-        run: npx eslint . --max-warnings=0
+        run: pnpm exec eslint . --max-warnings=0 --quiet
 
   format:
     runs-on: ubuntu-latest
