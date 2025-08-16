@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "finance-io",
-    "slug": "finance-io",
+    "slug": "financeio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
@@ -40,7 +42,9 @@
       "output": "server",
       "favicon": "./src/assets/images/icon.png"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true
     },
@@ -48,7 +52,11 @@
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
         "default": null,
         "env": "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+      },
+      "eas": {
+        "projectId": "8ee47c07-a70e-4403-b426-81a2b6c96652"
       }
-    }
+    },
+    "owner": "murtazanoori"
   }
 }
