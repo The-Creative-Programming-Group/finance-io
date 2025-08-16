@@ -75,7 +75,6 @@ jobs:
     needs: [lint, format, typecheck]
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      EAS_PROJECT_ID: ${{ secrets.EAS_PROJECT_ID }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -92,19 +91,16 @@ jobs:
       - name: Install EAS CLI
         run: pnpm add -g eas-cli@16.17.4
       # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
-      - name: Link EAS project (if ID provided)
-        if: env.EXPO_TOKEN != '' && env.EAS_PROJECT_ID != ''
-        run: eas init --non-interactive --id "$EAS_PROJECT_ID"
       - name: Build Android APK
         if: env.EXPO_TOKEN != ''
         run: eas build --platform android --non-interactive --profile preview --wait
       - name: Download Android APK
         if: env.EXPO_TOKEN != ''
-        run: eas build:download --platform android --profile preview --latest --path ./app.aab
+        run: eas build:download --platform android --profile preview --latest --path ./app.apk
       # ...existing code...
       - name: Upload Android artifact
         if: env.EXPO_TOKEN != ''
         uses: actions/upload-artifact@v4
         with:
-          name: android-aab
-          path: ./app.aab
+          name: android-apk
+          path: ./app.apk
