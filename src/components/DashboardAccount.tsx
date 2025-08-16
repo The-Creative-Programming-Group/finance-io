@@ -1,30 +1,37 @@
-import type React from "react"
-import { ScrollView, StatusBar, SafeAreaView } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
-import { AccountItem } from "./AccountItem"
-import { CardComponent } from "./CardComponent"
-import { SectionHeader } from "./SectionHeader"
-import { Header } from "./Header"
-import { mockDashboardData } from "../data/mockData"
+import type React from "react";
+import { ScrollView, StatusBar, SafeAreaView } from "react-native";
+import { useTheme } from "../contexts/ThemeContext";
+import { AccountItem } from "./AccountItem";
+import { CardComponent } from "./CardComponent";
+import { SectionHeader } from "./SectionHeader";
+import { Header } from "./Header";
+import { mockDashboardData } from "../data/mockData";
 
 const DashboardContent: React.FC = () => {
-  const { colors, isDark } = useTheme()
+  const { colors, isDark } = useTheme();
 
   const handleAccountPress = (accountName: string, accountId: string) => {
-    console.log(`Pressed ${accountName} with ID: ${accountId}`)
+    console.log(`Pressed ${accountName} with ID: ${accountId}`);
     // modal logic here
-  }
+  };
 
   const handleCardPress = (cardName: string, cardId: string) => {
-    console.log(`Pressed ${cardName} card with ID: ${cardId}`)
+    console.log(`Pressed ${cardName} card with ID: ${cardId}`);
     // modal logic here
-  }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} backgroundColor={colors.background} />
+      <StatusBar
+        barStyle={isDark ? "light-content" : "dark-content"}
+        backgroundColor={colors.background}
+      />
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20 }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ padding: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <Header name={mockDashboardData.user.name} />
 
@@ -98,13 +105,11 @@ const DashboardContent: React.FC = () => {
         ))}
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const Dashboard: React.FC = () => {
-  return (
-      <DashboardContent />
-  )
-}
+  return <DashboardContent />;
+};
 
-export default Dashboard
+export default Dashboard;
