@@ -138,6 +138,7 @@ src/
   - Blocking occurs at specific resource URLs, not just domain level  
   - Multiple retries and specific error patterns help identify exact blocked resources
   - Testing reveals exact allowlist requirements for production environments
+  - Headful vs headless browser modes may show different blocking patterns but core issue is allowlist coverage
 - **ExpoSecureStore errors in web**: Expected behavior - ExpoSecureStore is mobile-only and will fail in web environment
 - **Database connection**: Drizzle commands require valid DATABASE_URL
 - **Environment variables**: Must be in `.env.local` file, not just `.env`
