@@ -12,14 +12,16 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
       "Raleway-Regular": "./src/assets/Raleway-Regular.ttf",
       "Raleway-Bold": "./src/assets/Raleway-Bold.ttf"
     },
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.creativeprogrammers.financeio",
@@ -40,7 +42,11 @@
       "output": "server",
       "favicon": "./src/assets/images/icon.png"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-web-browser"
+    ],
     "experiments": {
       "typedRoutes": true
     },

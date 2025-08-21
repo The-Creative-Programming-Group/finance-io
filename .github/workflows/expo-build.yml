@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -81,22 +81,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 10.12.1
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Install EAS CLI
-        run: pnpm add -g eas-cli@16.17.4
+      - name: Ensure EAS CLI available
+        run: pnpm dlx eas-cli@latest --version
       # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
       - name: Build Android APK
         if: env.EXPO_TOKEN != ''
-        run: eas build --platform android --non-interactive --profile preview --wait
+        run: pnpm dlx eas-cli@latest build --platform android --non-interactive --profile preview --wait
       - name: Download Android APK
         if: env.EXPO_TOKEN != ''
-        run: eas build:download --platform android --profile preview --latest --path ./app.apk
+        run: pnpm dlx eas-cli@latest build:download --platform android --profile preview --latest --path ./app.apk
       # ...existing code...
       - name: Upload Android artifact
         if: env.EXPO_TOKEN != ''
