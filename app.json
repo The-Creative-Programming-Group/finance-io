@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
@@ -42,11 +40,7 @@
       "output": "server",
       "favicon": "./src/assets/images/icon.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font",
-      "expo-web-browser"
-    ],
+    "plugins": ["expo-router", "expo-font", "expo-web-browser"],
     "experiments": {
       "typedRoutes": true
     },
