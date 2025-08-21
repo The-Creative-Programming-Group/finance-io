@@ -77,17 +77,8 @@ i18n.use(initReactI18next).init({
   },
 });
 
-// Store the current device language
-(async () => {
-  try {
-    // Store current device language for future comparison
-    // Ensure deviceLanguage is a string before storing
-    const deviceLangString =
-      typeof deviceLanguage === "string" ? deviceLanguage : "en";
-    await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLangString);
-  } catch (error) {
-    console.error("Error storing device language:", error);
-  }
-})();
+// Note: Storing device language is handled at runtime in
+// `languageService.initializeLanguage()` to avoid executing
+// native code during the bundling/build step.
 
 export default i18n;
