@@ -93,7 +93,7 @@ jobs:
       # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
       - name: Build Android APK
         if: env.EXPO_TOKEN != ''
-        run: pnpm dlx eas-cli@latest build --platform android --non-interactive --profile preview --wait
+        run: pnpm dlx eas-cli@latest build --platform android --non-interactive --profile preview --clear-cache --wait
       - name: Download Android APK
         if: env.EXPO_TOKEN != ''
         run: pnpm dlx eas-cli@latest build:download --platform android --profile preview --latest --path ./app.apk
