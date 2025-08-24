@@ -47,7 +47,7 @@ const InputOtp = ({ onCodeChange }: InputOtpProps) => {
             key={i}
             ref={inputRefs[i]}
             maxLength={1}
-            className={`h-14 w-14 rounded-2xl border-2 bg-secondary text-center text-xl leading-[0] text-text dark:bg-dark-secondary dark:text-dark-text ${
+            className={`h-14 w-14 rounded-2xl border-2 bg-secondary text-center text-xl leading-none text-text dark:bg-dark-secondary dark:text-dark-text ${
               focusedIndex === i
                 ? "border-accent"
                 : "border-stroke dark:border-dark-stroke"
@@ -65,7 +65,7 @@ const InputOtp = ({ onCodeChange }: InputOtpProps) => {
             key={i + 3}
             ref={inputRefs[i + 3]}
             maxLength={1}
-            className={`h-14 w-14 rounded-2xl border-2 bg-secondary text-center text-xl leading-[0] text-text dark:bg-dark-secondary dark:text-dark-text ${
+            className={`h-14 w-14 rounded-2xl border-2 bg-secondary text-center text-xl leading-none text-text dark:bg-dark-secondary dark:text-dark-text ${
               focusedIndex === i + 3
                 ? "border-accent"
                 : "border-stroke dark:border-dark-stroke"
