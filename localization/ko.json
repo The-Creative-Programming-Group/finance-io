@@ -93,5 +93,7 @@
   "referenceTooLong": "참조는 50자 미만이어야 합니다",
   "usageRequired": "사용은 필수입니다",
   "usageTooShort": "사용은 최소 2자 이상이어야 합니다",
-  "usageTooLong": "사용은 50자 미만이어야 합니다"
+  "usageTooLong": "사용은 50자 미만이어야 합니다",
+  "verify": "인증하기",
+  "verifying": "인증 중..."
 }

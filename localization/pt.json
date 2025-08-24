@@ -92,5 +92,7 @@
 
   "itemNumeric": "{{item}} deve ser numérico",
   "itemPositive": "{{item}} deve ser positivo",
-  "itemMin": "{{item}} deve ser pelo menos {{min}}"
+  "itemMin": "{{item}} deve ser pelo menos {{min}}",
+  "verify": "Verificar",
+  "verifying": "Verificando..."
 }

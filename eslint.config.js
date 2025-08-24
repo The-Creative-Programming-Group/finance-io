@@ -35,6 +35,14 @@ module.exports = defineConfig([
   },
 
   {
+    files: ["src/components/AppText.tsx"],
+    rules: {
+      "no-restricted-imports": "off",
+      "no-restricted-syntax": "off",
+    },
+  },
+
+  {
     ignores: ["dist/*"],
   },
 ]);

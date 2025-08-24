@@ -93,5 +93,7 @@
   "referenceTooLong": "参照は50文字未満である必要があります",
   "usageRequired": "使用は必須です",
   "usageTooShort": "使用は2文字以上である必要があります",
-  "usageTooLong": "使用は50文字未満である必要があります"
+  "usageTooLong": "使用は50文字未満である必要があります",
+  "verify": "確認する",
+  "verifying": "確認中..."
 }

@@ -1,5 +1,8 @@
+packages:
+  - "."
+
 onlyBuiltDependencies:
-  - '@clerk/shared'
+  - "@clerk/shared"
   - browser-tabs-lock
   - core-js
   - esbuild

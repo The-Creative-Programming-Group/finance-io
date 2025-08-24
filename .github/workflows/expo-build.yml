@@ -1,0 +1,71 @@
+name: Expo EAS Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: expo-eas-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.12.1
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: ESLint check
+        run: pnpm exec eslint . --quiet
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.12.1
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Prettier formatting check
+        run: npx prettier --check .
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.12.1
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: TypeScript type check
+        run: npx tsc --noEmit
