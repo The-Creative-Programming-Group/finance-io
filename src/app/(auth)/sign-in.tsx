@@ -103,7 +103,9 @@ export default function Page() {
         setError(
           t("signInFailed", "Sign in failed. Please check your credentials"),
         );
-        console.error(JSON.stringify(signInAttempt, null, 2));
+        if (__DEV__) {
+          console.error(JSON.stringify(signInAttempt, null, 2));
+        }
       }
     } catch (err) {
       // Type guard to check if err is an object and has 'errors' property
