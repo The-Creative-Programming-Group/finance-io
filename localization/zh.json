@@ -92,5 +92,7 @@
   "referenceTooLong": "参考必须少于50个字符",
   "usageRequired": "用途是必需的",
   "usageTooShort": "用途必须至少包含2个字符",
-  "usageTooLong": "用途必须少于50个字符"
+  "usageTooLong": "用途必须少于50个字符",
+  "verify": "验证",
+  "verifying": "正在验证..."
 }

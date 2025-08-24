@@ -98,5 +98,7 @@
   "referenceTooLong": "La referencia debe tener menos de 50 caracteres",
   "usageRequired": "El uso es obligatorio",
   "usageTooShort": "El uso debe tener al menos 2 caracteres",
-  "usageTooLong": "El uso debe tener menos de 50 caracteres"
+  "usageTooLong": "El uso debe tener menos de 50 caracteres",
+  "verify": "Verificar",
+  "verifying": "Verificando..."
 }

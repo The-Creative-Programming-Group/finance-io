@@ -112,5 +112,7 @@
   "referenceTooLong": "Die Referenz darf nicht länger als 50 Zeichen sein",
   "usageRequired": "Die Nutzung ist erforderlich",
   "usageTooShort": "Die Nutzung muss mindestens 2 Zeichen lang sein",
-  "usageTooLong": "Die Nutzung darf nicht länger als 50 Zeichen sein"
+  "usageTooLong": "Die Nutzung darf nicht länger als 50 Zeichen sein",
+  "verify": "Bestätigen",
+  "verifying": "Wird überprüft..."
 }

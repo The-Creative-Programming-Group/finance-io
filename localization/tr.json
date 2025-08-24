@@ -92,5 +92,7 @@
 
   "itemNumeric": "{{item}} sayısal olmalıdır",
   "itemPositive": "{{item}} pozitif olmalıdır",
-  "itemMin": "{{item}} en az {{min}} olmalıdır"
+  "itemMin": "{{item}} en az {{min}} olmalıdır",
+  "verify": "Doğrula",
+  "verifying": "Doğrulanıyor..."
 }

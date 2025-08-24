@@ -165,5 +165,7 @@
 
   "itemNumeric": "{{item}} باید عددی باشد",
   "itemPositive": "{{item}} باید مثبت باشد",
-  "itemMin": "{{item}} باید حداقل {{min}} باشد"
+  "itemMin": "{{item}} باید حداقل {{min}} باشد",
+  "verify": "تأیید",
+  "verifying": "در حال تأیید..."
 }

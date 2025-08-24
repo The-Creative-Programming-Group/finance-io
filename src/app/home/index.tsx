@@ -14,7 +14,7 @@ import { Image } from "expo-image";
 import { useClerk, useUser } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { Link } from "lucide-react-native";
-import { trpc } from "../../utils/trpc";
+import { trpc } from "~/utils/trpc";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
