@@ -69,3 +69,38 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: TypeScript type check
         run: npx tsc --noEmit
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck]
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.12.1
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Ensure EAS CLI available
+        run: pnpm dlx eas-cli@latest --version
+      # No explicit login needed, Expo CLI uses EXPO_TOKEN env automatically
+      - name: Build Android APK
+        if: env.EXPO_TOKEN != ''
+        run: pnpm dlx eas-cli@latest build --platform android --non-interactive --profile preview --clear-cache --wait
+      - name: Download Android APK
+        if: env.EXPO_TOKEN != ''
+        run: pnpm dlx eas-cli@latest build:download --platform android --profile preview --latest --path ./app.apk
+      # ...existing code...
+      - name: Upload Android artifact
+        if: env.EXPO_TOKEN != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: ./app.apk
