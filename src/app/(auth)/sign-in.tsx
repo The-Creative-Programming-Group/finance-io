@@ -103,6 +103,7 @@ export default function Page() {
         setError(
           t("signInFailed", "Sign in failed. Please check your credentials"),
         );
+        // JSON.stringify(signInAttempt) can include createdSessionId and other sensitive details. Don’t log this in production builds.
         if (__DEV__) {
           console.error(JSON.stringify(signInAttempt, null, 2));
         }
