@@ -42,7 +42,9 @@ export default function SignUpScreen() {
       }
     };
 
-    void initLanguage();
+    void initLanguage().catch((error) => {
+      console.error("Sign-up page: Unhandled error during language initialization:", error);
+    });
   }, []);
 
   // New fields for design
