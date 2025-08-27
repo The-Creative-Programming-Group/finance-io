@@ -1,7 +1,7 @@
 import type React from "react";
 import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "~/contexts/ThemeContext";
 import { ContactlessIcon, MastercardLogo } from "./Icons";
 import AppText from "./AppText";
 import clsx from "clsx";
@@ -35,8 +35,8 @@ export const CardComponent: React.FC<CardComponentProps> = ({
           onPress && "active:opacity-80",
         )}
         style={{
-          backgroundColor: colors.cardBackground,
-          borderColor: colors.border,
+          backgroundColor: colors.secondary,
+          borderColor: colors.stroke,
         }}
       >
         <View className="flex-row items-start justify-between">
@@ -54,7 +54,7 @@ export const CardComponent: React.FC<CardComponentProps> = ({
           <View className="flex-row items-end justify-between">
             <AppText
               className="text-[14px]"
-              style={{ color: colors.textSecondary }}
+              style={{ color: colors.backgroundText }}
             >
               {cardHolder}
             </AppText>

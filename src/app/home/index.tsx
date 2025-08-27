@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
+import { useRouter } from "expo-router";
 
 // Form validation schema
 const welcomeSchema = (t: any) =>
@@ -89,6 +90,7 @@ const Home = () => {
   const colorScheme = useColorScheme();
   const [amountDisplay, setAmountDisplay] = useState("");
   const { t } = useTranslation();
+  const router = useRouter();
 
   // Initialize language when component mounts with better error handling
   useEffect(() => {
@@ -110,6 +112,7 @@ const Home = () => {
       Alert.alert(t("success"), t("accountCreated"));
       reset();
       setAmountDisplay("");
+      router.replace("../dashboard");
     },
     onError: (error) => {
       Alert.alert(t("error"), error.message || t("accountCreationFailed"));
