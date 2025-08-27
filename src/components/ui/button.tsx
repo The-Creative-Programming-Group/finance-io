@@ -39,19 +39,25 @@ const Button: React.FC<ButtonProps> = ({ href, ...props }) => {
    */
   const handlePress = (event: GestureResponderEvent) => {
     if (href) {
-      console.log("Button pressed, href:", href);
+      if (__DEV__) {
+        console.log("Button pressed, href:", href);
+      }
       if (
         typeof href === "string" &&
         (href.startsWith("http") || href.startsWith("mailto"))
       ) {
-        console.log("Opening external link:", href);
+        if (__DEV__) {
+          console.log("Opening external link:", href);
+        }
         // External link: open in browser or email client
         Linking.openURL(href).catch((err) =>
           console.error("Failed to open URL:", err),
         );
       } else {
         // Internal navigation: use Expo Router
-        console.log("Navigating to internal route:", href);
+        if (__DEV__) {
+          console.log("Navigating to internal route:", href);
+        }
         router.push(href);
       }
     } else if (props.onPress) {
