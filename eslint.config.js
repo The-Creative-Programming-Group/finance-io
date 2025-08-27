@@ -23,7 +23,13 @@ module.exports = defineConfig([
               name: "expo-image",
               importNames: ["Image"],
               message:
-                "Use <AppImage> instead of <AppImage>. The <AppImage> component is located in 'components/ui/AppImage'. We are using this because it can be styled with NativeWind and has some other features.",
+                "Use <AppImage> instead of <Image>. The <AppImage> component is located in 'components/ui/AppImage'. We are using this because it can be styled with NativeWind and has some other features.",
+            },
+            {
+              name: "react-native",
+              importNames: ["Image"],
+              message:
+                "Use <AppImage> instead of <Image>. The <AppImage> component is located in 'components/ui/AppImage'. We are using this because it can be styled with NativeWind and has some other features.",
             },
           ],
         },

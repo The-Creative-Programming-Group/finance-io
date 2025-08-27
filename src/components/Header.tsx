@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Image } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
