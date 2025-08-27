@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   ScrollView,
-  TouchableOpacity,
   View,
   TextInput,
   KeyboardAvoidingView,
@@ -11,8 +10,7 @@ import {
 } from "react-native";
 import AppText from "~/components/AppText";
 import { Image } from "expo-image";
-import { useClerk, useUser } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import { useUser } from "@clerk/clerk-expo";
 import { Link } from "lucide-react-native";
 import { trpc } from "~/utils/trpc";
 import { useForm, Controller } from "react-hook-form";
@@ -21,6 +19,7 @@ import { z } from "zod";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
+import Button from "~/components/ui/button";
 
 // Form validation schema
 const welcomeSchema = (t: any) =>
@@ -86,9 +85,7 @@ type WelcomeFormValues = {
 };
 
 const Home = () => {
-  const { signOut } = useClerk();
   const { user, isLoaded } = useUser();
-  const router = useRouter();
   const colorScheme = useColorScheme();
   const [amountDisplay, setAmountDisplay] = useState("");
   const { t } = useTranslation();
@@ -125,7 +122,6 @@ const Home = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-    setValue,
   } = useForm<WelcomeFormValues>({
     resolver: zodResolver(welcomeSchema(t)),
     defaultValues: {
@@ -142,15 +138,6 @@ const Home = () => {
       ...data,
       currentAmount: data.currentAmount,
     });
-  };
-
-  const handleLogout = async () => {
-    try {
-      await signOut();
-      router.replace("../(auth)/sign-in");
-    } catch (error) {
-      console.log("Error logging out: ", error);
-    }
   };
 
   return (
@@ -227,7 +214,7 @@ const Home = () => {
           )}
         />
         {errors.bankName && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="text-error ml-6 mt-[1px] text-sm">
             {errors.bankName.message}
           </AppText>
         )}
@@ -238,7 +225,7 @@ const Home = () => {
         <Controller
           control={control}
           name="currentAmount"
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
                 <Image
@@ -289,7 +276,7 @@ const Home = () => {
           )}
         />
         {errors.currentAmount && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="text-error ml-6 mt-[1px] text-sm">
             {errors.currentAmount.message}
           </AppText>
         )}
@@ -327,7 +314,7 @@ const Home = () => {
           )}
         />
         {errors.reference && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="text-error ml-6 mt-[1px] text-sm">
             {errors.reference.message}
           </AppText>
         )}
@@ -365,28 +352,17 @@ const Home = () => {
           )}
         />
         {errors.usage && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="text-error ml-6 mt-[1px] text-sm">
             {errors.usage.message}
           </AppText>
         )}
 
-        <TouchableOpacity
-          className={`mt-5 self-center rounded-xl px-8 py-2.5 ${
-            isSubmitting ? "bg-gray-400" : "bg-[#3d73e9]"
-          }`}
+        <Button
           onPress={handleSubmit(handleCreateAccount)}
           disabled={isSubmitting}
         >
-          <AppText className="text-base font-semibold text-primary">
-            {isSubmitting ? t("creating") : t("create")}
-          </AppText>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5"
-          onPress={handleLogout}
-        >
-          <AppText>{t("logout")}</AppText>
-        </TouchableOpacity>
+          {isSubmitting ? t("creating") : t("create")}
+        </Button>
       </ScrollView>
     </KeyboardAvoidingView>
   );

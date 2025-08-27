@@ -9,6 +9,8 @@ module.exports = {
   darkMode: "class",
 
   theme: {
+    // Need to be the same as in Figma, keep these in sync.
+    // Also keep everything with /src/contexts/ThemeContext.tsx in sync.
     colors: {
       background: "hsl(240, 60%, 99.02%)",
       primary: "hsl(243.33, 40.91%, 91.37%)",
@@ -16,11 +18,10 @@ module.exports = {
       accent: "hsl(220.92, 79.72%, 57.45%)",
       text: "hsl(246.67, 75%, 4.71%)",
       stroke: "hsl(210, 39.39%, 87.06%)",
-      backgroundText: "hsl(242.73, 20.75%, 79.22%)",
+      backgroundText: "hsl(240, 3.52%, 39.02%)",
       danger: "hsl(0, 54.46%, 39.61%)",
       warn: "hsl(43.64, 54.46%, 39.61%)",
       good: "hsl(140.25, 34.48%, 54.51%)",
-      error: "hsl(360 100% 50%)",
 
       dark: {
         background: "hsl(0, 0%, 4.31%)",
@@ -29,11 +30,10 @@ module.exports = {
         accent: "hsl(220.92, 79.72%, 57.45%)",
         text: "hsl(0, 0%, 87.45%)",
         stroke: "hsl(0, 0%, 10.98%)",
-        backgroundText: "hsl(240, 3.52%, 39.02%)",
+        backgroundText: "hsl(242.73, 20.75%, 79.22%)",
         danger: "hsl(0, 54.46%, 39.61%)",
         warn: "hsl(43.64, 54.46%, 39.61%)",
         good: "hsl(140.25, 34.48%, 54.51%)",
-        error: "hsl(360, 100%, 50%)",
       },
     },
     extend: {

@@ -9,7 +9,7 @@
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { verifyToken } from "@clerk/clerk-sdk-node";
+import { verifyToken } from "@clerk/backend";
 
 // import { db } from "~/server/db";
 import { db } from "~/db";
