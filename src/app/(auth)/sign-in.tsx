@@ -9,12 +9,12 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { Image } from "expo-image";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -153,9 +153,9 @@ export default function Page() {
         keyboardShouldPersistTaps="handled"
       >
         <View className="mt-20 flex-row items-center justify-center gap-7">
-          <Image
+          <AppImage
             source={require("../../assets/images/icon.png")}
-            style={{ width: 58, height: 58, borderRadius: 12 }}
+            className="h-[58px] w-[58px] rounded-xl"
           />
           <AppText className="text-4xl text-text dark:text-dark-text">
             Finance.io

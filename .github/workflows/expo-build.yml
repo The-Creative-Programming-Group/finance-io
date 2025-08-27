@@ -68,4 +68,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: TypeScript type check
-        run: npx tsc --noEmit
+        run: pnpm typecheck

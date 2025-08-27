@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
+    "typecheck": "tsc --noEmit",
     "format:check": "prettier --check .",
     "format:write": "prettier --write ."
   },

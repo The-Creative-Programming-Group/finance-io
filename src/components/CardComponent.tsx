@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated";
 import { useTheme } from "~/contexts/ThemeContext";
 import { ContactlessIcon, MastercardLogo } from "./Icons";
-import AppText from "./AppText";
+import AppText from "./ui/AppText";
 import clsx from "clsx";
 
 interface CardComponentProps {

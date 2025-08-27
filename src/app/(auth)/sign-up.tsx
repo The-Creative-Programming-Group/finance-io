@@ -7,15 +7,15 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
-import { Image } from "expo-image";
 import InputOtp from "~/components/ui/input-otp";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 type newErrorType = {
   firstname?: string;
@@ -170,9 +170,9 @@ export default function SignUpScreen() {
       >
         <View className="mb-5 flex items-center justify-center">
           <View className="mt-20 flex-row items-center justify-center gap-7">
-            <Image
+            <AppImage
               source={require("../../assets/images/icon.png")}
-              style={{ width: 58, height: 58, borderRadius: 12 }}
+              className="h-[58px] w-[58px] rounded-xl"
             />
             <AppText className="text-4xl text-text dark:text-dark-text">
               Finance.io

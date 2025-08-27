@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import { useFonts } from "expo-font";
 
 type AppTextProps = {

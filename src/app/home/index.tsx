@@ -8,8 +8,7 @@ import {
   Alert,
   useColorScheme,
 } from "react-native";
-import AppText from "~/components/AppText";
-import { Image } from "expo-image";
+import AppText from "~/components/ui/AppText";
 import { useUser } from "@clerk/clerk-expo";
 import { Link } from "lucide-react-native";
 import { trpc } from "~/utils/trpc";
@@ -21,6 +20,7 @@ import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import { useRouter } from "expo-router";
+import AppImage from "~/components/ui/AppImage";
 
 // Form validation schema
 const welcomeSchema = (t: any) =>
@@ -150,7 +150,7 @@ const Home = () => {
     >
       <ScrollView>
         <View className="mt-[70px] flex-row items-center justify-center">
-          <Image
+          <AppImage
             source={require("../../assets/images/icon.png")}
             className="mr-3 h-[50px] w-[50px] rounded-xl"
           />
@@ -192,9 +192,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/bank.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -231,9 +231,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/money.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -293,9 +293,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/reference.png")}
-                  style={{ width: 20, height: 20 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -331,9 +331,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/usage.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"

@@ -14,12 +14,12 @@ import {
   CircleArrowDown,
   Database,
 } from "lucide-react-native";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useAuth } from "@clerk/clerk-expo";
-import { Image } from "expo-image";
 import { useTranslation } from "react-i18next";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 const LanguageDropdown = () => {
   const [visible, setVisible] = useState(false);
@@ -153,9 +153,9 @@ export default function Index() {
       <ScrollView>
         <View className="mb-12 h-full">
           <View className="mt-20 flex-row items-center justify-center gap-7">
-            <Image
+            <AppImage
               source={require("../assets/images/icon.png")}
-              style={{ width: 58, height: 58, borderRadius: 12 }}
+              className="h-[58px] w-[58px] rounded-xl"
             />
             <AppText className="text-4xl text-text dark:text-dark-text">
               Finance.io
@@ -163,9 +163,9 @@ export default function Index() {
           </View>
 
           <View className="ml-8 mt-12 flex-row justify-center">
-            <Image
+            <AppImage
               source={require("../assets/images/financeio-mockup.png")}
-              style={{ width: 92, height: 183, borderRadius: 16 }}
+              className="h-[183px] w-[92px]"
               contentFit="contain"
             />
             <View className="w-6/12">
@@ -235,25 +235,24 @@ export default function Index() {
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row">
-              <Image
+              <AppImage
                 source={require("../assets/images/iconGooglePlay.png")}
-                style={{ width: 20, height: 20, marginTop: 2 }}
+                className="mt-0.5 h-[20px] w-[20px]"
                 contentFit="contain"
               />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
                 {t("googlePlay")}
               </AppText>
             </View>
-            <Image
+            <AppImage
               className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
               source={require("../assets/images/googlePlayInstall.png")}
-              style={{ width: 250, aspectRatio: 1, borderRadius: 16 }}
               contentFit="contain"
             />
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row">
-              <Image
+              <AppImage
                 source={require("../assets/images/iconAppStore.png")}
                 style={{ width: 19, height: 19, marginTop: 4 }}
                 contentFit="contain"
@@ -262,15 +261,9 @@ export default function Index() {
                 {t("appStore")}
               </AppText>
             </View>
-            <Image
+            <AppImage
               className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
               source={require("../assets/images/InstallAppStore.png")}
-              style={{
-                width: 250,
-                height: 250,
-                aspectRatio: 1,
-                borderRadius: 16,
-              }}
             />
           </View>
           <View className="mt-12 flex-col items-center">

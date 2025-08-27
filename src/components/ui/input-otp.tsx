@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { TextInput, View } from "react-native";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 
 type InputOtpProps = {
   onCodeChange: (code: string) => void;
