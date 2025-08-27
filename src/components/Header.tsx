@@ -5,7 +5,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./AppText";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);

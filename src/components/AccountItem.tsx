@@ -1,7 +1,7 @@
 import type React from "react";
 import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./AppText";
 
 interface AccountItemProps {
@@ -33,8 +33,8 @@ export const AccountItem: React.FC<AccountItemProps> = ({
         activeOpacity={onPress ? 0.7 : 1}
         className="flex-row items-center rounded-xl border px-5 py-4"
         style={{
-          backgroundColor: colors.cardBackground,
-          borderColor: colors.border,
+          backgroundColor: colors.secondary,
+          borderColor: colors.stroke,
         }}
       >
         <View className="mr-4 h-10 w-10">{icon}</View>
