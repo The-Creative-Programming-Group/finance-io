@@ -60,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({ href, ...props }) => {
         }
         router.push(href);
       }
-    } else if (props.onPress) {
+    } else {
       props.onPress?.(event);
     }
   };
