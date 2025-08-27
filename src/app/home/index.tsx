@@ -217,7 +217,7 @@ const Home = () => {
           )}
         />
         {errors.bankName && (
-          <AppText className="text-error ml-6 mt-[1px] text-sm">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.bankName.message}
           </AppText>
         )}
@@ -279,7 +279,7 @@ const Home = () => {
           )}
         />
         {errors.currentAmount && (
-          <AppText className="text-error ml-6 mt-[1px] text-sm">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.currentAmount.message}
           </AppText>
         )}
@@ -317,7 +317,7 @@ const Home = () => {
           )}
         />
         {errors.reference && (
-          <AppText className="text-error ml-6 mt-[1px] text-sm">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.reference.message}
           </AppText>
         )}
@@ -355,7 +355,7 @@ const Home = () => {
           )}
         />
         {errors.usage && (
-          <AppText className="text-error ml-6 mt-[1px] text-sm">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.usage.message}
           </AppText>
         )}
