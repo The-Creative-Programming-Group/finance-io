@@ -43,7 +43,10 @@ export default function SignUpScreen() {
     };
 
     void initLanguage().catch((error) => {
-      console.error("Sign-up page: Unhandled error during language initialization:", error);
+      console.error(
+        "Sign-up page: Unhandled error during language initialization:",
+        error,
+      );
     });
   }, []);
 

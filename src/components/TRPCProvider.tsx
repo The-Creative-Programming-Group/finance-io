@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import { trpc } from "../utils/trpc";
+import { trpc } from "~/utils/trpc";
 import superjson from "superjson";
 import { Platform } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
