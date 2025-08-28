@@ -67,12 +67,6 @@
   "accountCreated": "Conto creato con successo!",
   "accountCreationFailed": "Creazione del conto fallita",
   "resetLanguage": "Ripristina lingua del dispositivo",
-
-  "invalidEmail": "Inserisci un indirizzo email valido",
-  "signInFailed": "Accesso fallito. Verifica le tue credenziali",
-  "userDoesNotExist": "L'utente non esiste",
-  "incorrectPassword": "La tua password non è corretta",
-  "unknownError": "Si è verificato un errore sconosciuto",
   "appName": "Finance.io",
   "bankNamePlaceholder": "Revolut",
 

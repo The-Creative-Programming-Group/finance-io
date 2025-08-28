@@ -1,16 +1,13 @@
-import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
-import { env } from "../env";
 import { Slot } from "expo-router";
 import { View } from "react-native";
 import "../global.css"; // Import global CSS for NativeWind
-import { TRPCProvider } from "../components/TRPCProvider";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import { useTranslation } from "react-i18next";
+import { TRPCProvider } from "~/components/TRPCProvider";
+import { ThemeProvider } from "~/contexts/ThemeContext";
 import "../i18n"; // Initialize i18n
 import { useEffect } from "react";
-import { languageService } from "../services/languageService";
+import { languageService } from "~/services/languageService";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -44,8 +41,6 @@ const tokenCache = {
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
-  const { t } = useTranslation();
-
   // Initialize language when app starts
   useEffect(() => {
     const initLanguage = async () => {
@@ -64,7 +59,7 @@ function RootLayoutNav() {
       <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
         <ClerkLoaded>
           <TRPCProvider>
-            <View className="bg-black flex-1">
+            <View className="flex-1 bg-background dark:bg-dark-background">
               <Slot />
             </View>
           </TRPCProvider>

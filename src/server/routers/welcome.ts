@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "../api/trpc";
-import { db } from "../../db";
-import { welcomeTable } from "../../db/schema";
+import { db } from "~/db";
+import { welcomeTable } from "~/db/schema";
 import { eq } from "drizzle-orm";
 
 export const welcomeRouter = createTRPCRouter({

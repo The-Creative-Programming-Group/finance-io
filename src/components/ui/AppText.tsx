@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, type TextStyle, type StyleProp } from "react-native";
 import { useFonts } from "expo-font";
 
 type AppTextProps = {
@@ -8,7 +8,7 @@ type AppTextProps = {
   medium?: boolean;
   bold?: boolean;
   className?: string;
-  style?: object;
+  style?: StyleProp<TextStyle>;
 };
 
 export default function AppText({
@@ -41,7 +41,7 @@ export default function AppText({
         : "Raleway";
 
   return (
-    <Text className={className} style={{ fontFamily, ...style }} {...rest}>
+    <Text className={className} style={[{ fontFamily }, style]} {...rest}>
       {children}
     </Text>
   );

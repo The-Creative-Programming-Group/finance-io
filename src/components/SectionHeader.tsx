@@ -1,7 +1,7 @@
 import type React from "react";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useTheme } from "../contexts/ThemeContext";
-import AppText from "./AppText";
+import AppText from "./ui/AppText";
 
 interface SectionHeaderProps {
   title: string;

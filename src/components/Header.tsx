@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { Image } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
-import AppText from "./AppText";
+import { useTheme } from "~/contexts/ThemeContext";
+import AppText from "./ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
@@ -28,12 +28,12 @@ export const Header: React.FC<HeaderProps> = ({ name }) => {
 
   return (
     <AnimatedView
-      className="bg-black border-gray-800 w-full flex-row items-center justify-center space-x-2 rounded-lg border-b px-4 py-3"
+      className="bg-black border-gray-800 w-full flex-row items-center justify-center gap-3 space-x-2 rounded-lg border-b px-4 py-3"
       style={headerAnimatedStyle}
     >
-      <Image
+      <AppImage
         source={require("../assets/images/avatar.png")}
-        style={{ width: 22, height: 22, borderRadius: 9999 }}
+        className="h-6 w-6 rounded-full"
       />
       <AppText
         semibold

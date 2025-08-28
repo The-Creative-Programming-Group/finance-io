@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   ScrollView,
-  TouchableOpacity,
   View,
   TextInput,
   KeyboardAvoidingView,
@@ -9,10 +8,8 @@ import {
   Alert,
   useColorScheme,
 } from "react-native";
-import AppText from "~/components/AppText";
-import { Image } from "expo-image";
-import { useClerk, useUser } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import AppText from "~/components/ui/AppText";
+import { useUser } from "@clerk/clerk-expo";
 import { Link } from "lucide-react-native";
 import { trpc } from "~/utils/trpc";
 import { useForm, Controller } from "react-hook-form";
@@ -21,6 +18,9 @@ import { z } from "zod";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
+import Button from "~/components/ui/button";
+import { useRouter } from "expo-router";
+import AppImage from "~/components/ui/AppImage";
 
 // Form validation schema
 const welcomeSchema = (t: any) =>
@@ -86,12 +86,11 @@ type WelcomeFormValues = {
 };
 
 const Home = () => {
-  const { signOut } = useClerk();
   const { user, isLoaded } = useUser();
-  const router = useRouter();
   const colorScheme = useColorScheme();
   const [amountDisplay, setAmountDisplay] = useState("");
   const { t } = useTranslation();
+  const router = useRouter();
 
   // Initialize language when component mounts with better error handling
   useEffect(() => {
@@ -113,6 +112,7 @@ const Home = () => {
       Alert.alert(t("success"), t("accountCreated"));
       reset();
       setAmountDisplay("");
+      router.replace("../dashboard");
     },
     onError: (error) => {
       Alert.alert(t("error"), error.message || t("accountCreationFailed"));
@@ -125,7 +125,6 @@ const Home = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-    setValue,
   } = useForm<WelcomeFormValues>({
     resolver: zodResolver(welcomeSchema(t)),
     defaultValues: {
@@ -144,15 +143,6 @@ const Home = () => {
     });
   };
 
-  const handleLogout = async () => {
-    try {
-      await signOut();
-      router.replace("../(auth)/sign-in");
-    } catch (error) {
-      console.log("Error logging out: ", error);
-    }
-  };
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -160,7 +150,7 @@ const Home = () => {
     >
       <ScrollView>
         <View className="mt-[70px] flex-row items-center justify-center">
-          <Image
+          <AppImage
             source={require("../../assets/images/icon.png")}
             className="mr-3 h-[50px] w-[50px] rounded-xl"
           />
@@ -202,9 +192,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/bank.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -227,7 +217,7 @@ const Home = () => {
           )}
         />
         {errors.bankName && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.bankName.message}
           </AppText>
         )}
@@ -238,12 +228,12 @@ const Home = () => {
         <Controller
           control={control}
           name="currentAmount"
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/money.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -289,7 +279,7 @@ const Home = () => {
           )}
         />
         {errors.currentAmount && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.currentAmount.message}
           </AppText>
         )}
@@ -303,9 +293,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/reference.png")}
-                  style={{ width: 20, height: 20 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -327,7 +317,7 @@ const Home = () => {
           )}
         />
         {errors.reference && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.reference.message}
           </AppText>
         )}
@@ -341,9 +331,9 @@ const Home = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
               <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <Image
+                <AppImage
                   source={require("../../assets/Icons/usage.png")}
-                  style={{ width: 17, height: 17 }}
+                  className="h-5 w-5"
                   contentFit="contain"
                   transition={300}
                   priority="high"
@@ -365,28 +355,17 @@ const Home = () => {
           )}
         />
         {errors.usage && (
-          <AppText className="ml-6 mt-[1px] text-sm text-error">
+          <AppText className="ml-6 mt-[1px] text-sm text-danger">
             {errors.usage.message}
           </AppText>
         )}
 
-        <TouchableOpacity
-          className={`mt-5 self-center rounded-xl px-8 py-2.5 ${
-            isSubmitting ? "bg-gray-400" : "bg-[#3d73e9]"
-          }`}
+        <Button
           onPress={handleSubmit(handleCreateAccount)}
           disabled={isSubmitting}
         >
-          <AppText className="text-base font-semibold text-primary">
-            {isSubmitting ? t("creating") : t("create")}
-          </AppText>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5"
-          onPress={handleLogout}
-        >
-          <AppText>{t("logout")}</AppText>
-        </TouchableOpacity>
+          {isSubmitting ? t("creating") : t("create")}
+        </Button>
       </ScrollView>
     </KeyboardAvoidingView>
   );

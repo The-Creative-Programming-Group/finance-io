@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   Modal,
 } from "react-native";
-// import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "expo-router";
+import { Redirect } from "expo-router";
 import React, { useState, useEffect } from "react";
 import {
   CircleCheck,
@@ -15,13 +14,12 @@ import {
   CircleArrowDown,
   Database,
 } from "lucide-react-native";
-import AppText from "~/components/AppText";
-import LottieView from "lottie-react-native";
+import AppText from "~/components/ui/AppText";
 import { useAuth } from "@clerk/clerk-expo";
-import { Image } from "expo-image";
 import { useTranslation } from "react-i18next";
 import { languageService } from "~/services/languageService";
-import * as Localization from "expo-localization";
+import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 const LanguageDropdown = () => {
   const [visible, setVisible] = useState(false);
@@ -73,7 +71,7 @@ const LanguageDropdown = () => {
       // Clean up listener when component unmounts
       i18n.off("languageChanged", changeLanguageHandler);
     };
-  }, []);
+  }, [i18n]);
 
   const handleLanguageChange = async (langCode: string) => {
     try {
@@ -138,9 +136,8 @@ const LanguageDropdown = () => {
 };
 
 export default function Index() {
-  // const [isLoading, setIsLoading] = useState(true);
   const scheme = useColorScheme();
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isSignedIn } = useAuth();
   const { t } = useTranslation();
 
   if (isSignedIn) {
@@ -154,32 +151,41 @@ export default function Index() {
     <View className="relative flex-1">
       <LanguageDropdown />
       <ScrollView>
-        <View className="mb-12 h-full bg-background text-text dark:bg-dark-background dark:text-dark-text">
-          <View className="mt-20 flex-row justify-center">
-            <Image
+        <View className="mb-12 h-full">
+          <View className="mt-20 flex-row items-center justify-center gap-7">
+            <AppImage
               source={require("../assets/images/icon.png")}
-              style={{ width: 48, height: 48, borderRadius: 12 }}
+              className="h-[58px] w-[58px] rounded-xl"
             />
+            <AppText className="text-4xl text-text dark:text-dark-text">
+              Finance.io
+            </AppText>
           </View>
 
           <View className="ml-8 mt-12 flex-row justify-center">
-            <Image
+            <AppImage
               source={require("../assets/images/financeio-mockup.png")}
-              style={{ width: 92, height: 183, borderRadius: 16 }}
+              className="h-[183px] w-[92px]"
               contentFit="contain"
             />
             <View className="w-6/12">
-              <AppText className="text-md ml-6 text-text dark:text-dark-text">
+              <AppText
+                semibold
+                className="text-md ml-6 text-text dark:text-dark-text"
+              >
                 <AppText bold={true}>{t("introducing")}</AppText>{" "}
                 {t("introText")}
               </AppText>
-              <AppText className="text-md ml-6 mt-12 text-text dark:text-dark-text">
+              <AppText
+                semibold
+                className="text-md ml-6 mt-12 text-text dark:text-dark-text"
+              >
                 {t("empowerText")}
               </AppText>
             </View>
           </View>
-          <View className={"mt-12 flex-col items-center"}>
-            <AppText className="text-2xl text-text dark:text-dark-text">
+          <View className={"my-12 flex-col items-center"}>
+            <AppText bold className="text-2xl text-text dark:text-dark-text">
               {t("pros")}
             </AppText>
             <View>
@@ -216,17 +222,7 @@ export default function Index() {
             </View>
           </View>
           <View className="w-full flex-row items-center justify-center">
-            <View className="mt-12 h-12 flex-row items-center justify-center rounded-lg bg-accent px-6">
-              <Link href={"/sign-up"}>
-                <AppText
-                  medium={true}
-                  className={"text-xl"}
-                  style={{ color: "white" }}
-                >
-                  {t("signUp")}
-                </AppText>
-              </Link>
-            </View>
+            <Button href="/sign-up">{t("signUp")}</Button>
           </View>
           <View className="mt-14 flex-col items-center">
             <AppText
@@ -239,25 +235,24 @@ export default function Index() {
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row">
-              <Image
+              <AppImage
                 source={require("../assets/images/iconGooglePlay.png")}
-                style={{ width: 20, height: 20, marginTop: 2 }}
+                className="mt-0.5 h-[20px] w-[20px]"
                 contentFit="contain"
               />
               <AppText className="mb-5 ml-4 text-xl text-text dark:text-dark-text">
                 {t("googlePlay")}
               </AppText>
             </View>
-            <Image
+            <AppImage
               className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
               source={require("../assets/images/googlePlayInstall.png")}
-              style={{ width: 250, aspectRatio: 1, borderRadius: 16 }}
               contentFit="contain"
             />
           </View>
           <View className="mt-12 flex-col items-center">
             <View className="flex-row">
-              <Image
+              <AppImage
                 source={require("../assets/images/iconAppStore.png")}
                 style={{ width: 19, height: 19, marginTop: 4 }}
                 contentFit="contain"
@@ -266,15 +261,9 @@ export default function Index() {
                 {t("appStore")}
               </AppText>
             </View>
-            <Image
+            <AppImage
               className="h-72 w-72 rounded-2xl border-2 border-stroke dark:border-dark-stroke"
               source={require("../assets/images/InstallAppStore.png")}
-              style={{
-                width: 250,
-                height: 250,
-                aspectRatio: 1,
-                borderRadius: 16,
-              }}
             />
           </View>
           <View className="mt-12 flex-col items-center">
@@ -284,7 +273,7 @@ export default function Index() {
                 {t("openSource")}
               </AppText>
             </View>
-            <AppText className="w-7/12 text-text dark:text-dark-text">
+            <AppText className="w-7/12 text-center text-text dark:text-dark-text">
               {t("openSourceDesc")}
             </AppText>
           </View>
@@ -295,7 +284,7 @@ export default function Index() {
                 {t("noAds")}
               </AppText>
             </View>
-            <AppText className="w-7/12 text-text dark:text-dark-text">
+            <AppText className="w-7/12 text-center text-text dark:text-dark-text">
               {t("noAdsDesc")}
             </AppText>
           </View>
@@ -306,7 +295,7 @@ export default function Index() {
                 {t("noDataSelling")}
               </AppText>
             </View>
-            <AppText className="w-7/12 text-text dark:text-dark-text">
+            <AppText className="w-7/12 text-center text-text dark:text-dark-text">
               {t("noDataSellingDesc")}
             </AppText>
           </View>

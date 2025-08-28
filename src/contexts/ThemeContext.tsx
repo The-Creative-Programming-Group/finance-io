@@ -3,14 +3,16 @@ import { createContext, useContext, type ReactNode } from "react";
 import { useColorScheme } from "react-native";
 
 interface ThemeColors {
-  background: string;
-  cardBackground: string;
-  text: string;
-  textSecondary: string;
-  accent: string;
-  border: string;
-  success: string;
   primary: string;
+  background: string;
+  secondary: string;
+  accent: string;
+  text: string;
+  stroke: string;
+  backgroundText: string;
+  danger: string;
+  warn: string;
+  good: string;
 }
 
 interface ThemeContextType {
@@ -18,26 +20,31 @@ interface ThemeContextType {
   isDark: boolean;
 }
 
+// Keep these colours with the Tailwind config in sync!
 const lightColors: ThemeColors = {
-  background: "#f5f5f5",
-  cardBackground: "#ffffff",
-  text: "#000000",
-  textSecondary: "#666666",
-  accent: "#00ff88",
-  border: "#e0e0e0",
-  success: "#00ff88",
-  primary: "#007AFF",
+  primary: "#E1E0F2",
+  background: "#FBFBFE",
+  secondary: "#EEEEF6",
+  accent: "#3C73E9",
+  text: "#050315",
+  stroke: "#D1DEEB",
+  backgroundText: "#606067",
+  danger: "#9C2E2E",
+  warn: "#9C7E2E",
+  good: "#63B37E",
 };
 
 const darkColors: ThemeColors = {
-  background: "#000000",
-  cardBackground: "#1a1a1a",
-  text: "#ffffff",
-  textSecondary: "#a0a0a0",
-  accent: "#00ff88",
-  border: "#333333",
-  success: "#00ff88",
-  primary: "#0A84FF",
+  primary: "#212121",
+  background: "#0B0B0B",
+  secondary: "#121111",
+  accent: "#3C73E9",
+  text: "#DFDFDF",
+  stroke: "#1C1C1C",
+  backgroundText: "#C0BFD5",
+  danger: "#9C2E2E",
+  warn: "#9C7E2E",
+  good: "#63B37E",
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

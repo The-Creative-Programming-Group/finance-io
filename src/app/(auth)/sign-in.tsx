@@ -9,11 +9,12 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { Image } from "expo-image";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
+import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -151,15 +152,12 @@ export default function Page() {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-5 flex-row items-center justify-center">
-          <Image
+        <View className="mt-20 flex-row items-center justify-center gap-7">
+          <AppImage
             source={require("../../assets/images/icon.png")}
-            className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
+            className="h-[58px] w-[58px] rounded-xl"
           />
-          <AppText
-            semibold={true}
-            className="mb-5 text-center text-[30px] text-text dark:text-dark-text"
-          >
+          <AppText className="text-4xl text-text dark:text-dark-text">
             Finance.io
           </AppText>
         </View>
@@ -208,17 +206,15 @@ export default function Page() {
             {error}
           </AppText>
         )}
-        <TouchableOpacity
+        {/* TODO: Forgot password logic */}
+        <Button
           onPress={onSignInPress}
           disabled={isSubmitting}
           accessibilityLabel={isSubmitting ? "Signing in" : "Sign in"}
           accessibilityRole="button"
-          className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
         >
-          <AppText bold={true} className="text-text dark:text-dark-text">
-            {isSubmitting ? t("signingIn") : t("signIn")}
-          </AppText>
-        </TouchableOpacity>
+          {isSubmitting ? t("signingIn") : t("signIn")}
+        </Button>
         <TouchableOpacity
           onPress={() => router.push("./sign-up")}
           accessibilityLabel="Create a new account"
@@ -226,18 +222,8 @@ export default function Page() {
         >
           <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
             {t("dontHaveAccount")}{" "}
-            <AppText className="font-bold text-[#007AFF]">
-              {t("signUp")}
-            </AppText>
-          </AppText>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => router.push("/")}
-          accessibilityLabel="Go to home"
-          accessibilityRole="link"
-        >
-          <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            {t("goToHome")}
+            <AppText className="font-bold underline">{t("signUp")}</AppText>
+            <AppText>🥳</AppText>
           </AppText>
         </TouchableOpacity>
       </ScrollView>
