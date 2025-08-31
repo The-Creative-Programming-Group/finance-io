@@ -1,14 +1,14 @@
 import React from "react";
 import { useTheme } from "~/contexts/ThemeContext";
 import { SafeAreaView, ScrollView, StatusBar } from "react-native";
-import { Header } from "~/components/Header";
 import { mockDashboardData } from "~/data/mockData";
 import { SectionHeader } from "~/components/SectionHeader";
-import { CardComponent } from "~/components/CardComponent";
 import { AccountItem } from "~/components/AccountItem";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
   const { colors, isDark } = useTheme();
+  const { t } = useTranslation();
 
   const handleAccountPress = (accountName: string, accountId: string) => {
     console.log(`Pressed ${accountName} with ID: ${accountId}`);
@@ -32,11 +32,8 @@ const Dashboard = () => {
         contentContainerStyle={{ padding: 20 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <Header name={mockDashboardData.user.name} />
-
         {/* Cards Section */}
-        <SectionHeader title="Cards" delay={100} />
+        {/* <SectionHeader title="Cards" delay={100} />
 
         <SectionHeader title="Debitcard" size="medium" delay={150} />
         {mockDashboardData.cards
@@ -62,12 +59,12 @@ const Dashboard = () => {
               delay={300 + index * 50}
               onPress={() => handleCardPress(card.title, card.id)}
             />
-          ))}
+          ))} */}
 
         {/* Daily Accounts Section */}
-        <SectionHeader title="Daily Accounts" delay={400} />
+        <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
 
-        <SectionHeader title="Private" size="medium" delay={500} />
+        <SectionHeader title={t("dashboardPrivate")} delay={500} />
         {mockDashboardData.accounts.private.map((account, index) => (
           <AccountItem
             key={account.id}
@@ -79,7 +76,7 @@ const Dashboard = () => {
           />
         ))}
 
-        <SectionHeader title="Business" size="medium" delay={800} />
+        <SectionHeader title={t("dashboardBusiness")} delay={800} />
         {mockDashboardData.accounts.business.map((account, index) => (
           <AccountItem
             key={account.id}
@@ -92,7 +89,7 @@ const Dashboard = () => {
         ))}
 
         {/* Safe Accounts Section */}
-        <SectionHeader title="Safe Accounts" delay={1000} />
+        <SectionHeader title={t("dashboardSafeAccounts")} delay={1000} />
         {mockDashboardData.accounts.safe.map((account, index) => (
           <AccountItem
             key={account.id}

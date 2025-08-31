@@ -41,7 +41,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
 
         <AppText
           medium
-          className="flex-1 text-base"
+          className="ml-4 flex-1 text-base"
           style={{ color: colors.text }}
         >
           {name}

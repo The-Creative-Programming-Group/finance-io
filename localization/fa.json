@@ -167,5 +167,19 @@
   "itemPositive": "{{item}} باید مثبت باشد",
   "itemMin": "{{item}} باید حداقل {{min}} باشد",
   "verify": "تأیید",
-  "verifying": "در حال تأیید..."
+  "verifying": "در حال تأیید...",
+
+  "dashboardDailyAccounts": "حساب‌های روزانه",
+  "dashboardPrivate": "خصوصی",
+  "dashboardBusiness": "تجاری",
+  "dashboardSafeAccounts": "حساب‌های محفوظ",
+
+  "navigationDashboard": "داشبورد",
+  "navigationTransactions": "تراکنش‌ها",
+  "navigationInsights": "بینش‌ها",
+  "navigationSettings": "تنظیمات",
+  "navigationCategory": "دسته‌بندی‌ها",
+  "navigationProfile": "پروفایل",
+  "navigationBankAccounts": "حساب‌های بانکی",
+  "navigationNotifications": "اعلان‌ها"
 }

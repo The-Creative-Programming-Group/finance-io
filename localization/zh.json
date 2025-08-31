@@ -94,5 +94,19 @@
   "usageTooShort": "用途必须至少包含2个字符",
   "usageTooLong": "用途必须少于50个字符",
   "verify": "验证",
-  "verifying": "正在验证..."
+  "verifying": "正在验证...",
+
+  "dashboardDailyAccounts": "日常账户",
+  "dashboardPrivate": "个人",
+  "dashboardBusiness": "商务",
+  "dashboardSafeAccounts": "安全账户",
+
+  "navigationDashboard": "仪表板",
+  "navigationTransactions": "交易记录",
+  "navigationInsights": "洞察分析",
+  "navigationSettings": "设置",
+  "navigationCategory": "分类",
+  "navigationProfile": "个人资料",
+  "navigationBankAccounts": "银行账户",
+  "navigationNotifications": "通知"
 }

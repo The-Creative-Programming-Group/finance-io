@@ -97,5 +97,19 @@
   "usageTooShort": "کارول باید لږترلږه 2 توري ولري",
   "usageTooLong": "کارول باید له 50 تورو څخه کم وي",
   "verify": "تصدیق وکړئ",
-  "verifying": "تصدیق روانه ده..."
+  "verifying": "تصدیق روانه ده...",
+
+  "dashboardDailyAccounts": "ورځني حسابونه",
+  "dashboardPrivate": "شخصي",
+  "dashboardBusiness": "سوداګریز",
+  "dashboardSafeAccounts": "خوندي حسابونه",
+
+  "navigationDashboard": "کنټرول پینل",
+  "navigationTransactions": "معاملې",
+  "navigationInsights": "بصیرتونه",
+  "navigationSettings": "تنظیمات",
+  "navigationCategory": "کټګورۍ",
+  "navigationProfile": "پروفایل",
+  "navigationBankAccounts": "بانکي حسابونه",
+  "navigationNotifications": "یادښتونه"
 }

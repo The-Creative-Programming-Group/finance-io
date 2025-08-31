@@ -94,5 +94,19 @@
   "itemPositive": "{{item}} deve ser positivo",
   "itemMin": "{{item}} deve ser pelo menos {{min}}",
   "verify": "Verificar",
-  "verifying": "Verificando..."
+  "verifying": "Verificando...",
+
+  "dashboardDailyAccounts": "Contas Diárias",
+  "dashboardPrivate": "Privado",
+  "dashboardBusiness": "Empresarial",
+  "dashboardSafeAccounts": "Contas Protegidas",
+
+  "navigationDashboard": "Painel",
+  "navigationTransactions": "Transações",
+  "navigationInsights": "Insights",
+  "navigationSettings": "Configurações",
+  "navigationCategory": "Categorias",
+  "navigationProfile": "Perfil",
+  "navigationBankAccounts": "Contas Bancárias",
+  "navigationNotifications": "Notificações"
 }

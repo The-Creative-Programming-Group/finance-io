@@ -88,5 +88,19 @@
   "usageTooShort": "يجب أن يكون الاستخدام مكونًا من حرفين على الأقل",
   "usageTooLong": "يجب أن يكون الاستخدام أقل من 50 حرفًا",
   "verify": "تحقق",
-  "verifying": "جاري التحقق..."
+  "verifying": "جاري التحقق...",
+
+  "dashboardDailyAccounts": "الحسابات اليومية",
+  "dashboardPrivate": "خاص",
+  "dashboardBusiness": "تجاري",
+  "dashboardSafeAccounts": "الحسابات المحمية",
+
+  "navigationDashboard": "لوحة المعلومات",
+  "navigationTransactions": "المعاملات",
+  "navigationInsights": "الإحصائيات",
+  "navigationSettings": "الإعدادات",
+  "navigationCategory": "الفئات",
+  "navigationProfile": "الملف الشخصي",
+  "navigationBankAccounts": "الحسابات المصرفية",
+  "navigationNotifications": "الإشعارات"
 }

@@ -88,5 +88,19 @@
   "usageTooShort": "Usage must be at least 2 characters",
   "usageTooLong": "Usage must be less than 50 characters",
   "verify": "Verify",
-  "verifying": "Verifying..."
+  "verifying": "Verifying...",
+
+  "dashboardDailyAccounts": "Daily Accounts",
+  "dashboardPrivate": "Private",
+  "dashboardBusiness": "Business",
+  "dashboardSafeAccounts": "Safe Accounts",
+
+  "navigationDashboard": "Dashboard",
+  "navigationTransactions": "Transactions",
+  "navigationInsights": "Insights",
+  "navigationSettings": "Settings",
+  "navigationCategory": "Categories",
+  "navigationProfile": "Profile",
+  "navigationBankAccounts": "Bank Accounts",
+  "navigationNotifications": "Notifications"
 }

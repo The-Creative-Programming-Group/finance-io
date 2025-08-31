@@ -26,3 +26,23 @@ export interface DashboardData {
     safe: Account[];
   };
 }
+
+export interface NavigationOption {
+  name: string;
+  title: ProfileSectionType;
+  icon: string;
+  iconActive: string;
+}
+
+
+
+export enum ProfileSectionType {
+  DASHBOARD = "navigationDashboard",
+  TRANSACTIONS = "navigationTransactions",
+  INSIGHTS = "navigationInsights",
+  SETTINGS = "navigationSettings",
+  CATEGORIES = "navigationCategory",
+  PROFILE = "navigationProfile",
+  BANK_ACCOUNTS = "navigationBankAccounts",
+  NOTIFICATIONS = "navigationNotifications",
+}
