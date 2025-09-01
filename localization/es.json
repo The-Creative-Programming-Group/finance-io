@@ -95,5 +95,23 @@
   "usageTooShort": "El uso debe tener al menos 2 caracteres",
   "usageTooLong": "El uso debe tener menos de 50 caracteres",
   "verify": "Verificar",
-  "verifying": "Verificando..."
+  "verifying": "Verificando...",
+
+  "dashboardDailyAccounts": "Cuentas Diarias",
+  "dashboardPrivate": "Privado",
+  "dashboardBusiness": "Empresarial",
+  "dashboardSafeAccounts": "Cuentas Protegidas",
+
+  "navigationDashboard": "Panel",
+  "navigationTransactions": "Transacciones",
+  "navigationInsights": "Análisis",
+  "navigationSettings": "Configuración",
+  "navigationCategory": "Categorías",
+  "navigationProfile": "Perfil",
+  "navigationBankAccounts": "Cuentas Bancarias",
+  "navigationNotifications": "Notificaciones",
+
+  "defaultUser": "Usuario",
+  "overview": "Resumen",
+  "sharedFunds": "Inversiones compartidas"
 }

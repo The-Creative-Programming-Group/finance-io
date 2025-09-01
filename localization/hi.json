@@ -95,5 +95,23 @@
   "usageTooShort": "उपयोग कम से कम 2 अक्षरों का होना चाहिए",
   "usageTooLong": "उपयोग {{max}} अक्षरों से कम होना चाहिए",
   "verify": "सत्यापित करें",
-  "verifying": "सत्यापन हो रहा है..."
+  "verifying": "सत्यापन हो रहा है...",
+
+  "dashboardDailyAccounts": "दैनिक खाते",
+  "dashboardPrivate": "निजी",
+  "dashboardBusiness": "व्यापारिक",
+  "dashboardSafeAccounts": "सुरक्षित खाते",
+
+  "navigationDashboard": "डैशबोर्ड",
+  "navigationTransactions": "लेन-देन",
+  "navigationInsights": "अंतर्दृष्टि",
+  "navigationSettings": "सेटिंग्स",
+  "navigationCategory": "श्रेणियां",
+  "navigationProfile": "प्रोफ़ाइल",
+  "navigationBankAccounts": "बैंक खाते",
+  "navigationNotifications": "सूचनाएं",
+
+  "defaultUser": "उपयोगकर्ता",
+  "overview": "सारांश",
+  "sharedFunds": "साझा निवेश"
 }
