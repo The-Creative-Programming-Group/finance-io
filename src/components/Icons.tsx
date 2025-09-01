@@ -3,9 +3,6 @@ import { View } from "react-native";
 import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
 
-const cardWidth = 58;
-const cardHeight = 32;
-
 export const ContactlessIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <AppImage
     source={require("../assets/images/wifi.png")}
@@ -30,10 +27,7 @@ export const PayPalIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
 
 export const DKBIcon: React.FC = () => (
   <View className="mr-1 mt-1">
-    <View
-      className="relative rounded-md bg-dark-primary p-2"
-      style={{ width: cardWidth, height: cardHeight }}
-    >
+    <View className="relative h-[32px] w-[58px] rounded-md bg-dark-primary p-2">
       <AppText className="text-[6px] font-bold text-primary">DKB</AppText>
       <AppImage
         source={require("../assets/images/wifi.png")}
@@ -55,10 +49,7 @@ export const DKBIcon: React.FC = () => (
 
 export const RevolutIcon: React.FC = () => (
   <View className="mr-1 mt-1">
-    <View
-      className="relative rounded-md bg-dark-background p-2"
-      style={{ width: cardWidth, height: cardHeight }}
-    >
+    <View className="relative h-[32px] w-[58px] rounded-md bg-dark-background p-2">
       <AppText className="text-[6px] font-bold text-primary">Revolut</AppText>
       <AppImage
         source={require("../assets/images/wifi.png")}
@@ -102,11 +93,10 @@ export const MastercardLogo: React.FC<{ size?: number }> = ({ size = 32 }) => (
 export const SharedFundsIcon: React.FC<{
   size?: number;
   className?: string;
-}> = ({ size = 25 }) => (
+}> = () => (
   <AppImage
     source={require("../assets/images/sharedfunds-icon.png")}
-    style={{ width: size, height: size }}
-    className="m-auto"
+    className="h-[25px] w-[25px]"
     contentFit="contain"
   />
 );

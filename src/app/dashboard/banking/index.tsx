@@ -21,17 +21,13 @@ const Dashboard = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+    <SafeAreaView className="flex-1 bg-dark-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
       />
 
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ padding: 20 }}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
         {/* Cards Section */}
         {/* <SectionHeader title="Cards" delay={100} />
         <SectionHeader title="Debitcard" size="medium" delay={150} />

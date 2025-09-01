@@ -13,15 +13,12 @@ export default function InsightsScreen() {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={{ backgroundColor: colors.background }}
-    >
+    <SafeAreaView className="flex-1 bg-dark-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
       />
-      <ScrollView className="flex-1 p-5" showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
         {/* Header */}
         <Header
           name={
