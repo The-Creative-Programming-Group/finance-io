@@ -3,9 +3,11 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { NavigationOption, ProfileSectionType } from "~/types";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "~/contexts/ThemeContext";
 
 const DashboardLayout = () => {
   const { t } = useTranslation();
+  const { colors } = useTheme();
   const navigationOptions: NavigationOption[] = [
     {
       name: "banking/index",
@@ -42,10 +44,14 @@ const DashboardLayout = () => {
             options={{
               title: t(option.title),
               tabBarLabel: t(option.title),
+              tabBarStyle: {
+                backgroundColor: colors.background,
+                borderTopColor: colors.stroke,
+              },
               tabBarIcon: ({ focused }) => (
                 <AppImage
                   source={focused ? option.iconActive : option.icon}
-                  style={{ width: 24, height: 24 }}
+                  className="h-6 w-6"
                   contentFit="contain"
                 />
               ),

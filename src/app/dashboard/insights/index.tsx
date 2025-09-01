@@ -11,23 +11,27 @@ export default function InsightsScreen() {
   const { colors, isDark } = useTheme();
   const { user, isLoaded } = useUser();
   const { t } = useTranslation();
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.background }}
+    >
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
       />
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ padding: 20 }}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView className="flex-1 p-5" showsVerticalScrollIndicator={false}>
         {/* Header */}
         <Header
-          name={isLoaded && user ? user.firstName || "User" : "User"}
-          type={t(ProfileSectionType.INSIGHTS) as ProfileSectionType}
+          name={
+            isLoaded && user
+              ? user.firstName || t("defaultUser")
+              : t("defaultUser")
+          }
+          type={ProfileSectionType.INSIGHTS}
         />
-        <SectionHeader title="Overview" delay={400} />
+        <SectionHeader title={t("overview")} delay={400} />
       </ScrollView>
     </SafeAreaView>
   );

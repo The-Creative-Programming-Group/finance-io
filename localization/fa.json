@@ -181,5 +181,8 @@
   "navigationCategory": "دسته‌بندی‌ها",
   "navigationProfile": "پروفایل",
   "navigationBankAccounts": "حساب‌های بانکی",
-  "navigationNotifications": "اعلان‌ها"
+  "navigationNotifications": "اعلان‌ها",
+
+  "defaultUser": "کاربر",
+  "overview": "نمای کلی"
 }

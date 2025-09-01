@@ -108,5 +108,8 @@
   "navigationCategory": "Kategoriler",
   "navigationProfile": "Profil",
   "navigationBankAccounts": "Banka Hesapları",
-  "navigationNotifications": "Bildirimler"
+  "navigationNotifications": "Bildirimler",
+
+  "defaultUser": "Kullanıcı",
+  "overview": "Genel Bakış"
 }

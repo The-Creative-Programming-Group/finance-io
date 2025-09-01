@@ -1,4 +1,5 @@
 import type React from "react";
+import { ImageSourcePropType } from "react-native";
 export interface Account {
   id: string;
   name: string;
@@ -30,11 +31,9 @@ export interface DashboardData {
 export interface NavigationOption {
   name: string;
   title: ProfileSectionType;
-  icon: string;
-  iconActive: string;
+  icon: ImageSourcePropType;
+  iconActive: ImageSourcePropType;
 }
-
-
 
 export enum ProfileSectionType {
   DASHBOARD = "navigationDashboard",

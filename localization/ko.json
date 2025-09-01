@@ -109,5 +109,8 @@
   "navigationCategory": "카테고리",
   "navigationProfile": "프로필",
   "navigationBankAccounts": "은행 계좌",
-  "navigationNotifications": "알림"
+  "navigationNotifications": "알림",
+
+  "defaultUser": "사용자",
+  "overview": "개요"
 }

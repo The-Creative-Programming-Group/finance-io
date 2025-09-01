@@ -7,18 +7,20 @@ import Animated, {
 import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
+import { useTranslation } from "react-i18next";
 import { ProfileSectionType } from "~/types";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
 interface HeaderProps {
   name: string;
-  type: ProfileSectionType;
+  type: ProfileSectionType; // enum key, not a translated string
 }
 
 export const Header: React.FC<HeaderProps> = ({ name, type }) => {
   const { colors } = useTheme();
   const headerOpacity = useSharedValue(0);
+  const { t } = useTranslation();
 
   const headerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: withSpring(headerOpacity.value),
@@ -42,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ name, type }) => {
         className="text-center text-sm"
         style={{ color: colors.text }}
       >
-        {name} - {type}
+        {name} - {t(type)}
       </AppText>
     </AnimatedView>
   );

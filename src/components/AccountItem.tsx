@@ -33,7 +33,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
         activeOpacity={onPress ? 0.7 : 1}
         className="flex-row items-center rounded-xl border px-5 py-4"
         style={{
-          backgroundColor: colors.secondary,
+          backgroundColor: colors.primary,
           borderColor: colors.stroke,
         }}
       >

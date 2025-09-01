@@ -121,5 +121,8 @@
   "navigationCategory": "Kategorien",
   "navigationProfile": "Profil",
   "navigationBankAccounts": "Bankkonten",
-  "navigationNotifications": "Benachrichtigungen"
+  "navigationNotifications": "Benachrichtigungen",
+
+  "defaultUser": "Benutzer",
+  "overview": "Überblick"
 }

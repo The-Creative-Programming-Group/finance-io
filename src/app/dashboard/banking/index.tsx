@@ -34,7 +34,6 @@ const Dashboard = () => {
       >
         {/* Cards Section */}
         {/* <SectionHeader title="Cards" delay={100} />
-
         <SectionHeader title="Debitcard" size="medium" delay={150} />
         {mockDashboardData.cards
           .filter((card) => card.type === "debit")
@@ -47,7 +46,6 @@ const Dashboard = () => {
               onPress={() => handleCardPress(card.title, card.id)}
             />
           ))}
-
         <SectionHeader title="Business Card" size="medium" delay={250} />
         {mockDashboardData.cards
           .filter((card) => card.type === "business")
@@ -60,7 +58,6 @@ const Dashboard = () => {
               onPress={() => handleCardPress(card.title, card.id)}
             />
           ))} */}
-
         {/* Daily Accounts Section */}
         <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
 

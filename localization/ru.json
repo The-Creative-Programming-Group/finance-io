@@ -108,5 +108,8 @@
   "navigationCategory": "Категории",
   "navigationProfile": "Профиль",
   "navigationBankAccounts": "Банковские счета",
-  "navigationNotifications": "Уведомления"
+  "navigationNotifications": "Уведомления",
+
+  "defaultUser": "Пользователь",
+  "overview": "Обзор"
 }

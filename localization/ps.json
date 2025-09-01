@@ -111,5 +111,8 @@
   "navigationCategory": "کټګورۍ",
   "navigationProfile": "پروفایل",
   "navigationBankAccounts": "بانکي حسابونه",
-  "navigationNotifications": "یادښتونه"
+  "navigationNotifications": "یادښتونه",
+
+  "defaultUser": "کاروونکی",
+  "overview": "عمومي کتنه"
 }

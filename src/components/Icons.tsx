@@ -36,7 +36,10 @@ export const DKBIcon: React.FC = () => (
       style={{ width: cardWidth, height: cardHeight }}
       contentFit="contain"
     />
-    <AppText className="text-white absolute right-[50px] top-[8px] text-[5px] font-bold">
+    <AppText
+      style={{ color: "white" }}
+      className="absolute right-[50px] top-[8px] text-[5px] font-bold"
+    >
       DKB
     </AppText>
     <AppImage
@@ -45,7 +48,10 @@ export const DKBIcon: React.FC = () => (
       style={{ width: 4, height: 4 }}
       contentFit="contain"
     />
-    <AppText className="text-white absolute bottom-[5px] right-[40px] text-[5px]">
+    <AppText
+      style={{ color: "white" }}
+      className="absolute bottom-[5px] right-[37px] text-[5px]"
+    >
       Company
     </AppText>
     <AppImage
@@ -64,7 +70,10 @@ export const RevolutIcon: React.FC = () => (
       style={{ width: cardWidth, height: cardHeight }}
       contentFit="cover"
     />
-    <AppText className="text-white absolute right-[43px] top-[8px] text-[5px] font-bold">
+    <AppText
+      style={{ color: "white" }}
+      className="absolute right-[43px] top-[8px] text-[5px] font-bold"
+    >
       Revolut
     </AppText>
     <AppImage
@@ -72,7 +81,10 @@ export const RevolutIcon: React.FC = () => (
       className="absolute right-[16px] top-[9px] h-1 w-1"
       contentFit="contain"
     />
-    <AppText className="text-white absolute bottom-[5px] right-[40px] text-[5px]">
+    <AppText
+      style={{ color: "white" }}
+      className="absolute bottom-[5px] right-[40px] text-[5px]"
+    >
       Company
     </AppText>
     <AppImage
@@ -90,8 +102,7 @@ export const DepotIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
   >
     <AppImage
       source={require("../assets/images/bank-icon.png")}
-      className="text-gray-400"
-      style={{ width: size * 0.6, height: size * 0.6 }}
+      style={{ width: size * 0.8, height: size * 0.8 }}
       contentFit="contain"
     />
   </View>

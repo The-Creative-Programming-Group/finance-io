@@ -107,7 +107,7 @@ const LanguageDropdown = () => {
           activeOpacity={1}
           onPress={() => setVisible(false)}
         >
-          <View className="absolute right-4 top-32 w-48 rounded-lg bg-secondary p-2 shadow-lg dark:bg-dark-secondary">
+          <View className="boxShadow-lg absolute right-4 top-32 w-48 rounded-lg bg-secondary p-2 dark:bg-dark-secondary">
             {/* Scrollable language options */}
             <ScrollView
               showsVerticalScrollIndicator={true}

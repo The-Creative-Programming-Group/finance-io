@@ -109,5 +109,8 @@
   "navigationCategory": "श्रेणियां",
   "navigationProfile": "प्रोफ़ाइल",
   "navigationBankAccounts": "बैंक खाते",
-  "navigationNotifications": "सूचनाएं"
+  "navigationNotifications": "सूचनाएं",
+
+  "defaultUser": "उपयोगकर्ता",
+  "overview": "सारांश"
 }

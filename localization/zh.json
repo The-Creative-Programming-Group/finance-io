@@ -108,5 +108,8 @@
   "navigationCategory": "分类",
   "navigationProfile": "个人资料",
   "navigationBankAccounts": "银行账户",
-  "navigationNotifications": "通知"
+  "navigationNotifications": "通知",
+
+  "defaultUser": "用户",
+  "overview": "概览"
 }

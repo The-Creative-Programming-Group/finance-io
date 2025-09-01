@@ -109,5 +109,8 @@
   "navigationCategory": "カテゴリ",
   "navigationProfile": "プロフィール",
   "navigationBankAccounts": "銀行口座",
-  "navigationNotifications": "通知"
+  "navigationNotifications": "通知",
+
+  "defaultUser": "ユーザー",
+  "overview": "概要"
 }

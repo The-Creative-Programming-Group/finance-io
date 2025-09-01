@@ -102,5 +102,8 @@
   "navigationCategory": "الفئات",
   "navigationProfile": "الملف الشخصي",
   "navigationBankAccounts": "الحسابات المصرفية",
-  "navigationNotifications": "الإشعارات"
+  "navigationNotifications": "الإشعارات",
+
+  "defaultUser": "مستخدم",
+  "overview": "نظرة عامة"
 }

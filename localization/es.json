@@ -109,5 +109,8 @@
   "navigationCategory": "Categorías",
   "navigationProfile": "Perfil",
   "navigationBankAccounts": "Cuentas Bancarias",
-  "navigationNotifications": "Notificaciones"
+  "navigationNotifications": "Notificaciones",
+
+  "defaultUser": "Usuario",
+  "overview": "Resumen"
 }

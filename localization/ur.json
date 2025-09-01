@@ -109,5 +109,8 @@
   "navigationCategory": "کیٹگریز",
   "navigationProfile": "پروفائل",
   "navigationBankAccounts": "بینک اکاؤنٹس",
-  "navigationNotifications": "اطلاعات"
+  "navigationNotifications": "اطلاعات",
+
+  "defaultUser": "صارف",
+  "overview": "جائزہ"
 }
