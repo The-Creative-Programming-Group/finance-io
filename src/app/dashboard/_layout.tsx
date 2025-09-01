@@ -45,8 +45,9 @@ const DashboardLayout = () => {
               title: t(option.title),
               tabBarLabel: t(option.title),
               tabBarStyle: {
-                backgroundColor: colors.background,
-                borderTopColor: colors.stroke,
+                backgroundColor: colors.secondary,
+                borderColor: colors.stroke,
+                paddingTop: 4,
               },
               tabBarIcon: ({ focused }) => (
                 <AppImage

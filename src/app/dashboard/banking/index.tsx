@@ -58,9 +58,7 @@ const Dashboard = () => {
               onPress={() => handleCardPress(card.title, card.id)}
             />
           ))} */}
-        {/* Daily Accounts Section */}
         <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
-
         <SectionHeader title={t("dashboardPrivate")} delay={500} />
         {mockDashboardData.accounts.private.map((account, index) => (
           <AccountItem
@@ -97,6 +95,24 @@ const Dashboard = () => {
             onPress={() => handleAccountPress(account.name, account.id)}
           />
         ))}
+
+        <SectionHeader title={t("sharedFunds")} delay={1000} />
+        {mockDashboardData.sharedFunds && (
+          <AccountItem
+            key={mockDashboardData.sharedFunds.id}
+            icon={mockDashboardData.sharedFunds.icon}
+            name={mockDashboardData.sharedFunds.title}
+            arrow={mockDashboardData.sharedFunds.arrow}
+            iconWrapped
+            delay={1100}
+            onPress={() =>
+              handleAccountPress(
+                mockDashboardData.sharedFunds.title,
+                mockDashboardData.sharedFunds.id,
+              )
+            }
+          />
+        )}
       </ScrollView>
     </SafeAreaView>
   );

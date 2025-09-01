@@ -6,10 +6,12 @@ import AppText from "./ui/AppText";
 
 interface AccountItemProps {
   icon: React.ReactNode;
+  iconWrapped?: boolean;
   name: string;
-  amount: string;
+  amount?: string;
   delay?: number;
   onPress?: () => void;
+  arrow?: React.ReactNode;
 }
 
 export const AccountItem: React.FC<AccountItemProps> = ({
@@ -18,6 +20,8 @@ export const AccountItem: React.FC<AccountItemProps> = ({
   amount,
   delay = 0,
   onPress,
+  arrow,
+  iconWrapped = false,
 }) => {
   const { colors } = useTheme();
 
@@ -31,29 +35,44 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       <Component
         onPress={onPress}
         activeOpacity={onPress ? 0.7 : 1}
-        className="flex-row items-center rounded-xl border px-5 py-4"
+        className="mb-4 flex-row items-center rounded-xl border-2 border-stroke px-5 py-5"
         style={{
-          backgroundColor: colors.primary,
+          backgroundColor: colors.secondary,
           borderColor: colors.stroke,
         }}
       >
-        <View className="mr-4 h-10 w-10">{icon}</View>
+        {iconWrapped ? (
+          <View className="mx-auto ml-2 mr-4 rounded-full bg-dark-primary p-2">
+            {icon}
+          </View>
+        ) : (
+          <View className="ml-2 mr-4 flex w-11 items-center justify-center">
+            {icon}
+          </View>
+        )}
 
         <AppText
           medium
-          className="ml-4 flex-1 text-base"
+          className="ml-4 flex-1 font-bold tracking-wider"
           style={{ color: colors.text }}
         >
           {name}
         </AppText>
 
-        <AppText
-          semibold
-          className="text-base"
-          style={{ color: colors.accent }}
-        >
-          {amount}
-        </AppText>
+        {amount && (
+          <AppText
+            semibold
+            className="text-base"
+            style={{ color: colors.good }}
+          >
+            {amount}
+          </AppText>
+        )}
+        {arrow && (
+          <AppText semibold className="text-base">
+            {arrow}
+          </AppText>
+        )}
       </Component>
     </Animated.View>
   );

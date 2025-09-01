@@ -29,69 +29,52 @@ export const PayPalIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
 );
 
 export const DKBIcon: React.FC = () => (
-  <View className="mr-1 mt-1" style={{ width: cardWidth, height: cardHeight }}>
-    <AppImage
-      source={require("../assets/images/card-background.png")}
-      className="absolute right-[10px] top-0 rounded-lg"
+  <View className="mr-1 mt-1">
+    <View
+      className="relative rounded-md bg-dark-primary p-2"
       style={{ width: cardWidth, height: cardHeight }}
-      contentFit="contain"
-    />
-    <AppText
-      style={{ color: "white" }}
-      className="absolute right-[50px] top-[8px] text-[5px] font-bold"
     >
-      DKB
-    </AppText>
-    <AppImage
-      source={require("../assets/images/wifi.png")}
-      className="absolute right-[16px] top-[9px]"
-      style={{ width: 4, height: 4 }}
-      contentFit="contain"
-    />
-    <AppText
-      style={{ color: "white" }}
-      className="absolute bottom-[5px] right-[37px] text-[5px]"
-    >
-      Company
-    </AppText>
-    <AppImage
-      source={require("../assets/images/Mastercard-logo.png")}
-      className="absolute bottom-[3px] right-[16px] h-1.5 w-1.5"
-      contentFit="contain"
-    />
+      <AppText className="text-[6px] font-bold text-primary">DKB</AppText>
+      <AppImage
+        source={require("../assets/images/wifi.png")}
+        className="absolute right-2 top-2"
+        style={{ width: 4, height: 4 }}
+        contentFit="contain"
+      />
+      <AppText className="absolute bottom-1 left-2 text-[5px] text-primary">
+        Company
+      </AppText>
+      <AppImage
+        source={require("../assets/images/Mastercard-logo.png")}
+        className="absolute bottom-1 right-2 h-1.5 w-1.5"
+        contentFit="contain"
+      />
+    </View>
   </View>
 );
 
 export const RevolutIcon: React.FC = () => (
-  <View className="mr-1 mt-1" style={{ width: cardWidth, height: cardHeight }}>
-    <AppImage
-      source={require("../assets/images/card-background.png")}
-      className="absolute right-[10px] top-0 rounded-lg"
+  <View className="mr-1 mt-1">
+    <View
+      className="relative rounded-md bg-dark-background p-2"
       style={{ width: cardWidth, height: cardHeight }}
-      contentFit="cover"
-    />
-    <AppText
-      style={{ color: "white" }}
-      className="absolute right-[43px] top-[8px] text-[5px] font-bold"
     >
-      Revolut
-    </AppText>
-    <AppImage
-      source={require("../assets/images/wifi.png")}
-      className="absolute right-[16px] top-[9px] h-1 w-1"
-      contentFit="contain"
-    />
-    <AppText
-      style={{ color: "white" }}
-      className="absolute bottom-[5px] right-[40px] text-[5px]"
-    >
-      Company
-    </AppText>
-    <AppImage
-      source={require("../assets/images/Mastercard-logo.png")}
-      className="absolute bottom-[3px] right-[16px] h-1.5 w-1.5"
-      contentFit="contain"
-    />
+      <AppText className="text-[6px] font-bold text-primary">Revolut</AppText>
+      <AppImage
+        source={require("../assets/images/wifi.png")}
+        className="absolute right-2 top-2"
+        style={{ width: 4, height: 4 }}
+        contentFit="contain"
+      />
+      <AppText className="absolute bottom-1 left-2 text-[5px] text-primary">
+        Company
+      </AppText>
+      <AppImage
+        source={require("../assets/images/Mastercard-logo.png")}
+        className="absolute bottom-1 right-2 h-1.5 w-1.5"
+        contentFit="contain"
+      />
+    </View>
   </View>
 );
 
@@ -112,6 +95,29 @@ export const MastercardLogo: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <AppImage
     source={require("../assets/images/Mastercard-logo.png")}
     style={{ width: size, height: size * 0.625 }}
+    contentFit="contain"
+  />
+);
+
+export const SharedFundsIcon: React.FC<{
+  size?: number;
+  className?: string;
+}> = ({ size = 25 }) => (
+  <AppImage
+    source={require("../assets/images/sharedfunds-icon.png")}
+    style={{ width: size, height: size }}
+    className="m-auto"
+    contentFit="contain"
+  />
+);
+
+export const ArrowRightIcon: React.FC<{
+  size?: number;
+  className?: string;
+}> = ({ size = 24 }) => (
+  <AppImage
+    source={require("../assets/images/right-icon.png")}
+    style={{ width: size, height: size }}
     contentFit="contain"
   />
 );

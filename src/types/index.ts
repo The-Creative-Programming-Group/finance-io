@@ -16,6 +16,12 @@ export interface Card {
   provider: "dkb" | "revolut";
 }
 
+export interface SharedFundsData {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  arrow: React.ReactNode;
+}
 export interface DashboardData {
   user: {
     name: string;
@@ -26,6 +32,7 @@ export interface DashboardData {
     business: Account[];
     safe: Account[];
   };
+  sharedFunds: SharedFundsData;
 }
 
 export interface NavigationOption {
