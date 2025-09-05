@@ -51,7 +51,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "./app.plugin.js"
     ],
     "experiments": {
       "typedRoutes": true
