@@ -69,6 +69,7 @@ export default function SignUpScreen() {
     if (!firstname) newErrors.firstname = t("firstNameRequired");
     if (!lastname) newErrors.lastname = t("lastNameRequired");
     if (!email) newErrors.email = t("emailRequired");
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = t("invalidEmail");
     // Removed phone number validation
     if (!password) newErrors.password = t("passwordRequired");
     setErrors(newErrors);
@@ -284,7 +285,7 @@ export default function SignUpScreen() {
               accessibilityRole="link"
             >
               <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-                {t("alreadyHaveAccount")}{" "}
+                {t("alreadyHaveAccount")} {""}
                 <AppText className="font-bold underline">{t("signIn")}</AppText>
                 <AppText>🥳</AppText>
               </AppText>
