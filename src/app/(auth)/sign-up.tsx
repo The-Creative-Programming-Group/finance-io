@@ -71,6 +71,13 @@ export default function SignUpScreen() {
     if (!lastname) newErrors.lastname = t("lastNameRequired");
     if (!email) newErrors.email = t("emailRequired");
     else {
+      // By default,
+      // Zod uses a comparatively strict email regex designed to validate normal email addresses containing common characters.
+      // It's roughly equivalent to the rules enforced by Gmail.
+      // To learn more about this regex, refer to this post: https://colinhacks.com/essays/reasonable-email-regex
+      //
+      // To customize the email validation behavior,
+      // you can pass a custom regular expression to the pattern param.
       const result = z.string().email().safeParse(email);
       if (!result.success) newErrors.email = t("invalidEmail");
     }
