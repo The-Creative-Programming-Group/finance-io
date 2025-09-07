@@ -22,6 +22,7 @@ const withCoreSplashscreenDependency = (config) =>
     return config;
   });
 
+  // module exp
 module.exports = createRunOncePlugin(
   withCoreSplashscreenDependency,
   'with-core-splashscreen-dependency',
