@@ -16,6 +16,7 @@ import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
+import { z } from "zod";
 
 type newErrorType = {
   firstname?: string;
@@ -69,6 +70,17 @@ export default function SignUpScreen() {
     if (!firstname) newErrors.firstname = t("firstNameRequired");
     if (!lastname) newErrors.lastname = t("lastNameRequired");
     if (!email) newErrors.email = t("emailRequired");
+    else {
+      // By default,
+      // Zod uses a comparatively strict email regex designed to validate normal email addresses containing common characters.
+      // It's roughly equivalent to the rules enforced by Gmail.
+      // To learn more about this regex, refer to this post: https://colinhacks.com/essays/reasonable-email-regex
+      //
+      // To customize the email validation behavior,
+      // you can pass a custom regular expression to the pattern param.
+      const result = z.string().email().safeParse(email);
+      if (!result.success) newErrors.email = t("invalidEmail");
+    }
     // Removed phone number validation
     if (!password) newErrors.password = t("passwordRequired");
     setErrors(newErrors);
@@ -284,7 +296,7 @@ export default function SignUpScreen() {
               accessibilityRole="link"
             >
               <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-                {t("alreadyHaveAccount")}{" "}
+                {t("alreadyHaveAccount")} {""}
                 <AppText className="font-bold underline">{t("signIn")}</AppText>
                 <AppText>🥳</AppText>
               </AppText>
