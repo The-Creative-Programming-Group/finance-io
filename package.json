@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@expo/config-plugins": "^7.9.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~19.0.14",
     "@types/react-test-renderer": "^18.3.0",
