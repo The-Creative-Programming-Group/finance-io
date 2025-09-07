@@ -7,15 +7,31 @@ const {
 } = require("@expo/config-plugins");
 
 const DEP_LINE = 'implementation("androidx.core:core-splashscreen:1.0.1")';
+const EXPO_AGG_LINE = 'implementation(project(":expo"))';
 
 function ensureDependency(contents) {
   // If gradle file isn't available during introspection, just return as-is.
   if (typeof contents !== "string") return contents;
-  if (contents.includes(DEP_LINE)) return contents; // already present
-  return contents.replace(
-    /dependencies\s*\{/m,
-    (match) => `${match}\n    ${DEP_LINE}`,
-  );
+  const hasDepsBlock = /dependencies\s*\{/m.test(contents);
+  if (!hasDepsBlock) return contents;
+
+  let updated = contents;
+  // Ensure the :expo aggregator project is present so expo.* classes resolve
+  if (!updated.includes(EXPO_AGG_LINE)) {
+    updated = updated.replace(
+      /dependencies\s*\{/m,
+      (match) => `${match}\n    ${EXPO_AGG_LINE}`,
+    );
+  }
+  // Ensure the splashscreen dependency is present
+  if (!updated.includes(DEP_LINE)) {
+    updated = updated.replace(
+      /dependencies\s*\{/m,
+      (match) => `${match}\n    ${DEP_LINE}`,
+    );
+  }
+
+  return updated;
 }
 
 const withCoreSplashscreenDependency = (config) =>
