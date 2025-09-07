@@ -16,6 +16,7 @@ import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
+import { z } from "zod";
 
 type newErrorType = {
   firstname?: string;
@@ -69,7 +70,10 @@ export default function SignUpScreen() {
     if (!firstname) newErrors.firstname = t("firstNameRequired");
     if (!lastname) newErrors.lastname = t("lastNameRequired");
     if (!email) newErrors.email = t("emailRequired");
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = t("invalidEmail");
+    else {
+      const result = z.string().email().safeParse(email);
+      if (!result.success) newErrors.email = t("invalidEmail");
+    }
     // Removed phone number validation
     if (!password) newErrors.password = t("passwordRequired");
     setErrors(newErrors);
