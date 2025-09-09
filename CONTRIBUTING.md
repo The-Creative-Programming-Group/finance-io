@@ -36,10 +36,10 @@ This project adheres to a code of conduct to ensure a welcoming environment for 
    ```bash
    # Install dependencies
    pnpm install
-   
+
    # Set up environment variables
    cp .env.example .env.local
-   
+
    # Start development server
    pnpm dev
    ```
@@ -106,32 +106,35 @@ This project adheres to a code of conduct to ensure a welcoming environment for 
    ```
 
    > **Note:** The `drizzle/` directory is gitignored. Each team member should run `pnpm db:generate` to create their own database migration files locally.3. **Environment Variables**
-   Create `.env.local` with the following required variables:
+   > Create `.env.local` with the following required variables:
 
    ```env
    # Backend API URL (defaults to localhost for development)
    EXPO_PUBLIC_API_URL="http://localhost:8081"
-   
+
    # Clerk Authentication (get from https://dashboard.clerk.com)
    EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key_here"
    CLERK_SECRET_KEY="your_clerk_secret_key_here"
-   
+
    # Database Connection (PostgreSQL)
    DATABASE_URL="postgresql://username:password@host/database?sslmode=require"
    ```
 
    **Getting Clerk Keys:**
+
    - Visit [Clerk Dashboard](https://dashboard.clerk.com)
    - Create or select your application
    - Copy the publishable key for `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY`
    - Copy the secret key for `CLERK_SECRET_KEY` (keep this secure!)
 
    **Database Setup:**
+
    - Use a PostgreSQL database (we recommend [Neon](https://neon.tech) for development)
    - Replace the connection string with your database credentials
    - Ensure SSL mode is set to `require` for production
 
    **Getting a Neon PostgreSQL Database:**
+
    - Visit [Neon Console](https://console.neon.tech)
    - Sign up or sign in to your account
    - Click "Create a project"

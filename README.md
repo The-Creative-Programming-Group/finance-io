@@ -2,7 +2,6 @@
 
 # Finance-IO
 
-
 Finance-IO is a modern personal finance management app designed to help you track, analyze, and optimize your finances across Android, iOS, and web. With a simple interface and powerful features, Finance-IO makes budgeting, expense tracking, and financial planning accessible to everyone.
 
 All UI development follows our official Figma design: [Finance-IO Figma UI](https://www.figma.com/design/JQFXBsYUqEdSLD3OQUwp1H/Native-Finance-App---Finance.io?node-id=0-1&p=f&t=SOgQXPopZ1yAeuZK-0)
@@ -84,13 +83,13 @@ yarn start
 If you want to build a native app (APK/IPA):
 
 - Edit `app.json` as needed, especially the `eas.projectId` and `owner` fields:
-  
-   ```json
-   "eas": {
-      "projectId": "YOUR_PROJECT_ID"
-   },
-   "owner": "YOUR_EXPO_OWNER"
-   ```
+
+  ```json
+  "eas": {
+     "projectId": "YOUR_PROJECT_ID"
+  },
+  "owner": "YOUR_EXPO_OWNER"
+  ```
 
 - For more details, see the [Expo EAS documentation](https://docs.expo.dev/eas/).
 
@@ -98,19 +97,19 @@ If you want to build a native app (APK/IPA):
 
 ```
 src/
-   app/           
-   components/    
-   contexts/      
-   data/          
-   db/            
-   server/        
-   services/      
-   trpc/          
-   types/         
-   utils/         
-localization/    
-assets/          
-drizzle/         
+   app/
+   components/
+   contexts/
+   data/
+   db/
+   server/
+   services/
+   trpc/
+   types/
+   utils/
+localization/
+assets/
+drizzle/
 ```
 
 - **app/**: Screens and layouts using Expo Router.
@@ -190,6 +189,7 @@ For questions, issues, or feature requests, please open an issue on GitHub
 <!-- ## 🏅 Badges / Visuals
 
 <!-- Example badges: -->
+
 ![Build Status](https://img.shields.io/github/workflow/status/The-Creative-Programming-Group/finance-io/CI)
 ![License](https://img.shields.io/github/license/The-Creative-Programming-Group/finance-io) -->
 

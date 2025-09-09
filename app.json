@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
