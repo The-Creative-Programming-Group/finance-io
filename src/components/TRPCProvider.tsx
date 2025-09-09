@@ -24,7 +24,7 @@ export function TRPCProvider({ children }: TRPCProviderProps) {
       (Platform.OS === "android"
         ? "http://10.0.2.2:8081" // Android emulator
         : Platform.OS === "ios"
-          ? "http://localhost:8081" // iOS simulatorn
+          ? "http://localhost:8081" // iOS simulator
           : "https://api.example.com"); // fallback just in case
 
     // Reminder: Always set EXPO_PUBLIC_API_URL for production or device testing.
