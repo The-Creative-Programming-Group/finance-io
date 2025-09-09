@@ -58,7 +58,7 @@
     },
     "extra": {
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
-        "default": {},
+        "default": "",
         "env": "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
       },
       "router": {},
