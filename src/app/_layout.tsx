@@ -39,6 +39,7 @@ const tokenCache = {
 
 // Environment variable check with detailed error
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+console.log("Clerk publishable key: ", publishableKey);
 
 function RootLayoutNav() {
   // Initialize language when app starts

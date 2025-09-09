@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
@@ -58,13 +60,14 @@
     },
     "extra": {
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
-        "default": null,
+        "default": {},
         "env": "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
       },
+      "router": {},
       "eas": {
-        "projectId": "8ee47c07-a70e-4403-b426-81a2b6c96652"
+        "projectId": "c5abc4a2-a239-43c3-8f05-49453d5ef6bd"
       }
     },
-    "owner": "murtazanoori"
+    "owner": "michael-cmd-sys"
   }
 }

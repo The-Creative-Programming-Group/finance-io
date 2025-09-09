@@ -70,7 +70,7 @@ const Button: React.FC<ButtonProps> = ({ href, ...props }) => {
       {...props}
       onPress={handlePress}
       className={cn(
-        // TODO: Shadow (like the one we have in Figma) is somehow not working, didnt get it working, will skip this for a later PR
+        // TODO: Shadow (like the one we have in Figma) is somehow not working, didn't get it working, will skip this for a later PR
         "disabled:bg-gray-400 shadow-cyan-500/50 mt-5 self-center rounded-xl bg-accent px-8 py-2",
         props.className,
       )}
