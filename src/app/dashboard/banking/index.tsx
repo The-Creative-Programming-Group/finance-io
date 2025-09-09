@@ -1,14 +1,14 @@
 import React from "react";
 import { useTheme } from "~/contexts/ThemeContext";
 import { SafeAreaView, ScrollView, StatusBar } from "react-native";
-import { Header } from "~/components/Header";
 import { mockDashboardData } from "~/data/mockData";
 import { SectionHeader } from "~/components/SectionHeader";
-import { CardComponent } from "~/components/CardComponent";
 import { AccountItem } from "~/components/AccountItem";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
   const { colors, isDark } = useTheme();
+  const { t } = useTranslation();
 
   const handleAccountPress = (accountName: string, accountId: string) => {
     console.log(`Pressed ${accountName} with ID: ${accountId}`);
@@ -21,23 +21,15 @@ const Dashboard = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+    <SafeAreaView className="flex-1 bg-dark-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
       />
 
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ padding: 20 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Header */}
-        <Header name={mockDashboardData.user.name} />
-
+      <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
         {/* Cards Section */}
-        <SectionHeader title="Cards" delay={100} />
-
+        {/* <SectionHeader title="Cards" delay={100} />
         <SectionHeader title="Debitcard" size="medium" delay={150} />
         {mockDashboardData.cards
           .filter((card) => card.type === "debit")
@@ -50,7 +42,6 @@ const Dashboard = () => {
               onPress={() => handleCardPress(card.title, card.id)}
             />
           ))}
-
         <SectionHeader title="Business Card" size="medium" delay={250} />
         {mockDashboardData.cards
           .filter((card) => card.type === "business")
@@ -62,12 +53,9 @@ const Dashboard = () => {
               delay={300 + index * 50}
               onPress={() => handleCardPress(card.title, card.id)}
             />
-          ))}
-
-        {/* Daily Accounts Section */}
-        <SectionHeader title="Daily Accounts" delay={400} />
-
-        <SectionHeader title="Private" size="medium" delay={500} />
+          ))} */}
+        <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
+        <SectionHeader title={t("dashboardPrivate")} delay={500} />
         {mockDashboardData.accounts.private.map((account, index) => (
           <AccountItem
             key={account.id}
@@ -79,7 +67,7 @@ const Dashboard = () => {
           />
         ))}
 
-        <SectionHeader title="Business" size="medium" delay={800} />
+        <SectionHeader title={t("dashboardBusiness")} delay={800} />
         {mockDashboardData.accounts.business.map((account, index) => (
           <AccountItem
             key={account.id}
@@ -92,7 +80,7 @@ const Dashboard = () => {
         ))}
 
         {/* Safe Accounts Section */}
-        <SectionHeader title="Safe Accounts" delay={1000} />
+        <SectionHeader title={t("dashboardSafeAccounts")} delay={1000} />
         {mockDashboardData.accounts.safe.map((account, index) => (
           <AccountItem
             key={account.id}
@@ -103,6 +91,24 @@ const Dashboard = () => {
             onPress={() => handleAccountPress(account.name, account.id)}
           />
         ))}
+
+        <SectionHeader title={t("sharedFunds")} delay={1000} />
+        {mockDashboardData.sharedFunds && (
+          <AccountItem
+            key={mockDashboardData.sharedFunds.id}
+            icon={mockDashboardData.sharedFunds.icon}
+            name={mockDashboardData.sharedFunds.title}
+            arrow={mockDashboardData.sharedFunds.arrow}
+            iconWrapped
+            delay={1100}
+            onPress={() =>
+              handleAccountPress(
+                mockDashboardData.sharedFunds.title,
+                mockDashboardData.sharedFunds.id,
+              )
+            }
+          />
+        )}
       </ScrollView>
     </SafeAreaView>
   );

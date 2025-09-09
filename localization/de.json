@@ -107,5 +107,23 @@
   "usageTooShort": "Die Nutzung muss mindestens 2 Zeichen lang sein",
   "usageTooLong": "Die Nutzung darf nicht länger als 50 Zeichen sein",
   "verify": "Bestätigen",
-  "verifying": "Wird überprüft..."
+  "verifying": "Wird überprüft...",
+
+  "dashboardDailyAccounts": "Tägliche Konten",
+  "dashboardPrivate": "Privat",
+  "dashboardBusiness": "Geschäftlich",
+  "dashboardSafeAccounts": "Sichere Konten",
+
+  "navigationDashboard": "Dashboard",
+  "navigationTransactions": "Transaktionen",
+  "navigationInsights": "Einblicke",
+  "navigationSettings": "Einstellungen",
+  "navigationCategory": "Kategorien",
+  "navigationProfile": "Profil",
+  "navigationBankAccounts": "Bankkonten",
+  "navigationNotifications": "Benachrichtigungen",
+
+  "defaultUser": "Benutzer",
+  "overview": "Überblick",
+  "sharedFunds": "Gemeinsame Investitionen"
 }
