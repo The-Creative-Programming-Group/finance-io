@@ -47,12 +47,12 @@ const InputField = ({
       <View
         className="flex-row items-center rounded-xl border px-4 py-3"
         style={{
-          backgroundColor: "transparent", // remove white background
+          backgroundColor: colors.cardBackground,
           borderColor: !touched ? colors.border : error ? colors.error : colors.success,
         }}
       >
         <TextInput
-          className="flex-1 text-base"
+          className="flex-1 text-base "
           autoCapitalize="none"
           onChangeText={(text) => {
             if (!touched) setTouched(true)
@@ -63,8 +63,8 @@ const InputField = ({
           selectionColor={colors.primary}
           value={value}
           style={{
-            color: "white",        // make text white
-            backgroundColor: "transparent", // remove input fill
+            color: "white",
+            backgroundColor: colors.cardBackground, // add background color
             outlineStyle: "none" as any,  // remove browser yellow outline
           }}
         />
