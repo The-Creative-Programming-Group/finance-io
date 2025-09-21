@@ -1,4 +1,5 @@
 import type React from "react"
+import Profile from '../app/profile/index';
 export interface Account {
   id: string
   name: string
@@ -24,5 +25,11 @@ export interface DashboardData {
     private: Account[]
     business: Account[]
     safe: Account[]
+  }
+}
+
+export interface ProfileData {
+  profile: {
+    name: string
   }
 }

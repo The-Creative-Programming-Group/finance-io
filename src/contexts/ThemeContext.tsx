@@ -11,6 +11,9 @@ interface ThemeColors {
   border: string
   success: string
   primary: string
+  stroke?: string
+  good?: string
+  error?: string
 }
 
 interface ThemeContextType {
@@ -27,6 +30,9 @@ const lightColors: ThemeColors = {
   border: "#e0e0e0",
   success: "#00ff88",
   primary: "#007AFF",
+  stroke: "#d1deeb",
+  good: "#63b37e",
+  error: "#ea2b19"
 }
 
 const darkColors: ThemeColors = {
@@ -35,9 +41,12 @@ const darkColors: ThemeColors = {
   text: "#ffffff",
   textSecondary: "#a0a0a0",
   accent: "#00ff88",
-  border: "#333333",
-  success: "#00ff88",
-  primary: "#0A84FF",
+  border: "#2a2a2a",
+  success: "#4CAF50",
+  primary: "#4A90E2",
+  stroke: "#1c1c1c",
+  good: "#63b37e",
+  error: "#ea2b19"
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)

@@ -11,10 +11,10 @@ import AppText from "./AppText"
 const AnimatedView = Animated.createAnimatedComponent(Animated.View)
 
 interface HeaderProps {
-  name: string
+  title: string
 }
 
-export const Header: React.FC<HeaderProps> = ({ name }) => {
+export const Header: React.FC<HeaderProps> = ({ title }) => {
   const { colors } = useTheme()
   const headerOpacity = useSharedValue(0)
 
@@ -28,8 +28,11 @@ export const Header: React.FC<HeaderProps> = ({ name }) => {
 
   return (
     <AnimatedView
-      className="w-full bg-black py-3 px-4 border-b border-gray-800 flex-row items-center justify-center space-x-2 rounded-lg"
-      style={headerAnimatedStyle}
+      className="absolute top-0 left-0 right-0 flex-row items-center justify-center space-x-4 py-6 px-6 border-b border-gray-800"
+      style={[
+        headerAnimatedStyle,
+        { backgroundColor: colors.cardBackground },
+      ]}
     >
       <Image
         source={require("../assets/images/avatar.png")}
@@ -40,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ name }) => {
         className="text-sm text-center"
         style={{ color: colors.text }}
       >
-        {name} - Dashboard
+        {title}
       </AppText>
     </AnimatedView>
   )

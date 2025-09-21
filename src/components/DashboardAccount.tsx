@@ -24,9 +24,12 @@ const DashboardContent: React.FC = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar barStyle={isDark ? "light-content" : "dark-content"} backgroundColor={colors.background} />
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20 }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="flex-1"
+        contentContainerClassName="px-4 pt-28 pb-28"
+      >
         {/* Header */}
-        <Header name={mockDashboardData.user.name} />
+        <Header title={`${mockDashboardData.user.name} - Dashboard`} />
 
         {/* Cards Section */}
         <SectionHeader title="Cards" delay={100} />
