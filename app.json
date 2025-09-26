@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "fonts": {
       "Raleway-SemiBold": "./src/assets/Raleway-SemiBold.ttf",
       "Raleway-Medium": "./src/assets/Raleway-Medium.ttf",
@@ -43,7 +41,17 @@
       "favicon": "./src/assets/images/icon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/images/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -52,7 +60,11 @@
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
         "default": null,
         "env": "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+      },
+      "eas": {
+        "projectId": "8ee47c07-a70e-4403-b426-81a2b6c96652"
       }
-    }
+    },
+    "owner": "murtazanoori"
   }
 }

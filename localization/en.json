@@ -3,8 +3,8 @@
   "password": "Password",
   "signIn": "Sign In",
   "signingIn": "Signing In...",
-  "dontHaveAccount": "Don't have an account?",
-  "signUp": "Sign up",
+  "dontHaveAccount": "Don't have an account yet?",
+  "signUp": "Sign Up",
   "goToHome": "Go to Home",
   "firstName": "First Name",
   "lastName": "Last Name",
@@ -55,6 +55,7 @@
   "accountCreationFailed": "Failed to create account",
   "resetLanguage": "Reset to Device Language",
   "invalidEmail": "Please enter a valid email address",
+  "emailRequired": "Email is required",
   "firstNameRequired": "First name is required",
   "lastNameRequired": "Last name is required",
   "passwordRequired": "Password is required",
@@ -64,7 +65,6 @@
   "unknownError": "Unknown Error occurred",
   "appName": "Finance.io",
   "bankNamePlaceholder": "Revolut",
-
   "enterField": "Enter {{field}}",
   "fieldRequired": "{{field}} is required",
   "fieldTooShort": "{{field}} must be at least {{min}} characters",
@@ -85,5 +85,25 @@
   "referenceTooLong": "Reference must be less than 50 characters",
   "usageRequired": "Usage is required",
   "usageTooShort": "Usage must be at least 2 characters",
-  "usageTooLong": "Usage must be less than 50 characters"
+  "usageTooLong": "Usage must be less than 50 characters",
+  "verify": "Verify",
+  "verifying": "Verifying...",
+
+  "dashboardDailyAccounts": "Daily Accounts",
+  "dashboardPrivate": "Private",
+  "dashboardBusiness": "Business",
+  "dashboardSafeAccounts": "Safe Accounts",
+
+  "navigationDashboard": "Dashboard",
+  "navigationTransactions": "Transactions",
+  "navigationInsights": "Insights",
+  "navigationSettings": "Settings",
+  "navigationCategory": "Categories",
+  "navigationProfile": "Profile",
+  "navigationBankAccounts": "Bank Accounts",
+  "navigationNotifications": "Notifications",
+
+  "defaultUser": "User",
+  "overview": "Overview",
+  "sharedFunds": "Shared Funds"
 }

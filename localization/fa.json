@@ -122,9 +122,9 @@
   "referencePlaceholder": "تجاری، شخصی، سایر",
   "emailRequired": "وارد کردن ایمیل لازمی است",
   "invalidEmail": "لطفاً یک ایمیل معتبر وارد کنید",
-  "firstNameRequired": "وارد کردن نام الزامی است",
-  "lastNameRequired": "وارد کردن نام خانوادگی الزامی است",
-  "passwordRequired": "رمز عبور الزامی است",
+  "firstNameRequired": "وارد کردن نام لازمی است",
+  "lastNameRequired": "وارد کردن نام خانوادگی لازمی است",
+  "passwordRequired": "رمز عبور لازمی است",
   "signInFailed": "ورود ناموفق بود. لطفاً اعتبارنامه‌های خود را بررسی کنید",
   "userDoesNotExist": "کاربر وجود ندارد",
   "incorrectPassword": "رمز عبور شما نادرست است",
@@ -165,5 +165,25 @@
 
   "itemNumeric": "{{item}} باید عددی باشد",
   "itemPositive": "{{item}} باید مثبت باشد",
-  "itemMin": "{{item}} باید حداقل {{min}} باشد"
+  "itemMin": "{{item}} باید حداقل {{min}} باشد",
+  "verify": "تأیید",
+  "verifying": "در حال تأیید...",
+
+  "dashboardDailyAccounts": "حساب‌های روزانه",
+  "dashboardPrivate": "خصوصی",
+  "dashboardBusiness": "تجاری",
+  "dashboardSafeAccounts": "حساب‌های محفوظ",
+
+  "navigationDashboard": "داشبورد",
+  "navigationTransactions": "تراکنش‌ها",
+  "navigationInsights": "بینش‌ها",
+  "navigationSettings": "تنظیمات",
+  "navigationCategory": "دسته‌بندی‌ها",
+  "navigationProfile": "پروفایل",
+  "navigationBankAccounts": "حساب‌های بانکی",
+  "navigationNotifications": "اعلان‌ها",
+
+  "defaultUser": "کاربر",
+  "overview": "نمای کلی",
+  "sharedFunds": "سرمایه‌گذاری مشترک"
 }

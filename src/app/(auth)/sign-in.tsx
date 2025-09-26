@@ -9,11 +9,12 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { Image } from "expo-image";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
+import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -48,14 +49,14 @@ export default function Page() {
   const handleEmailChange = (text: string) => {
     setEmailAddress(text);
     if (fieldErrors.email) {
-      setFieldErrors(prev => ({ ...prev, email: undefined }));
+      setFieldErrors((prev) => ({ ...prev, email: undefined }));
     }
   };
 
   const handlePasswordChange = (text: string) => {
     setPassword(text);
     if (fieldErrors.password) {
-      setFieldErrors(prev => ({ ...prev, password: undefined }));
+      setFieldErrors((prev) => ({ ...prev, password: undefined }));
     }
   };
 
@@ -66,13 +67,13 @@ export default function Page() {
     } = {};
 
     if (!emailAddress.trim()) {
-      newErrors.email = t('emailRequired');
+      newErrors.email = t("emailRequired");
     } else if (!/\S+@\S+\.\S+/.test(emailAddress)) {
-      newErrors.email = t('invalidEmail');
+      newErrors.email = t("invalidEmail");
     }
 
     if (!password) {
-      newErrors.password = t('passwordRequired');
+      newErrors.password = t("passwordRequired");
     }
 
     setFieldErrors(newErrors);
@@ -100,8 +101,13 @@ export default function Page() {
         await setActive({ session: signInAttempt.createdSessionId });
         router.replace("../home");
       } else {
-        setError(t('signInFailed', 'Sign in failed. Please check your credentials'));
-        console.error(JSON.stringify(signInAttempt, null, 2));
+        setError(
+          t("signInFailed", "Sign in failed. Please check your credentials"),
+        );
+        // JSON.stringify(signInAttempt) can include createdSessionId and other sensitive details. Don’t log this in production builds.
+        if (__DEV__) {
+          console.error(JSON.stringify(signInAttempt, null, 2));
+        }
       }
     } catch (err) {
       // Type guard to check if err is an object and has 'errors' property
@@ -118,14 +124,14 @@ export default function Page() {
         const passwordError = errors.find(
           (error) => error.code === "form_password_incorrect",
         );
-        setError(t('signInFailed', 'Sign in failed'));
+        setError(t("signInFailed", "Sign in failed"));
         if (identifierError) {
-          setError(t('userDoesNotExist', 'User does not exist'));
+          setError(t("userDoesNotExist", "User does not exist"));
         } else if (passwordError) {
-          setError(t('incorrectPassword', 'Your password is incorrect'));
+          setError(t("incorrectPassword", "Your password is incorrect"));
         }
       } else {
-        setError(t('unknownError', 'Unknown Error occurred'));
+        setError(t("unknownError", "Unknown Error occurred"));
         console.error(JSON.stringify(err, null, 2));
       }
     }
@@ -146,26 +152,23 @@ export default function Page() {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-5 flex-row items-center justify-center">
-          <Image
+        <View className="mt-20 flex-row items-center justify-center gap-7">
+          <AppImage
             source={require("../../assets/images/icon.png")}
-            className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
+            className="h-[58px] w-[58px] rounded-xl"
           />
-          <AppText
-            semibold={true}
-            className="mb-5 text-center text-[30px] text-text dark:text-dark-text"
-          >
+          <AppText className="text-4xl text-text dark:text-dark-text">
             Finance.io
           </AppText>
         </View>
         <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
-          {t('email')}
+          {t("email")}
         </AppText>
         <TextInput
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           autoCapitalize="none"
           value={emailAddress}
-          placeholder={t('email')}
+          placeholder={t("email")}
           placeholderTextColor="gray"
           onChangeText={handleEmailChange}
           keyboardType="email-address"
@@ -178,12 +181,12 @@ export default function Page() {
           </AppText>
         )}
         <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-          {t('password')}
+          {t("password")}
         </AppText>
         <TextInput
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           value={password}
-          placeholder={t('password')}
+          placeholder={t("password")}
           placeholderTextColor="gray"
           secureTextEntry={true}
           onChangeText={handlePasswordChange}
@@ -203,34 +206,24 @@ export default function Page() {
             {error}
           </AppText>
         )}
-        <TouchableOpacity
+        {/* TODO: Forgot password logic */}
+        <Button
           onPress={onSignInPress}
           disabled={isSubmitting}
           accessibilityLabel={isSubmitting ? "Signing in" : "Sign in"}
           accessibilityRole="button"
-          className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
         >
-          <AppText bold={true} className="text-text dark:text-dark-text">
-            {isSubmitting ? t('signingIn') : t('signIn')}
-          </AppText>
-        </TouchableOpacity>
+          {isSubmitting ? t("signingIn") : t("signIn")}
+        </Button>
         <TouchableOpacity
           onPress={() => router.push("./sign-up")}
           accessibilityLabel="Create a new account"
           accessibilityRole="link"
         >
           <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            {t('dontHaveAccount')}{" "}
-            <AppText className="font-bold text-[#007AFF]">{t('signUp')}</AppText>
-          </AppText>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => router.push("/") }
-          accessibilityLabel="Go to home"
-          accessibilityRole="link"
-        >
-          <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-            {t('goToHome')}
+            {t("dontHaveAccount")}{" "}
+            <AppText className="font-bold underline">{t("signUp")}</AppText>
+            <AppText>🥳</AppText>
           </AppText>
         </TouchableOpacity>
       </ScrollView>

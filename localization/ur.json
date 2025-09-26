@@ -93,5 +93,25 @@
   "referenceTooLong": "حوالہ 50 حروف سے کم ہونا چاہیے",
   "usageRequired": "استعمال ضروری ہے",
   "usageTooShort": "استعمال کم از کم 2 حروف کا ہونا چاہیے",
-  "usageTooLong": "استعمال 50 حروف سے کم ہونا چاہیے"
+  "usageTooLong": "استعمال 50 حروف سے کم ہونا چاہیے",
+  "verify": "تصدیق کریں",
+  "verifying": "تصدیق ہو رہی ہے...",
+
+  "dashboardDailyAccounts": "روزانہ کھاتے",
+  "dashboardPrivate": "نجی",
+  "dashboardBusiness": "کاروباری",
+  "dashboardSafeAccounts": "محفوظ کھاتے",
+
+  "navigationDashboard": "ڈیش بورڈ",
+  "navigationTransactions": "لین دین",
+  "navigationInsights": "بصیرت",
+  "navigationSettings": "ترتیبات",
+  "navigationCategory": "کیٹگریز",
+  "navigationProfile": "پروفائل",
+  "navigationBankAccounts": "بینک اکاؤنٹس",
+  "navigationNotifications": "اطلاعات",
+
+  "defaultUser": "صارف",
+  "overview": "جائزہ",
+  "sharedFunds": "مشترکہ سرمایہ کاری"
 }

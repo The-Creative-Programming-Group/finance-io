@@ -1,7 +1,7 @@
 import type React from "react"
 import { View, TouchableOpacity, Image } from "react-native"
 import { useTheme } from "../contexts/ThemeContext"
-import AppText from "./AppText"
+import AppText from "./ui/AppText"
 
 interface BottomNavigationProps {
   activeTab: "Banking" | "Insights" | "Settings"

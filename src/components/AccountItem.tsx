@@ -1,15 +1,17 @@
-import type React from "react"
-import { View, TouchableOpacity } from "react-native"
-import Animated, { FadeInDown } from "react-native-reanimated"
-import { useTheme } from "../contexts/ThemeContext"
-import AppText from "./AppText"
+import type React from "react";
+import { View, TouchableOpacity } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
+import { useTheme } from "~/contexts/ThemeContext";
+import AppText from "./ui/AppText";
 
 interface AccountItemProps {
-  icon: React.ReactNode
-  name: string
-  amount: string
-  delay?: number
-  onPress?: () => void
+  icon: React.ReactNode;
+  iconWrapped?: boolean;
+  name: string;
+  amount?: string;
+  delay?: number;
+  onPress?: () => void;
+  arrow?: React.ReactNode;
 }
 
 export const AccountItem: React.FC<AccountItemProps> = ({
@@ -18,19 +20,21 @@ export const AccountItem: React.FC<AccountItemProps> = ({
   amount,
   delay = 0,
   onPress,
+  arrow,
+  iconWrapped = false,
 }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
-  const Component = onPress ? TouchableOpacity : View
+  const Component = onPress ? TouchableOpacity : View;
 
   const IconWrapper = ({
     children,
     H_size = 40,
     W_size = 60,
   }: {
-    children: React.ReactNode
-    H_size?: number
-    W_size?: number
+    children: React.ReactNode;
+    H_size?: number;
+    W_size?: number;
   }) => (
     <View
       className="rounded-2xl items-center justify-center"
@@ -42,7 +46,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
     >
       {children}
     </View>
-  )
+  );
 
   return (
     <Animated.View
@@ -52,26 +56,48 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       <Component
         onPress={onPress}
         activeOpacity={onPress ? 0.7 : 1}
-        className="flex-row items-center py-4 px-5 rounded-xl border"
-        style={{
-          backgroundColor: colors.cardBackground,
-          borderColor: colors.border,
-        }}
+        className="mb-4 flex-row items-center rounded-xl border-2 border-dark-stroke bg-dark-secondary px-5 py-5"
       >
-        <View className="w-10 h-10 mr-4">{icon}</View>
+        {iconWrapped ? (
+          <View className="mx-auto ml-2 mr-4 rounded-full bg-dark-primary p-2">
+            {icon}
+          </View>
+        ) : (
+          <View className="ml-2 mr-4 flex w-11 items-center justify-center">
+            {icon}
+          </View>
+        )}
+
         <AppText
           medium
-          className="flex-1 text-base"
+          className="ml-4 flex-1 font-bold tracking-wider"
           style={{ color: colors.text }}
         >
           {name}
         </AppText>
-        <IconWrapper H_size={40} W_size={60}>
-          <AppText semibold className="text-base" style={{ color: colors.text }}>
+
+        {amount && (
+          <AppText
+            semibold
+            className="text-base"
+            style={{ color: colors.good }}
+          >
             {amount}
           </AppText>
-        </IconWrapper>
+        )}
+
+        {arrow && (
+          <View className="ml-2">
+            {typeof arrow === "string" ? (
+              <AppText semibold className="text-base">
+                {arrow}
+              </AppText>
+            ) : (
+              arrow
+            )}
+          </View>
+        )}
       </Component>
     </Animated.View>
-  )
-}
+  );
+};

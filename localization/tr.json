@@ -92,5 +92,25 @@
 
   "itemNumeric": "{{item}} sayısal olmalıdır",
   "itemPositive": "{{item}} pozitif olmalıdır",
-  "itemMin": "{{item}} en az {{min}} olmalıdır"
+  "itemMin": "{{item}} en az {{min}} olmalıdır",
+  "verify": "Doğrula",
+  "verifying": "Doğrulanıyor...",
+
+  "dashboardDailyAccounts": "Günlük Hesaplar",
+  "dashboardPrivate": "Özel",
+  "dashboardBusiness": "İş",
+  "dashboardSafeAccounts": "Korumalı Hesaplar",
+
+  "navigationDashboard": "Kontrol Paneli",
+  "navigationTransactions": "İşlemler",
+  "navigationInsights": "Analiz",
+  "navigationSettings": "Ayarlar",
+  "navigationCategory": "Kategoriler",
+  "navigationProfile": "Profil",
+  "navigationBankAccounts": "Banka Hesapları",
+  "navigationNotifications": "Bildirimler",
+
+  "defaultUser": "Kullanıcı",
+  "overview": "Genel Bakış",
+  "sharedFunds": "Paylaşılan yatırımlar"
 }

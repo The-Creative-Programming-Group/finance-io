@@ -92,5 +92,25 @@
 
   "itemNumeric": "{{item}} должно быть числом",
   "itemPositive": "{{item}} должно быть положительным",
-  "itemMin": "{{item}} должно быть не менее {{min}}"
+  "itemMin": "{{item}} должно быть не менее {{min}}",
+  "verify": "Подтвердить",
+  "verifying": "Проверка...",
+
+  "dashboardDailyAccounts": "Ежедневные счета",
+  "dashboardPrivate": "Личный",
+  "dashboardBusiness": "Бизнес",
+  "dashboardSafeAccounts": "Защищенные счета",
+
+  "navigationDashboard": "Панель",
+  "navigationTransactions": "Транзакции",
+  "navigationInsights": "Аналитика",
+  "navigationSettings": "Настройки",
+  "navigationCategory": "Категории",
+  "navigationProfile": "Профиль",
+  "navigationBankAccounts": "Банковские счета",
+  "navigationNotifications": "Уведомления",
+
+  "defaultUser": "Пользователь",
+  "overview": "Обзор",
+  "sharedFunds": "Совместные инвестиции"
 }

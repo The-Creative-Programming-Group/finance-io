@@ -68,11 +68,6 @@
   "accountCreationFailed": "Error al crear la cuenta",
   "resetLanguage": "Volver al idioma del dispositivo",
 
-  "invalidEmail": "Por favor, ingresa un correo electrónico válido",
-  "signInFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales",
-  "userDoesNotExist": "El usuario no existe",
-  "incorrectPassword": "Tu contraseña es incorrecta",
-  "unknownError": "Ocurrió un error desconocido",
   "appName": "Finance.io",
   "bankNamePlaceholder": "Revolut",
 
@@ -98,5 +93,25 @@
   "referenceTooLong": "La referencia debe tener menos de 50 caracteres",
   "usageRequired": "El uso es obligatorio",
   "usageTooShort": "El uso debe tener al menos 2 caracteres",
-  "usageTooLong": "El uso debe tener menos de 50 caracteres"
+  "usageTooLong": "El uso debe tener menos de 50 caracteres",
+  "verify": "Verificar",
+  "verifying": "Verificando...",
+
+  "dashboardDailyAccounts": "Cuentas Diarias",
+  "dashboardPrivate": "Privado",
+  "dashboardBusiness": "Empresarial",
+  "dashboardSafeAccounts": "Cuentas Protegidas",
+
+  "navigationDashboard": "Panel",
+  "navigationTransactions": "Transacciones",
+  "navigationInsights": "Análisis",
+  "navigationSettings": "Configuración",
+  "navigationCategory": "Categorías",
+  "navigationProfile": "Perfil",
+  "navigationBankAccounts": "Cuentas Bancarias",
+  "navigationNotifications": "Notificaciones",
+
+  "defaultUser": "Usuario",
+  "overview": "Resumen",
+  "sharedFunds": "Inversiones compartidas"
 }

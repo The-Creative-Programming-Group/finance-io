@@ -1,15 +1,15 @@
-import React from "react"
-import { Text } from "react-native"
-import { useFonts } from "expo-font"
+import React from "react";
+import { Text, type TextStyle, type StyleProp } from "react-native";
+import { useFonts } from "expo-font";
 
 type AppTextProps = {
-  semibold?: boolean
-  children: React.ReactNode
-  medium?: boolean
-  bold?: boolean
-  className?: string
-  style?: object
-}
+  semibold?: boolean;
+  children: React.ReactNode;
+  medium?: boolean;
+  bold?: boolean;
+  className?: string;
+  style?: StyleProp<TextStyle>;
+};
 
 export default function AppText({
   children,
@@ -41,14 +41,7 @@ export default function AppText({
     : "Raleway"
 
   return (
-    <Text
-      className={className}
-      style={[
-        { fontFamily},
-        style,
-      ]}
-      {...rest}
-    >
+    <Text className={className} style={[{ fontFamily }, style]} {...rest}>
       {children}
     </Text>
   )

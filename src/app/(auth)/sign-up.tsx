@@ -7,14 +7,16 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import AppText from "~/components/AppText";
+import AppText from "~/components/ui/AppText";
 import { useSignUp, useSignIn } from "@clerk/clerk-expo";
-import { useRouter, Link } from "expo-router";
-import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import InputOtp from "~/components/ui/input-otp";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
+import Button from "~/components/ui/button";
+import AppImage from "~/components/ui/AppImage";
+import { z } from "zod";
 
 type newErrorType = {
   firstname?: string;
@@ -41,7 +43,12 @@ export default function SignUpScreen() {
       }
     };
 
-    initLanguage();
+    void initLanguage().catch((error) => {
+      console.error(
+        "Sign-up page: Unhandled error during language initialization:",
+        error,
+      );
+    });
   }, []);
 
   // New fields for design
@@ -60,11 +67,22 @@ export default function SignUpScreen() {
   // Validation helper
   const validate = () => {
     const newErrors: newErrorType = {};
-    if (!firstname) newErrors.firstname = t('firstNameRequired');
-    if (!lastname) newErrors.lastname = t('lastNameRequired');
-    if (!email) newErrors.email = t('emailRequired');
+    if (!firstname) newErrors.firstname = t("firstNameRequired");
+    if (!lastname) newErrors.lastname = t("lastNameRequired");
+    if (!email) newErrors.email = t("emailRequired");
+    else {
+      // By default,
+      // Zod uses a comparatively strict email regex designed to validate normal email addresses containing common characters.
+      // It's roughly equivalent to the rules enforced by Gmail.
+      // To learn more about this regex, refer to this post: https://colinhacks.com/essays/reasonable-email-regex
+      //
+      // To customize the email validation behavior,
+      // you can pass a custom regular expression to the pattern param.
+      const result = z.string().email().safeParse(email);
+      if (!result.success) newErrors.email = t("invalidEmail");
+    }
     // Removed phone number validation
-    if (!password) newErrors.password = t('passwordRequired');
+    if (!password) newErrors.password = t("passwordRequired");
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -168,16 +186,18 @@ export default function SignUpScreen() {
         keyboardShouldPersistTaps="handled"
       >
         <View className="mb-5 flex items-center justify-center">
-          <Image
-            source={require("../../assets/images/icon.png")}
-            className="mb-[18px] mr-2.5 h-[50px] w-[50px]"
-          />
-          <AppText className="mb-5 text-center text-[30px] text-text dark:text-dark-text">
-            Finance.io
-          </AppText>
+          <View className="mt-20 flex-row items-center justify-center gap-7">
+            <AppImage
+              source={require("../../assets/images/icon.png")}
+              className="h-[58px] w-[58px] rounded-xl"
+            />
+            <AppText className="text-4xl text-text dark:text-dark-text">
+              Finance.io
+            </AppText>
+          </View>
           {pendingVerification ? (
             <AppText className="mx-5 mb-20 flex text-text dark:text-dark-text">
-              {t('verificationCodeSent', { email })}
+              {t("verificationCodeSent", { email })}
             </AppText>
           ) : null}
         </View>
@@ -185,11 +205,11 @@ export default function SignUpScreen() {
         {!pendingVerification ? (
           <>
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('firstName')}
+              {t("firstName")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('John')}
+              placeholder={t("John")}
               placeholderTextColor="gray"
               value={firstname}
               onChangeText={setFirstname}
@@ -201,11 +221,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('lastName')}
+              {t("lastName")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('Doe')}
+              placeholder={t("Doe")}
               placeholderTextColor="gray"
               value={lastname}
               onChangeText={setLastname}
@@ -216,12 +236,14 @@ export default function SignUpScreen() {
               </AppText>
             )}
 
+            {/* TODO: Need to add phone number */}
+
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('email')}
+              {t("email")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('jamesdoe@gmail.com')}
+              placeholder={t("jamesdoe@gmail.com")}
               placeholderTextColor="gray"
               value={email}
               onChangeText={setEmail}
@@ -235,11 +257,11 @@ export default function SignUpScreen() {
             )}
 
             <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t('password')}
+              {t("password")}
             </AppText>
             <TextInput
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
-              placeholder={t('**********')}
+              placeholder={t("**********")}
               placeholderTextColor="gray"
               value={password}
               onChangeText={setPassword}
@@ -257,38 +279,41 @@ export default function SignUpScreen() {
               </AppText>
             )}
 
-            <TouchableOpacity
+            <Button
               onPress={handleSignup}
               disabled={isSubmitting}
-              accessibilityLabel={t('createAccount')}
+              accessibilityLabel={t("createAccount")}
               accessibilityHint="Create a new account"
               accessibilityRole="button"
-              className={`mt-5 self-center rounded-md bg-[#007AFF] px-5 py-2.5 ${isSubmitting ? "opacity-50" : ""}`}
             >
-              <AppText semibold={true} className="text-dark-text">
-                {isSubmitting ? t('creatingAccount') : t('createAccount')}
-              </AppText>
-            </TouchableOpacity>
+              {isSubmitting ? t("creatingAccount") : t("createAccount")}
+            </Button>
 
             <TouchableOpacity
               onPress={() => router.push("./sign-in")}
-              accessibilityLabel={t('alreadyHaveAccount')}
+              accessibilityLabel={t("alreadyHaveAccount")}
               accessibilityHint="Sign in to your account"
               accessibilityRole="link"
             >
               <AppText className="pt-2.5 text-center text-text dark:text-dark-text">
-                {t('alreadyHaveAccount')}{" "}
-                <AppText className="font-bold text-[#007AFF]">{t('signIn')}</AppText>
+                {t("alreadyHaveAccount")} {""}
+                <AppText className="font-bold underline">{t("signIn")}</AppText>
+                <AppText>🥳</AppText>
               </AppText>
             </TouchableOpacity>
           </>
         ) : (
-          <InputOtp
-            value={otpCode}
-            onChange={setOtpCode}
-            onSubmit={handleVerify}
-            isSubmitting={isSubmitting}
-          />
+          <>
+            <InputOtp onCodeChange={setOtpCode} />
+            <Button
+              onPress={handleVerify}
+              disabled={isSubmitting}
+              accessibilityLabel={isSubmitting ? t("verifying") : t("verify")}
+              accessibilityRole="button"
+            >
+              {isSubmitting ? t("verifying") : t("verify")}
+            </Button>
+          </>
         )}
       </ScrollView>
     </KeyboardAvoidingView>

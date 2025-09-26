@@ -1,16 +1,16 @@
-import type React from "react"
-import { View, TouchableOpacity } from "react-native"
-import Animated, { FadeInUp } from "react-native-reanimated"
-import { useTheme } from "../contexts/ThemeContext"
-import { ContactlessIcon, MastercardLogo } from "./Icons"
-import AppText from "./AppText"
-import clsx from "clsx"
+import type React from "react";
+import { View, TouchableOpacity } from "react-native";
+import Animated, { FadeInUp } from "react-native-reanimated";
+import { useTheme } from "~/contexts/ThemeContext";
+import { ContactlessIcon, MastercardLogo } from "./Icons";
+import AppText from "./ui/AppText";
+import clsx from "clsx";
 
 interface CardComponentProps {
-  title: string
-  cardHolder: string
-  delay?: number
-  onPress?: () => void
+  title: string;
+  cardHolder: string;
+  delay?: number;
+  onPress?: () => void;
 }
 
 export const CardComponent: React.FC<CardComponentProps> = ({
@@ -19,9 +19,9 @@ export const CardComponent: React.FC<CardComponentProps> = ({
   delay = 0,
   onPress,
 }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
-  const Component = onPress ? TouchableOpacity : View
+  const Component = onPress ? TouchableOpacity : View;
 
   return (
     <Animated.View
@@ -31,18 +31,18 @@ export const CardComponent: React.FC<CardComponentProps> = ({
       <Component
         onPress={onPress}
         className={clsx(
-          "rounded-2xl p-5 border min-h-[120px]",
-          onPress && "active:opacity-80"
+          "min-h-[120px] rounded-2xl border p-5",
+          onPress && "active:opacity-80",
         )}
         style={{
-          backgroundColor: colors.cardBackground,
-          borderColor: colors.border,
+          backgroundColor: colors.secondary,
+          borderColor: colors.stroke,
         }}
       >
-        <View className="flex-row justify-between items-start">
+        <View className="flex-row items-start justify-between">
           <AppText
             semibold
-            className="text-[18px] mb-2"
+            className="mb-2 text-[18px]"
             style={{ color: colors.text }}
           >
             {title}
@@ -51,10 +51,10 @@ export const CardComponent: React.FC<CardComponentProps> = ({
         </View>
 
         <View className="flex-1 justify-end">
-          <View className="flex-row justify-between items-end">
+          <View className="flex-row items-end justify-between">
             <AppText
               className="text-[14px]"
-              style={{ color: colors.textSecondary }}
+              style={{ color: colors.backgroundText }}
             >
               {cardHolder}
             </AppText>
@@ -63,5 +63,5 @@ export const CardComponent: React.FC<CardComponentProps> = ({
         </View>
       </Component>
     </Animated.View>
-  )
-}
+  );
+};

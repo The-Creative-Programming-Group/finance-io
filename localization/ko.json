@@ -93,5 +93,25 @@
   "referenceTooLong": "참조는 50자 미만이어야 합니다",
   "usageRequired": "사용은 필수입니다",
   "usageTooShort": "사용은 최소 2자 이상이어야 합니다",
-  "usageTooLong": "사용은 50자 미만이어야 합니다"
+  "usageTooLong": "사용은 50자 미만이어야 합니다",
+  "verify": "인증하기",
+  "verifying": "인증 중...",
+
+  "dashboardDailyAccounts": "일상 계좌",
+  "dashboardPrivate": "개인",
+  "dashboardBusiness": "비즈니스",
+  "dashboardSafeAccounts": "보호 계좌",
+
+  "navigationDashboard": "대시보드",
+  "navigationTransactions": "거래내역",
+  "navigationInsights": "인사이트",
+  "navigationSettings": "설정",
+  "navigationCategory": "카테고리",
+  "navigationProfile": "프로필",
+  "navigationBankAccounts": "은행 계좌",
+  "navigationNotifications": "알림",
+
+  "defaultUser": "사용자",
+  "overview": "개요",
+  "sharedFunds": "공동 투자"
 }

@@ -4,7 +4,6 @@ import { useTheme } from "~/contexts/ThemeContext"
 import { Header } from "~/components/Header"
 import { ProfileMenuItem } from "~/components/ProfileMenuItem"
 import { BottomNavigation } from "~/components/BottomNavigation"
-import { Icon } from "lucide-react-native"
 
 interface BankAccountsScreenProps {
   onNavigate: (screen: string) => void

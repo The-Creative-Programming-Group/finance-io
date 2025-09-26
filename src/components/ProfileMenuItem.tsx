@@ -2,7 +2,7 @@ import type React from "react"
 import { View, TouchableOpacity, Image } from "react-native"
 import Animated, { FadeInDown } from "react-native-reanimated"
 import { useTheme } from "../contexts/ThemeContext"
-import AppText from "./AppText"
+import AppText from "./ui/AppText"
 
 interface ProfileMenuItemProps {
   icon: React.ReactNode

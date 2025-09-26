@@ -11,7 +11,7 @@ import {
 import { useTheme } from "~/contexts/ThemeContext"
 import { Header } from "~/components/Header"
 import { BottomNavigation } from "~/components/BottomNavigation"
-import AppText from "~/components/AppText"
+import AppText from "~/components/ui/AppText"
 
 interface UserProfileScreenProps {
   onNavigate: (screen: string) => void
@@ -143,7 +143,7 @@ export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({ onNavigate
         <View className="items-center my-8">
           <Image
             source={require("~/assets/images/avatar.png")}
-            className="w-30 h-30 rounded-full mb-4"
+            className="w-[120px] h-[120px] rounded-full mb-4"
           />
           <TouchableOpacity>
             <AppText className="text-accent">Change Picture</AppText>

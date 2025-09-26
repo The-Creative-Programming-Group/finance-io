@@ -6,7 +6,7 @@ import { SectionHeader } from "~/components/SectionHeader"
 import { AccountItem } from "~/components/AccountItem"
 import { BottomNavigation } from "~/components/BottomNavigation"
 import { FloatingActionButton } from "~/components/FloatingActionButton"
-import AppText from "~/components/AppText"
+import AppText from "~/components/ui/AppText"
 
 interface IncomeScreenProps {
   onNavigate: (screen: string) => void

@@ -1,6 +1,6 @@
 import React from "react"
 import { TouchableOpacity } from "react-native"
-import AppText from "./AppText"
+import AppText from "./ui/AppText"
 
 type ButtonProps = {
   title: string

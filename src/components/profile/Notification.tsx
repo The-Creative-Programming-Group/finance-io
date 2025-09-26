@@ -4,7 +4,7 @@ import { useTheme } from "~/contexts/ThemeContext"
 import { Header } from "~/components/Header"
 import { BottomNavigation } from "~/components/BottomNavigation"
 import { Toggle } from "~/components/Toggle"
-import AppText from "~/components/AppText"
+import AppText from "~/components/ui/AppText"
 
 interface NotificationScreenProps {
   onNavigate: (screen: string) => void

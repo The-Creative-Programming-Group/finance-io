@@ -5,7 +5,6 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated"
-import AppText from "./AppText"
 import { useTheme } from "~/contexts/ThemeContext"
 
 interface FloatingActionButtonProps {
