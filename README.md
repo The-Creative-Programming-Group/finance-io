@@ -1,6 +1,6 @@
 <!-- Banner Image -->
 
-# Finance-IO
+# Finance.io
 
 Finance-IO is a modern personal finance management app designed to help you track, analyze, and optimize your finances across Android, iOS, and web. With a simple interface and powerful features, Finance-IO makes budgeting, expense tracking, and financial planning accessible to everyone.
 
@@ -164,7 +164,7 @@ drizzle/
 
 ## 🎨 Design & UI Resources
 
-All UI development should follow the official Figma design for Finance-IO.  
+All UI development should follow the official Figma design for Finance.io.  
 Access the design here: [Finance-IO Figma UI](https://www.figma.com/design/JQFXBsYUqEdSLD3OQUwp1H/Native-Finance-App---Finance.io?node-id=0-1&p=f&t=SOgQXPopZ1yAeuZK-0)
 
 ## 👏 Contributing
@@ -176,7 +176,7 @@ We welcome contributions! To get started:
 3. Ensure your code is formatted and linted.
 4. Submit a pull request with a clear description of your changes.
 
-Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+Please read our [CONTRIBUTING.md](https://github.com/The-Creative-Programming-Group/finance-io/wiki/Contributing-to-Finance.io) for more details.
 
 <!-- ## 📄 License
 
