@@ -2,13 +2,13 @@
 
 # Finance.io
 
-Finance-IO is a modern personal finance management app designed to help you track, analyze, and optimize your finances across Android, iOS, and web. With a simple interface and powerful features, Finance-IO makes budgeting, expense tracking, and financial planning accessible to everyone.
+Finance.io is a modern personal finance management app designed to help you track, analyze, and optimize your finances across Android, iOS, and web. With a simple interface and powerful features, Finance-IO makes budgeting, expense tracking, and financial planning accessible to everyone.
 
 All UI development follows our official Figma design: [Finance-IO Figma UI](https://www.figma.com/design/JQFXBsYUqEdSLD3OQUwp1H/Native-Finance-App---Finance.io?node-id=0-1&p=f&t=SOgQXPopZ1yAeuZK-0)
 
 ## Key Features
 
-- **Multi-platform support:** Use Finance-IO on Android, IOS, and web.
+- **Multi-platform support:** Use Finance.io on Android, IOS, and web.
 - **Internationalization:** Available in 16 languages for global users.
 - **Secure authentication:** Powered by Clerk for safe sign-in and sign-up.
 - **Dashboard overview:** Visualize your accounts, transactions, and spending trends.
@@ -42,7 +42,7 @@ pnpm install
 With **npm**:
 
 ```bash
-npm install
+pnpm install
 ```
 
 With **yarn**:
@@ -67,7 +67,9 @@ pnpm start
 With **npm**:
 
 ```bash
-npm start
+pnpm android # for Android
+# or
+pnpm ios     # for iOS
 ```
 
 With **yarn**:
@@ -171,7 +173,7 @@ Access the design here: [Finance-IO Figma UI](https://www.figma.com/design/JQFXB
 
 We welcome contributions! To get started:
 
-1. Fork the repository and create your branch from `main`.
+1. Fork the repository and create your branch from `master`.
 2. Make your changes, following our code style and best practices.
 3. Ensure your code is formatted and linted.
 4. Submit a pull request with a clear description of your changes.
@@ -195,4 +197,4 @@ For questions, issues, or feature requests, please open an issue on GitHub
 
 ## 📜 Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for release history and updates.
+See [CHANGELOG.md](https://github.com/The-Creative-Programming-Group/finance-io/wiki/Contributing-to-Finance.io) for release history and updates.
