@@ -5,6 +5,7 @@ import { mockDashboardData } from "~/data/mockData";
 import { SectionHeader } from "~/components/SectionHeader";
 import { AccountItem } from "~/components/AccountItem";
 import { useTranslation } from "react-i18next";
+import { Header } from "~/components/Header"; // ✅ keep header
 
 const Dashboard = () => {
   const { colors, isDark } = useTheme();
@@ -28,6 +29,9 @@ const Dashboard = () => {
       />
 
       <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <Header title={`${mockDashboardData.user.name} - Dashboard`} />
+
         {/* Cards Section */}
         {/* <SectionHeader title="Cards" delay={100} />
         <SectionHeader title="Debitcard" size="medium" delay={150} />
@@ -79,7 +83,6 @@ const Dashboard = () => {
           />
         ))}
 
-        {/* Safe Accounts Section */}
         <SectionHeader title={t("dashboardSafeAccounts")} delay={1000} />
         {mockDashboardData.accounts.safe.map((account, index) => (
           <AccountItem
@@ -92,7 +95,7 @@ const Dashboard = () => {
           />
         ))}
 
-        <SectionHeader title={t("sharedFunds")} delay={1000} />
+        <SectionHeader title={t("sharedFunds")} delay={1200} />
         {mockDashboardData.sharedFunds && (
           <AccountItem
             key={mockDashboardData.sharedFunds.id}
@@ -100,7 +103,7 @@ const Dashboard = () => {
             name={mockDashboardData.sharedFunds.title}
             arrow={mockDashboardData.sharedFunds.arrow}
             iconWrapped
-            delay={1100}
+            delay={1300}
             onPress={() =>
               handleAccountPress(
                 mockDashboardData.sharedFunds.title,

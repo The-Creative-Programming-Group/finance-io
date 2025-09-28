@@ -13,11 +13,12 @@ import { ProfileSectionType } from "~/types";
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
 interface HeaderProps {
-  name: string;
-  type: ProfileSectionType; // enum key, not a translated string
+  title?: string; // keep backward compatibility
+  name?: string;
+  type?: ProfileSectionType; // enum key for translation
 }
 
-export const Header: React.FC<HeaderProps> = ({ name, type }) => {
+export const Header: React.FC<HeaderProps> = ({ title, name, type }) => {
   const { colors } = useTheme();
   const headerOpacity = useSharedValue(0);
   const { t } = useTranslation();
@@ -32,8 +33,8 @@ export const Header: React.FC<HeaderProps> = ({ name, type }) => {
 
   return (
     <AnimatedView
-      className="bg-black border-gray-800 w-full flex-row items-center justify-center gap-3 space-x-2 rounded-lg border-b px-4 py-3"
-      style={headerAnimatedStyle}
+      className="border-gray-800 absolute left-0 right-0 top-0 flex-row items-center justify-center gap-3 border-b px-4 py-4"
+      style={[headerAnimatedStyle, { backgroundColor: colors.cardBackground }]}
     >
       <AppImage
         source={require("../assets/images/avatar.png")}
@@ -44,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({ name, type }) => {
         className="text-center text-sm"
         style={{ color: colors.text }}
       >
-        {name} - {t(type)}
+        {title ?? `${name ?? ""}${type ? ` - ${t(type)}` : ""}`}
       </AppText>
     </AnimatedView>
   );

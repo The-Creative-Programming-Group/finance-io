@@ -1,5 +1,6 @@
 import type React from "react";
 import { ImageSourcePropType } from "react-native";
+
 export interface Account {
   id: string;
   name: string;
@@ -22,6 +23,7 @@ export interface SharedFundsData {
   icon: React.ReactNode;
   arrow: React.ReactNode;
 }
+
 export interface DashboardData {
   user: {
     name: string;
@@ -51,4 +53,10 @@ export enum ProfileSectionType {
   PROFILE = "navigationProfile",
   BANK_ACCOUNTS = "navigationBankAccounts",
   NOTIFICATIONS = "navigationNotifications",
+}
+
+export interface ProfileData {
+  profile: {
+    name: string;
+  };
 }

@@ -27,6 +27,27 @@ export const AccountItem: React.FC<AccountItemProps> = ({
 
   const Component = onPress ? TouchableOpacity : View;
 
+  const IconWrapper = ({
+    children,
+    H_size = 40,
+    W_size = 60,
+  }: {
+    children: React.ReactNode;
+    H_size?: number;
+    W_size?: number;
+  }) => (
+    <View
+      className="items-center justify-center rounded-2xl"
+      style={{
+        width: W_size,
+        height: H_size,
+        backgroundColor: colors.border,
+      }}
+    >
+      {children}
+    </View>
+  );
+
   return (
     <Animated.View
       entering={FadeInDown.delay(delay).springify()}
@@ -64,6 +85,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
             {amount}
           </AppText>
         )}
+
         {arrow && (
           <View className="ml-2">
             {typeof arrow === "string" ? (
