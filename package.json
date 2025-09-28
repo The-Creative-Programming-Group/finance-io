@@ -11,6 +11,8 @@
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check .",
+    "db:generate": "db:generate",
+    "db:push": "db:push",
     "format:write": "prettier --write ."
   },
   "jest": {
@@ -57,6 +59,7 @@
     "lucide-react": "^0.511.0",
     "lucide-react-native": "^0.509.0",
     "nativewind": "^4.1.23",
+    "pnpm": "^10.12.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-freeze": "^1.0.4",

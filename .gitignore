@@ -36,7 +36,16 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# database migrations (team members should generate their own)
+drizzle/
+
 app-example
 
 android
 ios
+
+.idea/
+.vscode/
+
+.qodo/
+.crush/
