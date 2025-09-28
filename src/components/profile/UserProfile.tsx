@@ -4,7 +4,6 @@ import {
   StatusBar,
   SafeAreaView,
   View,
-  Image,
   TouchableOpacity,
   TextInput,
 } from "react-native";
@@ -12,6 +11,7 @@ import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { BottomNavigation } from "~/components/BottomNavigation";
 import AppText from "~/components/ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 interface UserProfileScreenProps {
   onNavigate: (screen: string) => void;
@@ -154,7 +154,7 @@ export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({
 
         {/* Avatar */}
         <View className="my-8 items-center">
-          <Image
+          <AppImage
             source={require("~/assets/images/avatar.png")}
             className="mb-4 h-[120px] w-[120px] rounded-full"
           />
@@ -194,7 +194,7 @@ export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({
             borderColor: colors.border,
           }}
         >
-          <Image
+          <AppImage
             source={require("~/assets/Icons/key-2.png")}
             style={{ width: 18, height: 18 }}
             resizeMode="contain"

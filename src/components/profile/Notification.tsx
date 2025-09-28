@@ -1,10 +1,11 @@
 import React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View, Image } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { BottomNavigation } from "~/components/BottomNavigation";
 import { Toggle } from "~/components/Toggle";
 import AppText from "~/components/ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 interface NotificationScreenProps {
   onNavigate: (screen: string) => void;
@@ -29,7 +30,7 @@ export const NotificationScreen: React.FC<NotificationScreenProps> = ({
       className="h-10 w-10 items-center justify-center rounded-full"
       style={{ backgroundColor: colors.border }}
     >
-      <Image
+      <AppImage
         source={source}
         style={{ width: iconW, height: iconH }}
         resizeMode="contain"

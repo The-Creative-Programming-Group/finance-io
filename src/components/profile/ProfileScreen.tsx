@@ -1,10 +1,11 @@
 import type React from "react";
-import { ScrollView, StatusBar, SafeAreaView, Image, View } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
 import { ProfileMenuItem } from "~/components/ProfileMenuItem";
 import { BottomNavigation } from "~/components/BottomNavigation";
+import AppImage from "~/components/ui/AppImage";
 
 interface ProfileScreenProps {
   onNavigate: (screen: string) => void;
@@ -26,7 +27,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onNavigate }) => {
       className="h-10 w-10 items-center justify-center rounded-full"
       style={{ backgroundColor: colors.border }}
     >
-      <Image
+      <AppImage
         source={source}
         style={{ width: iconW, height: iconH }}
         resizeMode="contain"

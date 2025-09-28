@@ -1,7 +1,8 @@
 import type React from "react";
-import { View, TouchableOpacity, Image } from "react-native";
-import { useTheme } from "../contexts/ThemeContext";
+import { View, TouchableOpacity } from "react-native";
+import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 interface BottomNavigationProps {
   activeTab: "Banking" | "Insights" | "Settings";
@@ -29,12 +30,9 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
         className="flex-1 items-center py-3"
         onPress={() => onTabPress(tab)}
       >
-        <Image
+        <AppImage
           source={iconSource}
-          style={{
-            width: 20,
-            height: 20,
-          }}
+          className="h-5 w-5"
           resizeMode="contain"
         />
         <AppText

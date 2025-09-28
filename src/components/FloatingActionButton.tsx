@@ -1,11 +1,12 @@
 import type React from "react";
-import { TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
 import { useTheme } from "~/contexts/ThemeContext";
+import AppImage from "~/components/ui/AppImage";
 
 interface FloatingActionButtonProps {
   onPress: () => void;
@@ -41,9 +42,9 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
         onPressOut={handlePressOut}
         activeOpacity={1}
       >
-        <Image
+        <AppImage
           source={require("~/assets/Icons/plus.png")}
-          style={{ width: 12, height: 12 }}
+          className="h-3 w-3"
           resizeMode="contain"
         />
       </TouchableOpacity>

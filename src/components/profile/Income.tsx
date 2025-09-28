@@ -1,5 +1,5 @@
 import type React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View, Image } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
@@ -7,6 +7,7 @@ import { AccountItem } from "~/components/AccountItem";
 import { BottomNavigation } from "~/components/BottomNavigation";
 import { FloatingActionButton } from "~/components/FloatingActionButton";
 import AppText from "~/components/ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 interface IncomeScreenProps {
   onNavigate: (screen: string) => void;
@@ -27,7 +28,7 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
       className="h-10 w-10 items-center justify-center rounded-full"
       style={{ backgroundColor: colors.border }}
     >
-      <Image
+      <AppImage
         source={source}
         style={{ width: iconW, height: iconH }}
         resizeMode="contain"

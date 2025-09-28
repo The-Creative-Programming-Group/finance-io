@@ -1,8 +1,9 @@
 import type React from "react";
-import { View, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
+import AppImage from "~/components/ui/AppImage";
 
 interface ProfileMenuItemProps {
   icon: React.ReactNode;
@@ -46,9 +47,9 @@ export const ProfileMenuItem: React.FC<ProfileMenuItemProps> = ({
         </AppText>
 
         <View className="h-8 w-8 items-center justify-center rounded-full">
-          <Image
+          <AppImage
             source={require("~/assets/Icons/arrow.png")}
-            style={{ width: 14, height: 14 }} // 👈 explicit sizing
+            className="h-4 w-4"
             resizeMode="contain"
           />
         </View>
