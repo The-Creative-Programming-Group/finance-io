@@ -32,9 +32,6 @@ importers:
       '@react-navigation/bottom-tabs':
         specifier: ^7.2.0
         version: 7.3.17(@react-navigation/native@7.1.17(react-native@0.79.6(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native-safe-area-context@5.4.0(react-native@0.79.6(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native-screens@4.11.1(react-native@0.79.6(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.6(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
-      '@react-navigation/native':
-        specifier: ^7.1.17
-        version: 7.1.17(react-native@0.79.6(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       '@t3-oss/env-core':
         specifier: ^0.13.6
         version: 0.13.8(typescript@5.8.3)(zod@3.25.67)

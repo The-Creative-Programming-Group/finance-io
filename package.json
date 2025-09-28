@@ -25,7 +25,6 @@
     "@neondatabase/serverless": "^1.0.0",
     "@react-native-community/datetimepicker": "8.4.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
-    "@react-navigation/native": "^7.1.17",
     "@t3-oss/env-core": "^0.13.6",
     "@tanstack/react-query": "^5.75.7",
     "@trpc/client": "^11.1.2",
