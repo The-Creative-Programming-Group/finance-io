@@ -1,39 +1,41 @@
-import type React from "react"
-import { TouchableOpacity, Image } from "react-native"
+import type React from "react";
+import { TouchableOpacity, Image } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-} from "react-native-reanimated"
-import { useTheme } from "~/contexts/ThemeContext"
+} from "react-native-reanimated";
+import { useTheme } from "~/contexts/ThemeContext";
 
 interface FloatingActionButtonProps {
-  onPress: () => void
+  onPress: () => void;
 }
 
-export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onPress }) => {
-  const { colors } = useTheme()
-  const scale = useSharedValue(1)
+export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
+  onPress,
+}) => {
+  const { colors } = useTheme();
+  const scale = useSharedValue(1);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
-  }))
+  }));
 
   const handlePressIn = () => {
-    scale.value = withSpring(0.95)
-  }
+    scale.value = withSpring(0.95);
+  };
 
   const handlePressOut = () => {
-    scale.value = withSpring(1)
-  }
+    scale.value = withSpring(1);
+  };
 
   return (
     <Animated.View
-      className="absolute bottom-24 right-5 w-12 h-12 rounded-full items-center justify-center shadow-lg"
+      className="absolute bottom-24 right-5 h-12 w-12 items-center justify-center rounded-full shadow-lg"
       style={[{ backgroundColor: colors.primary }, animatedStyle]}
     >
       <TouchableOpacity
-        className="w-full h-full items-center justify-center"
+        className="h-full w-full items-center justify-center"
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
@@ -46,5 +48,5 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onPr
         />
       </TouchableOpacity>
     </Animated.View>
-  )
-}
+  );
+};

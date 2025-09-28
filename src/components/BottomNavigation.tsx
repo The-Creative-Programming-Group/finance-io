@@ -1,29 +1,29 @@
-import type React from "react"
-import { View, TouchableOpacity, Image } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
-import AppText from "./ui/AppText"
+import type React from "react";
+import { View, TouchableOpacity, Image } from "react-native";
+import { useTheme } from "../contexts/ThemeContext";
+import AppText from "./ui/AppText";
 
 interface BottomNavigationProps {
-  activeTab: "Banking" | "Insights" | "Settings"
-  onTabPress: (tab: "Banking" | "Insights" | "Settings") => void
+  activeTab: "Banking" | "Insights" | "Settings";
+  onTabPress: (tab: "Banking" | "Insights" | "Settings") => void;
 }
 
 export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   activeTab,
   onTabPress,
 }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   const TabItem = ({
     tab,
     label,
     iconSource,
   }: {
-    tab: "Banking" | "Insights" | "Settings"
-    label: string
-    iconSource: any
+    tab: "Banking" | "Insights" | "Settings";
+    label: string;
+    iconSource: any;
   }) => {
-    const isActive = activeTab === tab
+    const isActive = activeTab === tab;
     return (
       <TouchableOpacity
         className="flex-1 items-center py-3"
@@ -44,8 +44,8 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
           {label}
         </AppText>
       </TouchableOpacity>
-    )
-  }
+    );
+  };
 
   return (
     <View
@@ -71,5 +71,5 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
         iconSource={require("~/assets/Icons/settings.png")}
       />
     </View>
-  )
-}
+  );
+};

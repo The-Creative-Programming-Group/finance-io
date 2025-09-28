@@ -28,10 +28,7 @@ const Dashboard = () => {
         backgroundColor={colors.background}
       />
 
-      <ScrollView
-        className="flex-1 p-8"
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
         {/* Header */}
         <Header title={`${mockDashboardData.user.name} - Dashboard`} />
 

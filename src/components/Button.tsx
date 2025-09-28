@@ -1,14 +1,14 @@
-import React from "react"
-import { TouchableOpacity } from "react-native"
-import AppText from "./ui/AppText"
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import AppText from "./ui/AppText";
 
 type ButtonProps = {
-  title: string
-  onPress: () => void
-  className?: string
-  textClassName?: string
-  disabled?: boolean
-}
+  title: string;
+  onPress: () => void;
+  className?: string;
+  textClassName?: string;
+  disabled?: boolean;
+};
 
 export default function Button({
   title,
@@ -21,7 +21,7 @@ export default function Button({
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled}
-      className={`px-4 py-3 rounded-xl items-center justify-center ${
+      className={`items-center justify-center rounded-xl px-4 py-3 ${
         disabled ? "bg-gray-400" : "bg-blue-600"
       } ${className}`}
     >
@@ -35,5 +35,5 @@ export default function Button({
         {title}
       </AppText>
     </TouchableOpacity>
-  )
+  );
 }

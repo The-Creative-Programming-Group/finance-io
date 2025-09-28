@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import {
   ScrollView,
   StatusBar,
@@ -7,14 +7,14 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-} from "react-native"
-import { useTheme } from "~/contexts/ThemeContext"
-import { Header } from "~/components/Header"
-import { BottomNavigation } from "~/components/BottomNavigation"
-import AppText from "~/components/ui/AppText"
+} from "react-native";
+import { useTheme } from "~/contexts/ThemeContext";
+import { Header } from "~/components/Header";
+import { BottomNavigation } from "~/components/BottomNavigation";
+import AppText from "~/components/ui/AppText";
 
 interface UserProfileScreenProps {
-  onNavigate: (screen: string) => void
+  onNavigate: (screen: string) => void;
 }
 
 const InputField = ({
@@ -24,22 +24,26 @@ const InputField = ({
   placeholder,
   validate,
 }: {
-  label: string
-  value: string
-  onChangeText: (text: string) => void
-  placeholder?: string
-  validate?: (text: string) => string | null
+  label: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  placeholder?: string;
+  validate?: (text: string) => string | null;
 }) => {
-  const { colors } = useTheme()
-  const [touched, setTouched] = useState(false)
+  const { colors } = useTheme();
+  const [touched, setTouched] = useState(false);
 
-  const error = validate ? validate(value) : null
-  const isValid = touched && !error
+  const error = validate ? validate(value) : null;
+  const isValid = touched && !error;
 
   return (
     <View className="mb-6">
       {/* Label */}
-      <AppText semibold className="text-base mb-2" style={{ color: colors.text }}>
+      <AppText
+        semibold
+        className="mb-2 text-base"
+        style={{ color: colors.text }}
+      >
         {label}
       </AppText>
 
@@ -48,15 +52,19 @@ const InputField = ({
         className="flex-row items-center rounded-xl border px-4 py-3"
         style={{
           backgroundColor: colors.cardBackground,
-          borderColor: !touched ? colors.border : error ? colors.error : colors.success,
+          borderColor: !touched
+            ? colors.border
+            : error
+              ? colors.error
+              : colors.success,
         }}
       >
         <TextInput
-          className="flex-1 text-base "
+          className="flex-1 text-base"
           autoCapitalize="none"
           onChangeText={(text) => {
-            if (!touched) setTouched(true)
-            onChangeText(text)
+            if (!touched) setTouched(true);
+            onChangeText(text);
           }}
           placeholder={placeholder}
           placeholderTextColor={colors.textSecondary}
@@ -65,23 +73,23 @@ const InputField = ({
           style={{
             color: "white",
             backgroundColor: colors.cardBackground, // add background color
-            outlineStyle: "none" as any,  // remove browser yellow outline
+            outlineStyle: "none" as any, // remove browser yellow outline
           }}
         />
 
         {/* Validation Icon */}
         {touched && (
           <View
-            className="w-6 h-6 rounded-full items-center justify-center"
+            className="h-6 w-6 items-center justify-center rounded-full"
             style={{
               backgroundColor: error
                 ? colors.error
                 : isValid
-                ? colors.success
-                : colors.textSecondary,
+                  ? colors.success
+                  : colors.textSecondary,
             }}
           >
-            <AppText className="text-xs text-white">
+            <AppText className="text-white text-xs">
               {error ? "✕" : "✓"}
             </AppText>
           </View>
@@ -90,44 +98,49 @@ const InputField = ({
 
       {/* Error Text */}
       {touched && error && (
-        <AppText className="text-sm mt-2" style={{ color: colors.error }}>
+        <AppText className="mt-2 text-sm" style={{ color: colors.error }}>
           {error}
         </AppText>
       )}
     </View>
-  )
-}
+  );
+};
 
-export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({ onNavigate }) => {
-  const { colors, isDark } = useTheme()
+export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({
+  onNavigate,
+}) => {
+  const { colors, isDark } = useTheme();
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
   // Validation functions
   const validateRequired = (text: string) =>
-    text.trim().length === 0 ? "This field is required" : null
+    text.trim().length === 0 ? "This field is required" : null;
 
   const validateEmail = (text: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (text.trim().length === 0) return "Email is required"
-    if (!regex.test(text)) return "Sorry, this email format is invalid!"
-    return null
-  }
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (text.trim().length === 0) return "Email is required";
+    if (!regex.test(text)) return "Sorry, this email format is invalid!";
+    return null;
+  };
 
   const allValid =
     !validateRequired(firstName) &&
     !validateRequired(lastName) &&
-    !validateEmail(email)
+    !validateEmail(email);
 
   const handleSave = () => {
-    console.log("Saving profile:", { firstName, lastName, email })
+    console.log("Saving profile:", { firstName, lastName, email });
     // Replace with API call
-  }
+  };
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: colors.background }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.background }}
+    >
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
@@ -140,10 +153,10 @@ export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({ onNavigate
         <Header title="Julia's - User" />
 
         {/* Avatar */}
-        <View className="items-center my-8">
+        <View className="my-8 items-center">
           <Image
             source={require("~/assets/images/avatar.png")}
-            className="w-[120px] h-[120px] rounded-full mb-4"
+            className="mb-4 h-[120px] w-[120px] rounded-full"
           />
           <TouchableOpacity>
             <AppText className="text-accent">Change Picture</AppText>
@@ -200,13 +213,16 @@ export const UserProfileScreen: React.FC<UserProfileScreenProps> = ({ onNavigate
             allValid ? "bg-accent" : "bg-gray-400"
           }`}
         >
-          <AppText medium className="text-center text-base text-white">
+          <AppText medium className="text-white text-center text-base">
             Save Changes
           </AppText>
         </TouchableOpacity>
       </ScrollView>
 
-      <BottomNavigation activeTab="Settings" onTabPress={(tab) => console.log(tab)} />
+      <BottomNavigation
+        activeTab="Settings"
+        onTabPress={(tab) => console.log(tab)}
+      />
     </SafeAreaView>
-  )
-}
+  );
+};

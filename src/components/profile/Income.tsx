@@ -1,42 +1,45 @@
-import type React from "react"
-import { ScrollView, StatusBar, SafeAreaView, View, Image } from "react-native"
-import { useTheme } from "~/contexts/ThemeContext"
-import { Header } from "~/components/Header"
-import { SectionHeader } from "~/components/SectionHeader"
-import { AccountItem } from "~/components/AccountItem"
-import { BottomNavigation } from "~/components/BottomNavigation"
-import { FloatingActionButton } from "~/components/FloatingActionButton"
-import AppText from "~/components/ui/AppText"
+import type React from "react";
+import { ScrollView, StatusBar, SafeAreaView, View, Image } from "react-native";
+import { useTheme } from "~/contexts/ThemeContext";
+import { Header } from "~/components/Header";
+import { SectionHeader } from "~/components/SectionHeader";
+import { AccountItem } from "~/components/AccountItem";
+import { BottomNavigation } from "~/components/BottomNavigation";
+import { FloatingActionButton } from "~/components/FloatingActionButton";
+import AppText from "~/components/ui/AppText";
 
 interface IncomeScreenProps {
-  onNavigate: (screen: string) => void
+  onNavigate: (screen: string) => void;
 }
 
 export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
-  const { colors, isDark } = useTheme()
+  const { colors, isDark } = useTheme();
   const IconWrapper = ({
     source,
     iconW = 18,
-    iconH = 18
-  }: { 
-    source: any
-    iconW?: number
-    iconH?: number
+    iconH = 18,
+  }: {
+    source: any;
+    iconW?: number;
+    iconH?: number;
   }) => (
     <View
-      className="w-10 h-10 rounded-full items-center justify-center"
+      className="h-10 w-10 items-center justify-center rounded-full"
       style={{ backgroundColor: colors.border }}
     >
-      <Image 
+      <Image
         source={source}
         style={{ width: iconW, height: iconH }}
-        resizeMode="contain" 
+        resizeMode="contain"
       />
     </View>
-  )
+  );
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: colors.background }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.background }}
+    >
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
@@ -59,12 +62,7 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
         </AppText>
 
         <AccountItem
-          icon={
-            <IconWrapper
-              
-              source={require("~/assets/Icons/Y.png")}
-            />
-          }
+          icon={<IconWrapper source={require("~/assets/Icons/Y.png")} />}
           name="Company"
           amount="2000€"
           delay={200}
@@ -81,22 +79,14 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
         </AppText>
 
         <AccountItem
-          icon={
-            <IconWrapper
-              source={require("~/assets/Icons/rent.png")}
-            />
-          }
+          icon={<IconWrapper source={require("~/assets/Icons/rent.png")} />}
           name="Rent"
           amount="1000€"
           delay={400}
         />
 
         <AccountItem
-          icon={
-            <IconWrapper
-              source={require("~/assets/Icons/netflix.png")}
-            />
-          }
+          icon={<IconWrapper source={require("~/assets/Icons/netflix.png")} />}
           name="Netflix"
           amount="10,99€"
           delay={500}
@@ -109,5 +99,5 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
         onTabPress={(tab) => console.log(tab)}
       />
     </SafeAreaView>
-  )
-}
+  );
+};

@@ -37,7 +37,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
     W_size?: number;
   }) => (
     <View
-      className="rounded-2xl items-center justify-center"
+      className="items-center justify-center rounded-2xl"
       style={{
         width: W_size,
         height: H_size,

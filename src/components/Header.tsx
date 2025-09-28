@@ -33,11 +33,8 @@ export const Header: React.FC<HeaderProps> = ({ title, name, type }) => {
 
   return (
     <AnimatedView
-      className="absolute top-0 left-0 right-0 flex-row items-center justify-center gap-3 border-b border-gray-800 px-4 py-4"
-      style={[
-        headerAnimatedStyle,
-        { backgroundColor: colors.cardBackground },
-      ]}
+      className="border-gray-800 absolute left-0 right-0 top-0 flex-row items-center justify-center gap-3 border-b px-4 py-4"
+      style={[headerAnimatedStyle, { backgroundColor: colors.cardBackground }]}
     >
       <AppImage
         source={require("../assets/images/avatar.png")}

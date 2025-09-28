@@ -1,44 +1,48 @@
-import type React from "react"
-import { ScrollView, StatusBar, SafeAreaView, Image, View } from "react-native"
-import { useTheme } from "~/contexts/ThemeContext"
-import { Header } from "~/components/Header"
-import { ProfileMenuItem } from "~/components/ProfileMenuItem"
-import { BottomNavigation } from "~/components/BottomNavigation"
+import type React from "react";
+import { ScrollView, StatusBar, SafeAreaView, Image, View } from "react-native";
+import { useTheme } from "~/contexts/ThemeContext";
+import { Header } from "~/components/Header";
+import { ProfileMenuItem } from "~/components/ProfileMenuItem";
+import { BottomNavigation } from "~/components/BottomNavigation";
 
 interface BankAccountsScreenProps {
-  onNavigate: (screen: string) => void
+  onNavigate: (screen: string) => void;
 }
 
-export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({ onNavigate }) => {
-  const { colors, isDark } = useTheme()
+export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({
+  onNavigate,
+}) => {
+  const { colors, isDark } = useTheme();
 
   const IconWrapper = ({
     source,
     iconW = 18,
-    iconH = 18
-  }: { 
-    source: any
-    iconW?: number
-    iconH?: number
+    iconH = 18,
+  }: {
+    source: any;
+    iconW?: number;
+    iconH?: number;
   }) => (
     <View
-      className="w-10 h-10 rounded-full items-center justify-center"
+      className="h-10 w-10 items-center justify-center rounded-full"
       style={{ backgroundColor: colors.border }}
     >
-      <Image 
+      <Image
         source={source}
         style={{ width: iconW, height: iconH }}
-        resizeMode="contain" 
+        resizeMode="contain"
       />
     </View>
-  )
+  );
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: colors.background }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.background }}
+    >
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
-        
       />
 
       <ScrollView
@@ -61,11 +65,7 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({ onNaviga
         />
 
         <ProfileMenuItem
-          icon={
-            <IconWrapper
-              source={require("~/assets/Icons/banking.png")}
-            />
-          }
+          icon={<IconWrapper source={require("~/assets/Icons/banking.png")} />}
           title="DebitCard"
           onPress={() => console.log("DebitCard")}
           delay={200}
@@ -73,9 +73,7 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({ onNaviga
 
         <ProfileMenuItem
           icon={
-            <IconWrapper
-              source={require("~/assets/Icons/bank_account.png")}
-            />
+            <IconWrapper source={require("~/assets/Icons/bank_account.png")} />
           }
           title="Safe Account"
           onPress={() => console.log("Safe Account")}
@@ -88,5 +86,5 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({ onNaviga
         onTabPress={(tab) => console.log(tab)}
       />
     </SafeAreaView>
-  )
-}
+  );
+};
