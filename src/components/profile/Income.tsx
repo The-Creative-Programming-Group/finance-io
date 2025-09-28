@@ -1,5 +1,11 @@
 import type React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
+import {
+  ScrollView,
+  StatusBar,
+  SafeAreaView,
+  View,
+  ImageSourcePropType,
+} from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
@@ -20,7 +26,7 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
     iconW = 18,
     iconH = 18,
   }: {
-    source: any;
+    source: ImageSourcePropType;
     iconW?: number;
     iconH?: number;
   }) => (
@@ -97,7 +103,7 @@ export const IncomeScreen: React.FC<IncomeScreenProps> = ({ onNavigate }) => {
       <FloatingActionButton onPress={() => console.log("Add income/expense")} />
       <BottomNavigation
         activeTab="Settings"
-        onTabPress={(tab) => console.log(tab)}
+        onTabPress={(tab) => onNavigate(tab)}
       />
     </SafeAreaView>
   );

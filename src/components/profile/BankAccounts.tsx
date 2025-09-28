@@ -1,5 +1,11 @@
 import type React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
+import {
+  ScrollView,
+  StatusBar,
+  SafeAreaView,
+  View,
+  ImageSourcePropType,
+} from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { ProfileMenuItem } from "~/components/ProfileMenuItem";
@@ -20,7 +26,7 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({
     iconW = 18,
     iconH = 18,
   }: {
-    source: any;
+    source: ImageSourcePropType;
     iconW?: number;
     iconH?: number;
   }) => (
