@@ -67,14 +67,14 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({
             />
           }
           title="PayPal"
-          onPress={() => console.log("PayPal")}
+          onPress={() => onNavigate("PayPal")}
           delay={100}
         />
 
         <ProfileMenuItem
           icon={<IconWrapper source={require("~/assets/Icons/banking.png")} />}
           title="DebitCard"
-          onPress={() => console.log("DebitCard")}
+          onPress={() => onNavigate("DebitCard")}
           delay={200}
         />
 
@@ -83,7 +83,7 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({
             <IconWrapper source={require("~/assets/Icons/bank_account.png")} />
           }
           title="Safe Account"
-          onPress={() => console.log("Safe Account")}
+          onPress={() => onNavigate("SafeAccount")}
           delay={300}
         />
       </ScrollView>

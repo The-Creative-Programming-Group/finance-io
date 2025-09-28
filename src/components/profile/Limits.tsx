@@ -76,7 +76,7 @@ export const LimitsScreen: React.FC<LimitsScreenProps> = ({ onNavigate }) => {
         </View>
       </ScrollView>
 
-      <FloatingActionButton onPress={() => console.log("Add limit")} />
+      <FloatingActionButton onPress={() => onNavigate("AddLimit")} />
       <BottomNavigation
         activeTab="Settings"
         onTabPress={(tab) => onNavigate(tab)}
