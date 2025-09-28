@@ -1,5 +1,11 @@
 import type React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
+import {
+  ScrollView,
+  StatusBar,
+  SafeAreaView,
+  View,
+  ImageSourcePropType,
+} from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
@@ -19,7 +25,7 @@ export const LimitsScreen: React.FC<LimitsScreenProps> = ({ onNavigate }) => {
     iconW = 18,
     iconH = 18,
   }: {
-    source: any;
+    source: ImageSourcePropType;
     iconW?: number;
     iconH?: number;
   }) => (
@@ -73,7 +79,7 @@ export const LimitsScreen: React.FC<LimitsScreenProps> = ({ onNavigate }) => {
       <FloatingActionButton onPress={() => console.log("Add limit")} />
       <BottomNavigation
         activeTab="Settings"
-        onTabPress={(tab) => console.log(tab)}
+        onTabPress={(tab) => onNavigate(tab)}
       />
     </SafeAreaView>
   );

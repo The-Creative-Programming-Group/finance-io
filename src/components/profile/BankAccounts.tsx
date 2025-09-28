@@ -88,10 +88,7 @@ export const BankAccountsScreen: React.FC<BankAccountsScreenProps> = ({
         />
       </ScrollView>
 
-      <BottomNavigation
-        activeTab="Settings"
-        onTabPress={(tab) => console.log(tab)}
-      />
+      <BottomNavigation activeTab="Settings" onTabPress={onNavigate} />
     </SafeAreaView>
   );
 };

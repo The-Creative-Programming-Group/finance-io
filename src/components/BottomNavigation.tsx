@@ -1,5 +1,5 @@
 import type React from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, ImageSourcePropType } from "react-native";
 import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
@@ -22,7 +22,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   }: {
     tab: "Banking" | "Insights" | "Settings";
     label: string;
-    iconSource: any;
+    iconSource: ImageSourcePropType;
   }) => {
     const isActive = activeTab === tab;
     return (
@@ -37,7 +37,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
         />
         <AppText
           className="mt-1 text-xs"
-          style={{ color: isActive ? colors.text : colors.text }}
+          style={{ color: isActive ? colors.primary : colors.text }}
         >
           {label}
         </AppText>
