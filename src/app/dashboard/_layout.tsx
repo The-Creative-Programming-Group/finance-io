@@ -50,7 +50,7 @@ const DashboardLayout = () => {
             name={option.name}
             options={{
               title: option.title,
-              tabBarLabel: t(option.title),
+              tabBarLabel: option.title,
               tabBarStyle: {
                 backgroundColor: colors.secondary,
                 borderColor: colors.stroke,
