@@ -32,7 +32,7 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": true,
       "package": "com.creativeprogrammers.financeio"
     },
     "web": {
