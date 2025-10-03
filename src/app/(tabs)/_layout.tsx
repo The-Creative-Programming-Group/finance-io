@@ -8,6 +8,7 @@ import {
   LucideIcon,
   SettingsIcon,
 } from "lucide-react-native";
+import { NavigationItems } from "~/types";
 
 interface NavigationOption {
   name: string;
@@ -21,17 +22,17 @@ const DashboardLayout = () => {
   const navigationOptions: NavigationOption[] = [
     {
       name: "banking/index",
-      title: t("navigationBankAccounts"),
+      title: t(NavigationItems.BANKING),
       icon: CreditCardIcon,
     },
     {
       name: "insights/index",
-      title: t("navigationInsights"),
+      title: t(NavigationItems.INSIGHTS),
       icon: ChartColumnIcon,
     },
     {
       name: "settings/index",
-      title: t("navigationSettings"),
+      title: t(NavigationItems.SETTINGS),
       icon: SettingsIcon,
     },
   ];
