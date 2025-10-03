@@ -8,7 +8,7 @@ import { useUser } from "@clerk/clerk-expo";
 import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function InsightsScreen() {
+export default function SettingsScreen() {
   const { colors, isDark } = useTheme();
   const { user, isLoaded } = useUser();
   const { t } = useTranslation();
