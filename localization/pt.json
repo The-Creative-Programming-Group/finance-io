@@ -53,6 +53,7 @@
   "bankNameTooLong": "O nome do banco deve ter menos de 50 caracteres",
   "bankNameFormat": "O nome do banco só pode conter letras, números, espaços e hifens",
   "amountNumeric": "O valor deve ser numérico",
+  "amountRequired": "O valor é obrigatório",
   "amountPositive": "O valor deve ser positivo",
   "amountMin": "O valor deve ser pelo menos 0.01",
   "referenceRequired": "A referência é obrigatória",

@@ -32,7 +32,7 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": true,
       "package": "com.creativeprogrammers.financeio"
     },
     "web": {
@@ -54,7 +54,8 @@
       ]
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
     },
     "extra": {
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {

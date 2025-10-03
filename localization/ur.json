@@ -86,6 +86,7 @@
   "bankNameTooLong": "بینک کا نام 50 حروف سے کم ہونا چاہیے",
   "bankNameFormat": "بینک کا نام صرف حروف، نمبر، جگہیں اور ہائفن شامل کر سکتا ہے",
   "amountNumeric": "رقم عددی ہونی چاہیے",
+  "amountRequired": "رقم ضروری ہے",
   "amountPositive": "رقم مثبت ہونی چاہیے",
   "amountMin": "رقم کم از کم 0.01 ہونی چاہیے",
   "referenceRequired": "حوالہ ضروری ہے",

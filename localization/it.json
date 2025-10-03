@@ -85,6 +85,7 @@
   "bankNameTooLong": "Il nome della banca deve contenere meno di 50 caratteri",
   "bankNameFormat": "Il nome della banca può contenere solo lettere, numeri, spazi e trattini",
   "amountNumeric": "L'importo deve essere numerico",
+  "amountRequired": "L'importo è obbligatorio",
   "amountPositive": "L'importo deve essere positivo",
   "amountMin": "L'importo deve essere almeno 0,01",
   "referenceRequired": "Il riferimento è obbligatorio",

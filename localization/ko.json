@@ -86,6 +86,7 @@
   "bankNameTooLong": "은행 이름은 50자 미만이어야 합니다",
   "bankNameFormat": "은행 이름에는 문자, 숫자, 공백 및 하이픈만 포함될 수 있습니다",
   "amountNumeric": "금액은 숫자여야 합니다",
+  "amountRequired": "금액은 필수입니다",
   "amountPositive": "금액은 양수여야 합니다",
   "amountMin": "금액은 최소 0.01 이상이어야 합니다",
   "referenceRequired": "참조는 필수입니다",

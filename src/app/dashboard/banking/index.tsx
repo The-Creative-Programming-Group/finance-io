@@ -1,10 +1,11 @@
 import React from "react";
 import { useTheme } from "~/contexts/ThemeContext";
-import { SafeAreaView, ScrollView, StatusBar } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
 import { mockDashboardData } from "~/data/mockData";
 import { SectionHeader } from "~/components/SectionHeader";
 import { AccountItem } from "~/components/AccountItem";
 import { useTranslation } from "react-i18next";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Dashboard = () => {
   const { colors, isDark } = useTheme();

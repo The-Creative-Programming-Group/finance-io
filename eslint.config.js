@@ -2,10 +2,11 @@
 
 const { defineConfig } = require("eslint/config");
 const expoConfig = require("eslint-config-expo/flat");
+const reactCompiler = require("eslint-plugin-react-compiler");
 
 module.exports = defineConfig([
   expoConfig,
-
+  reactCompiler.configs.recommended,
   {
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     rules: {

@@ -85,6 +85,7 @@
   "bankNameTooLong": "银行名称必须少于50个字符",
   "bankNameFormat": "银行名称只能包含字母、数字、空格和连字符",
   "amountNumeric": "金额必须是数字",
+  "amountRequired": "金额是必需的",
   "amountPositive": "金额必须为正数",
   "amountMin": "金额必须至少为0.01",
   "referenceRequired": "参考是必需的",
