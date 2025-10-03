@@ -1,11 +1,12 @@
 import React from "react";
 import { useTheme } from "~/contexts/ThemeContext";
-import { SafeAreaView, ScrollView, StatusBar } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
 import { ProfileSectionType } from "~/types";
 import { useUser } from "@clerk/clerk-expo";
 import { useTranslation } from "react-i18next";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function InsightsScreen() {
   const { colors, isDark } = useTheme();
