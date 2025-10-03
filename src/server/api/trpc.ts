@@ -8,7 +8,7 @@
  */
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import { verifyToken } from "@clerk/backend";
 
 // import { db } from "~/server/db";
@@ -24,7 +24,7 @@ const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY!;
  * These allow you to access things when processing a request, like the database, the session, etc.
  *
  * This helper generates the "internals" for a tRPC context. The API handler and RSC clients each
- * wrap this and provides the required context.
+ * wrap this and provide the required context.
  *
  * @see https://trpc.io/docs/server/context
  */
@@ -88,7 +88,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       data: {
         ...shape.data,
         zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
+          error.cause instanceof ZodError ? z.treeifyError(error.cause) : null,
       },
     };
   },

@@ -5,13 +5,12 @@ import type { TFunction } from "i18next";
 export const welcomeSchemaBase = z.object({
   bankName: z
     .string()
-    .min(1)
     .min(2)
     .max(50)
     .regex(/^[a-zA-Z0-9\s-]+$/),
   currentAmount: z.number().positive().min(0.01),
-  reference: z.string().min(1).min(2).max(50),
-  usage: z.string().min(1).min(2).max(50),
+  reference: z.string().min(2).max(50),
+  usage: z.string().min(2).max(50),
 });
 
 // Frontend schema factory with translations

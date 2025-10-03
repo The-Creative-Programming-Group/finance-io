@@ -78,7 +78,7 @@ export default function SignUpScreen() {
       //
       // To customize the email validation behavior,
       // you can pass a custom regular expression to the pattern param.
-      const result = z.string().email().safeParse(email);
+      const result = z.email().safeParse(email);
       if (!result.success) newErrors.email = t("invalidEmail");
     }
     // Removed phone number validation
