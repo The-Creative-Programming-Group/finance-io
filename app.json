@@ -55,7 +55,7 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler":  true
+      "reactCompiler": true
     },
     "extra": {
       "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": {
