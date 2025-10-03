@@ -36,13 +36,13 @@ export interface DashboardData {
 }
 
 /**
- * NavigationItemKey
+ * NavigationItems
  *
  * Purpose:
  * - Strongly typed set of i18n keys for primary navigation labels (tabs/drawer/sidebar).
  *
  * Why string values:
- * - These values are translation keys consumed by react-i18next, e.g. `t(NavigationItemKey.BANKING)`.
+ * - These values are translation keys consumed by react-i18next, e.g. `t(NavigationItems.BANKING)`.
  *
  * Where translations live:
  * - See language files under `localization/`. Add matching entries for each supported language.
@@ -60,11 +60,11 @@ export interface DashboardData {
  * 1) Add a new enum member (e.g., `WALLET = "navigationWallet"`).
  * 2) Add translations for the new key in all language files in `localization/`.
  * 3) Map the new key to a route and icon where the navigation config is defined.
- * 4) Use `t(NavigationItemKey.WALLET)` wherever a label is needed.
+ * 4) Use `t(NavigationItems.WALLET)` wherever a label is needed.
  *
  * Example: Using with Expo Router and i18next
  * -----------------------------------------------
- * import { NavigationItemKey } from "@/types";
+ * import { NavigationItems } from "@/types";
  * import { useTranslation } from "react-i18next";
  *
  * const Tab = createBottomTabNavigator();
@@ -77,19 +77,19 @@ export interface DashboardData {
  *         name="Banking"
  *         component={BankingScreen}
  *         options={{
- *           title: t(NavigationItemKey.BANKING),
- *           tabBarAccessibilityLabel: t(NavigationItemKey.BANKING),
+ *           title: t(NavigationItems.BANKING),
+ *           tabBarAccessibilityLabel: t(NavigationItems.BANKING),
  *         }}
  *       />
  *       <Tab.Screen
  *         name="Insights"
  *         component={InsightsScreen}
- *         options={{ title: t(NavigationItemKey.INSIGHTS) }}
+ *         options={{ title: t(NavigationItems.INSIGHTS) }}
  *       />
  *       <Tab.Screen
  *         name="Settings"
  *         component={SettingsScreen}
- *         options={{ title: t(NavigationItemKey.SETTINGS) }}
+ *         options={{ title: t(NavigationItems.SETTINGS) }}
  *       />
  *     </Tab.Navigator>
  *   );
@@ -98,15 +98,15 @@ export interface DashboardData {
  * Example: Building a typed menu model
  * ------------------------------------
  * type NavItem = {
- *   key: NavigationItemKey;
+ *   key: NavigationItems;
  *   route: string; // or keyof RootStackParamList
  *   icon: React.ReactNode;
  * };
  *
  * const NAV_ITEMS: NavItem[] = [
- *   { key: NavigationItemKey. INSIGHTS, route: "Insights", icon: <InsightsIcon /> },
- *   { key: NavigationItemKey. BANKING, route: "Banking", icon: <BankIcon /> },
- *   { key: NavigationItemKey. SETTINGS, route: "Settings", icon: <SettingsIcon /> },
+ *   { key: NavigationItems.INSIGHTS, route: "Insights", icon: <InsightsIcon /> },
+ *   { key: NavigationItems.BANKING, route: "Banking", icon: <BankIcon /> },
+ *   { key: NavigationItems.SETTINGS, route: "Settings", icon: <SettingsIcon /> },
  * ];
  *
  * // Rendering labels
