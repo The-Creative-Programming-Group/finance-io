@@ -88,6 +88,7 @@
   "bankNameTooLong": "د بانک نوم باید له 50 تورو څخه کم وي",
   "bankNameFormat": "د بانک نوم یوازې لیکونه، شمیرې، ځایونه او هایفنونه شاملولی شي",
   "amountNumeric": "مقدار باید عددي وي",
+  "amountRequired": "مقدار اړین دی",
   "amountPositive": "مقدار باید مثبت وي",
   "amountMin": "مقدار باید لږترلږه 0.01 وي",
   "referenceRequired": "حواله اړینه ده",

@@ -14,76 +14,13 @@ import { Link } from "lucide-react-native";
 import { trpc } from "~/utils/trpc";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useTranslation } from "react-i18next";
 import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import { useRouter } from "expo-router";
 import AppImage from "~/components/ui/AppImage";
-
-// Form validation schema
-const welcomeSchema = (t: any) =>
-  z.object({
-    bankName: z
-      .string()
-      .min(1, { message: t("bankNameRequired", "Bank name is required") })
-      .min(2, {
-        message: t(
-          "bankNameTooShort",
-          "Bank name must be at least 2 characters",
-        ),
-      })
-      .max(50, {
-        message: t(
-          "bankNameTooLong",
-          "Bank name must be less than 50 characters",
-        ),
-      })
-      .regex(/^[a-zA-Z0-9\s-]+$/, {
-        message: t(
-          "bankNameFormat",
-          "Bank name can only contain letters, numbers, spaces, and hyphens",
-        ),
-      }),
-    currentAmount: z.coerce
-      .number({
-        invalid_type_error: t("amountNumeric", "Amount must be numeric"),
-      })
-      .positive(t("amountPositive", "Amount must be positive"))
-      .min(0.01, t("amountMin", "Amount must be at least 0.01")),
-    reference: z
-      .string()
-      .min(1, { message: t("referenceRequired", "Reference is required") })
-      .min(2, {
-        message: t(
-          "referenceTooShort",
-          "Reference must be at least 2 characters",
-        ),
-      })
-      .max(50, {
-        message: t(
-          "referenceTooLong",
-          "Reference must be less than 50 characters",
-        ),
-      }),
-    usage: z
-      .string()
-      .min(1, { message: t("usageRequired", "Usage is required") })
-      .min(2, {
-        message: t("usageTooShort", "Usage must be at least 2 characters"),
-      })
-      .max(50, {
-        message: t("usageTooLong", "Usage must be less than 50 characters"),
-      }),
-  });
-
-type WelcomeFormValues = {
-  bankName: string;
-  currentAmount: number;
-  reference: string;
-  usage: string;
-};
+import { WelcomeFormValues, welcomeSchema } from "~/schemas/welcomeSchema";
 
 const Home = () => {
   const { user, isLoaded } = useUser();
@@ -92,7 +29,7 @@ const Home = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
-  // Initialize language when component mounts with better error handling
+  // Initialize language when a component mounts with better error handling
   useEffect(() => {
     const initLanguage = async () => {
       try {

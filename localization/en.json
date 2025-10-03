@@ -78,6 +78,7 @@
   "bankNameTooLong": "Bank name must be less than 50 characters",
   "bankNameFormat": "Bank name can only contain letters, numbers, spaces, and hyphens",
   "amountNumeric": "Amount must be numeric",
+  "amountRequired": "Amount is required",
   "amountPositive": "Amount must be positive",
   "amountMin": "Amount must be at least 0.01",
   "referenceRequired": "Reference is required",

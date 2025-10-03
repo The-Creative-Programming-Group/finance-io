@@ -136,6 +136,7 @@
   "bankNameTooLong": "نام بانک باید کمتر از ۵۰ کاراکتر باشد",
   "bankNameFormat": "نام بانک فقط می‌تواند شامل حروف، اعداد، فاصله‌ها و خط تیره باشد",
   "amountNumeric": "مقدار باید عددی باشد",
+  "amountRequired": "مقدار لازمی است",
   "amountPositive": "مقدار باید مثبت باشد",
   "amountMin": "مقدار باید حداقل ۰.۰۱ باشد",
   "referenceRequired": "مرجع لازمی است",

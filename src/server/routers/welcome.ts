@@ -1,21 +1,12 @@
-import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "../api/trpc";
 import { db } from "~/db";
 import { welcomeTable } from "~/db/schema";
 import { eq } from "drizzle-orm";
+import { welcomeSchemaBase } from "~/schemas/welcomeSchema";
 
 export const welcomeRouter = createTRPCRouter({
   create: protectedProcedure
-    .input(
-      z.object({
-        bankName: z.string().min(1, "Bank name is required"),
-        currentAmount: z.coerce
-          .number({ invalid_type_error: "Amount must be numeric" })
-          .positive("Amount must be positive"),
-        reference: z.string().min(1, "Reference is required"),
-        usage: z.string().min(1, "Usage is required"),
-      }),
-    )
+    .input(welcomeSchemaBase)
     .mutation(async ({ input, ctx }) => {
       const { userId } = ctx;
 

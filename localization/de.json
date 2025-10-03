@@ -89,7 +89,7 @@
   "fieldTooLong": "{{field}} muss weniger als {{max}} Zeichen lang sein",
   "fieldFormat": "{{field}} darf nur {{format}} enthalten",
 
-  "itemNumeric": "{{item}} muss numerisch sein",
+  "itemNumeric": "{{item}} muss eine Zahl sein",
   "itemPositive": "{{item}} muss positiv sein",
   "itemMin": "{{item}} muss mindestens {{min}} sein",
 
@@ -97,7 +97,8 @@
   "bankNameTooShort": "Der Bankname muss mindestens 2 Zeichen lang sein",
   "bankNameTooLong": "Der Bankname darf nicht länger als 50 Zeichen sein",
   "bankNameFormat": "Der Bankname darf nur Buchstaben, Zahlen, Leerzeichen und Bindestriche enthalten",
-  "amountNumeric": "Der Betrag muss numerisch sein",
+  "amountNumeric": "Der Betrag muss eine Zahl sein",
+  "amountRequired": "Der Betrag ist erforderlich",
   "amountPositive": "Der Betrag muss positiv sein",
   "amountMin": "Der Betrag muss mindestens 0,01 betragen",
   "referenceRequired": "Die Referenz ist erforderlich",

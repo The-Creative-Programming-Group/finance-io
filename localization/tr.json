@@ -54,6 +54,7 @@
   "bankNameTooLong": "Banka adı 50 karakterden az olmalıdır",
   "bankNameFormat": "Banka adı yalnızca harfler, sayılar, boşluklar ve tireler içerebilir",
   "amountNumeric": "Tutar sayısal olmalıdır",
+  "amountRequired": "Tutar gereklidir",
   "amountPositive": "Tutar pozitif olmalıdır",
   "amountMin": "Tutar en az 0.01 olmalıdır",
   "referenceRequired": "Referans gereklidir",
