@@ -8,13 +8,13 @@ import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
 import { useTranslation } from "react-i18next";
-import { ProfileSectionType } from "~/types";
+import { NavigationItems } from "~/types";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
 interface HeaderProps {
   name: string;
-  type: ProfileSectionType; // enum key, not a translated string
+  type: NavigationItems; // enum key, not a translated string
 }
 
 export const Header: React.FC<HeaderProps> = ({ name, type }) => {
