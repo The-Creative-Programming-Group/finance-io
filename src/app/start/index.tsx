@@ -49,7 +49,7 @@ const Home = () => {
       Alert.alert(t("success"), t("accountCreated"));
       reset();
       setAmountDisplay("");
-      router.replace("../dashboard");
+      router.replace("/(tabs)/banking");
     },
     onError: (error) => {
       Alert.alert(t("error"), error.message || t("accountCreationFailed"));
