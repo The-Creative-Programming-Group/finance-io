@@ -3,11 +3,10 @@ import {
   PayPalIcon,
   DKBIcon,
   RevolutIcon,
-  DepotIcon,
   SharedFundsIcon,
-  ArrowRightIcon,
-} from "../components/Icons";
-import type { DashboardData } from "../types";
+} from "~/components/Icons";
+import type { DashboardData } from "~/types";
+import { CircleArrowRightIcon, LandmarkIcon } from "lucide-react-native";
 
 export const mockDashboardData: DashboardData = {
   user: {
@@ -60,7 +59,7 @@ export const mockDashboardData: DashboardData = {
         id: "4",
         name: "Depot",
         amount: "43.232.93€",
-        icon: React.createElement(DepotIcon),
+        icon: React.createElement(LandmarkIcon),
         type: "depot",
       },
     ],
@@ -69,6 +68,6 @@ export const mockDashboardData: DashboardData = {
     id: "1",
     title: "Holiday with Husband",
     icon: React.createElement(SharedFundsIcon),
-    arrow: React.createElement(ArrowRightIcon),
+    arrow: React.createElement(CircleArrowRightIcon),
   },
 };

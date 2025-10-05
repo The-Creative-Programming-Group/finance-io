@@ -37,11 +37,11 @@ const tokenCache = {
   },
 };
 
-// Environment variable check with detailed error
+// Environment variable check with a detailed error
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 function RootLayoutNav() {
-  // Initialize language when app starts
+  // Initialize language when the app starts
   useEffect(() => {
     const initLanguage = async () => {
       try {

@@ -22,7 +22,7 @@ const Dashboard = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-dark-background">
+    <SafeAreaView className="flex-1 bg-background dark:bg-dark-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}

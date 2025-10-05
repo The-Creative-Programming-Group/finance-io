@@ -1,8 +1,8 @@
-import type React from "react";
 import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
+import React from "react";
 
 interface AccountItemProps {
   icon: React.ReactNode;
@@ -27,6 +27,18 @@ export const AccountItem: React.FC<AccountItemProps> = ({
 
   const Component = onPress ? TouchableOpacity : View;
 
+  const styledIcon = React.isValidElement(icon)
+    ? React.cloneElement(icon as React.ReactElement<any>, {
+        color: colors.text, // Apply the theme color to every Lucide icon, so it changes with dark mode
+      })
+    : icon;
+
+  const styledArrow = React.isValidElement(arrow)
+    ? React.cloneElement(arrow as React.ReactElement<any>, {
+        color: colors.text, // Apply the theme color to the arrow if it's a Lucide icon, so it changes with dark mode
+      })
+    : arrow;
+
   return (
     <Animated.View
       entering={FadeInDown.delay(delay).springify()}
@@ -35,15 +47,15 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       <Component
         onPress={onPress}
         activeOpacity={onPress ? 0.7 : 1}
-        className="mb-4 flex-row items-center rounded-xl border-2 border-dark-stroke bg-dark-secondary px-5 py-5"
+        className="mb-4 flex-row items-center rounded-xl border-2 border-stroke bg-secondary px-5 py-5 dark:border-dark-stroke dark:bg-dark-secondary"
       >
         {iconWrapped ? (
-          <View className="mx-auto ml-2 mr-4 rounded-full bg-dark-primary p-2">
-            {icon}
+          <View className="mx-auto ml-2 mr-4 rounded-full bg-primary p-2 dark:bg-dark-primary">
+            {styledIcon}
           </View>
         ) : (
           <View className="ml-2 mr-4 flex w-11 items-center justify-center">
-            {icon}
+            {styledIcon}
           </View>
         )}
 
@@ -71,7 +83,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
                 {arrow}
               </AppText>
             ) : (
-              arrow
+              styledArrow
             )}
           </View>
         )}
