@@ -140,7 +140,7 @@ export default function SignUpScreen() {
       });
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        router.replace("../home");
+        router.replace("/start");
       } else {
         setError("Verification failed. Please try again.");
       }
@@ -155,7 +155,7 @@ export default function SignUpScreen() {
             });
             if (signInAttempt?.status === "complete") {
               await setActive({ session: signInAttempt.createdSessionId });
-              router.replace("../home");
+              router.replace("/start");
             } else {
               setError("Email already verified. Please sign in.");
             }
