@@ -35,10 +35,10 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       <Component
         onPress={onPress}
         activeOpacity={onPress ? 0.7 : 1}
-        className="mb-4 flex-row items-center rounded-xl border-2 border-dark-stroke bg-dark-secondary px-5 py-5"
+        className="mb-4 flex-row items-center rounded-xl border-2 border-stroke bg-secondary px-5 py-5 dark:border-dark-stroke dark:bg-dark-secondary"
       >
         {iconWrapped ? (
-          <View className="mx-auto ml-2 mr-4 rounded-full bg-dark-primary p-2">
+          <View className="mx-auto ml-2 mr-4 rounded-full bg-primary p-2 dark:bg-dark-primary">
             {icon}
           </View>
         ) : (
