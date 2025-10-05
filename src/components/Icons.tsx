@@ -69,19 +69,6 @@ export const RevolutIcon: React.FC = () => (
   </View>
 );
 
-export const DepotIcon: React.FC<{ size?: number }> = ({ size = 32 }) => (
-  <View
-    className="items-center justify-center"
-    style={{ width: size, height: size }}
-  >
-    <AppImage
-      source={require("../assets/images/bank-icon.png")}
-      style={{ width: size * 0.8, height: size * 0.8 }}
-      contentFit="contain"
-    />
-  </View>
-);
-
 export const MastercardLogo: React.FC<{ size?: number }> = ({ size = 32 }) => (
   <AppImage
     source={require("../assets/images/Mastercard-logo.png")}
