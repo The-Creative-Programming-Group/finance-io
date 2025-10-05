@@ -1,8 +1,8 @@
-import type React from "react";
 import { View, TouchableOpacity } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useTheme } from "~/contexts/ThemeContext";
 import AppText from "./ui/AppText";
+import React from "react";
 
 interface AccountItemProps {
   icon: React.ReactNode;
@@ -27,6 +27,18 @@ export const AccountItem: React.FC<AccountItemProps> = ({
 
   const Component = onPress ? TouchableOpacity : View;
 
+  const styledIcon = React.isValidElement(icon)
+    ? React.cloneElement(icon as React.ReactElement<any>, {
+        color: colors.text, // Apply the theme color to every Lucide icon, so it changes with dark mode
+      })
+    : icon;
+
+  const styledArrow = React.isValidElement(arrow)
+    ? React.cloneElement(arrow as React.ReactElement<any>, {
+        color: colors.text, // Apply the theme color to the arrow if it's a Lucide icon, so it changes with dark mode
+      })
+    : arrow;
+
   return (
     <Animated.View
       entering={FadeInDown.delay(delay).springify()}
@@ -39,11 +51,11 @@ export const AccountItem: React.FC<AccountItemProps> = ({
       >
         {iconWrapped ? (
           <View className="mx-auto ml-2 mr-4 rounded-full bg-primary p-2 dark:bg-dark-primary">
-            {icon}
+            {styledIcon}
           </View>
         ) : (
           <View className="ml-2 mr-4 flex w-11 items-center justify-center">
-            {icon}
+            {styledIcon}
           </View>
         )}
 
@@ -68,10 +80,10 @@ export const AccountItem: React.FC<AccountItemProps> = ({
           <View className="ml-2">
             {typeof arrow === "string" ? (
               <AppText semibold className="text-base">
-                {arrow}
+                {styledArrow}
               </AppText>
             ) : (
-              arrow
+              styledArrow
             )}
           </View>
         )}

@@ -4,10 +4,9 @@ import {
   DKBIcon,
   RevolutIcon,
   SharedFundsIcon,
-  ArrowRightIcon,
 } from "~/components/Icons";
 import type { DashboardData } from "~/types";
-import { LandmarkIcon } from "lucide-react-native";
+import { CircleArrowRightIcon, LandmarkIcon } from "lucide-react-native";
 
 export const mockDashboardData: DashboardData = {
   user: {
@@ -69,6 +68,6 @@ export const mockDashboardData: DashboardData = {
     id: "1",
     title: "Holiday with Husband",
     icon: React.createElement(SharedFundsIcon),
-    arrow: React.createElement(ArrowRightIcon),
+    arrow: React.createElement(CircleArrowRightIcon),
   },
 };

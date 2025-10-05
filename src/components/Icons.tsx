@@ -87,14 +87,3 @@ export const SharedFundsIcon: React.FC<{
     contentFit="contain"
   />
 );
-
-export const ArrowRightIcon: React.FC<{
-  size?: number;
-  className?: string;
-}> = ({ size = 24 }) => (
-  <AppImage
-    source={require("../assets/images/right-icon.png")}
-    style={{ width: size, height: size }}
-    contentFit="contain"
-  />
-);
