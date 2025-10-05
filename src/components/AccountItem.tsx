@@ -80,7 +80,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
           <View className="ml-2">
             {typeof arrow === "string" ? (
               <AppText semibold className="text-base">
-                {styledArrow}
+                {arrow}
               </AppText>
             ) : (
               styledArrow
