@@ -60,13 +60,13 @@ const getDeviceLanguage = (): string => {
   }
 };
 
-// Start with device language but prepare to update it immediately after initialization
+// Start with the device language but prepare to update it immediately after initialization
 const deviceLanguage = getDeviceLanguage();
 
-// Initialize i18next with device language as starting point
+// Initialize i18next with device language as a starting point
 i18n.use(initReactI18next).init({
   resources,
-  lng: deviceLanguage, // Start with device language
+  lng: deviceLanguage, // Start with the device language
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
