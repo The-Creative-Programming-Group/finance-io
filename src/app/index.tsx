@@ -45,11 +45,11 @@ const LanguageDropdown = () => {
     { code: "ru", label: "Русский" },
   ];
 
-  // Load the stored language when component mounts
+  // Load the stored language when the component mounts
   useEffect(() => {
     const initLanguage = async () => {
       try {
-        // First initialize from stored preferences
+        // First, initialize from stored preferences
         await languageService.initializeLanguage();
         // Then update our state to match i18n
         setCurrentLanguage(i18n.language);
