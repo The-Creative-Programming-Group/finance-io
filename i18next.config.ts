@@ -27,6 +27,6 @@ export default defineConfig({
   locales,
   extract: {
     input: "src/**/*.{js,jsx,ts,tsx}",
-    output: "localization/{{{language}}/{{namespace}}.json",
+    output: "localization/{{language}}/{{namespace}}.json",
   },
 });
