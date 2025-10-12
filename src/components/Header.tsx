@@ -9,18 +9,19 @@ import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
 import { useTranslation } from "react-i18next";
 import { NavigationItems } from "~/types";
+import { useUser } from "@clerk/clerk-expo";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
 interface HeaderProps {
-  name: string;
   type: NavigationItems; // enum key, not a translated string
 }
 
-export const Header: React.FC<HeaderProps> = ({ name, type }) => {
+export const Header: React.FC<HeaderProps> = ({ type }) => {
   const { colors } = useTheme();
   const headerOpacity = useSharedValue(0);
   const { t } = useTranslation();
+  const { user, isLoaded } = useUser();
 
   const headerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: withSpring(headerOpacity.value),
@@ -44,7 +45,10 @@ export const Header: React.FC<HeaderProps> = ({ name, type }) => {
         className="text-center text-xl"
         style={{ color: colors.text }}
       >
-        {name} - {t(type)}
+        {isLoaded && user
+          ? user.firstName || t("defaultUser")
+          : t("defaultUser")}{" "}
+        - {t(type)}
       </AppText>
     </AnimatedView>
   );

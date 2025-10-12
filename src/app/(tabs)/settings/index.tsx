@@ -17,10 +17,10 @@ import {
   UsersRoundIcon,
 } from "lucide-react-native";
 import MoneyIcon from "~/assets/Icons/money.png";
+import { Link } from "expo-router";
 
 export default function SettingsScreen() {
   const { colors, isDark } = useTheme();
-  const { user, isLoaded } = useUser();
   const { t } = useTranslation("settings");
 
   return (
@@ -32,14 +32,7 @@ export default function SettingsScreen() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <Header
-          name={
-            isLoaded && user
-              ? user.firstName || t("defaultUser")
-              : t("defaultUser")
-          }
-          type={NavigationItems.SETTINGS}
-        />
+        <Header type={NavigationItems.SETTINGS} />
 
         <SectionHeader
           size="xl"
@@ -48,21 +41,36 @@ export default function SettingsScreen() {
           delay={400}
         />
         <View className="gap-4">
-          <Container icon={UsersRoundIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("profile")}
-            </AppText>
-          </Container>
-          <Container icon={SunMoonIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("appearance")}
-            </AppText>
-          </Container>
-          <Container icon={BellRingIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("notifications")}
-            </AppText>
-          </Container>
+          <Link href="/settings/profile" className="mx-7 mt-2 space-y-2">
+            <Container icon={UsersRoundIcon}>
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("profile")}
+              </AppText>
+            </Container>
+          </Link>
+          <Link href="/settings/appearance" className="mx-7 mt-2 space-y-2">
+            <Container icon={SunMoonIcon}>
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("appearance")}
+              </AppText>
+            </Container>
+          </Link>
+          <Link href="/settings/notifications" className="mx-7 mt-2 space-y-2">
+            <Container icon={BellRingIcon}>
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("notifications")}
+              </AppText>
+            </Container>
+          </Link>
         </View>
         <SectionHeader
           size="xl"
@@ -71,21 +79,38 @@ export default function SettingsScreen() {
           delay={400}
         />
         <View className="gap-4">
-          <Container icon={ShieldXIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("limits")}
-            </AppText>
-          </Container>
-          <Container icon={MoneyIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("income")}
-            </AppText>
-          </Container>
-          <Container icon={LandmarkIcon} className="mx-7 mt-2 space-y-2">
-            <AppText semibold className="text-xl text-text dark:text-dark-text">
-              {t("bankAccounts")}
-            </AppText>
-          </Container>
+          <Link href="/settings/limits" className="mx-7 mt-2 space-y-2">
+            <Container icon={ShieldXIcon} className="mx-7 mt-2 space-y-2">
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("limits")}
+              </AppText>
+            </Container>
+          </Link>
+
+          <Link href="/settings/income" className="mx-7 mt-2 space-y-2">
+            <Container icon={MoneyIcon} className="mx-7 mt-2 space-y-2">
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("income")}
+              </AppText>
+            </Container>
+          </Link>
+
+          <Link href="/settings/bank-accounts" className="mx-7 mt-2 space-y-2">
+            <Container icon={LandmarkIcon} className="mx-7 mt-2 space-y-2">
+              <AppText
+                semibold
+                className="text-xl text-text dark:text-dark-text"
+              >
+                {t("bankAccounts")}
+              </AppText>
+            </Container>
+          </Link>
         </View>
       </ScrollView>
     </SafeAreaView>

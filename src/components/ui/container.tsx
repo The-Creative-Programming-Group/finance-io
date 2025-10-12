@@ -92,7 +92,7 @@ export const Container = ({
       // Merge default container styles with any consumer-provided classes
       className={cn(
         // Layout: horizontal row, spaced ends, vertical centering
-        "flex-row items-center justify-between",
+        "w-full flex-row items-center justify-between",
         // Card-like visuals
         "rounded-xl border-2 border-stroke bg-secondary",
         // Spacing: y padding, asymmetric x padding (extra left for icon badge)
