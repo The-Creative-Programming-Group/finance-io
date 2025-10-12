@@ -10,6 +10,7 @@ import fa_common from "../localization/fa/common.json";
 import fr_common from "../localization/fr/common.json";
 import hi_common from "../localization/hi/common.json";
 import it_common from "../localization/it/common.json";
+import it_settings from "../localization/it/settings.json";
 import ja_common from "../localization/ja/common.json";
 import ko_common from "../localization/ko/common.json";
 import ps_common from "../localization/ps/common.json";
@@ -50,7 +51,7 @@ export const resources = {
   },
   it: {
     common: it_common,
-    settings: {},
+    settings: it_settings,
   },
   ja: {
     common: ja_common,
@@ -86,25 +87,8 @@ export const resources = {
   },
 };
 
-export const languages = [
-  "ar",
-  "de",
-  "en",
-  "es",
-  "fa",
-  "fr",
-  "hi",
-  "it",
-  "ja",
-  "ko",
-  "ps",
-  "pt",
-  "ru",
-  "tr",
-  "ur",
-  "zh",
-] as const;
-export const namespaces = ["common", "settings"] as const;
+export const languages = ["ar","de","en","es","fa","fr","hi","it","ja","ko","ps","pt","ru","tr","ur","zh"] as const;
+export const namespaces = ["common","settings"] as const;
 
 export type LanguageKey = (typeof languages)[number];
 export type Namespace = (typeof namespaces)[number];
