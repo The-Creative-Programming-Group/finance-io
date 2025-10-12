@@ -14,7 +14,7 @@ export const welcomeRouter = createTRPCRouter({
       if (Number.isNaN(amount)) {
         throw new Error("Provided amount is not a valid number");
       }
-      /*
+
       const result = await db
         .insert(welcomeTable)
         .values({
@@ -25,9 +25,9 @@ export const welcomeRouter = createTRPCRouter({
           userId,
           createdAt: new Date(),
         })
-        .returning(); */
+        .returning();
 
-      return { success: true /* account: result[0] */ };
+      return { success: true, account: result[0] };
     }),
 
   getByUserId: protectedProcedure.query(async ({ ctx }) => {
