@@ -13,6 +13,7 @@ import {
   BellRingIcon,
   LandmarkIcon,
   ShieldXIcon,
+  SunMoonIcon,
   UsersRoundIcon,
 } from "lucide-react-native";
 import MoneyIcon from "~/assets/Icons/money.png";
@@ -50,6 +51,11 @@ export default function SettingsScreen() {
           <Container icon={UsersRoundIcon} className="mx-7 mt-2 space-y-2">
             <AppText semibold className="text-xl text-text dark:text-dark-text">
               {t("profile")}
+            </AppText>
+          </Container>
+          <Container icon={SunMoonIcon} className="mx-7 mt-2 space-y-2">
+            <AppText semibold className="text-xl text-text dark:text-dark-text">
+              {t("appearance")}
             </AppText>
           </Container>
           <Container icon={BellRingIcon} className="mx-7 mt-2 space-y-2">
