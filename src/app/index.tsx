@@ -141,10 +141,15 @@ export default function Index() {
   const { isSignedIn } = useAuth();
   const { t } = useTranslation();
 
-  const { data: accounts, isLoading: isLoadingAccounts } = trpc.accounts.getAccounts.useQuery();
+  const { data: accounts, isLoading: isLoadingAccounts } =
+    trpc.accounts.getAccounts.useQuery();
 
-  console.log({accounts, isSignedIn, isLoadingAccounts})
-  if (isSignedIn && !isLoadingAccounts && (!accounts || accounts?.length === 0)) {
+  console.log({ accounts, isSignedIn, isLoadingAccounts });
+  if (
+    isSignedIn &&
+    !isLoadingAccounts &&
+    (!accounts || accounts?.length === 0)
+  ) {
     return <Redirect href={"./start"} />;
   } else if (isSignedIn && !isLoadingAccounts && (accounts || [])?.length > 0) {
     return <Redirect href={"./(tabs)/banking"} />;

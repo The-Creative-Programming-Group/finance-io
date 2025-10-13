@@ -74,8 +74,14 @@ export const accountsRouter = createTRPCRouter({
         })
         .from(accountsTable)
         .where(eq(accountsTable.userId, userId))
-        .innerJoin(accountTypesTable, eq(accountsTable.typeId, accountTypesTable.id))
-        .innerJoin(currenciesTable, eq(accountsTable.currencyId, currenciesTable.id))
+        .innerJoin(
+          accountTypesTable,
+          eq(accountsTable.typeId, accountTypesTable.id),
+        )
+        .innerJoin(
+          currenciesTable,
+          eq(accountsTable.currencyId, currenciesTable.id),
+        )
         .execute();
 
       return rows.map(({ accounts, currency, accountType }) => ({

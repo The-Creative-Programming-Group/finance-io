@@ -165,12 +165,8 @@
           "name": "accounts_userId_users_id_fk",
           "tableFrom": "accounts",
           "tableTo": "users",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -178,12 +174,8 @@
           "name": "accounts_typeId_account_types_id_fk",
           "tableFrom": "accounts",
           "tableTo": "account_types",
-          "columnsFrom": [
-            "typeId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["typeId"],
+          "columnsTo": ["id"],
           "onDelete": "restrict",
           "onUpdate": "no action"
         },
@@ -191,12 +183,8 @@
           "name": "accounts_currencyId_currencies_id_fk",
           "tableFrom": "accounts",
           "tableTo": "currencies",
-          "columnsFrom": [
-            "currencyId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["currencyId"],
+          "columnsTo": ["id"],
           "onDelete": "restrict",
           "onUpdate": "no action"
         }
@@ -410,12 +398,8 @@
           "name": "transactions_accountId_accounts_id_fk",
           "tableFrom": "transactions",
           "tableTo": "accounts",
-          "columnsFrom": [
-            "accountId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["accountId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -423,12 +407,8 @@
           "name": "transactions_categoryId_categories_id_fk",
           "tableFrom": "transactions",
           "tableTo": "categories",
-          "columnsFrom": [
-            "categoryId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["categoryId"],
+          "columnsTo": ["id"],
           "onDelete": "restrict",
           "onUpdate": "no action"
         }

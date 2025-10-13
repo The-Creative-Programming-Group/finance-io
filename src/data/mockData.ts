@@ -5,10 +5,11 @@ import {
   RevolutIcon,
   SharedFundsIcon,
 } from "~/components/Icons";
-import type { DashboardData } from "~/types";
+import type { Account } from "~/types";
 import { CircleArrowRightIcon, LandmarkIcon } from "lucide-react-native";
 
-export const mockDashboardData: DashboardData = {
+// TODO: Remove mock data
+export const mockDashboardData = {
   user: {
     name: "Julia's",
   },
@@ -32,7 +33,7 @@ export const mockDashboardData: DashboardData = {
     private: [
       {
         id: "1",
-        name: "Pay Pal",
+        bankName: "Pay Pal",
         amount: "53.99€",
         icon: React.createElement(PayPalIcon),
         type: "paypal",

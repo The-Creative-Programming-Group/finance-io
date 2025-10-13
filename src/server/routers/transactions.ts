@@ -146,10 +146,10 @@ export const transactionsRouter = createTRPCRouter({
           .innerJoin(
             categoriesTable,
             eq(transactionsTable.categoryId, categoriesTable.id),
-          )
-          ;
-
-        const rows = whereExpr ? await qb.where(whereExpr).execute() : await qb.execute();
+          );
+        const rows = whereExpr
+          ? await qb.where(whereExpr).execute()
+          : await qb.execute();
         return rows.map((row) => ({
           ...row.transactions,
           category: row.categories,

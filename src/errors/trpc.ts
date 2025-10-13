@@ -18,5 +18,3 @@ export const errors = {
 };
 
 export type StandardErrorFactory = typeof errors;
-
-

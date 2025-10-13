@@ -21,6 +21,7 @@ async function main() {
     usage: "Initial setup",
     userId: "sample-user-id",
     currencyId: usd.id,
+    typeId: "private",
   };
 
   await db.insert(accountsTable).values(account);

@@ -63,7 +63,11 @@ export const accountsTable = pgTable(
       .references(() => usersTable.id, { onDelete: "cascade" }),
     bankName: varchar({ length: 255 }).notNull(),
     // Use high-precision decimal stored as string in code to prevent JS float issues
-    currentBalance: decimal({ precision: 18, scale: 2, mode: "string" }).notNull(),
+    currentBalance: decimal({
+      precision: 18,
+      scale: 2,
+      mode: "string",
+    }).notNull(),
     reference: varchar({ length: 255 }).notNull(),
     usage: varchar({ length: 255 }).notNull(),
     typeId: uuid()

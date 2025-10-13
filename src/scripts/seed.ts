@@ -1,6 +1,10 @@
 import "dotenv/config";
 import { db } from "../db";
-import { accountTypesTable, categoriesTable, currenciesTable } from "../db/schema";
+import {
+  accountTypesTable,
+  categoriesTable,
+  currenciesTable,
+} from "../db/schema";
 import { eq, inArray } from "drizzle-orm";
 
 async function seedCurrencies() {
@@ -22,7 +26,9 @@ async function seedCurrencies() {
 
   if (toInsert.length > 0) {
     await db.insert(currenciesTable).values(toInsert);
-    console.log(`Inserted currencies: ${toInsert.map((c) => c.code).join(", ")}`);
+    console.log(
+      `Inserted currencies: ${toInsert.map((c) => c.code).join(", ")}`,
+    );
   } else {
     console.log("Currencies already seeded");
   }
@@ -48,7 +54,9 @@ async function seedCategories() {
 
   if (toInsert.length > 0) {
     await db.insert(categoriesTable).values(toInsert);
-    console.log(`Inserted categories: ${toInsert.map((c) => c.slug).join(", ")}`);
+    console.log(
+      `Inserted categories: ${toInsert.map((c) => c.slug).join(", ")}`,
+    );
   } else {
     console.log("Categories already seeded");
   }
@@ -73,7 +81,9 @@ async function seedAccountTypes() {
 
   if (toInsert.length > 0) {
     await db.insert(accountTypesTable).values(toInsert);
-    console.log(`Inserted account types: ${toInsert.map((c) => c.slug).join(", ")}`);
+    console.log(
+      `Inserted account types: ${toInsert.map((c) => c.slug).join(", ")}`,
+    );
   } else {
     console.log("Account types already seeded");
   }
@@ -89,4 +99,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
