@@ -33,7 +33,7 @@ export const mockDashboardData = {
     private: [
       {
         id: "1",
-        bankName: "Pay Pal",
+        name: "Pay Pal",
         amount: "53.99€",
         icon: React.createElement(PayPalIcon),
         type: "paypal",
