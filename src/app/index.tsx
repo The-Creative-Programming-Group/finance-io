@@ -69,7 +69,7 @@ const LanguageDropdown = () => {
     i18n.on("languageChanged", changeLanguageHandler);
 
     return () => {
-      // Clean up listener when component unmounts
+      // Clean up listener when a component unmounts
       i18n.off("languageChanged", changeLanguageHandler);
     };
   }, [i18n]);
@@ -113,7 +113,7 @@ const LanguageDropdown = () => {
             <ScrollView
               showsVerticalScrollIndicator={true}
               scrollIndicatorInsets={{ right: 1 }}
-              style={{ maxHeight: 150 }} // Show exactly 5 items (36px per item)
+              style={{ maxHeight: 150 }} // Show exactly 5 items (36 px per item)
             >
               {languages.map((lang) => (
                 <TouchableOpacity
