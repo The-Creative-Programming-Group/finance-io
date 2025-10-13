@@ -40,6 +40,19 @@ export const categoriesTable = pgTable(
   }),
 );
 
+// Account types
+export const accountTypesTable = pgTable(
+  "account_types",
+  {
+    id: uuid().defaultRandom().primaryKey(),
+    name: varchar({ length: 100 }).notNull(),
+    slug: varchar({ length: 120 }).notNull(),
+  },
+  (table) => ({
+    slugUniqueIdx: uniqueIndex("account_types_slug_unique_idx").on(table.slug),
+  }),
+);
+
 // Accounts
 export const accountsTable = pgTable(
   "accounts",
@@ -53,6 +66,9 @@ export const accountsTable = pgTable(
     currentBalance: decimal({ precision: 18, scale: 2, mode: "string" }).notNull(),
     reference: varchar({ length: 255 }).notNull(),
     usage: varchar({ length: 255 }).notNull(),
+    typeId: uuid()
+      .notNull()
+      .references(() => accountTypesTable.id, { onDelete: "restrict" }),
     currencyId: uuid()
       .notNull()
       .references(() => currenciesTable.id, { onDelete: "restrict" }),
@@ -61,6 +77,7 @@ export const accountsTable = pgTable(
   (table) => ({
     userIdx: index("accounts_user_idx").on(table.userId),
     currencyIdx: index("accounts_currency_idx").on(table.currencyId),
+    typeIdx: index("accounts_type_idx").on(table.typeId),
   }),
 );
 

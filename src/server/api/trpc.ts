@@ -9,12 +9,17 @@
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { z, ZodError } from "zod";
-import { verifyToken } from "@clerk/backend";
+import { verifyToken, createClerkClient } from "@clerk/backend";
+import { errors } from "~/errors/trpc";
 
 // import { db } from "~/server/db";
 import { db } from "~/db";
 
 const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY!;
+
+const clerkClient = createClerkClient({
+  secretKey: CLERK_SECRET_KEY,
+});
 
 /**
  * 1. CONTEXT
@@ -123,14 +128,21 @@ export const publicProcedure = t.procedure;
  * This is the base piece you use to build new queries and mutations on your tRPC API. It guarantees
  * that a user querying is authorized and can access their own data.
  */
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!ctx.userId) {
-    throw new Error("Not authenticated");
+    throw errors.notAuthenticated();
   }
+
+  const user = await clerkClient.users.getUser(ctx.userId);
+  if (!user) {
+    throw errors.notAuthenticated();
+  }
+
   return next({
     ctx: {
       ...ctx,
       userId: ctx.userId,
+      user,
     },
   });
 });

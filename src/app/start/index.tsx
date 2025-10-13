@@ -44,7 +44,9 @@ const Home = () => {
     initLanguage();
   }, []);
 
-  const createAccount = trpc.account.create.useMutation({
+  const { data: userData } = trpc.users.getUser.useQuery();
+
+  const createAccount = trpc.accounts.addAccount.useMutation({
     onSuccess: () => {
       Alert.alert(t("success"), t("accountCreated"));
       reset();
@@ -76,7 +78,7 @@ const Home = () => {
   const handleCreateAccount = async (data: WelcomeFormValues) => {
     await createAccount.mutateAsync({
       ...data,
-      currentAmount: data.currentAmount,
+      currentBalance: data.currentAmount.toString(),
     });
   };
 

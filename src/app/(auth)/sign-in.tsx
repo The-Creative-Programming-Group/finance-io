@@ -99,7 +99,7 @@ export default function Page() {
       });
       if (signInAttempt.status === "complete") {
         await setActive({ session: signInAttempt.createdSessionId });
-        router.replace("/start");
+        router.replace("/");
       } else {
         setError(
           t("signInFailed", "Sign in failed. Please check your credentials"),

@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { db } from "../db";
-import { categoriesTable, currenciesTable } from "../db/schema";
+import { accountTypesTable, categoriesTable, currenciesTable } from "../db/schema";
 import { eq, inArray } from "drizzle-orm";
 
 async function seedCurrencies() {
@@ -54,9 +54,35 @@ async function seedCategories() {
   }
 }
 
+async function seedAccountTypes() {
+  const accountTypes = [
+    { name: "Private", slug: "private" },
+    { name: "Business", slug: "business" },
+    { name: "Safe", slug: "safe" },
+  ];
+
+  const slugs = accountTypes.map((c) => c.slug);
+  const existing = await db
+    .select({ slug: accountTypesTable.slug })
+    .from(accountTypesTable)
+    .where(inArray(accountTypesTable.slug, slugs));
+
+  const existingSlugs = new Set(existing.map((e) => e.slug));
+
+  const toInsert = accountTypes.filter((c) => !existingSlugs.has(c.slug));
+
+  if (toInsert.length > 0) {
+    await db.insert(accountTypesTable).values(toInsert);
+    console.log(`Inserted account types: ${toInsert.map((c) => c.slug).join(", ")}`);
+  } else {
+    console.log("Account types already seeded");
+  }
+}
+
 async function main() {
   await seedCurrencies();
   await seedCategories();
+  await seedAccountTypes();
 }
 
 main().catch((err) => {

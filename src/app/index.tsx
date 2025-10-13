@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
+import { trpc } from "~/utils/trpc";
 
 const LanguageDropdown = () => {
   const [visible, setVisible] = useState(false);
@@ -140,9 +141,21 @@ export default function Index() {
   const { isSignedIn } = useAuth();
   const { t } = useTranslation();
 
-  if (isSignedIn) {
-    return <Redirect href={"../home"} />;
+  const { data: accounts, isLoading: isLoadingAccounts } = trpc.accounts.getAccounts.useQuery();
+
+  console.log({accounts, isSignedIn, isLoadingAccounts})
+  if (isSignedIn && !isLoadingAccounts && (!accounts || accounts?.length === 0)) {
+    return <Redirect href={"./start"} />;
+  } else if (isSignedIn && !isLoadingAccounts && (accounts || [])?.length > 0) {
+    return <Redirect href={"./(tabs)/banking"} />;
   }
+
+  /// TODO: Add loading state
+  // if (isLoadingAccounts) {
+  //   return <View className="flex-1 items-center justify-center">
+  //     <ActivityIndicator size="large" color={iconColor} />
+  //   </View>;
+  // }
 
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";
