@@ -142,9 +142,10 @@ export default function Index() {
   const { t } = useTranslation();
 
   const { data: accounts, isLoading: isLoadingAccounts } =
-    trpc.accounts.getAccounts.useQuery();
+    trpc.accounts.getAccounts.useQuery(undefined, {
+      enabled: isSignedIn,
+    });
 
-  console.log({ accounts, isSignedIn, isLoadingAccounts });
   if (
     isSignedIn &&
     !isLoadingAccounts &&

@@ -61,7 +61,7 @@ const Dashboard = () => {
           <AccountItem
             key={account.id}
             icon={account.icon}
-            name={account?.name || ""}
+            name={account.name}
             amount={account.amount}
             delay={600 + index * 100}
             onPress={() => handleAccountPress(account?.name || "", account.id)}
@@ -73,7 +73,7 @@ const Dashboard = () => {
           <AccountItem
             key={account.id}
             icon={account.icon}
-            name={account?.name || ""}
+            name={account.name}
             amount={account.amount}
             delay={900 + index * 100}
             onPress={() => handleAccountPress(account?.name || "", account.id)}
@@ -86,7 +86,7 @@ const Dashboard = () => {
           <AccountItem
             key={account.id}
             icon={account.icon}
-            name={account?.name || ""}
+            name={account.name}
             amount={account.amount}
             delay={1100 + index * 100}
             onPress={() => handleAccountPress(account?.name || "", account.id)}

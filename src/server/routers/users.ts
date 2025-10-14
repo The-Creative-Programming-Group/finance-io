@@ -1,26 +1,17 @@
 import { createTRPCRouter, protectedProcedure } from "../api/trpc";
 import { db } from "~/db";
 import { usersTable } from "~/db/schema";
-import { eq } from "drizzle-orm";
-import { User } from "~/types";
+import { ClerkUser } from "~/types";
 
 export const usersRouter = createTRPCRouter({
-  getUser: protectedProcedure.query(async ({ ctx }): Promise<User> => {
+  getUser: protectedProcedure.query(async ({ ctx }): Promise<ClerkUser> => {
     const userId = ctx.userId!;
     const user = ctx.user;
 
-    const existingUsers = await db
-      .select()
-      .from(usersTable)
-      .where(eq(usersTable.id, userId))
-      .limit(1);
-
-    if (existingUsers.length === 0) {
-      await db.insert(usersTable).values({ id: userId });
-    }
+    await db.insert(usersTable).values({ id: userId }).onConflictDoNothing();
 
     return {
-      id: existingUsers[0].id,
+      id: userId,
       firstName: user.firstName || "",
       lastName: user.lastName || "",
       emails: user.emailAddresses.map((email) => email.emailAddress),

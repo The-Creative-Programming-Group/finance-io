@@ -1,6 +1,10 @@
 import type React from "react";
 
-export interface User {
+/**
+ * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
+ * When we request the user defails from our backend it automatically gets the user details from Clerk.
+ */
+export interface ClerkUser {
   id: string;
   firstName: string;
   lastName: string;

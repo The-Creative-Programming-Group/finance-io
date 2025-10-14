@@ -1,7 +1,7 @@
 import { createTRPCRouter, protectedProcedure } from "../api/trpc";
 import { db } from "~/db";
 import { accountsTable, accountTypesTable, currenciesTable } from "~/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, or } from "drizzle-orm";
 import { AccountWithCurrencyAndType } from "~/types";
 import { z } from "zod";
 import { errors } from "~/errors/trpc";
@@ -29,11 +29,18 @@ export const accountsRouter = createTRPCRouter({
         throw errors.notFound(error_messages.currencyNotFound);
       }
 
-      const accountType = await db
-        .select()
-        .from(accountTypesTable)
-        .where(eq(accountTypesTable.slug, input.typeId || "private"))
-        .limit(1);
+      const accountType = input.typeId
+        ? await db
+            .select()
+            .from(accountTypesTable)
+            .where(eq(accountTypesTable.id, input.typeId))
+            .limit(1)
+        : await db
+            .select()
+            .from(accountTypesTable)
+            .where(eq(accountTypesTable.slug, "private"))
+            .limit(1);
+
       if (accountType.length === 0) {
         throw errors.notFound(error_messages.accountTypeNotFound);
       }

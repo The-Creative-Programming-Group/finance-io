@@ -75,19 +75,16 @@ This guide documents how we build backend features in this repository to ensure 
 ### Example: Secure and Typed List Query
 
 ```ts
-const whereExpr = and(
+import type { SQL } from "drizzle-orm";
+const conditions: (SQL | undefined)[] = [
   eq(accountsTable.userId, ctx.userId!),
-  input.accountId
-    ? eq(transactionsTable.accountId, input.accountId)
-    : undefined,
-  input.categoryId
-    ? eq(transactionsTable.categoryId, input.categoryId)
-    : undefined,
-  input.startDate
-    ? gte(transactionsTable.datetime, input.startDate)
-    : undefined,
+  input.accountId ? eq(transactionsTable.accountId, input.accountId) : undefined,
+  input.categoryId ? eq(transactionsTable.categoryId, input.categoryId) : undefined,
+  input.startDate ? gte(transactionsTable.datetime, input.startDate) : undefined,
   input.endDate ? lte(transactionsTable.datetime, input.endDate) : undefined,
-).filter(Boolean) as any; // build conditionally, or build stepwise without arrays
+];
+const typed = conditions.filter((c): c is SQL => Boolean(c));
+const whereExpr = typed.length ? and(...typed) : undefined;
 
 const qb = db
   .select({

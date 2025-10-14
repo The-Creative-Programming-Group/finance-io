@@ -75,6 +75,11 @@ export const transactionsRouter = createTRPCRouter({
           .execute();
 
         const row = transactionWithCategoryAndAccount[0];
+
+        if (!row) {
+          throw errors.notFound(error_messages.transactionNotFound);
+        }
+
         return {
           ...row.transactions,
           category: row.categories,
@@ -110,27 +115,23 @@ export const transactionsRouter = createTRPCRouter({
         }
 
         // Always restrict to the current user's accounts
-        let whereExpr: SQL | undefined = eq(accountsTable.userId, ctx.userId!);
-        if (input.accountId) {
-          whereExpr = whereExpr
-            ? and(whereExpr, eq(transactionsTable.accountId, input.accountId))
-            : eq(transactionsTable.accountId, input.accountId);
-        }
-        if (input.categoryId) {
-          whereExpr = whereExpr
-            ? and(whereExpr, eq(transactionsTable.categoryId, input.categoryId))
-            : eq(transactionsTable.categoryId, input.categoryId);
-        }
-        if (input.startDate) {
-          whereExpr = whereExpr
-            ? and(whereExpr, gte(transactionsTable.datetime, input.startDate))
-            : gte(transactionsTable.datetime, input.startDate);
-        }
-        if (input.endDate) {
-          whereExpr = whereExpr
-            ? and(whereExpr, lte(transactionsTable.datetime, input.endDate))
-            : lte(transactionsTable.datetime, input.endDate);
-        }
+        const conditions: (SQL | undefined)[] = [
+          eq(accountsTable.userId, ctx.userId!),
+          input.accountId
+            ? eq(transactionsTable.accountId, input.accountId)
+            : undefined,
+          input.categoryId
+            ? eq(transactionsTable.categoryId, input.categoryId)
+            : undefined,
+          input.startDate
+            ? gte(transactionsTable.datetime, input.startDate)
+            : undefined,
+          input.endDate
+            ? lte(transactionsTable.datetime, input.endDate)
+            : undefined,
+        ];
+        const typed = conditions.filter((c): c is SQL => Boolean(c));
+        const whereExpr: SQL | undefined = typed.length ? and(...typed) : undefined;
 
         const qb = db
           .select({
