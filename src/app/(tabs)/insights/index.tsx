@@ -21,14 +21,7 @@ export default function InsightsScreen() {
       />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <Header
-          name={
-            isLoaded && user
-              ? user.firstName || t("defaultUser")
-              : t("defaultUser")
-          }
-          type={NavigationItems.INSIGHTS}
-        />
+        <Header type={NavigationItems.INSIGHTS} />
         <SectionHeader title={t("overview")} delay={400} />
       </ScrollView>
     </SafeAreaView>
