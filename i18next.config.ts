@@ -21,6 +21,7 @@ export const locales = [
   "th",
   "id",
   "vi",
+  "sw",
 ];
 
 // Used in ./scripts/generate-i18n-resources.js

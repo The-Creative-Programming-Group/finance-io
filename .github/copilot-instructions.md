@@ -1,7 +1,7 @@
 # Finance.io Mobile App
 
 Finance.io is an Expo React Native mobile application built with TypeScript that provides personal finance management features.
-The app supports Android, iOS, and web platforms with internationalisation support for 19 languages.
+The app supports Android, iOS, and web platforms with internationalisation support for 20 languages.
 
 Always reference these instructions first and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
@@ -13,7 +13,7 @@ Always reference these instructions first and fall back to search or bash comman
   - `curl -fsSL https://get.pnpm.io/install.sh | sh -`
   - `export PNPM_HOME="/home/runner/.local/share/pnpm" && export PATH="$PNPM_HOME:$PATH"`
 - Install dependencies: `pnpm install` -- takes 2-3 minutes. NEVER CANCEL. Set timeout to 5+ minutes.
-- Create environment file: Copy `.env.example` to `.env.local` and populate with real values
+- Create an environment file: Copy `.env.example` to `.env.local` and populate with real values
 
 ### Required Environment Variables
 
@@ -64,7 +64,7 @@ Create `.env.local` with these REQUIRED variables:
 
 ### Language Testing
 
-- App supports 19 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th, id, vi)
+- App supports 20 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th, id, vi, sw)
 - Language files are in `localization/` directory
 - Test language switching functionality when making i18n changes
 
@@ -107,7 +107,7 @@ src/
 - **API**: tRPC with React Query
 - **Database**: Drizzle ORM with PostgreSQL
 - **Auth**: Clerk authentication
-- **Internationalization**: react-i18next with 19 language support
+- **Internationalization**: react-i18next with 20 language support
 
 ### Platform Support
 
