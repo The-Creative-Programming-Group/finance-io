@@ -28,13 +28,13 @@ export const AccountItem: React.FC<AccountItemProps> = ({
   const Component = onPress ? TouchableOpacity : View;
 
   const styledIcon = React.isValidElement(icon)
-    ? React.cloneElement(icon as React.ReactElement<any>, {
+    ? React.cloneElement(icon as React.ReactElement<{ color?: string }>, {
         color: colors.text, // Apply the theme color to every Lucide icon, so it changes with dark mode
       })
     : icon;
 
   const styledArrow = React.isValidElement(arrow)
-    ? React.cloneElement(arrow as React.ReactElement<any>, {
+    ? React.cloneElement(arrow as React.ReactElement<{ color?: string }>, {
         color: colors.text, // Apply the theme color to the arrow if it's a Lucide icon, so it changes with dark mode
       })
     : arrow;
