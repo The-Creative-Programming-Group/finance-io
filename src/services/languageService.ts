@@ -40,7 +40,7 @@ export const languageService = {
         ? normalizeLang(storedDeviceLangRaw)
         : null;
 
-      // If stored device language doesn't match current, it has changed
+      // If the stored device language doesn't match the current, it has changed
       const hasChanged =
         storedDeviceLang !== null && storedDeviceLang !== currentDeviceLang;
 
@@ -69,8 +69,12 @@ export const languageService = {
   resetToDeviceLanguage: async (): Promise<void> => {
     try {
       const deviceLang = getDeviceLanguage();
+      // Track the current device language
       await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLang);
-      await languageService.setLanguage(deviceLang);
+      // Clear explicit preference so future device changes are respected
+      await SecureStore.deleteItemAsync(LANGUAGE_KEY);
+      // Apply device language now
+      await i18n.changeLanguage(deviceLang);
     } catch (error) {
       console.error("Error resetting to device language:", error);
     }
