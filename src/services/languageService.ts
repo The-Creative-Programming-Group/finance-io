@@ -71,7 +71,12 @@ export const languageService = {
       const deviceLang = getDeviceLanguage();
       // Track the current device language
       await SecureStore.setItemAsync(DEVICE_LANG_KEY, deviceLang);
-      // Clear explicit preference so future device changes are respected
+      /*
+        Important: Deleting the explicit language preference ensures the app will
+        follow future device language changes automatically.
+        If the user later selects a language explicitly, we will store it again and stop following
+        device changes until they reset to device language.
+      */
       await SecureStore.deleteItemAsync(LANGUAGE_KEY);
       // Apply device language now
       await i18n.changeLanguage(deviceLang);
