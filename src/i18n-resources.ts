@@ -33,6 +33,12 @@ import ur_common from "../localization/ur/common.json";
 import ur_settings from "../localization/ur/settings.json";
 import zh_common from "../localization/zh/common.json";
 import zh_settings from "../localization/zh/settings.json";
+import th_common from "../localization/th/common.json";
+import id_common from "../localization/id/common.json";
+import vi_common from "../localization/vi/common.json";
+import sw_common from "../localization/sw/common.json";
+import ha_common from "../localization/ha/common.json";
+import bn_common from "../localization/bn/common.json";
 
 export const resources = {
   ar: {
@@ -99,10 +105,57 @@ export const resources = {
     common: zh_common,
     settings: zh_settings,
   },
+  th: {
+    common: th_common,
+    settings: {},
+  },
+  id: {
+    common: id_common,
+    settings: {},
+  },
+  vi: {
+    common: vi_common,
+    settings: {},
+  },
+  sw: {
+    common: sw_common,
+    settings: {},
+  },
+  ha: {
+    common: ha_common,
+    settings: {},
+  },
+  bn: {
+    common: bn_common,
+    settings: {},
+  },
 };
 
-export const languages = ["ar","de","en","es","fa","fr","hi","it","ja","ko","ps","pt","ru","tr","ur","zh"] as const;
-export const namespaces = ["common","settings"] as const;
+export const languages = [
+  "ar",
+  "de",
+  "en",
+  "es",
+  "fa",
+  "fr",
+  "hi",
+  "it",
+  "ja",
+  "ko",
+  "ps",
+  "pt",
+  "ru",
+  "tr",
+  "ur",
+  "zh",
+  "th",
+  "id",
+  "vi",
+  "sw",
+  "ha",
+  "bn",
+] as const;
+export const namespaces = ["common", "settings"] as const;
 
 export type LanguageKey = (typeof languages)[number];
 export type Namespace = (typeof namespaces)[number];

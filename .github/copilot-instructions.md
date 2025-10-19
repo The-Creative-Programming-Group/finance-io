@@ -1,8 +1,9 @@
-# Finance-IO Mobile App
+# Finance.io Mobile App
 
-Finance-IO is an Expo React Native mobile application built with TypeScript that provides personal finance management features. The app supports Android, iOS, and web platforms with internationalization support for 16 languages.
+Finance.io is an Expo React Native mobile application built with TypeScript that provides personal finance management features.
+The app supports Android, iOS, and web platforms with internationalisation support for 22 languages.
 
-Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
+Always reference these instructions first and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
 ## Working Effectively
 
@@ -12,7 +13,7 @@ Always reference these instructions first and fallback to search or bash command
   - `curl -fsSL https://get.pnpm.io/install.sh | sh -`
   - `export PNPM_HOME="/home/runner/.local/share/pnpm" && export PATH="$PNPM_HOME:$PATH"`
 - Install dependencies: `pnpm install` -- takes 2-3 minutes. NEVER CANCEL. Set timeout to 5+ minutes.
-- Create environment file: Copy `.env.example` to `.env.local` and populate with real values
+- Create an environment file: Copy `.env.example` to `.env.local` and populate with real values
 
 ### Required Environment Variables
 
@@ -63,14 +64,14 @@ Create `.env.local` with these REQUIRED variables:
 
 ### Language Testing
 
-- App supports 16 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt)
+- App supports 22 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th, id, vi, sw, ha, bn)
 - Language files are in `localization/` directory
 - Test language switching functionality when making i18n changes
 
 ### No Automated Tests
 
-- This project has Jest configured but NO test files exist
-- All validation must be done manually via the development server
+- This project has Jest configured, but NO test files exist
+- All validations must be done manually via the development server
 - Focus on manual testing via the web interface for any changes
 
 ## Common Tasks
@@ -106,7 +107,7 @@ src/
 - **API**: tRPC with React Query
 - **Database**: Drizzle ORM with PostgreSQL
 - **Auth**: Clerk authentication
-- **Internationalization**: react-i18next with 16 language support
+- **Internationalization**: react-i18next with 22 language support
 
 ### Platform Support
 
@@ -131,8 +132,8 @@ src/
 
 ### Debugging
 
-- Use web development mode for fastest iteration: `pnpm web`
-- Check browser console for runtime errors
+- Use web development mode for the fastest iteration: `pnpm web`
+- Check the browser console for runtime errors
 - Expo development tools available at http://localhost:8081
 - Metro bundler logs show build progress and errors
 
