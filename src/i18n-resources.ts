@@ -102,12 +102,9 @@ export const languages = [
   "ru",
   "tr",
   "ur",
-  "zh"
+  "zh",
 ] as const;
-export const namespaces = [
-  "common",
-  "settings"
-] as const;
+export const namespaces = ["common", "settings"] as const;
 
 export type LanguageKey = (typeof languages)[number];
 export type Namespace = (typeof namespaces)[number];
