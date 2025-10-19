@@ -9,8 +9,8 @@ const DEVICE_LANG_KEY = "finance_io_device_lang";
 
 export const normalizeLang = (code?: string): string => {
   const c = (code || "en").toLowerCase();
-  if (c === "in") return "id"; // legacy Android code for Indonesian
-  if (c === "vn") return "vi"; // non-standard code mapped to Vietnamese
+  if (c === "in") return "id"; // Legacy ISO 639-1 code used by older Android devices
+  if (c === "vn") return "vi"; // Common but non-standard code for Vietnamese
   return c;
 };
 
