@@ -1,8 +1,9 @@
 # Finance.io Mobile App
 
-Finance.io is an Expo React Native mobile application built with TypeScript that provides personal finance management features. The app supports Android, iOS, and web platforms with internationalization support for 17 languages.
+Finance.io is an Expo React Native mobile application built with TypeScript that provides personal finance management features.
+The app supports Android, iOS, and web platforms with internationalisation support for 18 languages.
 
-Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
+Always reference these instructions first and fall back to search or bash commands only when you encounter unexpected information that does not match the info here.
 
 ## Working Effectively
 
@@ -63,14 +64,14 @@ Create `.env.local` with these REQUIRED variables:
 
 ### Language Testing
 
-- App supports 17 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th)
+- App supports 18 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th, id)
 - Language files are in `localization/` directory
 - Test language switching functionality when making i18n changes
 
 ### No Automated Tests
 
-- This project has Jest configured but NO test files exist
-- All validation must be done manually via the development server
+- This project has Jest configured, but NO test files exist
+- All validations must be done manually via the development server
 - Focus on manual testing via the web interface for any changes
 
 ## Common Tasks
@@ -106,7 +107,7 @@ src/
 - **API**: tRPC with React Query
 - **Database**: Drizzle ORM with PostgreSQL
 - **Auth**: Clerk authentication
-- **Internationalization**: react-i18next with 17 language support
+- **Internationalization**: react-i18next with 18 language support
 
 ### Platform Support
 
@@ -131,8 +132,8 @@ src/
 
 ### Debugging
 
-- Use web development mode for fastest iteration: `pnpm web`
-- Check browser console for runtime errors
+- Use web development mode for the fastest iteration: `pnpm web`
+- Check the browser console for runtime errors
 - Expo development tools available at http://localhost:8081
 - Metro bundler logs show build progress and errors
 
