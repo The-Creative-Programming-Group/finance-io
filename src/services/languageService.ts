@@ -1,17 +1,10 @@
 import * as SecureStore from "expo-secure-store";
 import * as Localization from "expo-localization";
-import i18n from "~/i18n";
+import i18n, { normalizeLang } from "~/i18n";
 
 const LANGUAGE_KEY = "finance_io_language";
 const HAS_LAUNCHED_KEY = "finance_io_first_launch";
 const DEVICE_LANG_KEY = "finance_io_device_lang";
-
-const normalizeLang = (code?: string): string => {
-  const c = (code || "en").toLowerCase();
-  if (c === "in") return "id"; // legacy Android code for Indonesian
-  if (c === "vn") return "vi"; // non-standard code mapped to Vietnamese
-  return c;
-};
 
 // Get the device's locale
 const getDeviceLanguage = (): string => {
