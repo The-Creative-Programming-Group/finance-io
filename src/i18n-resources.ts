@@ -86,25 +86,8 @@ export const resources = {
   },
 };
 
-export const languages = [
-  "ar",
-  "de",
-  "en",
-  "es",
-  "fa",
-  "fr",
-  "hi",
-  "it",
-  "ja",
-  "ko",
-  "ps",
-  "pt",
-  "ru",
-  "tr",
-  "ur",
-  "zh",
-] as const;
-export const namespaces = ["common", "settings"] as const;
+export const languages = ["ar","de","en","es","fa","fr","hi","it","ja","ko","ps","pt","ru","tr","ur","zh"] as const;
+export const namespaces = ["common","settings"] as const;
 
 export type LanguageKey = (typeof languages)[number];
 export type Namespace = (typeof namespaces)[number];
