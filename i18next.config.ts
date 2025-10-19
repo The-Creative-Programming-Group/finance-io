@@ -18,6 +18,12 @@ export const locales = [
   "tr",
   "ur",
   "zh",
+  "th",
+  "id",
+  "vi",
+  "sw",
+  "ha",
+  "bn",
 ];
 
 // Used in ./scripts/generate-i18n-resources.js

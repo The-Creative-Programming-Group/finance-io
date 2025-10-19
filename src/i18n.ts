@@ -7,6 +7,13 @@ const LANGUAGE_KEY = "finance_io_language";
 const HAS_LAUNCHED_KEY = "finance_io_first_launch";
 const DEVICE_LANG_KEY = "finance_io_device_lang";
 
+export const normalizeLang = (code?: string): string => {
+  const c = (code || "en").toLowerCase();
+  if (c === "in") return "id"; // Legacy ISO 639-1 code used by older Android devices
+  if (c === "vn") return "vi"; // Common but non-standard code for Vietnamese
+  return c;
+};
+
 // Get the device's locale for initial language
 const getDeviceLanguage = (): string => {
   try {
@@ -14,7 +21,7 @@ const getDeviceLanguage = (): string => {
       | string
       | undefined;
     if (!locale) return "en";
-    return locale;
+    return normalizeLang(locale);
   } catch (error) {
     console.error("Error detecting device language:", error);
     return "en"; // Default to English on error
