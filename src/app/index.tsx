@@ -46,6 +46,7 @@ const LanguageDropdown = () => {
     { code: "vi", label: "Tiếng Việt" },
     { code: "sw", label: "Kiswahili" },
     { code: "ha", label: "Hausa" },
+    { code: "bn", label: "বাংলা" },
     { code: "tr", label: "Türkçe" },
     { code: "ru", label: "Русский" },
   ];

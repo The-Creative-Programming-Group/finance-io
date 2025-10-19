@@ -23,6 +23,7 @@ import id_common from "../localization/id/common.json";
 import vi_common from "../localization/vi/common.json";
 import sw_common from "../localization/sw/common.json";
 import ha_common from "../localization/ha/common.json";
+import bn_common from "../localization/bn/common.json";
 
 export const resources = {
   ar: {
@@ -109,6 +110,10 @@ export const resources = {
     common: ha_common,
     settings: {},
   },
+  bn: {
+    common: bn_common,
+    settings: {},
+  },
 };
 
 export const languages = [
@@ -133,6 +138,7 @@ export const languages = [
   "vi",
   "sw",
   "ha",
+  "bn",
 ] as const;
 export const namespaces = ["common", "settings"] as const;
 
