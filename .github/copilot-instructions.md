@@ -1,6 +1,6 @@
-# Finance-IO Mobile App
+# Finance.io Mobile App
 
-Finance-IO is an Expo React Native mobile application built with TypeScript that provides personal finance management features. The app supports Android, iOS, and web platforms with internationalization support for 16 languages.
+Finance.io is an Expo React Native mobile application built with TypeScript that provides personal finance management features. The app supports Android, iOS, and web platforms with internationalization support for 17 languages.
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
@@ -63,7 +63,7 @@ Create `.env.local` with these REQUIRED variables:
 
 ### Language Testing
 
-- App supports 16 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt)
+- App supports 17 languages (en, fr, es, it, fa, zh, tr, ru, de, ar, ja, ko, ur, ps, hi, pt, th)
 - Language files are in `localization/` directory
 - Test language switching functionality when making i18n changes
 
@@ -106,7 +106,7 @@ src/
 - **API**: tRPC with React Query
 - **Database**: Drizzle ORM with PostgreSQL
 - **Auth**: Clerk authentication
-- **Internationalization**: react-i18next with 16 language support
+- **Internationalization**: react-i18next with 17 language support
 
 ### Platform Support
 

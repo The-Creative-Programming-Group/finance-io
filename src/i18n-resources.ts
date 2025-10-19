@@ -18,6 +18,7 @@ import ru_common from "../localization/ru/common.json";
 import tr_common from "../localization/tr/common.json";
 import ur_common from "../localization/ur/common.json";
 import zh_common from "../localization/zh/common.json";
+import th_common from "../localization/th/common.json";
 
 export const resources = {
   ar: {
@@ -84,6 +85,10 @@ export const resources = {
     common: zh_common,
     settings: {},
   },
+  th: {
+    common: th_common,
+    settings: {},
+  },
 };
 
 export const languages = [
@@ -102,12 +107,10 @@ export const languages = [
   "ru",
   "tr",
   "ur",
-  "zh"
+  "zh",
+  "th",
 ] as const;
-export const namespaces = [
-  "common",
-  "settings"
-] as const;
+export const namespaces = ["common", "settings"] as const;
 
 export type LanguageKey = (typeof languages)[number];
 export type Namespace = (typeof namespaces)[number];

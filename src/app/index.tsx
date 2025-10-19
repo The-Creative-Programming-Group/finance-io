@@ -41,6 +41,7 @@ const LanguageDropdown = () => {
     { code: "ja", label: "日本語" },
     { code: "ko", label: "한국어" },
     { code: "zh", label: "中文" },
+    { code: "th", label: "ไทย" },
     { code: "tr", label: "Türkçe" },
     { code: "ru", label: "Русский" },
   ];
