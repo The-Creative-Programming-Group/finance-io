@@ -67,7 +67,7 @@ async function generateResources() {
     namespaces.forEach((ns) => {
       const fileInfo = fileMap.get(`${lang}:${ns}`);
 
-      if (fileInfo.exists) {
+      if (fileInfo && fileInfo.exists) {
         imports += `import ${fileInfo.importName} from "${fileInfo.filePath}";\n`;
         resourcesObj += `    ${ns}: ${fileInfo.importName},\n`;
       } else {
