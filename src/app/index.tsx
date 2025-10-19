@@ -43,6 +43,7 @@ const LanguageDropdown = () => {
     { code: "zh", label: "中文" },
     { code: "th", label: "ไทย" },
     { code: "id", label: "Bahasa Indonesia" },
+    { code: "vi", label: "Tiếng Việt" },
     { code: "tr", label: "Türkçe" },
     { code: "ru", label: "Русский" },
   ];
