@@ -5,7 +5,6 @@ import { useTheme } from "~/contexts/ThemeContext";
 import { Header } from "~/components/Header";
 import { SectionHeader } from "~/components/SectionHeader";
 import { NavigationItems } from "~/types";
-import { useUser } from "@clerk/clerk-expo";
 import { useTranslation } from "react-i18next";
 import AppText from "~/components/ui/AppText";
 import { Container } from "~/components/ui/container";
@@ -41,7 +40,11 @@ export default function SettingsScreen() {
           delay={400}
         />
         <View className="gap-4">
-          <Link href="/settings/profile" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/profile"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={UsersRoundIcon}>
               <AppText
                 semibold
@@ -51,7 +54,11 @@ export default function SettingsScreen() {
               </AppText>
             </Container>
           </Link>
-          <Link href="/settings/appearance" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/appearance"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={SunMoonIcon}>
               <AppText
                 semibold
@@ -61,7 +68,11 @@ export default function SettingsScreen() {
               </AppText>
             </Container>
           </Link>
-          <Link href="/settings/notifications" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/notifications"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={BellRingIcon}>
               <AppText
                 semibold
@@ -79,7 +90,11 @@ export default function SettingsScreen() {
           delay={400}
         />
         <View className="gap-4">
-          <Link href="/settings/limits" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/limits"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={ShieldXIcon} className="mx-7 mt-2 space-y-2">
               <AppText
                 semibold
@@ -90,7 +105,11 @@ export default function SettingsScreen() {
             </Container>
           </Link>
 
-          <Link href="/settings/income" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/income"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={MoneyIcon} className="mx-7 mt-2 space-y-2">
               <AppText
                 semibold
@@ -101,7 +120,11 @@ export default function SettingsScreen() {
             </Container>
           </Link>
 
-          <Link href="/settings/bank-accounts" className="mx-7 mt-2 space-y-2">
+          <Link
+            href="/settings/bank-accounts"
+            withAnchor
+            className="mx-7 mt-2 space-y-2"
+          >
             <Container icon={LandmarkIcon} className="mx-7 mt-2 space-y-2">
               <AppText
                 semibold
