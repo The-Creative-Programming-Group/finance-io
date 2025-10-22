@@ -6,5 +6,7 @@
   "financial": "Finanziario",
   "limits": "Limiti",
   "income": "Reddito",
-  "bankAccounts": "Conti Bancari"
+  "bankAccounts": "Conti Bancari",
+  "saveChanges": "Salva Modifiche",
+  "changePassword": "Cambia Password"
 }

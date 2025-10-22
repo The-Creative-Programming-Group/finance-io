@@ -6,5 +6,7 @@
   "financial": "Financial",
   "limits": "Limits",
   "income": "Income",
-  "bankAccounts": "Bank Accounts"
+  "bankAccounts": "Bank Accounts",
+  "saveChanges": "Save Changes",
+  "changePassword": "Change Password"
 }
