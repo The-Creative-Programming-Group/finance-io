@@ -8,5 +8,6 @@
   "income": "Income",
   "bankAccounts": "Bank Accounts",
   "saveChanges": "Save Changes",
-  "changePassword": "Change Password"
+  "changePassword": "Change Password",
+  "changeEmail": "Change Email",
 }

@@ -24,7 +24,10 @@ import { cssInterop } from "nativewind";
  * - `name`: Visible field label and base for accessibility labels.
  * - `required`: If true, shows an asterisk (*) in the accent colour next to the label.
  * - `icon`: Optional icon (LucideIcon or ImageSourcePropType) to display inside the input.
- * - `...TextInputProps`: Forwarded to RN TextInput. Explicit props override defaults.
+ * - `className`:
+ * Additional Tailwind classes for the input container to merge with the default NOT applying to the input itself.
+ * - `...TextInputProps`: Forwarded to RN TextInput.
+ * Explicit props override defaults.
  */
 export const TextInput = ({
   name,
