@@ -131,7 +131,9 @@ export const transactionsRouter = createTRPCRouter({
             : undefined,
         ];
         const typed = conditions.filter((c): c is SQL => Boolean(c));
-        const whereExpr: SQL | undefined = typed.length ? and(...typed) : undefined;
+        const whereExpr: SQL | undefined = typed.length
+          ? and(...typed)
+          : undefined;
 
         const qb = db
           .select({

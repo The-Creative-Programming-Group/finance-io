@@ -78,9 +78,15 @@ This guide documents how we build backend features in this repository to ensure 
 import type { SQL } from "drizzle-orm";
 const conditions: (SQL | undefined)[] = [
   eq(accountsTable.userId, ctx.userId!),
-  input.accountId ? eq(transactionsTable.accountId, input.accountId) : undefined,
-  input.categoryId ? eq(transactionsTable.categoryId, input.categoryId) : undefined,
-  input.startDate ? gte(transactionsTable.datetime, input.startDate) : undefined,
+  input.accountId
+    ? eq(transactionsTable.accountId, input.accountId)
+    : undefined,
+  input.categoryId
+    ? eq(transactionsTable.categoryId, input.categoryId)
+    : undefined,
+  input.startDate
+    ? gte(transactionsTable.datetime, input.startDate)
+    : undefined,
   input.endDate ? lte(transactionsTable.datetime, input.endDate) : undefined,
 ];
 const typed = conditions.filter((c): c is SQL => Boolean(c));
