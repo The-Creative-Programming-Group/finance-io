@@ -1,11 +1,62 @@
 import type React from "react";
 
-export interface Account {
+/**
+ * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
+ * When we request the user defails from our backend it automatically gets the user details from Clerk.
+ */
+export interface ClerkUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  emails: string[];
+  phoneNumbers: string[];
+}
+
+export interface AccountType {
   id: string;
   name: string;
+  slug: string;
+}
+
+export interface Account {
+  id: string;
+  bankName: string;
+  currentBalance: string;
+  reference: string;
+  usage: string;
+  currencyId: string;
+  typeId: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export interface Currency {
+  id: string;
+  code: string;
+}
+
+export interface AccountWithCurrencyAndType extends Account {
+  currency: Currency;
+  type: AccountType;
+}
+
+export interface Transaction {
+  id: string;
+  categoryId: string;
+  company: string;
   amount: string;
-  icon: React.ReactNode;
-  type: "paypal" | "dkb" | "revolut" | "depot";
+  datetime: Date;
+  description: string;
+  accountId: string;
+}
+
+export interface TransactionWithCategoryAndAccount extends Transaction {
+  category: Category;
+  account: Account;
 }
 
 export interface Card {

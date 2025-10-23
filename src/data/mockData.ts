@@ -5,10 +5,11 @@ import {
   RevolutIcon,
   SharedFundsIcon,
 } from "~/components/Icons";
-import type { DashboardData } from "~/types";
+import type { Account } from "~/types";
 import { CircleArrowRightIcon, LandmarkIcon } from "lucide-react-native";
 
-export const mockDashboardData: DashboardData = {
+// TODO: Remove mock data
+export const mockDashboardData = {
   user: {
     name: "Julia's",
   },
