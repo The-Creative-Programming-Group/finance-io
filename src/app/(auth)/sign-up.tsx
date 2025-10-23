@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  TextInput,
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -17,6 +16,7 @@ import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
 import { z } from "zod";
+import { TextInput } from "~/components/ui/text-input";
 
 type newErrorType = {
   firstname?: string;
@@ -31,7 +31,7 @@ export default function SignUpScreen() {
   const router = useRouter();
   const { t } = useTranslation();
 
-  // Initialize language when component mounts with better error handling
+  // Initialize language when a component mounts with better error handling
   useEffect(() => {
     const initLanguage = async () => {
       try {
@@ -204,10 +204,8 @@ export default function SignUpScreen() {
 
         {!pendingVerification ? (
           <>
-            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t("firstName")}
-            </AppText>
             <TextInput
+              name={t("firstName")}
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder={t("John")}
               placeholderTextColor="gray"
@@ -220,10 +218,8 @@ export default function SignUpScreen() {
               </AppText>
             )}
 
-            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t("lastName")}
-            </AppText>
             <TextInput
+              name={t("lastName")}
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder={t("Doe")}
               placeholderTextColor="gray"
@@ -238,10 +234,8 @@ export default function SignUpScreen() {
 
             {/* TODO: Need to add phone number */}
 
-            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t("email")}
-            </AppText>
             <TextInput
+              name={t("email")}
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder={t("jamesdoe@gmail.com")}
               placeholderTextColor="gray"
@@ -256,10 +250,8 @@ export default function SignUpScreen() {
               </AppText>
             )}
 
-            <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-              {t("password")}
-            </AppText>
             <TextInput
+              name={t("password")}
               className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
               placeholder={t("**********")}
               placeholderTextColor="gray"

@@ -14,21 +14,14 @@ export default function InsightsScreen() {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView className="flex-1 bg-dark-background">
+    <SafeAreaView className="flex-1 bg-background dark:bg-dark-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
         backgroundColor={colors.background}
       />
-      <ScrollView className="flex-1 p-8" showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <Header
-          name={
-            isLoaded && user
-              ? user.firstName || t("defaultUser")
-              : t("defaultUser")
-          }
-          type={NavigationItems.INSIGHTS}
-        />
+        <Header type={NavigationItems.INSIGHTS} />
         <SectionHeader title={t("overview")} delay={400} />
       </ScrollView>
     </SafeAreaView>

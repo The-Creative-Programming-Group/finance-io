@@ -9,18 +9,19 @@ import AppText from "./ui/AppText";
 import AppImage from "~/components/ui/AppImage";
 import { useTranslation } from "react-i18next";
 import { NavigationItems } from "~/types";
+import { useUser } from "@clerk/clerk-expo";
 
 const AnimatedView = Animated.createAnimatedComponent(Animated.View);
 
 interface HeaderProps {
-  name: string;
   type: NavigationItems; // enum key, not a translated string
 }
 
-export const Header: React.FC<HeaderProps> = ({ name, type }) => {
+export const Header: React.FC<HeaderProps> = ({ type }) => {
   const { colors } = useTheme();
   const headerOpacity = useSharedValue(0);
   const { t } = useTranslation();
+  const { user, isLoaded } = useUser();
 
   const headerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: withSpring(headerOpacity.value),
@@ -32,19 +33,22 @@ export const Header: React.FC<HeaderProps> = ({ name, type }) => {
 
   return (
     <AnimatedView
-      className="bg-black border-gray-800 w-full flex-row items-center justify-center gap-3 space-x-2 rounded-lg border-b px-4 py-3"
+      className="w-full flex-row items-center justify-center gap-3 border-b border-stroke bg-secondary pb-4 pt-16 dark:border-dark-stroke dark:bg-dark-secondary"
       style={headerAnimatedStyle}
     >
       <AppImage
         source={require("../assets/images/avatar.png")}
-        className="h-6 w-6 rounded-full"
+        className="h-7 w-7 rounded-full"
       />
       <AppText
         semibold
-        className="text-center text-sm"
+        className="text-center text-xl"
         style={{ color: colors.text }}
       >
-        {name} - {t(type)}
+        {isLoaded && user
+          ? user.firstName || t("defaultUser")
+          : t("defaultUser")}{" "}
+        - {t(type)}
       </AppText>
     </AnimatedView>
   );

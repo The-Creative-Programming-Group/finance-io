@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   View,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
   Alert,
@@ -10,7 +9,7 @@ import {
 } from "react-native";
 import AppText from "~/components/ui/AppText";
 import { useUser } from "@clerk/clerk-expo";
-import { Link } from "lucide-react-native";
+import { LandmarkIcon, Link } from "lucide-react-native";
 import { trpc } from "~/utils/trpc";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,6 +20,7 @@ import Button from "~/components/ui/button";
 import { useRouter } from "expo-router";
 import AppImage from "~/components/ui/AppImage";
 import { WelcomeFormValues, welcomeSchema } from "~/schemas/welcomeSchema";
+import { TextInput } from "~/components/ui/text-input";
 
 const Home = () => {
   const { user, isLoaded } = useUser();
@@ -85,7 +85,7 @@ const Home = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >
-      <ScrollView>
+      <ScrollView className="px-4">
         <View className="mt-[70px] flex-row items-center justify-center">
           <AppImage
             source={require("../../assets/images/icon.png")}
@@ -109,7 +109,7 @@ const Home = () => {
           </View>
         </View>
         {/*Link Icon*/}
-        <View className="mt-10 flex-row items-center justify-center">
+        <View className="mt-10 flex-row items-center justify-center pb-6">
           <Link
             color={colorScheme === "dark" ? "#E0E0E0" : "#111827"}
             size={18}
@@ -120,37 +120,25 @@ const Home = () => {
           </AppText>
         </View>
         {/*Input Fields*/}
-        <AppText className="ml-6 mt-5 text-base font-bold text-text dark:text-dark-text">
-          {t("bankName")}
-        </AppText>
         <Controller
           control={control}
           name="bankName"
           render={({ field: { onChange, onBlur, value } }) => (
-            <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
-              <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <AppImage
-                  source={require("../../assets/Icons/bank.png")}
-                  className="h-5 w-5"
-                  contentFit="contain"
-                  transition={300}
-                  priority="high"
-                />
-              </View>
-              <TextInput
-                className="my-[6px] h-[70px] flex-1 rounded-[15px] text-text dark:text-dark-text"
-                placeholder="Revolut"
-                placeholderTextColor="gray"
-                autoCapitalize="none"
-                keyboardType="default"
-                accessibilityLabel={t("bankName")}
-                accessibilityHint={t("enterBankName")}
-                value={value}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                maxLength={50}
-              />
-            </View>
+            <TextInput
+              icon={LandmarkIcon}
+              name={t("bankName")}
+              placeholder="Revolut"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              keyboardType="default"
+              accessibilityLabel={t("bankName")}
+              accessibilityHint={t("enterBankName")}
+              value={value}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              maxLength={50}
+              required
+            />
           )}
         />
         {errors.bankName && (
@@ -159,60 +147,48 @@ const Home = () => {
           </AppText>
         )}
 
-        <AppText className="ml-6 mt-2 text-base font-bold text-text dark:text-dark-text">
-          {t("currentAmount")}
-        </AppText>
         <Controller
           control={control}
           name="currentAmount"
           render={({ field: { onChange, onBlur } }) => (
-            <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
-              <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <AppImage
-                  source={require("../../assets/Icons/money.png")}
-                  className="h-5 w-5"
-                  contentFit="contain"
-                  transition={300}
-                  priority="high"
-                />
-              </View>
-              <TextInput
-                className="flex-1 text-text dark:text-dark-text"
-                placeholder={t("currentAmountPlaceholder", "2000.00")}
-                placeholderTextColor="gray"
-                autoCapitalize="none"
-                keyboardType="decimal-pad"
-                accessibilityLabel={t("currentAmount")}
-                accessibilityHint={t("enterCurrentAmount")}
-                value={amountDisplay}
-                onBlur={onBlur}
-                onChangeText={(text) => {
-                  // Only allow numbers and one decimal point
-                  const sanitized = text.replace(/[^0-9.]/g, "");
-                  // Ensure only one decimal point is allowed
-                  const parts = sanitized.split(".");
-                  const formattedText =
-                    parts.length > 2
-                      ? parts[0] + "." + parts.slice(1).join("")
-                      : sanitized;
+            <TextInput
+              name={t("currentAmount")}
+              icon={require("../../assets/Icons/money.png")}
+              placeholder={t("currentAmountPlaceholder", "2000.00")}
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              keyboardType="decimal-pad"
+              accessibilityLabel={t("currentAmount")}
+              accessibilityHint={t("enterCurrentAmount")}
+              value={amountDisplay}
+              onBlur={onBlur}
+              required
+              onChangeText={(text) => {
+                // Only allow numbers and one decimal point
+                const sanitized = text.replace(/[^0-9.]/g, "");
+                // Ensure only one decimal point is allowed
+                const parts = sanitized.split(".");
+                const formattedText =
+                  parts.length > 2
+                    ? parts[0] + "." + parts.slice(1).join("")
+                    : sanitized;
 
-                  // Limit decimal places to 2
-                  let finalText = formattedText;
-                  if (parts.length === 2 && parts[1].length > 2) {
-                    finalText = parts[0] + "." + parts[1].slice(0, 2);
-                  }
+                // Limit decimal places to 2
+                let finalText = formattedText;
+                if (parts.length === 2 && parts[1].length > 2) {
+                  finalText = parts[0] + "." + parts[1].slice(0, 2);
+                }
 
-                  setAmountDisplay(finalText);
+                setAmountDisplay(finalText);
 
-                  // Update form value
-                  if (finalText === "" || finalText === ".") {
-                    onChange(0);
-                  } else {
-                    onChange(parseFloat(finalText) || 0);
-                  }
-                }}
-              />
-            </View>
+                // Update form value
+                if (finalText === "" || finalText === ".") {
+                  onChange(0);
+                } else {
+                  onChange(parseFloat(finalText) || 0);
+                }
+              }}
+            />
           )}
         />
         {errors.currentAmount && (
@@ -221,36 +197,24 @@ const Home = () => {
           </AppText>
         )}
 
-        <AppText className="ml-6 mt-2 text-base font-bold text-text dark:text-dark-text">
-          {t("reference")}
-        </AppText>
         <Controller
           control={control}
           name="reference"
           render={({ field: { onChange, onBlur, value } }) => (
-            <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
-              <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <AppImage
-                  source={require("../../assets/Icons/reference.png")}
-                  className="h-5 w-5"
-                  contentFit="contain"
-                  transition={300}
-                  priority="high"
-                />
-              </View>
-              <TextInput
-                className="flex-1 text-text dark:text-dark-text"
-                placeholder={t("referencePlaceholder")}
-                placeholderTextColor="gray"
-                autoCapitalize="none"
-                keyboardType="default"
-                accessibilityLabel={t("reference")}
-                accessibilityHint={t("referenceHint")}
-                value={value}
-                onBlur={onBlur}
-                onChangeText={onChange}
-              />
-            </View>
+            <TextInput
+              name={t("reference")}
+              icon={require("../../assets/Icons/reference.png")}
+              placeholder={t("referencePlaceholder")}
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              keyboardType="default"
+              accessibilityLabel={t("reference")}
+              accessibilityHint={t("referenceHint")}
+              value={value}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              required
+            />
           )}
         />
         {errors.reference && (
@@ -259,36 +223,24 @@ const Home = () => {
           </AppText>
         )}
 
-        <AppText className="ml-6 mt-2 text-base font-bold text-text dark:text-dark-text">
-          {t("usage")}
-        </AppText>
         <Controller
           control={control}
           name="usage"
           render={({ field: { onChange, onBlur, value } }) => (
-            <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
-              <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <AppImage
-                  source={require("../../assets/Icons/usage.png")}
-                  className="h-5 w-5"
-                  contentFit="contain"
-                  transition={300}
-                  priority="high"
-                />
-              </View>
-              <TextInput
-                className="flex-1 text-text dark:text-dark-text"
-                placeholder={t("usagePlaceholder")}
-                placeholderTextColor="gray"
-                autoCapitalize="none"
-                keyboardType="default"
-                accessibilityLabel={t("usage")}
-                accessibilityHint={t("usageHint")}
-                value={value}
-                onBlur={onBlur}
-                onChangeText={onChange}
-              />
-            </View>
+            <TextInput
+              name={t("usage")}
+              icon={require("../../assets/Icons/usage.png")}
+              placeholder={t("usagePlaceholder")}
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              keyboardType="default"
+              accessibilityLabel={t("usage")}
+              accessibilityHint={t("usageHint")}
+              value={value}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              required
+            />
           )}
         />
         {errors.usage && (

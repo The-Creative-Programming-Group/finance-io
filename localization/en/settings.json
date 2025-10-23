@@ -1,3 +1,13 @@
 {
-  "profile": "Profile"
+  "profile": "Profile",
+  "user": "User",
+  "appearance": "Appearance",
+  "notifications": "Notifications",
+  "financial": "Financial",
+  "limits": "Limits",
+  "income": "Income",
+  "bankAccounts": "Bank Accounts",
+  "saveChanges": "Save Changes",
+  "changePassword": "Change Password",
+  "changeEmail": "Change Email"
 }

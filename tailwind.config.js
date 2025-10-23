@@ -10,7 +10,7 @@ module.exports = {
 
   theme: {
     // Need to be the same as in Figma, keep these in sync.
-    // Also keep everything with /src/contexts/ThemeContext.tsx in sync.
+    // Also, keep everything with /src/contexts/ThemeContext.tsx in sync.
     colors: {
       background: "hsl(240, 60%, 99.02%)",
       primary: "hsl(243.33, 40.91%, 91.37%)",
