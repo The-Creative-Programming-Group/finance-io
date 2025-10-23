@@ -99,6 +99,9 @@ export default function Page() {
       });
       if (signInAttempt.status === "complete") {
         await setActive({ session: signInAttempt.createdSessionId });
+        // The / route is currently managing redirects based on authentication state.
+        // After signing in, we navigate there to let it handle the redirect.
+        // We can consider changing this in the future if needed so that the user directly lands on the intended page after sign-in.
         router.replace("/");
       } else {
         setError(
@@ -110,7 +113,7 @@ export default function Page() {
         }
       }
     } catch (err) {
-      // Type guard to check if err is an object and has 'errors' property
+      // Type guard to check if err is an object and has an 'errors' property
       if (
         typeof err === "object" &&
         err !== null &&
