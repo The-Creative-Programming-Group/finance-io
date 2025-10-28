@@ -19,7 +19,7 @@ ON CONFLICT ("slug") DO NOTHING;--> statement-breakpoint
 UPDATE "accounts" a
 SET "typeId" = at.id
 FROM "account_types" at
-WHERE a."typeID" IS NULL
+WHERE a."typeId" IS NULL
   AND at."slug" = 'private';--> statement-breakpoint
 
 -- 4) Enforce NOT NULL
