@@ -64,7 +64,7 @@ const Dashboard = () => {
             name={account.name}
             amount={account.amount}
             delay={600 + index * 100}
-            onPress={() => handleAccountPress(account?.name || "", account.id)}
+            onPress={() => handleAccountPress(account.name, account.id)}
           />
         ))}
 
@@ -76,7 +76,7 @@ const Dashboard = () => {
             name={account.name}
             amount={account.amount}
             delay={900 + index * 100}
-            onPress={() => handleAccountPress(account?.name || "", account.id)}
+            onPress={() => handleAccountPress(account.name, account.id)}
           />
         ))}
 
@@ -89,7 +89,7 @@ const Dashboard = () => {
             name={account.name}
             amount={account.amount}
             delay={1100 + index * 100}
-            onPress={() => handleAccountPress(account?.name || "", account.id)}
+            onPress={() => handleAccountPress(account.name, account.id)}
           />
         ))}
 
