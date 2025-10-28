@@ -1,11 +1,11 @@
 import "dotenv/config";
-import { db } from "../db";
+import { db } from "~/db";
 import {
   accountTypesTable,
   categoriesTable,
   currenciesTable,
-} from "../db/schema";
-import { eq, inArray } from "drizzle-orm";
+} from "~/db/schema";
+import { inArray } from "drizzle-orm";
 
 async function seedCurrencies() {
   const currencies = [

@@ -48,7 +48,7 @@ This guide documents how we build backend features in this repository to ensure 
 
 - Use `timestamp({ withTimezone: true })` in schema; pass and compare as `Date` objects in code.
 - Use `gte`/`lte` with `Date` values (not milliseconds). Example: `gte(transactionsTable.datetime, input.startDate)`.
-- For currency amounts, use Drizzle `decimal({ precision, scale, mode: "string" })` and handle values as strings at the API boundary to avoid floating point issues.
+- For currency amounts, use Drizzle `decimal({ precision, scale, mode: "string" })` and handle values as strings at the API boundary to avoid floating-point issues.
 
 ### Zod Validation Patterns
 
@@ -69,7 +69,7 @@ This guide documents how we build backend features in this repository to ensure 
   - First, verify ownership of the parent resource via Drizzle `select` on the owner table (e.g., `accountsTable.userId === ctx.userId`).
   - If not owned, throw `errors.forbidden(error_messages.accountNotOwned)`.
 - Read/List operations:
-  - Always scope results by joining the owner table first and applying `where(eq(ownerTable.userId, ctx.userId))`.
+  - Scope always results by joining the owner table first and applying `where(eq(ownerTable.userId, ctx.userId))`.
   - If the client passes an ID filter (e.g., `accountId`), optionally pre-validate ownership and throw `forbidden` if not owned.
 
 ### Example: Secure and Typed List Query
