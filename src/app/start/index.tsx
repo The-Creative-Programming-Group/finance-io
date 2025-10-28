@@ -44,8 +44,6 @@ const Home = () => {
     initLanguage();
   }, []);
 
-  const { data: userData } = trpc.users.getUser.useQuery();
-
   const createAccount = trpc.accounts.addAccount.useMutation({
     onSuccess: () => {
       Alert.alert(t("success"), t("accountCreated"));
