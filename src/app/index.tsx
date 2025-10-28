@@ -162,7 +162,7 @@ export default function Index() {
     return <Redirect href={"./(tabs)/banking"} />;
   }
 
-  /// TODO: Add loading state
+  // TODO: Add loading state
   // if (isLoadingAccounts) {
   //   return <View className="flex-1 items-center justify-center">
   //     <ActivityIndicator size="large" color={iconColor} />
