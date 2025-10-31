@@ -1,3 +1,5 @@
+import { References } from "~/schemas/welcomeSchema";
+
 /**
  * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
  * When we request the user details from our backend, it automatically gets the user details from Clerk.
@@ -20,7 +22,7 @@ export interface Account {
   id: string;
   bankName: string;
   currentBalance: string;
-  reference: string;
+  reference: References;
   usage: string;
   currencyId: string;
 }

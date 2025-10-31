@@ -100,7 +100,8 @@
   "dashboardDailyAccounts": "Conti Quotidiani",
   "dashboardPrivate": "Privato",
   "dashboardBusiness": "Aziendale",
-  "dashboardSafeAccounts": "Conti protetti",
+  "dashboardSavings": "Risparmi",
+  "dashboardShared": "Condiviso",
 
   "navigationDashboard": "Dashboard",
   "navigationTransactions": "Transazioni",

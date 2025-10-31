@@ -4,6 +4,8 @@ import { references } from "~/db/schema";
 
 export const referencesEnum = z.enum(references);
 
+export type References = z.infer<typeof referencesEnum>;
+
 // Base schema without translations - reusable on the backend
 export const welcomeSchemaBase = z.object({
   bankName: z
