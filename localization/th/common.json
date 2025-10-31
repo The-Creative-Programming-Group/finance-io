@@ -89,10 +89,13 @@
   "usageTooLong": "รูปแบบการใช้งานต้องไม่เกิน 50 อักขระ",
   "verify": "ยืนยัน",
   "verifying": "กำลังยืนยัน...",
+
   "dashboardDailyAccounts": "บัญชีรายวัน",
   "dashboardPrivate": "ส่วนบุคคล",
   "dashboardBusiness": "ธุรกิจ",
-  "dashboardSafeAccounts": "บัญชีออมทรัพย์",
+  "dashboardSavings": "ออมทรัพย์",
+  "dashboardShared": "ร่วม",
+
   "navigationDashboard": "แดชบอร์ด",
   "navigationTransactions": "ธุรกรรม",
   "navigationInsights": "ข้อมูลเชิงลึก",

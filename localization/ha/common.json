@@ -89,10 +89,13 @@
   "usageTooLong": "Amfani dole ya kasance ƙasa da haruffa 50",
   "verify": "Tabbatar",
   "verifying": "Ana tabbatarwa...",
+
   "dashboardDailyAccounts": "Asusun yau da kullum",
   "dashboardPrivate": "Na kaina",
   "dashboardBusiness": "Kasuwanci",
-  "dashboardSafeAccounts": "Asusun ajiya",
+  "dashboardSavings": "Ajiya",
+  "dashboardShared": "Haɗin gwiwa",
+
   "navigationDashboard": "Dashibod",
   "navigationTransactions": "Ma'amaloli",
   "navigationInsights": "Haske",

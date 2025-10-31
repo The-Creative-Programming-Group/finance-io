@@ -1,24 +1,82 @@
 import React from "react";
 import { useTheme } from "~/contexts/ThemeContext";
 import { ScrollView, StatusBar } from "react-native";
-import { mockDashboardData } from "~/data/mockData";
 import { SectionHeader } from "~/components/SectionHeader";
 import { AccountItem } from "~/components/AccountItem";
 import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { trpc } from "~/utils/trpc";
+import type { References } from "~/schemas/welcomeSchema";
+import type { Account } from "~/types";
 
 const Dashboard = () => {
   const { colors, isDark } = useTheme();
   const { t } = useTranslation();
+
+  const { data: accounts } = trpc.accounts.getAccounts.useQuery();
+
+  // TODO: Implement loading and error states
 
   const handleAccountPress = (accountName: string, accountId: string) => {
     console.log(`Pressed ${accountName} with ID: ${accountId}`);
     // modal logic here
   };
 
-  const handleCardPress = (cardName: string, cardId: string) => {
-    console.log(`Pressed ${cardName} card with ID: ${cardId}`);
-    // modal logic here
+  // Type-safe reference constants
+  const REFERENCE = React.useMemo(
+    () =>
+      ({
+        PRIVATE: "private" as References,
+        BUSINESS: "business" as References,
+        SAVINGS: "savings" as References,
+        SHARED: "shared" as References,
+      }) as const,
+    [],
+  );
+
+  // Pre-filter accounts once per reference type
+  const privateAccounts = React.useMemo(
+    () => (accounts ?? []).filter((a) => a.reference === REFERENCE.PRIVATE),
+    [accounts, REFERENCE],
+  );
+  const businessAccounts = React.useMemo(
+    () => (accounts ?? []).filter((a) => a.reference === REFERENCE.BUSINESS),
+    [accounts, REFERENCE],
+  );
+  const savingsAccounts = React.useMemo(
+    () => (accounts ?? []).filter((a) => a.reference === REFERENCE.SAVINGS),
+    [accounts, REFERENCE],
+  );
+  const sharedAccounts = React.useMemo(
+    () => (accounts ?? []).filter((a) => a.reference === REFERENCE.SHARED),
+    [accounts, REFERENCE],
+  );
+
+  const hasDailyAccounts =
+    privateAccounts.length > 0 || businessAccounts.length > 0;
+
+  // Reusable section renderer
+  const AccountSection: React.FC<{
+    title: string;
+    accounts: Account[];
+    baseDelay?: number; // delay for SectionHeader; items will start at baseDelay + 100
+    onPress: (accountName: string, accountId: string) => void;
+  }> = ({ title, accounts, baseDelay = 0, onPress }) => {
+    if (!accounts || accounts.length === 0) return null;
+    return (
+      <>
+        <SectionHeader title={title} delay={baseDelay} />
+        {accounts.map((account, index) => (
+          <AccountItem
+            key={account.id}
+            name={account.bankName}
+            amount={account.currentBalance}
+            delay={baseDelay + 100 + index * 100}
+            onPress={() => onPress(account.bankName, account.id)}
+          />
+        ))}
+      </>
+    );
   };
 
   return (
@@ -55,61 +113,42 @@ const Dashboard = () => {
               onPress={() => handleCardPress(card.title, card.id)}
             />
           ))} */}
-        <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
-        <SectionHeader title={t("dashboardPrivate")} delay={500} />
-        {mockDashboardData.accounts.private.map((account, index) => (
-          <AccountItem
-            key={account.id}
-            icon={account.icon}
-            name={account.name}
-            amount={account.amount}
-            delay={600 + index * 100}
-            onPress={() => handleAccountPress(account.name, account.id)}
-          />
-        ))}
 
-        <SectionHeader title={t("dashboardBusiness")} delay={800} />
-        {mockDashboardData.accounts.business.map((account, index) => (
-          <AccountItem
-            key={account.id}
-            icon={account.icon}
-            name={account.name}
-            amount={account.amount}
-            delay={900 + index * 100}
-            onPress={() => handleAccountPress(account.name, account.id)}
-          />
-        ))}
+        {hasDailyAccounts ? (
+          <SectionHeader title={t("dashboardDailyAccounts")} delay={400} />
+        ) : null}
 
-        {/* Safe Accounts Section */}
-        <SectionHeader title={t("dashboardSafeAccounts")} delay={1000} />
-        {mockDashboardData.accounts.safe.map((account, index) => (
-          <AccountItem
-            key={account.id}
-            icon={account.icon}
-            name={account.name}
-            amount={account.amount}
-            delay={1100 + index * 100}
-            onPress={() => handleAccountPress(account.name, account.id)}
-          />
-        ))}
+        {/* Private Accounts Section */}
+        <AccountSection
+          title={t("dashboardPrivate")}
+          accounts={privateAccounts}
+          baseDelay={500}
+          onPress={handleAccountPress}
+        />
 
-        <SectionHeader title={t("sharedFunds")} delay={1000} />
-        {mockDashboardData.sharedFunds && (
-          <AccountItem
-            key={mockDashboardData.sharedFunds.id}
-            icon={mockDashboardData.sharedFunds.icon}
-            name={mockDashboardData.sharedFunds.title}
-            arrow={mockDashboardData.sharedFunds.arrow}
-            iconWrapped
-            delay={1100}
-            onPress={() =>
-              handleAccountPress(
-                mockDashboardData.sharedFunds.title,
-                mockDashboardData.sharedFunds.id,
-              )
-            }
-          />
-        )}
+        {/* Business Accounts Section */}
+        <AccountSection
+          title={t("dashboardBusiness")}
+          accounts={businessAccounts}
+          baseDelay={800}
+          onPress={handleAccountPress}
+        />
+
+        {/* Savings Accounts Section */}
+        <AccountSection
+          title={t("dashboardSavings")}
+          accounts={savingsAccounts}
+          baseDelay={1000}
+          onPress={handleAccountPress}
+        />
+
+        {/* Shared Funds Section */}
+        <AccountSection
+          title={t("sharedFunds")}
+          accounts={sharedAccounts}
+          baseDelay={1000}
+          onPress={handleAccountPress}
+        />
       </ScrollView>
     </SafeAreaView>
   );

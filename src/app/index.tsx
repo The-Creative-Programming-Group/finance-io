@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
+import { trpc } from "~/utils/trpc";
 
 const LanguageDropdown = () => {
   const [visible, setVisible] = useState(false);
@@ -142,13 +143,55 @@ const LanguageDropdown = () => {
 };
 
 export default function Index() {
-  const scheme = useColorScheme();
-  const { isSignedIn } = useAuth();
-  const { t } = useTranslation();
+  const scheme = useColorScheme(); // Used later for theming (icon colors, etc.)
+  const { isSignedIn } = useAuth(); // Clerk auth state; true when a session is present
+  const { t } = useTranslation(); // i18n translations
 
-  if (isSignedIn) {
-    return <Redirect href={"../home"} />;
+  // ----------------------------------------------------------------------------
+  // Redirect decision flow
+  // ----------------------------------------------------------------------------
+  // High-level:
+  // - We only query accounts once the user is authenticated (enabled: isSignedIn).
+  // - While the "accounts" query is loading, we DO NOT redirect to avoid flicker.
+  // - After loading:
+  //   - If authenticated and no accounts exist -> send user to onboarding (`./start`).
+  //   - If authenticated and accounts exist -> send the user to the main app (`./(tabs)/banking`).
+  // - If not authenticated, we fall through and render the marketing/landing UI below.
+  // ----------------------------------------------------------------------------
+
+  const { data: accounts, isLoading: isLoadingAccounts } =
+    trpc.accounts.getAccounts.useQuery(undefined, {
+      // Only fetch accounts when signed in to avoid unauthorized requests
+      enabled: isSignedIn,
+      // Note: You could tune caching behavior here (e.g., `staleTime`) if needed
+    });
+
+  // Redirect once we have both an auth state AND a settled accounts query
+  // Case A: Signed in, accounts finished loading, and none found -> onboarding
+  if (
+    isSignedIn &&
+    !isLoadingAccounts &&
+    (!accounts || accounts?.length === 0)
+  ) {
+    return <Redirect href={"./start"} />;
   }
+  // Case B: Signed in, accounts finished loading, and at least one found -> the main app
+  else if (
+    isSignedIn &&
+    !isLoadingAccounts &&
+    accounts &&
+    accounts.length > 0
+  ) {
+    return <Redirect href={"./(tabs)/banking"} />;
+  }
+  // Else: Not signed in OR still loading -> render the rest of this screen
+
+  // TODO: Add loading state
+  // if (isLoadingAccounts) {
+  //   return <View className="flex-1 items-center justify-center">
+  //     <ActivityIndicator size="large" color={iconColor} />
+  //   </View>;
+  // }
 
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";

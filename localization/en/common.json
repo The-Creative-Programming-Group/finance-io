@@ -93,7 +93,8 @@
   "dashboardDailyAccounts": "Daily Accounts",
   "dashboardPrivate": "Private",
   "dashboardBusiness": "Business",
-  "dashboardSafeAccounts": "Safe Accounts",
+  "dashboardSavings": "Savings",
+  "dashboardShared": "Shared",
 
   "navigationDashboard": "Dashboard",
   "navigationTransactions": "Transactions",
