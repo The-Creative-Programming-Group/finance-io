@@ -15,6 +15,8 @@ const Dashboard = () => {
 
   const { data: accounts } = trpc.accounts.getAccounts.useQuery();
 
+  // TODO: Implement loading and error states
+
   const handleAccountPress = (accountName: string, accountId: string) => {
     console.log(`Pressed ${accountName} with ID: ${accountId}`);
     // modal logic here

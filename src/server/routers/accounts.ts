@@ -17,6 +17,7 @@ export const accountsRouter = createTRPCRouter({
         reference: referencesEnum,
         usage: z.string(),
         typeId: z.string().optional(),
+        // TODO: Add currency code input later
       }),
     )
     .mutation(async ({ ctx, input }): Promise<AccountWithCurrency> => {
@@ -40,6 +41,7 @@ export const accountsRouter = createTRPCRouter({
       const currency = await db
         .select()
         .from(currenciesTable)
+        // TODO: Hardcoded EUR currency limits multi-currency support
         .where(eq(currenciesTable.code, "EUR"))
         .limit(1);
 
