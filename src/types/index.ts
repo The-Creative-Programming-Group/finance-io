@@ -1,4 +1,6 @@
 import { References } from "~/schemas/welcomeSchema";
+import { categoriesTable, currenciesTable } from "~/db/schema";
+import { InferSelectModel } from "drizzle-orm";
 
 /**
  * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
@@ -12,12 +14,6 @@ export interface ClerkUser {
   // No phone numbers. This is a paid feature in Clerk and is not available to us.
 }
 
-export interface AccountType {
-  id: string;
-  name: string;
-  slug: string;
-}
-
 export interface Account {
   id: string;
   bankName: string;
@@ -27,16 +23,9 @@ export interface Account {
   currencyId: string;
 }
 
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-}
+export type Category = InferSelectModel<typeof categoriesTable>;
 
-export interface Currency {
-  id: string;
-  code: string;
-}
+export type Currency = InferSelectModel<typeof currenciesTable>;
 
 export interface AccountWithCurrency extends Account {
   currency: Currency;
