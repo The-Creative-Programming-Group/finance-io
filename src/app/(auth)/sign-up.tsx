@@ -17,6 +17,7 @@ import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
 import { z } from "zod";
+import { trpc } from "~/utils/trpc";
 
 type newErrorType = {
   firstname?: string;
@@ -31,7 +32,10 @@ export default function SignUpScreen() {
   const router = useRouter();
   const { t } = useTranslation();
 
-  // Initialize language when component mounts with better error handling
+  // Create a user mutation
+  const createUser = trpc.users.createUser.useMutation();
+
+  // Initialize language when a component mounts with better error handling
   useEffect(() => {
     const initLanguage = async () => {
       try {
@@ -140,6 +144,8 @@ export default function SignUpScreen() {
       });
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
+        // Add the user in the database
+        await createUser.mutateAsync();
         router.replace("/start");
       } else {
         setError("Verification failed. Please try again.");
@@ -155,6 +161,8 @@ export default function SignUpScreen() {
             });
             if (signInAttempt?.status === "complete") {
               await setActive({ session: signInAttempt.createdSessionId });
+              // Add the user in the database
+              await createUser.mutateAsync();
               router.replace("/start");
             } else {
               setError("Email already verified. Please sign in.");

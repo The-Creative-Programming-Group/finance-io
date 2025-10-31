@@ -5,7 +5,7 @@ import { ClerkUser } from "~/types";
 
 export const usersRouter = createTRPCRouter({
   getUser: protectedProcedure.query(async ({ ctx }): Promise<ClerkUser> => {
-    const userId = ctx.userId!;
+    const userId = ctx.userId;
     const user = ctx.user;
 
     await db.insert(usersTable).values({ id: userId }).onConflictDoNothing();
@@ -15,7 +15,14 @@ export const usersRouter = createTRPCRouter({
       firstName: user.firstName || "",
       lastName: user.lastName || "",
       emails: user.emailAddresses.map((email) => email.emailAddress),
-      phoneNumbers: user.phoneNumbers.map((phone) => phone.phoneNumber),
+      // No phone numbers. This is a paid feature in Clerk and is not available to us.
     };
+  }),
+  createUser: protectedProcedure.mutation(async ({ ctx }) => {
+    const userId = ctx.userId;
+
+    await db.insert(usersTable).values({ id: userId }).onConflictDoNothing();
+
+    return { success: true };
   }),
 });

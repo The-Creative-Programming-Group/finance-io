@@ -21,6 +21,7 @@ import Button from "~/components/ui/button";
 import { useRouter } from "expo-router";
 import AppImage from "~/components/ui/AppImage";
 import { WelcomeFormValues, welcomeSchema } from "~/schemas/welcomeSchema";
+import Select from "~/components/ui/select";
 
 const Home = () => {
   const { user, isLoaded } = useUser();
@@ -67,7 +68,7 @@ const Home = () => {
     defaultValues: {
       bankName: "",
       currentAmount: 0,
-      reference: "",
+      reference: undefined,
       usage: "",
     },
     mode: "onChange", // Validate on change
@@ -75,10 +76,20 @@ const Home = () => {
 
   const handleCreateAccount = async (data: WelcomeFormValues) => {
     await createAccount.mutateAsync({
-      ...data,
+      bankName: data.bankName,
       currentBalance: data.currentAmount.toString(),
+      reference: data.reference,
+      usage: data.usage,
     });
   };
+
+  // Reference options must match backend enum: ["private","business","savings","shared"]
+  const referenceOptions = [
+    { value: "private", label: t("dashboardPrivate", "Private") },
+    { value: "business", label: t("dashboardBusiness", "Business") },
+    { value: "savings", label: t("dashboardSafeAccounts", "Savings") },
+    { value: "shared", label: t("sharedFunds", "Shared") },
+  ];
 
   return (
     <KeyboardAvoidingView
@@ -227,30 +238,28 @@ const Home = () => {
         <Controller
           control={control}
           name="reference"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <View className="mx-4 my-[6px] h-[65px] flex-row items-center rounded-[15px] bg-secondary pl-2.5 dark:bg-dark-secondary">
-              <View className="mr-2.5 h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
-                <AppImage
-                  source={require("../../assets/Icons/reference.png")}
-                  className="h-5 w-5"
-                  contentFit="contain"
-                  transition={300}
-                  priority="high"
-                />
-              </View>
-              <TextInput
-                className="flex-1 text-text dark:text-dark-text"
-                placeholder={t("referencePlaceholder")}
-                placeholderTextColor="gray"
-                autoCapitalize="none"
-                keyboardType="default"
-                accessibilityLabel={t("reference")}
-                accessibilityHint={t("referenceHint")}
-                value={value}
-                onBlur={onBlur}
-                onChangeText={onChange}
-              />
-            </View>
+          render={({ field: { onChange, value } }) => (
+            <Select
+              items={referenceOptions}
+              value={value}
+              onChange={onChange}
+              placeholder={t(
+                "referencePlaceholder",
+                "Business, Private, others",
+              )}
+              label={undefined}
+              leftIcon={
+                <View className="h-[35px] w-[35px] items-center justify-center rounded-full bg-primary dark:bg-dark-primary">
+                  <AppImage
+                    source={require("../../assets/Icons/reference.png")}
+                    className="h-5 w-5"
+                    contentFit="contain"
+                    transition={300}
+                    priority="high"
+                  />
+                </View>
+              }
+            />
           )}
         />
         {errors.reference && (

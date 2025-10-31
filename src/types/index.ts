@@ -1,5 +1,3 @@
-import type React from "react";
-
 /**
  * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
  * When we request the user details from our backend, it automatically gets the user details from Clerk.
@@ -9,7 +7,7 @@ export interface ClerkUser {
   firstName: string;
   lastName: string;
   emails: string[];
-  phoneNumbers: string[];
+  // No phone numbers. This is a paid feature in Clerk and is not available to us.
 }
 
 export interface AccountType {
@@ -25,7 +23,6 @@ export interface Account {
   reference: string;
   usage: string;
   currencyId: string;
-  typeId: string;
 }
 
 export interface Category {
@@ -39,9 +36,8 @@ export interface Currency {
   code: string;
 }
 
-export interface AccountWithCurrencyAndType extends Account {
+export interface AccountWithCurrency extends Account {
   currency: Currency;
-  type: AccountType;
 }
 
 export interface Transaction {
@@ -57,33 +53,6 @@ export interface Transaction {
 export interface TransactionWithCategoryAndAccount extends Transaction {
   category: Category;
   account: Account;
-}
-
-export interface Card {
-  id: string;
-  title: string;
-  cardHolder: string;
-  type: "debit" | "business";
-  provider: "dkb" | "revolut";
-}
-
-export interface SharedFundsData {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-  arrow: React.ReactNode;
-}
-export interface DashboardData {
-  user: {
-    name: string;
-  };
-  cards: Card[];
-  accounts: {
-    private: Account[];
-    business: Account[];
-    safe: Account[];
-  };
-  sharedFunds: SharedFundsData;
 }
 
 /**

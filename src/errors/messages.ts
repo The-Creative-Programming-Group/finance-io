@@ -6,7 +6,6 @@ export const error_messages = {
 
   // Accounts
   currencyNotFound: "currencyNotFound",
-  accountTypeNotFound: "accountTypeNotFound",
   accountNotOwned: "accountNotOwned",
 
   // Transactions

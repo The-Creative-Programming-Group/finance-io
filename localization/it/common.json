@@ -45,7 +45,7 @@
   "currentAmountPlaceholder": "2000.00",
   "enterCurrentAmount": "Inserisci l'importo attuale",
   "reference": "Riferimento",
-  "referencePlaceholder": "Business, Privato, altro",
+  "referencePlaceholder": "Aziendale, Privato, altro",
   "emailRequired": "L'email è obbligatoria",
   "invalidEmail": "Per favore inserisci un indirizzo email valido",
   "firstNameRequired": "Il nome è obbligatorio",

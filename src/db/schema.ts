@@ -7,9 +7,10 @@ import {
   timestamp,
   index,
   uniqueIndex,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 
-// Users (Clerk user id as primary key)
+// Users (Clerk user id as a primary key)
 export const usersTable = pgTable("users", {
   id: varchar({ length: 255 }).primaryKey(),
 });
@@ -40,18 +41,9 @@ export const categoriesTable = pgTable(
   }),
 );
 
-// Account types
-export const accountTypesTable = pgTable(
-  "account_types",
-  {
-    id: uuid().defaultRandom().primaryKey(),
-    name: varchar({ length: 100 }).notNull(),
-    slug: varchar({ length: 120 }).notNull(),
-  },
-  (table) => ({
-    slugUniqueIdx: uniqueIndex("account_types_slug_unique_idx").on(table.slug),
-  }),
-);
+export const references = ["private", "business", "savings", "shared"] as const;
+
+export const referencesEnum = pgEnum("references", references);
 
 // Accounts
 export const accountsTable = pgTable(
@@ -68,11 +60,8 @@ export const accountsTable = pgTable(
       scale: 2,
       mode: "string",
     }).notNull(),
-    reference: varchar({ length: 255 }).notNull(),
+    reference: referencesEnum().notNull(),
     usage: varchar({ length: 255 }).notNull(),
-    typeId: uuid()
-      .notNull()
-      .references(() => accountTypesTable.id, { onDelete: "restrict" }),
     currencyId: uuid()
       .notNull()
       .references(() => currenciesTable.id, { onDelete: "restrict" }),
@@ -81,7 +70,6 @@ export const accountsTable = pgTable(
   (table) => ({
     userIdx: index("accounts_user_idx").on(table.userId),
     currencyIdx: index("accounts_currency_idx").on(table.currencyId),
-    typeIdx: index("accounts_type_idx").on(table.typeId),
   }),
 );
 
