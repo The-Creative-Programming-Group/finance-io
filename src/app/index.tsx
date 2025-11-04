@@ -186,13 +186,6 @@ export default function Index() {
   }
   // Else: Not signed in OR still loading -> render the rest of this screen
 
-  // TODO: Add loading state
-  // if (isLoadingAccounts) {
-  //   return <View className="flex-1 items-center justify-center">
-  //     <ActivityIndicator size="large" color={iconColor} />
-  //   </View>;
-  // }
-
   const iconColor = scheme === "dark" ? "#E0E0E0" : "#111827";
   const iconBackground = scheme === "dark" ? "black" : "white";
 
