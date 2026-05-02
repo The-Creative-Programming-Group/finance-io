@@ -100,7 +100,8 @@
   "dashboardDailyAccounts": "Ежедневные счета",
   "dashboardPrivate": "Личный",
   "dashboardBusiness": "Бизнес",
-  "dashboardSafeAccounts": "Защищенные счета",
+  "dashboardSavings": "Сбережения",
+  "dashboardShared": "Совместный",
 
   "navigationDashboard": "Панель",
   "navigationTransactions": "Транзакции",

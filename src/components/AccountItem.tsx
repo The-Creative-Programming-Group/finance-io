@@ -5,7 +5,7 @@ import AppText from "./ui/AppText";
 import React from "react";
 
 interface AccountItemProps {
-  icon: React.ReactNode;
+  // icon: React.ReactNode;
   iconWrapped?: boolean;
   name: string;
   amount?: string;
@@ -15,7 +15,8 @@ interface AccountItemProps {
 }
 
 export const AccountItem: React.FC<AccountItemProps> = ({
-  icon,
+  // TODO: Re-enable icon prop once design is finalized
+  // icon,
   name,
   amount,
   delay = 0,
@@ -27,11 +28,14 @@ export const AccountItem: React.FC<AccountItemProps> = ({
 
   const Component = onPress ? TouchableOpacity : View;
 
+  /* TODO: Re-enable icon feature once design is finalized
   const styledIcon = React.isValidElement(icon)
     ? React.cloneElement(icon as React.ReactElement<{ color?: string }>, {
         color: colors.text, // Apply the theme color to every Lucide icon, so it changes with dark mode
       })
     : icon;
+
+   */
 
   const styledArrow = React.isValidElement(arrow)
     ? React.cloneElement(arrow as React.ReactElement<{ color?: string }>, {
@@ -49,7 +53,8 @@ export const AccountItem: React.FC<AccountItemProps> = ({
         activeOpacity={onPress ? 0.7 : 1}
         className="mb-4 flex-row items-center rounded-xl border-2 border-stroke bg-secondary px-5 py-5 dark:border-dark-stroke dark:bg-dark-secondary"
       >
-        {iconWrapped ? (
+        {/* TODO: Re-enable icon feature once design is finalized
+        iconWrapped ? (
           <View className="mx-auto ml-2 mr-4 rounded-full bg-primary p-2 dark:bg-dark-primary">
             {styledIcon}
           </View>
@@ -57,7 +62,7 @@ export const AccountItem: React.FC<AccountItemProps> = ({
           <View className="ml-2 mr-4 flex w-11 items-center justify-center">
             {styledIcon}
           </View>
-        )}
+        ) */}
 
         <AppText
           medium

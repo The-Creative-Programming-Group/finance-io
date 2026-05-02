@@ -1,8 +1,2 @@
-import { router } from "./trpc";
-import { welcomeRouter } from "./routers/welcome";
-
-export const appRouter = router({
-  account: welcomeRouter,
-});
-
-export type AppRouter = typeof appRouter;
+export { appRouter } from "./api/root";
+export type { AppRouter } from "./api/root";

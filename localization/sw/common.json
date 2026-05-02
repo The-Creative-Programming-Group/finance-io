@@ -89,10 +89,13 @@
   "usageTooLong": "Matumizi yasizidi herufi 50",
   "verify": "Thibitisha",
   "verifying": "Inathibitisha...",
+
   "dashboardDailyAccounts": "Akaunti za kila siku",
   "dashboardPrivate": "Binafsi",
   "dashboardBusiness": "Biashara",
-  "dashboardSafeAccounts": "Akaunti za akiba",
+  "dashboardSavings": "Akiba",
+  "dashboardShared": "Pamoja",
+
   "navigationDashboard": "Dashibodi",
   "navigationTransactions": "Miamala",
   "navigationInsights": "Uchambuzi",

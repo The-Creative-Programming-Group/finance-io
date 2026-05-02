@@ -100,7 +100,8 @@
   "dashboardDailyAccounts": "Günlük Hesaplar",
   "dashboardPrivate": "Özel",
   "dashboardBusiness": "İş",
-  "dashboardSafeAccounts": "Korumalı Hesaplar",
+  "dashboardSavings": "Biriktirme",
+  "dashboardShared": "Paylaşılan",
 
   "navigationDashboard": "Kontrol Paneli",
   "navigationTransactions": "İşlemler",

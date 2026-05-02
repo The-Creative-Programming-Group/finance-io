@@ -89,10 +89,13 @@
   "usageTooLong": "Mục đích sử dụng không quá 50 ký tự",
   "verify": "Xác minh",
   "verifying": "Đang xác minh...",
+
   "dashboardDailyAccounts": "Tài khoản chi tiêu",
   "dashboardPrivate": "Cá nhân",
   "dashboardBusiness": "Doanh nghiệp",
-  "dashboardSafeAccounts": "Tài khoản tiết kiệm",
+  "dashboardSavings": "Tiết kiệm",
+  "dashboardShared": "Chung",
+
   "navigationDashboard": "Bảng điều khiển",
   "navigationTransactions": "Giao dịch",
   "navigationInsights": "Thông tin chi tiết",

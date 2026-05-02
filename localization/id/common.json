@@ -89,10 +89,13 @@
   "usageTooLong": "Penggunaan maksimal 50 karakter",
   "verify": "Verifikasi",
   "verifying": "Memverifikasi...",
+
   "dashboardDailyAccounts": "Akun Harian",
   "dashboardPrivate": "Pribadi",
   "dashboardBusiness": "Bisnis",
-  "dashboardSafeAccounts": "Akun Tabungan",
+  "dashboardSavings": "Tabungan",
+  "dashboardShared": "Bersama",
+
   "navigationDashboard": "Dasbor",
   "navigationTransactions": "Transaksi",
   "navigationInsights": "Wawasan",

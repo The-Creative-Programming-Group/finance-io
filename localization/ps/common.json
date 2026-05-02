@@ -103,7 +103,8 @@
   "dashboardDailyAccounts": "ورځني حسابونه",
   "dashboardPrivate": "شخصي",
   "dashboardBusiness": "سوداګریز",
-  "dashboardSafeAccounts": "خوندي حسابونه",
+  "dashboardSavings": "سپما",
+  "dashboardShared": "شریک شوی",
 
   "navigationDashboard": "کنټرول پینل",
   "navigationTransactions": "معاملې",

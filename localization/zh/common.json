@@ -100,7 +100,8 @@
   "dashboardDailyAccounts": "日常账户",
   "dashboardPrivate": "个人",
   "dashboardBusiness": "商务",
-  "dashboardSafeAccounts": "安全账户",
+  "dashboardSavings": "储蓄",
+  "dashboardShared": "共享",
 
   "navigationDashboard": "仪表板",
   "navigationTransactions": "交易记录",

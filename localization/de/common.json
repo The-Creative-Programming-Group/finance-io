@@ -110,10 +110,11 @@
   "verify": "Bestätigen",
   "verifying": "Wird überprüft...",
 
-  "dashboardDailyAccounts": "Tägliche Konten",
+  "dashboardDailyAccounts": "Tageskonten",
   "dashboardPrivate": "Privat",
   "dashboardBusiness": "Geschäftlich",
-  "dashboardSafeAccounts": "Sichere Konten",
+  "dashboardSavings": "Ersparnisse",
+  "dashboardShared": "Gemeinsam",
 
   "navigationDashboard": "Dashboard",
   "navigationTransactions": "Transaktionen",

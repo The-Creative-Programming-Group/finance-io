@@ -1,38 +1,49 @@
-import type React from "react";
+import { References } from "~/schemas/welcomeSchema";
+import { categoriesTable, currenciesTable } from "~/db/schema";
+import { InferSelectModel } from "drizzle-orm";
+
+/**
+ * Our database only saves the Clerk user id, so we need to get the user details from Clerk.
+ * When we request the user details from our backend, it automatically gets the user details from Clerk.
+ */
+export interface ClerkUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  emails: string[];
+  // No phone numbers. This is a paid feature in Clerk and is not available to us.
+}
 
 export interface Account {
   id: string;
-  name: string;
+  bankName: string;
+  currentBalance: string;
+  reference: References;
+  usage: string;
+  currencyId: string;
+}
+
+export type Category = InferSelectModel<typeof categoriesTable>;
+
+export type Currency = InferSelectModel<typeof currenciesTable>;
+
+export interface AccountWithCurrency extends Account {
+  currency: Currency;
+}
+
+export interface Transaction {
+  id: string;
+  categoryId: string;
+  company: string;
   amount: string;
-  icon: React.ReactNode;
-  type: "paypal" | "dkb" | "revolut" | "depot";
+  datetime: Date;
+  description: string;
+  accountId: string;
 }
 
-export interface Card {
-  id: string;
-  title: string;
-  cardHolder: string;
-  type: "debit" | "business";
-  provider: "dkb" | "revolut";
-}
-
-export interface SharedFundsData {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-  arrow: React.ReactNode;
-}
-export interface DashboardData {
-  user: {
-    name: string;
-  };
-  cards: Card[];
-  accounts: {
-    private: Account[];
-    business: Account[];
-    safe: Account[];
-  };
-  sharedFunds: SharedFundsData;
+export interface TransactionWithCategoryAndAccount extends Transaction {
+  category: Category;
+  account: Account;
 }
 
 /**

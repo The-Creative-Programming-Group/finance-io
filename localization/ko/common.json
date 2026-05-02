@@ -101,7 +101,8 @@
   "dashboardDailyAccounts": "일상 계좌",
   "dashboardPrivate": "개인",
   "dashboardBusiness": "비즈니스",
-  "dashboardSafeAccounts": "보호 계좌",
+  "dashboardSavings": "저축",
+  "dashboardShared": "공유",
 
   "navigationDashboard": "대시보드",
   "navigationTransactions": "거래내역",

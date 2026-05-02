@@ -101,7 +101,8 @@
   "dashboardDailyAccounts": "Cuentas Diarias",
   "dashboardPrivate": "Privado",
   "dashboardBusiness": "Empresarial",
-  "dashboardSafeAccounts": "Cuentas Protegidas",
+  "dashboardSavings": "Ahorros",
+  "dashboardShared": "Compartido",
 
   "navigationDashboard": "Panel",
   "navigationTransactions": "Transacciones",

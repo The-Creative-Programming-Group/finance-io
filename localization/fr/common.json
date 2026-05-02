@@ -93,7 +93,8 @@
   "dashboardDailyAccounts": "Comptes Quotidiens",
   "dashboardPrivate": "Privé",
   "dashboardBusiness": "Professionnel",
-  "dashboardSafeAccounts": "Comptes Protégés",
+  "dashboardSavings": "Économies",
+  "dashboardShared": "Partagé",
 
   "navigationDashboard": "Tableau de Bord",
   "navigationTransactions": "Transactions",

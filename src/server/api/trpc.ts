@@ -1,6 +1,6 @@
 /**
  * YOU PROBABLY DON'T NEED TO EDIT THIS FILE, UNLESS:
- * 1. You want to modify request context (see Part 1).
+ * 1. You want to modify the request context (see Part 1).
  * 2. You want to create a new middleware or type of procedure (see Part 3).
  *
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
@@ -9,12 +9,16 @@
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { z, ZodError } from "zod";
-import { verifyToken } from "@clerk/backend";
+import { verifyToken, createClerkClient } from "@clerk/backend";
+import { errors } from "~/errors/trpc";
 
-// import { db } from "~/server/db";
 import { db } from "~/db";
 
 const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY!;
+
+const clerkClient = createClerkClient({
+  secretKey: CLERK_SECRET_KEY,
+});
 
 /**
  * 1. CONTEXT
@@ -123,14 +127,24 @@ export const publicProcedure = t.procedure;
  * This is the base piece you use to build new queries and mutations on your tRPC API. It guarantees
  * that a user querying is authorized and can access their own data.
  */
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!ctx.userId) {
-    throw new Error("Not authenticated");
+    throw errors.notAuthenticated();
   }
+
+  let user;
+  try {
+    user = await clerkClient.users.getUser(ctx.userId);
+  } catch (err) {
+    console.error("Error fetching user from Clerk:", err);
+    throw errors.notAuthenticated();
+  }
+
   return next({
     ctx: {
       ...ctx,
       userId: ctx.userId,
+      user,
     },
   });
 });

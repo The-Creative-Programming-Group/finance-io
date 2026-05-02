@@ -101,7 +101,8 @@
   "dashboardDailyAccounts": "日常口座",
   "dashboardPrivate": "プライベート",
   "dashboardBusiness": "ビジネス",
-  "dashboardSafeAccounts": "保護口座",
+  "dashboardSavings": "貯蓄",
+  "dashboardShared": "共有",
 
   "navigationDashboard": "ダッシュボード",
   "navigationTransactions": "取引履歴",
