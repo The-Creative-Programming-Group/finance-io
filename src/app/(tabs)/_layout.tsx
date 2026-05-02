@@ -21,17 +21,17 @@ const DashboardLayout = () => {
   const { colors } = useTheme();
   const navigationOptions: NavigationOption[] = [
     {
-      name: "banking/index",
+      name: "banking",
       title: t(NavigationItems.BANKING),
       icon: CreditCardIcon,
     },
     {
-      name: "insights/index",
+      name: "insights",
       title: t(NavigationItems.INSIGHTS),
       icon: ChartColumnIcon,
     },
     {
-      name: "settings/index",
+      name: "settings",
       title: t(NavigationItems.SETTINGS),
       icon: SettingsIcon,
     },

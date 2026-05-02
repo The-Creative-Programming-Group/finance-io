@@ -117,6 +117,7 @@ export enum NavigationItems {
   INSIGHTS = "navigationInsights",
   /** Settings/preferences area: profile, security, language. */
   SETTINGS = "navigationSettings",
+  PROFILE = "navigationProfile",
   /** Banking/accounts area: balances, transfers, cards. */
   BANKING = "navigationBankAccounts",
 }

@@ -2,7 +2,6 @@ import { useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import React, { useCallback, useState, useEffect } from "react";
 import {
-  TextInput,
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -15,6 +14,7 @@ import "~/i18n";
 import { languageService } from "~/services/languageService";
 import Button from "~/components/ui/button";
 import AppImage from "~/components/ui/AppImage";
+import { TextInput } from "~/components/ui/text-input";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -161,10 +161,8 @@ export default function Page() {
             Finance.io
           </AppText>
         </View>
-        <AppText className="mb-[5px] ml-6 text-base text-text dark:text-dark-text">
-          {t("email")}
-        </AppText>
         <TextInput
+          name={t("email")}
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           autoCapitalize="none"
           value={emailAddress}
@@ -180,10 +178,8 @@ export default function Page() {
             {fieldErrors.email}
           </AppText>
         )}
-        <AppText className="my-[5px] ml-6 text-base text-text dark:text-dark-text">
-          {t("password")}
-        </AppText>
         <TextInput
+          name={t("password")}
           className="my-[6px] h-[70px] rounded-[15px] bg-secondary p-2.5 pl-5 text-text dark:bg-dark-secondary dark:text-dark-text"
           value={password}
           placeholder={t("password")}
